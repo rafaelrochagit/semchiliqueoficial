@@ -1,0 +1,14 @@
+[04-Jun-2020 02:09:03 UTC] PHP Fatal error:  Uncaught Error: Class 'Automattic\WooCommerce\Admin\API\OnboardingPlugins' not found in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Notes/WC_Admin_Notes_Install_JP_And_WCS_Plugins.php:121
+Stack trace:
+#0 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Notes/WC_Admin_Notes_Install_JP_And_WCS_Plugins.php(110): Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Install_JP_And_WCS_Plugins->install_and_activate_plugin('jetpack')
+#1 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(287): Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Install_JP_And_WCS_Plugins->install_jp_and_wcs_plugins(Object(Automattic\WooCommerce\Admin\Notes\WC_Admin_Note))
+#2 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#3 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php(478): WP_Hook->do_action(Array)
+#4 /hom in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Notes/WC_Admin_Notes_Install_JP_And_WCS_Plugins.php on line 121
+[04-Jun-2020 02:09:35 UTC] PHP Fatal error:  Uncaught Error: Class 'Automattic\WooCommerce\Admin\API\OnboardingPlugins' not found in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Notes/WC_Admin_Notes_Install_JP_And_WCS_Plugins.php:121
+Stack trace:
+#0 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Notes/WC_Admin_Notes_Install_JP_And_WCS_Plugins.php(110): Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Install_JP_And_WCS_Plugins->install_and_activate_plugin('jetpack')
+#1 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(287): Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Install_JP_And_WCS_Plugins->install_jp_and_wcs_plugins(Object(Automattic\WooCommerce\Admin\Notes\WC_Admin_Note))
+#2 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#3 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php(478): WP_Hook->do_action(Array)
+#4 /hom in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/Notes/WC_Admin_Notes_Install_JP_And_WCS_Plugins.php on line 121

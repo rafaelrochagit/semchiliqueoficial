@@ -1,0 +1,49 @@
+[03-Jun-2020 00:08:14 UTC] Erro de banco de dados do WordPress Unknown column 'wp_' in 'field list' para a consulta SELECT wp_
+[03-Jun-2020 00:14:18 UTC] PHP Warning:  sprintf(): Too few arguments in /home2/qinteres/semchilique.opasaquei.com.br/wp-admin/includes/class-bulk-upgrader-skin.php on line 152
+[03-Jun-2020 00:14:19 UTC] PHP Warning:  sprintf(): Too few arguments in /home2/qinteres/semchilique.opasaquei.com.br/wp-admin/includes/class-bulk-upgrader-skin.php on line 152
+[03-Jun-2020 00:24:21 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-image-editor-imagick.php on line 363
+[03-Jun-2020 02:23:39 UTC] Erro de banco de dados do WordPress Duplicate entry '658' for key 'PRIMARY' para a consulta INSERT INTO `wp_posts` (`post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_content_filtered`, `post_title`, `post_excerpt`, `post_status`, `post_type`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_parent`, `menu_order`, `post_mime_type`, `guid`, `ID`) VALUES (1, '2019-09-26 07:46:11', '2019-09-26 07:46:11', '', '', 'Hello', '', 'publish', 'page', 'closed', 'closed', '', 'hello', '', '', '2019-09-26 07:46:11', '2019-09-26 07:46:11', 0, 0, '', 'http://localhost/mysterythemes/shopay/?page_id=658', 658) feita por do_action('wp_ajax_mtdi_import_demo'), WP_Hook->do_action, WP_Hook->apply_filters, MTDI_Admin->import_all_demo, MTDI_Admin->mtdi_import_dummy_xml, MTDI_Demo_WPImporter->import, MTDI_Demo_WPImporter->process_posts, wp_insert_post
+[03-Jun-2020 02:23:39 UTC] Erro de banco de dados do WordPress Duplicate entry '102' for key 'PRIMARY' para a consulta INSERT INTO `wp_posts` (`post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_content_filtered`, `post_title`, `post_excerpt`, `post_status`, `post_type`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_parent`, `menu_order`, `post_mime_type`, `guid`, `ID`) VALUES (1, '2019-09-13 06:47:00', '2019-09-13 06:47:00', 'Magna fermentum iaculis eu non diam phasellus vestibulum lorem sed. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc. Tincidunt vitae semper quis lectus nulla. Ultricies tristique nulla aliquet enim tortor at auctor. Proin nibh nisl condimentum id venenatis a condimentum vitae sapien. Scelerisque in dictum non consectetur a erat nam at lectus. Semper quis lectus nulla at. Egestas fringilla phasellus faucibus scelerisque. Nibh tellus molestie nunc non blandit. Et malesuada fames ac turpis egestas integer eget aliquet nibh. Odio eu feugiat pretium nibh ipsum consequat nisl. A diam sollicitudin tempor id eu nisl nunc mi. Amet facilisis magna etiam tempor orci eu. Rutrum tellus pellentesque eu tincidunt tortor aliquam. Pellentesque habitant morbi tristique senectus. Sit amet risus nullam eget. Scelerisque purus semper eget duis at tellus at urna condimentum. Purus sit amet volutpat consequat mauris nunc congue.\n\nLeo integer malesuada nunc vel risus commodo viverra. Congue eu consequat ac felis donec et odio. A lacus vestibulum sed arcu. At tellus at urna condimentum. Mattis ullamcorper velit sed ullamcorper. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Sed egestas egestas fringilla phasellus faucibus scelerisque. Id aliquet risus feugiat in ante metus dictum. Integer enim neque volutpat ac tincidunt vitae semper quis lectus. Malesuada bibendum arcu vitae elementum. Sit amet luctus venenatis lectus magna.', '', 'All Collections in Your Palm.', 'Malesuada proin libero nunc consequat interdum varius sit. Pretium quam vulputate dignissim suspendisse in est ante.', 'publish', 'post', 'open', 'open', '', 'all-collections-in-your-palm', '', '', '2019-09-13 06:47:00', '2019-09-13 06:47:00', 0, 0, '', 'http://localhost/mysterythemes/shopay/?p=102', 102) feita por do_action('wp_ajax_mtdi_import_demo'), WP_Hook->do_action, WP_Hook->apply_filters, MTDI_Admin->import_all_demo, MTDI_Admin->mtdi_import_dummy_xml, MTDI_Demo_WPImporter->import, MTDI_Demo_WPImporter->process_posts, wp_insert_post
+[03-Jun-2020 02:23:39 UTC] Erro de banco de dados do WordPress Duplicate entry '174-31' for key 'PRIMARY' para a consulta INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`) VALUES (174, 31) feita por do_action('wp_ajax_mtdi_import_demo'), WP_Hook->do_action, WP_Hook->apply_filters, MTDI_Admin->import_all_demo, MTDI_Admin->mtdi_import_dummy_xml, MTDI_Demo_WPImporter->import, MTDI_Demo_WPImporter->process_posts, wp_set_post_terms, wp_set_object_terms
+[03-Jun-2020 02:23:42 UTC] Erro de banco de dados do WordPress Duplicate entry '561' for key 'PRIMARY' para a consulta INSERT INTO `wp_posts` (`post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_content_filtered`, `post_title`, `post_excerpt`, `post_status`, `post_type`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_parent`, `menu_order`, `post_mime_type`, `guid`, `ID`) VALUES (1, '2019-09-22 10:58:24', '2019-09-22 10:58:24', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam vulputate ut pharetra sit. Habitasse platea dictumst quisque sagittis purus sit amet volutpat consequat. Vitae congue eu consequat ac felis donec. Nunc mattis enim ut tellus elementum sagittis vitae. Morbi enim nunc faucibus a pellentesque. Consectetur lorem donec massa sapien faucibus. Eget nunc scelerisque viverra mauris in. Pellentesque id nibh tortor id aliquet lectus proin nibh.', '', 'Printed Cup', 'Eu non diam phasellus vestibulum lorem sed risus ultricies. Massa id neque aliquam vestibulum morbi blandit. Dolor sit amet consectetur adipiscing elit duis.', 'publish', 'product', 'open', 'closed', '', 'printed-cup', '', '', '2019-09-22 10:58:24', '2019-09-22 10:58:24', 0, 0, '', 'http://localhost/mysterythemes/shopay/?post_type=product&amp;p=561', 561) feita por do_action('wp_ajax_mtdi_import_demo'), WP_Hook->do_action, WP_Hook->apply_filters, MTDI_Admin->import_all_demo, MTDI_Admin->mtdi_import_dummy_xml, MTDI_Demo_WPImporter->import, MTDI_Demo_WPImporter->process_posts, wp_insert_post
+[03-Jun-2020 02:23:43 UTC] Erro de banco de dados do WordPress Duplicate entry '931' for key 'PRIMARY' para a consulta INSERT INTO `wp_posts` (`post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_content_filtered`, `post_title`, `post_excerpt`, `post_status`, `post_type`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_parent`, `menu_order`, `post_mime_type`, `guid`, `ID`) VALUES (1, '2020-04-19 12:13:53', '2020-04-19 12:13:53', '', '', 'Order &ndash; abril 19, 2020 @ 12:13 PM', '', 'wc-processing', 'shop_order', 'open', 'closed', 'wc_order_BI5mobsuNQGGK', 'order-apr-19-2020-1213-pm', '', '', '2020-04-19 12:13:53', '2020-04-19 12:13:53', 0, 0, '', 'https://demo.mysterythemes.com/shopay/?post_type=shop_order&amp;p=931', 931) feita por do_action('wp_ajax_mtdi_import_demo'), WP_Hook->do_action, WP_Hook->apply_filters, MTDI_Admin->import_all_demo, MTDI_Admin->mtdi_import_dummy_xml, MTDI_Demo_WPImporter->import, MTDI_Demo_WPImporter->process_posts, wp_insert_post
+[03-Jun-2020 21:14:55 UTC] Exception caught in get_wishlist. Invalid wishlist.. Args: Array
+(
+    [0] => ,ljvh
+)
+..
+[03-Jun-2020 21:14:55 UTC] Exception caught in get_wishlist. Invalid wishlist.. Args: Array
+(
+    [0] => ,
+)
+..
+[03-Jun-2020 21:14:59 UTC] Exception caught in get_wishlist. Invalid wishlist.. Args: Array
+(
+    [0] => ,l
+)
+..
+[03-Jun-2020 21:15:00 UTC] Exception caught in get_wishlist. Invalid wishlist.. Args: Array
+(
+    [0] => pr
+)
+..
+[03-Jun-2020 21:15:01 UTC] Exception caught in get_wishlist. Invalid wishlist.. Args: Array
+(
+    [0] => promoç
+)
+..
+[03-Jun-2020 21:15:02 UTC] Exception caught in get_wishlist. Invalid wishlist.. Args: Array
+(
+    [0] => promoção
+)
+..
+[03-Jun-2020 21:15:16 UTC] Exception caught in get_wishlist. Invalid wishlist.. Args: Array
+(
+    [0] => promoção
+)
+..
+[03-Jun-2020 21:15:17 UTC] Exception caught in get_wishlist. Invalid wishlist.. Args: Array
+(
+    [0] => promoção
+)
+..
