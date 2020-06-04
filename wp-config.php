@@ -20,6 +20,7 @@
 
 // ** Configurações do MySQL - Você pode pegar estas informações com o serviço de hospedagem ** //
 /** O nome do banco de dados do WordPress */
+define('REVISR_GIT_PATH', ''); // Added by Revisr
 define( 'DB_NAME', 'qinteres_semchilique' );
 
 /** Usuário do banco de dados MySQL */
