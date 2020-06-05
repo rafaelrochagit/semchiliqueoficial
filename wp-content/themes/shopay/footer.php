@@ -51,7 +51,7 @@
 		} 
         else {
 			menu.classList.remove('menuFixo');
-			nav.classList.add('menuFixo'); // > 0 ou outro valor desejado	
+			nav.classList.remove('menuFixo'); // > 0 ou outro valor desejado	
 		}
     });
 })();
