@@ -251,3 +251,7 @@ a.button.instalplugin.alignright {
 .mtdi-install-setup.button-primary.updating-message::before {
 	margin-top: 12px;
 }
+
+.demo-import-actions {
+	margin-top: 20px;
+}

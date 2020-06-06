@@ -289,27 +289,44 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 
 			$install_status = install_plugin_install_status( $api );
 
-			if ( current_user_can( 'activate_plugin', $plugin_init ) && is_plugin_inactive( $plugin_init ) ) {
-				$pluginList = sanitize_text_field( $_POST['pluginList'] );
-				$current 	= get_option( 'active_plugins' );
-				foreach ( $pluginList as $value ) {
-					$plugin = $value['slug'];
-					$plugin = plugin_basename( trim( $plugin ) );
+			// if ( current_user_can( 'activate_plugin', $plugin_init ) && is_plugin_inactive( $plugin_init ) ) {
+			// 	$pluginList = sanitize_text_field( $_POST['pluginList'] );
+			// 	$current 	= get_option( 'active_plugins' );
+			// 	foreach ( $pluginList as $value ) {
+			// 		$plugin = $value['slug'];
+			// 		$plugin = plugin_basename( trim( $plugin ) );
 
-					if ( !in_array( $plugin, $current ) ) {
-						$current[] = $plugin;
-						sort( $current );
-						do_action( 'activate_plugin', trim( $plugin ) );
-						update_option( 'active_plugins', esc_html( $current ) );
-						do_action( 'activate_' . trim( $plugin ) );
-						do_action( 'activated_plugin', trim( $plugin) );
+			// 		if ( !in_array( $plugin, $current ) ) {
+			// 			$current[] = $plugin;
+			// 			sort( $current );
+			// 			do_action( 'activate_plugin', trim( $plugin ) );
+			// 			update_option( 'active_plugins', esc_html( $current ) );
+			// 			do_action( 'activate_' . trim( $plugin ) );
+			// 			do_action( 'activated_plugin', trim( $plugin) );
+			// 		}
+			// 	}
+
+			// 	if ( is_wp_error( $result ) ) {
+			// 		$status['errorCode']    = $result->get_error_code();
+			// 		$status['errorMessage'] = $result->get_error_message();
+			// 		wp_send_json_error( $status );
+			// 	}
+			// }
+			if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin_slug ) ) {
+				$plugin_data          = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin_init );
+				$status['plugin']     = $plugin_init;
+				$status['pluginName'] = $plugin_data['Name'];
+
+				if ( current_user_can( 'activate_plugin', $plugin_init ) && is_plugin_inactive( $plugin_init ) ) {
+					$result = activate_plugin( $plugin_init );
+
+					if ( is_wp_error( $result ) ) {
+						$status['errorCode']    = $result->get_error_code();
+						$status['errorMessage'] = $result->get_error_message();
+						wp_send_json_error( $status );
 					}
-				}
 
-				if ( is_wp_error( $result ) ) {
-					$status['errorCode']    = $result->get_error_code();
-					$status['errorMessage'] = $result->get_error_message();
-					wp_send_json_error( $status );
+					wp_send_json_success( $status );
 				}
 			}
 			wp_send_json_success( $status );

@@ -53,8 +53,11 @@ if ( ! class_exists( 'MTDI_Library' ) ) :
 		public function retrieve_demo_by_activatetheme( $activated_theme ){
 			if ( strpos( $activated_theme, 'pro' ) !== false ) {
 				$activated_theme = str_replace( '-pro', '', $activated_theme );
+			} else if( strpos( $activated_theme, '-lite' ) !== false ) {
+				$activated_theme = str_replace( '-lite', '', $activated_theme );
 			}
 
+			if( $activated_theme == 'swipewp' ) $activated_theme = esc_html( 'swipe' );
 			$all_json_data 	= array();
 			$mt_demo_config_file_url  		= 'https://demo.mysterythemes.com/themes-demo-pack/'.esc_html( $activated_theme ).'/demo.json';
 			$mt_demo_config_file = apply_filters( 'mtdi_custom_json_config_path', esc_url( $mt_demo_config_file_url ) );
