@@ -54,3 +54,10 @@ Stack trace:
 #2 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(555): MSP_Importer->download_media('/2012/10/13.jpg')
 #3 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(502): MSP_Importer->fetch_all_medias()
 #4 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(456): MSP_Impo in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-http.php on line 629
+[06-Jun-2020 04:49:22 UTC] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-http.php:629
+Stack trace:
+#0 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(662): WP_Http::get('http://demo.ave...', '/home2/qinteres...')
+#1 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(599): MSP_Importer->fetch_remote_file('http://demo.ave...', '/2012/10')
+#2 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(555): MSP_Importer->download_media('/2012/10/8.jpg')
+#3 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(502): MSP_Importer->fetch_all_medias()
+#4 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(456): MSP_Impor in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-http.php on line 629
