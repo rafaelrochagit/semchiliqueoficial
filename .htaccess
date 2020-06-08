@@ -1,4 +1,12 @@
 
+
+# BEGIN rlrssslReallySimpleSSL rsssl_version[3.3.3]
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+# END rlrssslReallySimpleSSL
 # BEGIN WordPress
 # As diretrizes (linhas) entre `BEGIN WordPress` e` END WordPress` são
 # geradas dinamicamente e só devem ser modificadas através de filtros do WordPress.
