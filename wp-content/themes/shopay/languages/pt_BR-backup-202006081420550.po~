@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: Shopay\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-22 08:44+0000\n"
-"PO-Revision-Date: 2020-06-08 14:08+0000\n"
+"PO-Revision-Date: 2020-06-08 14:18+0000\n"
 "Last-Translator: Anderson Rocha\n"
-"Language-Team: \n"
+"Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: searchform.php:11
 msgid "Search for:"
-msgstr ""
+msgstr "Procurar por:"
 
 #: inc/class-breadcrumbs.php:264
 msgid "Browse:"
@@ -1547,7 +1547,7 @@ msgstr ""
 
 #: inc/woocommerce/woocommerce.php:315
 msgid "Add To Wishlist"
-msgstr ""
+msgstr "Adicionar a lista "
 
 #: template-parts/footer/content-footer.php:22
 #: inc/customizer/sections/footer/main.php:144

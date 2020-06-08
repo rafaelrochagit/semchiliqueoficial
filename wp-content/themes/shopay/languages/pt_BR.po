@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Shopay\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-22 08:44+0000\n"
-"PO-Revision-Date: 2020-06-08 14:11+0000\n"
+"PO-Revision-Date: 2020-06-08 14:20+0000\n"
 "Last-Translator: Anderson Rocha\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -100,7 +100,7 @@ msgstr ""
 #: inc/class-breadcrumbs.php:270
 #, php-format
 msgid "Search results for: %s"
-msgstr ""
+msgstr "Procurar por resultados: %s"
 
 #. %s is the page number.
 #: inc/class-breadcrumbs.php:272
@@ -1547,7 +1547,7 @@ msgstr ""
 
 #: inc/woocommerce/woocommerce.php:315
 msgid "Add To Wishlist"
-msgstr ""
+msgstr "Adicionar a lista "
 
 #: template-parts/footer/content-footer.php:22
 #: inc/customizer/sections/footer/main.php:144
