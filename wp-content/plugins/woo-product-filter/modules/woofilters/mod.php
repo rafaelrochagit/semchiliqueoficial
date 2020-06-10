@@ -806,7 +806,7 @@ class WoofiltersWpf extends ModuleWpf {
 		return array('names' => array_unique($taxonomies), 'count' => array_unique($forCount));
 	}
 
-	public function getFilterExistsTerms( $args, $taxonomies, $calcCategory = null, $prodCatId = false ) {
+	public function getFilterExistsTerms( $args, $taxonomies, $calcCategory = null, $prodCatId = false, $querySettings = array() ) {
 		if (empty($taxonomies['names'])) {
 			return false;
 		}
@@ -842,6 +842,30 @@ class WoofiltersWpf extends ModuleWpf {
 						'taxonomy' => 'product_cat',
 						'field' => 'term_id',
 						'terms' => $prodCatId
+					)
+				));
+		}
+		
+		if (isset($querySettings['product_tag']) && $querySettings['product_tag']) {
+			$args['tax_query'] = !isset($args['tax_query']) ? array() : $args['tax_query'];
+			$args['tax_query'] = array_merge($args['tax_query'],
+				array(
+					array(
+						'taxonomy' => 'product_tag',
+						'field' => 'term_id',
+						'terms' => $querySettings['product_tag']
+					)
+				));
+		}
+		
+		if (isset($querySettings['product_brand']) && $querySettings['product_brand']) {
+			$args['tax_query'] = !isset($args['tax_query']) ? array() : $args['tax_query'];
+			$args['tax_query'] = array_merge($args['tax_query'],
+				array(
+					array(
+						'taxonomy' => 'product_brand',
+						'field' => 'term_id',
+						'terms' => $querySettings['product_brand']
 					)
 				));
 		}
@@ -989,5 +1013,9 @@ class WoofiltersWpf extends ModuleWpf {
 
 		$logic = DispatcherWpf::applyFilters( 'getAttrFilterLogic', $logic );
 		return empty($mode) ? $logic : ( isset($logic[$mode]) ? $logic[$mode] : array() );
+	}
+	
+	public function getFilterTagsList() {
+		return array( 0 => 'Default', 1 => 'h1', 2 => 'h2', 3 => 'h3', 4 => 'h4', 5 => 'h5' );
 	}
 }

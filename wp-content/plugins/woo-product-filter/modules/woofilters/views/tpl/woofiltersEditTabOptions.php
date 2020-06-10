@@ -225,6 +225,25 @@
 				</div>
 			</div>
 		</div>
+		<div class="row row-settings-block">
+			<div class="settings-block-label col-xs-4 col-xl-3">
+				<?php esc_html_e('Select Filter Buttons Order', 'woo-product-filter'); ?>
+			</div>
+			<div class="col-xs-2 col-sm-1">
+				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Here you may change the order of filter buttons on the page.', 'woo-product-filter'); ?>"></i>
+			</div>
+			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value">
+					<?php
+					HtmlWpf::selectbox('settings[main_buttons_order]', array(
+						'options' => array('left' => 'Filter-Clear', 'right' => 'Clear-Filter'),
+						'value' => ( isset($this->settings['settings']['main_buttons_order']) ? $this->settings['settings']['main_buttons_order'] : 'left' ),
+						'attrs' => 'class="woobewoo-flat-input"'
+					));
+					?>
+				</div>
+			</div>
+		</div>
 
 		<?php 
 		if ($isPro) {

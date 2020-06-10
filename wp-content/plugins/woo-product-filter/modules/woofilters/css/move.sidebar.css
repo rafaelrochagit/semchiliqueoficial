@@ -1,5 +1,8 @@
 @media (max-width: 768px){
-   #content .col-full, .woocommerce-page .content-has-sidebar, #main-content .content-area {
+    #content .col-full,
+    .woocommerce-page .content-has-sidebar,
+    #main-content .content-area,
+    .woocommerce-page .btWithSidebar.btSidebarLeft .btContentHolder {
         -js-display: flex;
         display: -webkit-box;
         display: -webkit-flex;
@@ -12,14 +15,16 @@
     	-ms-flex-direction: column;
     	flex-direction: column;
     }
-    #primary {
+    #primary,
+    .btContent {
     	-webkit-box-ordinal-group: 2;
     	-moz-box-ordinal-group: 2;
     	-ms-flex-order: 2;
     	-webkit-order: 2;
         order: 2;
     }
-    #secondary {
+    #secondary,
+    .btSidebar {
     	-webkit-box-ordinal-group: 1;
     	-moz-box-ordinal-group: 1;
     	-ms-flex-order: 1;

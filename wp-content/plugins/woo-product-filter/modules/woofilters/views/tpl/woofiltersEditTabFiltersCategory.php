@@ -10,11 +10,40 @@
 		<div class="settings-value">
 			<?php 
 				HtmlWpf::selectbox('f_frontend_type', array(
-					'options' => array('list' => 'Radiobuttons list (single select)', 'dropdown' => 'Dropdown (single select)', 'multi' => 'Checkbox list (multiple select)' . $labelPro, 'buttons' => 'Buttons' . $labelPro, 'text' => 'Text' . $labelPro),
+					'options' => array(
+						'list' => 'Radiobuttons list (single select)',
+						'dropdown' => 'Dropdown (single select)',
+						'multi' => 'Checkbox list (multiple select)' . $labelPro,
+						'buttons' => 'Buttons' . $labelPro,
+						'text' => 'Text' . $labelPro
+					),
 					'attrs' => 'class="woobewoo-flat-input"'
 				));
 				?>
 		</div>
+	</div>
+</div>
+<div class="row-settings-block wpfTypeSwitchable" data-not-type="buttons">
+	<div class="settings-block-label col-xs-4 col-sm-3">
+		<?php esc_html_e('Show hierarchical', 'woo-product-filter'); ?>
+		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Show paternal and subsidiary categories (for checkbox list). If you display only some categories, make sure that the parent categories are selected.', 'woo-product-filter'); ?>"></i>
+	</div>
+	<div class="settings-block-values col-xs-8 col-sm-9">
+		<div class="settings-value">
+			<?php HtmlWpf::checkboxToggle('f_show_hierarchical', array()); ?>
+		</div>
+		<div class="settings-value wpfTypeSwitchable" data-not-type="buttons" data-parent="f_show_hierarchical">
+			<div class="settings-value-label">
+				<?php esc_html_e('Hide categories parent', 'woo-product-filter'); ?>
+				<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Show only categories children.', 'woo-product-filter'); ?>"></i>
+			</div>
+			<?php HtmlWpf::checkboxToggle('f_hide_parent', array()); ?>
+		</div>
+		<?php
+		if ($isPro) {
+			DispatcherWpf::doAction('addEditTabFilters', 'partEditTabFiltersHierarchicalOption');
+		}
+		?>
 	</div>
 </div>
 <?php 
@@ -23,6 +52,61 @@ if ($isPro) {
 	DispatcherWpf::doAction('addEditTabFilters', 'partEditTabFiltersCategoryMulti');
 }
 ?>
+<div class="row-settings-block">
+	<div class="settings-block-label col-xs-4 col-sm-3">
+		<?php esc_html_e('Use Custom tags', 'woo-product-filter'); ?>
+		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Choose tags for filter titles. Any settings you leave blank will default.', 'woo-product-filter'); ?>"></i>
+	</div>
+	<div class="sub-block-values col-xs-8 col-sm-9">
+		<div class="settings-value">
+			<?php HtmlWpf::checkboxToggle('f_custom_tags'); ?>
+		</div>
+		<div class="settings-value" data-parent="f_custom_tags">
+			<div class="settings-block-label woobewoo-width120">
+				<?php esc_html_e('Filter header', 'woo-product-filter'); ?>
+			</div>
+			<?php
+				HtmlWpf::selectbox('f_custom_tags_settings[header]', array(
+					'options' => $this->getModule()->getFilterTagsList(),
+					'attrs' => 'class="woobewoo-flat-input"'
+				));
+				?>
+		</div>
+		<div class="settings-value" data-parent="f_custom_tags">
+			<div class="settings-block-label woobewoo-width120">
+				<?php esc_html_e('1-st level title', 'woo-product-filter'); ?>
+			</div>
+			<?php
+				HtmlWpf::selectbox('f_custom_tags_settings[title_1]', array(
+					'options' => $this->getModule()->getFilterTagsList(),
+					'attrs' => 'class="woobewoo-flat-input"'
+				));
+				?>
+		</div>
+		<div class="settings-value" data-parent="f_custom_tags">
+			<div class="settings-block-label woobewoo-width120">
+				<?php esc_html_e('2-nd level title', 'woo-product-filter'); ?>
+			</div>
+			<?php
+				HtmlWpf::selectbox('f_custom_tags_settings[title_2]', array(
+					'options' => $this->getModule()->getFilterTagsList(),
+					'attrs' => 'class="woobewoo-flat-input"'
+				));
+				?>
+		</div>
+		<div class="settings-value" data-parent="f_custom_tags">
+			<div class="settings-block-label woobewoo-width120">
+				<?php esc_html_e('3-rd level title', 'woo-product-filter'); ?>
+			</div>
+			<?php
+				HtmlWpf::selectbox('f_custom_tags_settings[title_3]', array(
+					'options' => $this->getModule()->getFilterTagsList(),
+					'attrs' => 'class="woobewoo-flat-input"'
+				));
+				?>
+		</div>
+	</div>
+</div>
 <div class="row-settings-block wpfTypeSwitchable" data-type="dropdown">
 	<div class="settings-block-label col-xs-4 col-sm-3">
 		<?php esc_html_e('Dropdown label', 'woo-product-filter'); ?>
@@ -63,28 +147,6 @@ if ($isPro) {
 	<div class="settings-block-values col-xs-8 col-sm-9">
 		<div class="settings-value">
 			<?php HtmlWpf::checkboxToggle('f_order_custom', array()); ?>
-		</div>
-	</div>
-</div>
-<div class="row-settings-block wpfTypeSwitchable" data-not-type="buttons">
-	<div class="settings-block-label col-xs-4 col-sm-3">
-		<?php esc_html_e('Show hierarchical', 'woo-product-filter'); ?>
-		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Show paternal and subsidiary categories (for checkbox list). If you display only some categories, make sure that the parent categories are selected.', 'woo-product-filter'); ?>"></i>
-	</div>
-	<div class="settings-block-values col-xs-8 col-sm-9">
-		<div class="settings-value">
-			<?php HtmlWpf::checkboxToggle('f_show_hierarchical', array()); ?>
-		</div>
-	</div>
-</div>
-<div class="row-settings-block wpfHidden wpfTypeSwitchable" data-not-type="buttons" data-parent="f_show_hierarchical">
-	<div class="settings-block-label col-xs-4 col-sm-3">
-		<?php esc_html_e('Hide categories parent', 'woo-product-filter'); ?>
-		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Show only categories children.', 'woo-product-filter'); ?>"></i>
-	</div>
-	<div class="settings-block-values col-xs-8 col-sm-9">
-		<div class="settings-value">
-			<?php HtmlWpf::checkboxToggle('f_hide_parent', array()); ?>
 		</div>
 	</div>
 </div>

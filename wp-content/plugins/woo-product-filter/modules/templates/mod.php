@@ -25,7 +25,7 @@ class TemplatesWpf extends ModuleWpf {
 	public function modifyExternalToLocalCdn( $url ) {
 		$url = str_replace(
 			array('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css'),
-			array($this->_cdnUrl . 'lib/font-awesome'),
+			array(FrameWpf::_()->getModule('templates')->getModPath() . 'css'),
 			$url);
 		return $url;
 	}
@@ -93,23 +93,24 @@ class TemplatesWpf extends ModuleWpf {
 		}
 	}
 	public function loadTooltipster() {
-		FrameWpf::_()->addScript('tooltipster', $this->_cdnUrl . 'lib/tooltipster/jquery.tooltipster.min.js');
-		FrameWpf::_()->addStyle('tooltipster', $this->_cdnUrl . 'lib/tooltipster/tooltipster.css');
+		FrameWpf::_()->addScript('tooltipster', FrameWpf::_()->getModule('templates')->getModPath() . 'lib/tooltipster/jquery.tooltipster.min.js');
+		FrameWpf::_()->addStyle('tooltipster', FrameWpf::_()->getModule('templates')->getModPath() . 'lib/tooltipster/tooltipster.css');
 	}
 	public function loadSlimscroll() {
-		FrameWpf::_()->addScript('jquery.slimscroll', $this->_cdnUrl . 'js/jquery.slimscroll.js');
+		FrameWpf::_()->addScript('jquery.slimscroll', WPF_JS_PATH . 'slimscroll.min.js');
 	}
 	public function loadCodemirror() {
-		FrameWpf::_()->addStyle('wpfCodemirror', $this->_cdnUrl . 'lib/codemirror/codemirror.css');
-		FrameWpf::_()->addStyle('codemirror-addon-hint', $this->_cdnUrl . 'lib/codemirror/addon/hint/show-hint.css');
-		FrameWpf::_()->addScript('wpfCodemirror', $this->_cdnUrl . 'lib/codemirror/codemirror.js');
-		FrameWpf::_()->addScript('codemirror-addon-show-hint', $this->_cdnUrl . 'lib/codemirror/addon/hint/show-hint.js');
-		FrameWpf::_()->addScript('codemirror-addon-xml-hint', $this->_cdnUrl . 'lib/codemirror/addon/hint/xml-hint.js');
-		FrameWpf::_()->addScript('codemirror-addon-html-hint', $this->_cdnUrl . 'lib/codemirror/addon/hint/html-hint.js');
-		FrameWpf::_()->addScript('codemirror-mode-xml', $this->_cdnUrl . 'lib/codemirror/mode/xml/xml.js');
-		FrameWpf::_()->addScript('codemirror-mode-javascript', $this->_cdnUrl . 'lib/codemirror/mode/javascript/javascript.js');
-		FrameWpf::_()->addScript('codemirror-mode-css', $this->_cdnUrl . 'lib/codemirror/mode/css/css.js');
-		FrameWpf::_()->addScript('codemirror-mode-htmlmixed', $this->_cdnUrl . 'lib/codemirror/mode/htmlmixed/htmlmixed.js');
+		$modPath = FrameWpf::_()->getModule('templates')->getModPath();
+		FrameWpf::_()->addStyle('wpfCodemirror', $modPath . 'lib/codemirror/codemirror.css');
+		FrameWpf::_()->addStyle('codemirror-addon-hint', $modPath . 'lib/codemirror/addon/hint/show-hint.css');
+		FrameWpf::_()->addScript('wpfCodemirror', $modPath . 'lib/codemirror/codemirror.js');
+		FrameWpf::_()->addScript('codemirror-addon-show-hint', $modPath . 'lib/codemirror/addon/hint/show-hint.js');
+		FrameWpf::_()->addScript('codemirror-addon-xml-hint', $modPath . 'lib/codemirror/addon/hint/xml-hint.js');
+		FrameWpf::_()->addScript('codemirror-addon-html-hint', $modPath . 'lib/codemirror/addon/hint/html-hint.js');
+		FrameWpf::_()->addScript('codemirror-mode-xml', $modPath . 'lib/codemirror/mode/xml/xml.js');
+		FrameWpf::_()->addScript('codemirror-mode-javascript', $modPath . 'lib/codemirror/mode/javascript/javascript.js');
+		FrameWpf::_()->addScript('codemirror-mode-css', $modPath . 'lib/codemirror/mode/css/css.js');
+		FrameWpf::_()->addScript('codemirror-mode-htmlmixed', $modPath . 'lib/codemirror/mode/htmlmixed/htmlmixed.js');
 	}
 	public function loadCoreCss() {
 		$this->_styles = array(
@@ -143,14 +144,14 @@ class TemplatesWpf extends ModuleWpf {
 		static $loaded = false;
 		if (!$loaded) {
 			$this->loadJqueryUi();
-			FrameWpf::_()->addScript('jq-grid', $this->_cdnUrl . 'lib/jqgrid/jquery.jqGrid.min.js');
-			FrameWpf::_()->addStyle('jq-grid', $this->_cdnUrl . 'lib/jqgrid/ui.jqgrid.css');
+			FrameWpf::_()->addScript('jq-grid', FrameWpf::_()->getModule('templates')->getModPath() . 'lib/jqgrid/jquery.jqGrid.min.js');
+			FrameWpf::_()->addStyle('jq-grid', FrameWpf::_()->getModule('templates')->getModPath() . 'lib/jqgrid/ui.jqgrid.css');
 			$langToLoad = UtilsWpf::getLangCode2Letter();
 			$availableLocales = array('ar', 'bg', 'bg1251', 'cat', 'cn', 'cs', 'da', 'de', 'dk', 'el', 'en', 'es', 'fa', 'fi', 'fr', 'gl', 'he', 'hr', 'hr1250', 'hu', 'id', 'is', 'it', 'ja', 'kr', 'lt', 'mne', 'nl', 'no', 'pl', 'pt', 'pt', 'ro', 'ru', 'sk', 'sr', 'sr', 'sv', 'th', 'tr', 'tw', 'ua', 'vi');
 			if (!in_array($langToLoad, $availableLocales)) {
 				$langToLoad = 'en';
 			}
-			FrameWpf::_()->addScript('jq-grid-lang', $this->_cdnUrl . 'lib/jqgrid/i18n/grid.locale-' . $langToLoad . '.js');
+			FrameWpf::_()->addScript('jq-grid-lang', FrameWpf::_()->getModule('templates')->getModPath() . 'lib/jqgrid/i18n/grid.locale-' . $langToLoad . '.js');
 			$loaded = true;
 		}
 	}
@@ -158,8 +159,8 @@ class TemplatesWpf extends ModuleWpf {
 		FrameWpf::_()->addStyle('font-awesomeWpf', DispatcherWpf::applyFilters('externalCdnUrl', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'));
 	}
 	public function loadChosenSelects() {
-		FrameWpf::_()->addStyle('jquery.chosen', $this->_cdnUrl . 'lib/chosen/chosen.min.css');
-		FrameWpf::_()->addScript('jquery.chosen', $this->_cdnUrl . 'lib/chosen/chosen.jquery.min.js');
+		FrameWpf::_()->addStyle('jquery.chosen', FrameWpf::_()->getModule('templates')->getModPath() . 'lib/chosen/chosen.min.css');
+		FrameWpf::_()->addScript('jquery.chosen', FrameWpf::_()->getModule('templates')->getModPath() . 'lib/chosen/chosen.jquery.min.js');
 	}
 	public function loadDatePicker() {
 		FrameWpf::_()->addScript('jquery-ui-datepicker');
@@ -167,7 +168,7 @@ class TemplatesWpf extends ModuleWpf {
 	public function loadJqplot() {
 		static $loaded = false;
 		if (!$loaded) {
-			$jqplotDir = $this->_cdnUrl . 'lib/jqplot/';
+			$jqplotDir = FrameWpf::_()->getModule('templates')->getModPath() . 'lib/jqplot/';
 
 			FrameWpf::_()->addStyle('jquery.jqplot', $jqplotDir . 'jquery.jqplot.min.css');
 
@@ -200,7 +201,7 @@ class TemplatesWpf extends ModuleWpf {
 	public function loadMagicAnims() {
 		static $loaded = false;
 		if (!$loaded) {
-			FrameWpf::_()->addStyle('magic.anim', $this->_cdnUrl . 'css/magic.min.css');
+			FrameWpf::_()->addStyle('magic.anim', FrameWpf::_()->getModule('templates')->getModPath() . 'css/magic.min.css');
 			$loaded = true;
 		}
 	}

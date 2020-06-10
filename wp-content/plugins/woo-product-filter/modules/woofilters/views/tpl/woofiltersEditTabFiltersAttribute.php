@@ -29,12 +29,13 @@ $attributesTypes = array(
 	'buttons' => 'Buttons' . $labelPro,
 	'text' => 'Text' . $labelPro,
 	'switch' => 'Switch' . $labelPro,
+	'slider' => 'Slider' . $labelPro,
 );
 ?>
 <div class="row-settings-block">
 	<div class="settings-block-label col-xs-4 col-sm-3">
 		<?php esc_html_e('Show on frontend as', 'woo-product-filter'); ?>
-		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Depending on whether you need one or several attributes to be available at the same time, you may show your attributes list as checkbox or dropdown.', 'woo-product-filter'); ?>"></i>
+		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Depending on whether you need one or several attributes to be available at the same time, you may show your attributes list as checkbox or dropdown. <strong>Attention!</strong> Slider type work only with numeric titles of attributes', 'woo-product-filter'); ?>"></i>
 	</div>
 	<div class="settings-block-values col-xs-8 col-sm-9">
 		<div class="settings-value">
@@ -52,7 +53,7 @@ if ($isPro) {
 	DispatcherWpf::doAction('addEditTabFilters', 'partEditTabFiltersAttributeColors');
 } else {
 	foreach ($attributesTypes as $key => $value) {
-		if (strpos($value, $labelPro) && 'colors' == $key) {
+		if (strpos($value, $labelPro) && 'colors' === $key) {
 			?>
 			<div class="row-settings-block col-md-12 wpfFilterTypePro wpfHidden" data-type="<?php echo esc_attr($key); ?>">
 				<a href="https://woobewoo.com/plugins/woocommerce-filter/" target="_blank">
@@ -60,6 +61,72 @@ if ($isPro) {
 				</a>
 			</div>
 <?php }}} ?>
+<?php
+if ($isPro) {
+	DispatcherWpf::doAction('addEditTabFilters', 'partEditTabFiltersAttributeSlider');
+} else {
+	?>
+	<div class="row-settings-block col-md-12 wpfFilterTypePro wpfHidden" data-type="slider">
+		<a href="https://woobewoo.com/plugins/woocommerce-filter/" target="_blank">
+			<img class="wpfProAd" src="<?php echo esc_url($adPath . 'attributes_slider.png'); ?>">
+		</a>
+	</div>
+<?php } ?>
+<div class="row-settings-block">
+	<div class="settings-block-label col-xs-4 col-sm-3">
+		<?php esc_html_e('Use Custom tags', 'woo-product-filter'); ?>
+		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Choose tags for filter titles. Any settings you leave blank will default.', 'woo-product-filter'); ?>"></i>
+	</div>
+	<div class="sub-block-values col-xs-8 col-sm-9">
+		<div class="settings-value">
+			<?php HtmlWpf::checkboxToggle('f_custom_tags'); ?>
+		</div>
+		<div class="settings-value" data-parent="f_custom_tags">
+			<div class="settings-block-label woobewoo-width120">
+				<?php esc_html_e('Filter header', 'woo-product-filter'); ?>
+			</div>
+			<?php
+				HtmlWpf::selectbox('f_custom_tags_settings[header]', array(
+					'options' => $this->getModule()->getFilterTagsList(),
+					'attrs' => 'class="woobewoo-flat-input"'
+				));
+				?>
+		</div>
+		<div class="settings-value" data-parent="f_custom_tags">
+			<div class="settings-block-label woobewoo-width120">
+				<?php esc_html_e('1-st level title', 'woo-product-filter'); ?>
+			</div>
+			<?php
+				HtmlWpf::selectbox('f_custom_tags_settings[title_1]', array(
+					'options' => $this->getModule()->getFilterTagsList(),
+					'attrs' => 'class="woobewoo-flat-input"'
+				));
+				?>
+		</div>
+		<div class="settings-value" data-parent="f_custom_tags">
+			<div class="settings-block-label woobewoo-width120">
+				<?php esc_html_e('2-nd level title', 'woo-product-filter'); ?>
+			</div>
+			<?php
+				HtmlWpf::selectbox('f_custom_tags_settings[title_2]', array(
+					'options' => $this->getModule()->getFilterTagsList(),
+					'attrs' => 'class="woobewoo-flat-input"'
+				));
+				?>
+		</div>
+		<div class="settings-value" data-parent="f_custom_tags">
+			<div class="settings-block-label woobewoo-width120">
+				<?php esc_html_e('3-rd level title', 'woo-product-filter'); ?>
+			</div>
+			<?php
+				HtmlWpf::selectbox('f_custom_tags_settings[title_3]', array(
+					'options' => $this->getModule()->getFilterTagsList(),
+					'attrs' => 'class="woobewoo-flat-input"'
+				));
+				?>
+		</div>
+	</div>
+</div>
 <div class="row-settings-block wpfTypeSwitchable" data-type="dropdown mul_dropdown">
 	<div class="settings-block-label col-xs-4 col-sm-3">
 		<?php esc_html_e('Dropdown label', 'woo-product-filter'); ?>

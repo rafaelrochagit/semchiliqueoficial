@@ -109,83 +109,7 @@
 		var _thisObj = this.$obj;
 
 		jQuery('.wpfFilterWrapper[data-filter-type="wpfPrice"]').each(function () {
-			var filter = jQuery(this),
-				wrapper = filter.closest('.wpfMainWrapper'),
-				minSelector = filter.closest('.wpfFilterWrapper').find('#wpfMinPrice'),
-				maxSelector = filter.closest('.wpfFilterWrapper').find('#wpfMaxPrice'),
-				wpfDataStep = filter.closest('.wpfFilterWrapper').find('#wpfDataStep').val();
-			if (wpfDataStep == '0.001') {
-				wpfDataStep = '0.00000001';
-			}
-			wpfDataStep = Number(wpfDataStep);
-			var valMin = parseFloat(minSelector.attr('min')),
-				valMax = parseFloat(maxSelector.attr('max')),
-				curUrl = window.location.href,
-				urlParams = _thisObj.findGetParameter(curUrl),
-				minPriceGetParams = urlParams.min_price ? parseFloat(urlParams.min_price) : valMin,
-				maxPriceGetParams = urlParams.max_price ? parseFloat(urlParams.max_price) : valMax,
-				sliderWrapper = filter.find("#wpfSliderRange"),
-				autoFilteringEnable = (wrapper.find('.wpfFilterButton').length == 0),
-				skin = filter.attr('data-price-skin');
-			if(skin === 'default'){
-				sliderWrapper.slider({
-					range: true,
-					orientation: "horizontal",
-					min: valMin,
-					max: valMax,
-					step: wpfDataStep,
-					values: [minPriceGetParams, maxPriceGetParams],
-					slide: function (event, ui) {
-						minSelector.val(ui.values[0]);
-						maxSelector.val(ui.values[1]);
-						filter.trigger("wpfPriceChange");
-					},
-					start: function () {
-						filter.trigger('wpfPriceChange');
-					},
-					stop: function () {
-						if(autoFilteringEnable){
-							_thisObj.filtering(wrapper);
-						}
-					}
-				});
-				minSelector.val(sliderWrapper.slider("values", 0));
-				maxSelector.val(sliderWrapper.slider("values", 1));
-			}else if(skin === 'skin1'){
-				var sliderWrapper = jQuery("#wpfSlider");
-				sliderWrapper.attr('value', minPriceGetParams + ';' + maxPriceGetParams);
-				var countCall = 0,
-					timeOut = 0;
-				setTimeout(function() {
-					sliderWrapper.slideregor({
-						from: valMin,
-						to: valMax,
-						limits: true,
-						step: wpfDataStep,
-						skin: "round",
-						onstatechange : function(value) {
-							countCall++;
-							if(countCall > 2){
-								var _this = this,
-									values = _this.getValue().split(';');
-								minSelector.val(values[0]);
-								maxSelector.val(values[1]);
-								if(!sliderWrapper.closest('.wpfFilterWrapper').hasClass('wpfNotActiveSlider')){
-									sliderWrapper.closest('.wpfFilterWrapper').removeClass('wpfNotActive');
-									clearTimeout(timeOut);
-									timeOut = setTimeout(function(){
-										filter.trigger('wpfPriceChange');
-										if(ajaxModeEnable){
-											_thisObj.filtering(wrapper);
-										}
-									},1000);
-								}
-
-							}
-						}
-					});
-				}, 200);
-			}
+			_thisObj.initDefaultSlider(jQuery(this));
 		});
 
 		//change price filters
@@ -208,6 +132,110 @@
 			jQuery('.wpfFilterWrapper[data-filter-type="wpfPrice"]').addClass('wpfNotActive');
 		});
 
+	});
+	
+	WpfFrontendPage.prototype.initDefaultSlider = (function (filter, type) {
+		var _thisObj = this.$obj,
+			wrapper = filter.closest('.wpfMainWrapper'),
+			filterType = typeof type !== 'undefined' ? type : 'price',
+			getAttr = filter.data('get-attribute'),
+			minInputId = '#wpfMinPrice',
+			maxInputId = '#wpfMaxPrice',
+			triggerName = 'wpfPriceChange';
+		
+		if (filterType === 'attr') {
+			minInputId = '#wpfMinAttrNum';
+			maxInputId = '#wpfMaxAttrNum';
+			triggerName = 'wpfAttrSliderChange';
+		}
+		
+		var minSelector = filter.closest('.wpfFilterWrapper').find(minInputId),
+			maxSelector = filter.closest('.wpfFilterWrapper').find(maxInputId),
+			wpfDataStep = filter.closest('.wpfFilterWrapper').find('#wpfDataStep').val()
+		if (wpfDataStep == '0.001') {
+			wpfDataStep = '0.00000001';
+		}
+		wpfDataStep = Number(wpfDataStep);
+		var valMin = parseFloat(minSelector.attr('min')),
+			valMax = parseFloat(maxSelector.attr('max')),
+			curUrl = window.location.href,
+			urlParams = _thisObj.findGetParameter(curUrl),
+			minPriceGetParams = urlParams.min_price ? parseFloat(urlParams.min_price) : valMin,
+			maxPriceGetParams = urlParams.max_price ? parseFloat(urlParams.max_price) : valMax;
+		
+		if (filterType === 'attr') {
+			if (urlParams[getAttr]) {
+				var idsAnd = urlParams[getAttr].split(','),
+					idsOr = urlParams[getAttr].split('|'),
+					isAnd = idsAnd.length > idsOr.length;
+				var filterTypeValues = isAnd ? idsAnd : idsOr;
+			}
+			minPriceGetParams = urlParams[getAttr] ? parseFloat(filterTypeValues[0]) : valMin;
+			maxPriceGetParams = urlParams[getAttr] ? parseFloat(filterTypeValues.pop()) : valMax;
+		}
+			
+		var sliderWrapper = filter.find("#wpfSliderRange"),
+			autoFilteringEnable = (wrapper.find('.wpfFilterButton').length == 0),
+			skin = filter.attr('data-price-skin');
+		if(skin === 'default'){
+			sliderWrapper.slider({
+				range: true,
+				orientation: "horizontal",
+				min: valMin,
+				max: valMax,
+				step: wpfDataStep,
+				values: [minPriceGetParams, maxPriceGetParams],
+				slide: function (event, ui) {
+					minSelector.val(ui.values[0]);
+					maxSelector.val(ui.values[1]);
+					filter.trigger(triggerName);
+				},
+				start: function () {
+					filter.trigger(triggerName);
+				},
+				stop: function () {
+					if(autoFilteringEnable){
+						_thisObj.filtering(wrapper);
+					}
+				}
+			});
+			minSelector.val(sliderWrapper.slider("values", 0));
+			maxSelector.val(sliderWrapper.slider("values", 1));
+		}else if(skin === 'skin1'){
+			var sliderWrapper = jQuery("#wpfSlider");
+			sliderWrapper.attr('value', minPriceGetParams + ';' + maxPriceGetParams);
+			var countCall = 0,
+				timeOut = 0;
+			setTimeout(function() {
+				sliderWrapper.slideregor({
+					from: valMin,
+					to: valMax,
+					limits: true,
+					step: wpfDataStep,
+					skin: "round",
+					onstatechange : function(value) {
+						countCall++;
+						if(countCall > 2){
+							var _this = this,
+								values = _this.getValue().split(';');
+							minSelector.val(values[0]);
+							maxSelector.val(values[1]);
+							if(!sliderWrapper.closest('.wpfFilterWrapper').hasClass('wpfNotActiveSlider')){
+								sliderWrapper.closest('.wpfFilterWrapper').removeClass('wpfNotActive');
+								clearTimeout(timeOut);
+								timeOut = setTimeout(function(){
+									filter.trigger(triggerName);
+									if(ajaxModeEnable){
+										_thisObj.filtering(wrapper);
+									}
+								},1000);
+							}
+							
+						}
+					}
+				});
+			}, 200);
+		}
 	});
 
 	WpfFrontendPage.prototype.QStringWork = (function ($attr, $value, $noWooPage, $filterWrapper, $type) {
@@ -282,7 +310,7 @@
 				input.prop('checked', true);
 			}
 		});
-		
+
 		//category/brand list choose only one checkbox
 		jQuery('.wpfFilterWrapper[data-filter-type="wpfCategory"], .wpfFilterWrapper[data-filter-type="wpfPerfectBrand"]').each(function() {
 			var categoryFilter = jQuery(this),
@@ -293,8 +321,16 @@
 				e.preventDefault();
 				var input = jQuery(this);
 				if(categoryMulti) {
-					if(input.is(':checked')) {
+					var mainWrapper = input.closest('.wpfMainWrapper');
+					var filterWrapper = input.closest('.wpfFilterWrapper');
+					var expandSelectedToChild = _thisObj.getFilterParam('f_multi_extend_parent_select', mainWrapper, filterWrapper);
+
+					if(expandSelectedToChild && input.is(':checked')) {
 						input.closest('li').find('ul input').prop('checked', true);
+					}
+
+					if (expandSelectedToChild && ! input.is(':checked') ) {
+						input.closest('li').find('ul input').prop('checked', false);
 					}
 				} else if (isOne) {
 					var inputs = input.closest('.wpfFilterWrapper').find('input');
@@ -645,6 +681,24 @@
 			var settings = false;
 		}
 		return settings;
+	});
+
+	WpfFrontendPage.prototype.getFilterParam = (function (paramSlug, mainWrapper, filterWrapper) {
+		var paramValue = undefined;
+		var _thisObj = this.$obj,
+			mainSettings = _thisObj.getFilterMainSettings(mainWrapper),
+			filterOder = parseInt(filterWrapper.attr('id').replace('wpfBlock_', '')) - 1;
+
+		if (mainSettings.settings.filters.order) {
+			var filtersOderList = JSON.parse(mainSettings.settings.filters.order);
+			var filterParamList = filtersOderList[filterOder].settings;
+
+			if ( typeof filterParamList[paramSlug] !== undefined ) {
+				paramValue = filterParamList[paramSlug];
+			}
+		}
+
+		return paramValue;
 	});
 
 	WpfFrontendPage.prototype.checkNoWooPage = (function () {
@@ -1087,7 +1141,10 @@
 			var cnt = label.lastIndexOf('(');
 			if(cnt == -1) cnt = label.lastIndexOf('<span');
 			if(cnt != -1) label = label.substring(0, cnt).trim();
-		} 
+		}
+
+		label = label.replace(/&nbsp;/g,'');
+
 		return label;
 	});
 
@@ -1255,13 +1312,50 @@
 			}
 			frontendOptions[i] = id;
 		} else {
-			$filter.find('input:checked').each(function () {
-				var li = jQuery(this).closest('li'),
-					id = li.attr('data-term-id');
-				options[i] = id;
-				frontendOptions[i] = id;
-				selectedOptions['list'][id] = li.find('.wpfValue').html();
-				i++;
+			var removeSelectedList = [];
+			$filter.find('input').each(function () {
+				var inputCurent = jQuery(this),
+					liCurent = inputCurent.closest('li'),
+					id = liCurent.data('term-id'),
+					isParent = liCurent.children('ul').length > 0,
+					isChecked = inputCurent.is(':checked');
+
+				if ( isParent ) {
+					var isAllChildChecked = true,
+						childList = [];
+
+					liCurent.find('ul li').each(function() {
+						var childId = jQuery(this).data('term-id'),
+							childLi = jQuery(this),
+							childInput = childLi.find('input'),
+							isChildChecked = childInput.prop('checked');
+
+						childList.push(childId);
+
+						if ( ! isChildChecked ) {
+							isAllChildChecked = false;
+							return false;
+						}
+					});
+
+					if (isChecked && isAllChildChecked) {
+						removeSelectedList = removeSelectedList.concat(childList);
+
+						var onlyUnique = function(value, index, self) {
+							return self.indexOf(value) === index;
+						}
+
+						removeSelectedList = removeSelectedList.filter( onlyUnique );
+						selectedOptions.removeSelected = removeSelectedList;
+					}
+				}
+
+				if ( jQuery(this).is(':checked') ) {
+					options[i] = id;
+					frontendOptions[i] = id;
+					selectedOptions['list'][id] = liCurent.find('.wpfValue').html();
+					i++;
+				}
 			});
 		}
 		optionsArray['backend'] = options;
@@ -1366,6 +1460,22 @@
 				frontendOptions[i] = option.attr('data-slug');
 				selectedOptions['list'][option.attr('data-term-id')] = _thisObj.getClearLabel(option.html(), withCount);
 				i++;
+			});
+		}else if(filterType === 'slider'){
+			var values = $filter.find('.wpfAttrNumFilterRange').data('values').split(','),
+				slugs = $filter.find('.wpfAttrNumFilterRange').data('slugs').split(','),
+				termIds = $filter.find('.wpfAttrNumFilterRange').data('term-ids').split(','),
+				minAttrNum = $filter.find('#wpfMinAttrNum').val(),
+				maxAttrNum = $filter.find('#wpfMaxAttrNum').val();
+			slugs.forEach(function(slug, index){
+				var value = parseInt(values[index]);
+				if ( (index >= minAttrNum && index <= maxAttrNum)
+					|| (value >= minAttrNum && value <= maxAttrNum) ) {
+					options[i] = termIds[index];
+					frontendOptions[i] = slug;
+					selectedOptions['list'][slug] = $filter.attr('data-slug');
+					i++;
+				}
 			});
 		}else{
 			$filter.find('input:checked').each(function () {

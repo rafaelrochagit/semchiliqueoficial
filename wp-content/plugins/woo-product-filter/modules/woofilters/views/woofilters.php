@@ -226,11 +226,11 @@ class WoofiltersViewWpf extends ViewWpf {
 		return $html;
 	}
 
-	public function setFilterExistsTerms( $settings, $prodCatId = false ) {
+	public function setFilterExistsTerms( $settings, $prodCatId = false, $querySettings = array() ) {
 		if (is_null(self::$filterExistsTerms)) {
 			$module = $this->getModule();
 			$taxonomies = $module->getFilterTaxonomies($settings);
-			$terms = $module->getFilterExistsTerms(null, $taxonomies, null, $prodCatId);
+			$terms = $module->getFilterExistsTerms(null, $taxonomies, null, $prodCatId, $querySettings);
 			self::$filterExistsTerms = isset($terms['exists']) ? $terms['exists'] : false;
 		}
 		return self::$filterExistsTerms;
@@ -261,6 +261,7 @@ class WoofiltersViewWpf extends ViewWpf {
 		$filtersOrder = UtilsWpf::jsonDecode($filterSettings['settings']['filters']['order']);
 
 		$buttonsPosition = ( !empty($filterSettings['settings']['main_buttons_position']) ) ? $filterSettings['settings']['main_buttons_position'] : 'bottom' ;
+		$buttonsOrder = ( !empty($filterSettings['settings']['main_buttons_order']) ) ? $filterSettings['settings']['main_buttons_order'] : 'left' ;
 		$showCleanButton = ( !empty($filterSettings['settings']['show_clean_button']) ) ? $filterSettings['settings']['show_clean_button'] : false ;
 		$showFilteringButton = ( !empty($filterSettings['settings']['show_filtering_button']) ) ? $filterSettings['settings']['show_filtering_button'] : false ;
 		$filterButtonWord = ( !empty($filterSettings['settings']['filtering_button_word']) ) ? $filterSettings['settings']['filtering_button_word'] : esc_attr__('Filter', 'woo-product-filter') ;
@@ -349,6 +350,11 @@ class WoofiltersViewWpf extends ViewWpf {
 
 		$filterId = 'wpfMainWrapper-' . $viewId;
 		$this->setFilterCss('#' . $filterId . '{position:relative;width:' . $width . $units . ';}');
+		
+		if ( 'right' === $buttonsOrder ) {
+			$this->setFilterCss('#' . $filterId . ' .wpfFilterButtons:after{content:"";display:table;width:100%;clear:both;}');
+			$this->setFilterCss('#' . $filterId . ' .wpfFilterButton.wpfButton,#' . $filterId . ' .wpfClearButton.wpfButton{float:right;}');
+		}
 
 		$html = '<div class="wpfMainWrapper" id="' . $filterId . '" data-viewid="' . $viewId . '" data-settings="' . $querySettingsStr . '" data-filter-settings="' . $filterSettings . '" ' . $noWooPageData . '>';
 		$html = DispatcherWpf::applyFilters('addHtmlBeforeFilter', $html, $settings);
@@ -385,7 +391,7 @@ class WoofiltersViewWpf extends ViewWpf {
 			$proView = FrameWpf::_()->getModule('woofilterpro')->getView();
 		}
 
-		$this->setFilterExistsTerms($filtersOrder, $prodCatId);
+		$this->setFilterExistsTerms($filtersOrder, $prodCatId, $querySettings);
 		$useTitleAsSlug = $this->getFilterSetting($settingsOriginal['settings'], 'use_title_as_slug', false);
 
 		foreach ($filtersOrder as $key => $filter) {
@@ -546,17 +552,21 @@ class WoofiltersViewWpf extends ViewWpf {
 			$enableTitle =
 				$this->getFilterSetting($filter['settings'], 'f_enable_title');
 		}
+		
+		$showCustomTags = $this->getFilterSetting($filter['settings'], 'f_custom_tags', false);
+		$headerTag = $this->getFilterSetting($filter['settings'], 'f_custom_tags_settings[header]', 0);
+		$headerTag = $headerTag && $showCustomTags ? FrameWpf::_()->getModule('woofilters')->getFilterTagsList()[$headerTag] : 'div';
 
 		$title = 'no' == $enableTitle ? false : $this->getFilterSetting($filter['settings'], 'f_title', false);
 
 		$html = '';
 		if ($title) {
 			$icon = $this->generateIconCloseOpenTitleHtml($filter, $filterSettings);
-			$html .= '<div class="wpfFilterTitle"><div class="wfpTitle';
+			$html .= '<div class="wpfFilterTitle"><' . $headerTag . ' class="wfpTitle';
 			$html .= ( $this->getFilterSetting($filterSettings['settings'], 'hide_filter_icon', 0) ? ' wfpClickable' : '' );
 			$html .= '">';
 			$html .= esc_html__($title, 'woo-product-filter');
-			$html .= '</div>';
+			$html .= '</' . $headerTag . '>';
 			$html .= $icon;
 		}
 
@@ -899,7 +909,7 @@ class WoofiltersViewWpf extends ViewWpf {
 		return $html;
 	}
 
-	public function getCustomHierarchicalCategories ( $productCategory ) {
+	public function getCustomHierarchicalCategories( $productCategory ) {
 		$moveCat = array();
 		foreach ($productCategory as $id => $cat) {
 			$parentId = $cat->parent;
@@ -1861,10 +1871,32 @@ class WoofiltersViewWpf extends ViewWpf {
 		}
 		$type = $this->getFilterSetting($filter['settings'], 'f_frontend_type', 'list');
 		$isMulti = ( 'multi' === $type );
-		$isCollapsible = $isMulti && $this->getFilterSetting($filter['settings'], 'f_multi_collapsible', false);
+
+		if (FrameWpf::_()->isPro()) {
+			$collapsibleList = FrameWpf::_()->getModule('woofilterpro')->getCollapsibleFiltreOptions();
+			if ( in_array($type, $collapsibleList) ) {
+				$isCollapsible = $this->getFilterSetting($filter['settings'], 'f_multi_collapsible', false);
+			}
+		}
 
 		$isHierarchical = $this->getFilterSetting($filter['settings'], 'f_show_hierarchical', false);
 		$hideParent = $isHierarchical && $this->getFilterSetting($filter['settings'], 'f_hide_parent', false);
+		$showCustomTags = $this->getFilterSetting($filter['settings'], 'f_custom_tags', false);
+		$titleTag = $this->getFilterSetting($filter['settings'], 'f_custom_tags_settings[title_1]', 0);
+		if ($pre) {
+			$preCount = count( explode(';', $pre) );
+
+			if ( 9 <= $preCount ) {
+				$preCount = 4;
+			} elseif ( 6 <= $preCount ) {
+				$preCount = 3;
+			} else {
+				$preCount = 2;
+			}
+			
+			$titleTag = $this->getFilterSetting($filter['settings'], 'f_custom_tags_settings[title_' . $preCount . ']', 0);
+		}
+		$titleTag = $titleTag && $showCustomTags ? FrameWpf::_()->getModule('woofilters')->getFilterTagsList()[$titleTag] : 'div';
 
 		if ( is_array($layout) && 'dropdown' != $type && 'mul_dropdown' != $type ) {
 			if ($layout['is_ver']) {
@@ -1963,7 +1995,7 @@ class WoofiltersViewWpf extends ViewWpf {
 						$img = '<div class="wpfFilterTaxImgWrapper">' . $img . '</div>';
 					}
 
-					$displayName = '<div class="wpfFilterTaxNameWrapper">' . $displayName . '</div>';
+					$displayName = '<' . $titleTag . ' class="wpfFilterTaxNameWrapper">' . $displayName . '</' . $titleTag . '>';
 
 					$html .= '<span class="wpfValue">' . $img . $displayName . '</span>';
 
@@ -1975,7 +2007,7 @@ class WoofiltersViewWpf extends ViewWpf {
 					}
 					$html .= '</span>';
 
-					if ( $isCollapsible && $hasChildren && $isHierarchical ) {
+					if (!empty($isCollapsible) && $hasChildren && $isHierarchical) {
 						$html .= '<span class="wpfCollapsible">+</span>';
 					}
 
@@ -1984,7 +2016,7 @@ class WoofiltersViewWpf extends ViewWpf {
 				if ($hasChildren) {
 					$tmpPre = $isHierarchical ? $pre . '&nbsp;&nbsp;&nbsp;' : $pre;
 					if ( $isHierarchical && !$hideParent ) {
-						$html .= '<ul' . ( $isCollapsible ? ' class="wpfHidden"' : '' ) . '>';
+						$html .= '<ul' . ( empty( $isCollapsible ) ? '' : ' class="wpfHidden"' ) . '>';
 					} elseif ( $isHierarchical && $hideParent && 0 != $cat->parent ) {
 						$html .= '<ul class="wpfHideParent' . ( $isCollapsible ? ' wpfHidden' : '' ) . '">';
 					}

@@ -744,6 +744,12 @@
 			filter.find('.wpfTypeSwitchable').addClass('wpfHidden');
 			filter.find('.wpfTypeSwitchable[data-type~="'+value+'"]').removeClass('wpfHidden');
 			filter.find('.wpfTypeSwitchable[data-not-type]:not([data-not-type~="'+value+'"])').removeClass('wpfHidden');
+
+			var isParentActive = filter.find('input[name="f_show_hierarchical"]').is(':checked');
+			if (!isParentActive) {
+				filter.find('.wpfTypeSwitchable[data-parent="f_show_hierarchical"]').addClass('wpfHidden');
+			}
+
 			if(el.hasClass('wpfWithProAd')) {
 				filter.find('.wpfFilterTypePro').addClass('wpfHidden');
 				filter.find('.wpfFilterTypePro[data-type="'+value+'"]').removeClass('wpfHidden');

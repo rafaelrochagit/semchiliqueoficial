@@ -1,10 +1,10 @@
  === WooCommerce Product Filter by WooBeWoo ===
 Contributors: woobewoo
 Donate link: https://woobewoo.com/product/woocommerce-filter/
-Tags: product filter, woocommerce product filter, shop filter, ecommerce filter, woocommerce filter, product, filter
+Tags: product filter, woocommerce product filter, shop filter, ecommerce filter, woocommerce filter, product, filter 
 Requires at least: 3.4.0
 Tested up to: 5.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 
 Filter products by products categories, attributes, prices and much more. Help your shoppers easily find products/items with WooCommerce Product Filter
 
@@ -141,6 +141,18 @@ If none of this advice helps you, contact us via [support form on our website](h
 You may help us translate the plugin into your language and get the PRO version of the plugin for free as soon as it is released. If this method seems to be too complicated, please send us a request and we will let you know as soon as WooBeWoo Filter plugin will be available in your localization.
 
 == Changelog ==
+
+= 1.3.1 =
+ * Added Filter Buttons Order option
+ * Added custom filter header and title html tag option
+ * Extend collapsible option to radio button list type of taxonomy filter
+ * Add additional expand to child element functionality for a selected multi filter category parent
+ * Add remove child select optionality while parent category filter unchecked
+ * Added attribute slider feature and some code fixes
+ * Change color delete button in admin area
+ * Fixes for attribute tooltip
+ * Fixes for product tag page
+ * Fix long name in filter collision
 
 = 1.3.0 =
  * Added widget filter on attribute pages

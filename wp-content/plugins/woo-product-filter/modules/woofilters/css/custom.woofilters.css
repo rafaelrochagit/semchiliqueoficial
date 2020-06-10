@@ -15,6 +15,10 @@
 	font-size: 16px;
 	font-weight: bold;
 	height: 25px;
+	margin: inherit;
+	padding: inherit;
+	color: inherit;
+	line-height: inherit;
 }
 .wpfFilterWrapper .wfpDescription{
 	font-size: 14px;
@@ -229,4 +233,13 @@
 }
 .wpfFilterWrapper[data-filter-type="wpfCategory"] .wpfCheckbox input[type="checkbox"]:checked + label::after {
 	margin-left: 1px;
+}
+
+.wpfFilterWrapper .wpfFilterTaxNameWrapper {
+	color: inherit;
+	font-size: inherit;
+	margin: inherit;
+	padding: inherit;
+	line-height: inherit;
+	font-weight: inherit;
 }

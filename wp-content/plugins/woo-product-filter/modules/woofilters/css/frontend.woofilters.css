@@ -93,7 +93,7 @@
 	vertical-align: text-bottom;
 }
 .wpfFilterTaxNameWrapper {
-	display: inline-block;
+	display: inline;
 }
 .rtl .wpfValue{
 	padding-left: 0 !important;
