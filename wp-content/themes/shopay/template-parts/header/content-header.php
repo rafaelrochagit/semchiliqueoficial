@@ -84,23 +84,6 @@
 			 <?php the_custom_logo(); ?>
 			<div class="search-bar-section-wrapper clearfix">
 				<?php 
-					$shopay_cat_menu_option = get_theme_mod( 'shopay_cat_menu_option', true );
-					if ( true == $shopay_cat_menu_option && shopay_is_active_woocommerce() ) {
-						echo '<div class="shopay-cat-menu-wrapper">';
-							$shopay_cat_menu_title = get_theme_mod( 'shopay_cat_menu_title', __( 'Main Categories', 'shopay' ) );
-							if ( ! empty( $shopay_cat_menu_title ) ) {
-				?>
-								<h2 class="main-category-list-title cover-font">
-									<?php echo esc_html( $shopay_cat_menu_title ); ?>
-									<a href="javascript:void(0);"><i class="fas fa-bars"></i></a>
-								</h2>
-				<?php
-							}
-							echo '<div class="shopay-cat-menu deactivate-menu">';
-								shopay_category_menu_sec();
-							echo '</div><!-- .shopay-cat-menu -->';
-						echo '</div><!-- .shopay-cat-menu-wrapper -->';
-					}
 					$shopay_search_bar_option = get_theme_mod( 'shopay_search_bar_option', true );
 					if ( true == $shopay_search_bar_option ) {
 						if ( shopay_is_active_woocommerce() ) {
@@ -136,11 +119,30 @@
 	<nav id="site-navigation" class="main-navigation clearfix">
 					<div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i><?php esc_html_e( 'MENU', 'shopay' ); ?></a></div>
 					<div class="primary-menu-wrap">
+					<?php 
+					$shopay_cat_menu_option = get_theme_mod( 'shopay_cat_menu_option', true );
+					if ( true == $shopay_cat_menu_option && shopay_is_active_woocommerce() ) {
+						echo '<div class="shopay-cat-menu-wrapper">';
+							$shopay_cat_menu_title = get_theme_mod( 'shopay_cat_menu_title', __( 'Main Categories', 'shopay' ) );
+							if ( ! empty( $shopay_cat_menu_title ) ) {
+					?>
+								<h2 class="main-category-list-title cover-font">
+									<?php echo esc_html( $shopay_cat_menu_title ); ?>
+									<a href="javascript:void(0);"><i class="fas fa-bars"></i></a>
+								</h2>
+					<?php
+							}
+							echo '<div class="shopay-cat-menu deactivate-menu">';
+								shopay_category_menu_sec();
+							echo '</div><!-- .shopay-cat-menu -->';
+						echo '</div><!-- .shopay-cat-menu-wrapper -->';
+					}
+					?>
 						<?php
-							wp_nav_menu( array(
-								'theme_location' => 'menu-primary',
-								'menu_id'        => 'primary-menu'
-							) );
+						wp_nav_menu( array(
+							'theme_location' => 'menu-primary',
+							'menu_id'        => 'primary-menu'
+						) );
 						?>
 						<div class="main-menu-close hide"><a href="javascript:void(0);"><i class="far fa-window-close"></i></a>						</div>
 					</div><!-- .primary-menu-wrap -->
