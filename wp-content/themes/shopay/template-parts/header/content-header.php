@@ -81,7 +81,7 @@
 	<div id="search-bar-section">
 
 		<div class="mt-container">
-			 <?php the_custom_logo(); ?>
+			<?php the_custom_logo(); ?>
 			<div class="search-bar-section-wrapper clearfix">
 				<?php 
 					$shopay_search_bar_option = get_theme_mod( 'shopay_search_bar_option', true );
