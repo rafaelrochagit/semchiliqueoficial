@@ -5099,3 +5099,9 @@ highlight post css
 .shopay-cat-menu.deactivate-menu {
 	border: 0px;
 }
+
+.product-categories .children {
+    position: absolute;
+    left: 280px;
+    background: #fff;
+}
