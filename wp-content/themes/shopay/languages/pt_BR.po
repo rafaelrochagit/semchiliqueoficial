@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Shopay\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-22 08:44+0000\n"
-"PO-Revision-Date: 2020-06-08 14:20+0000\n"
+"PO-Revision-Date: 2020-06-10 23:55+0000\n"
 "Last-Translator: Anderson Rocha\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -67,7 +67,7 @@ msgstr ""
 #: search.php:22
 #, php-format
 msgid "Search Results for: %s"
-msgstr ""
+msgstr "Resultados para: %s"
 
 #: searchform.php:11
 msgid "Search for:"
