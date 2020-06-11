@@ -5116,11 +5116,14 @@ highlight post css
     width: 10%;
     display: inline-block;
     background: #fff;
-		height: 30px;
-		width:10px;
-    margin-left: -67px;
-    border: 1px solid #fffbfc;
+    height: 30px;
+    width: 10px;
+    border: 0px;
     color: black;
+    float: right;
+    padding-left: -36px;
+    left: -12px;
+    top: 3px;
 }
 
 .header-search-form-wrap label .search-field, .sm_search_form .search-field {
