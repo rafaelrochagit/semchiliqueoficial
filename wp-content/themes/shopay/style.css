@@ -5162,3 +5162,7 @@ highlight post css
     margin-left: 0;
     left: 248px;
 }
+
+.header-search-form-wrap .search-form, .search-wrap {
+    display: flex;
+}
