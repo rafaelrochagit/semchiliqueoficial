@@ -802,6 +802,10 @@
 }
 @media (max-width: 768px) {
 
+	.custom-logo-link img {
+		margin-left: 50px;	
+	}
+
   .top-header-elements-wrap,
   .top-header-description {
     float: none;
