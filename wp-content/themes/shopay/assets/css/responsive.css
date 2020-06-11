@@ -806,6 +806,9 @@
 	.custom-logo-link img {
 		margin-left: 50px;	
 	}
+	.site-branding-toggle-wrapper {
+		display: none;	
+	}
 	
 	.shopay-whishlist,
 	#site-header-cart .amount {
