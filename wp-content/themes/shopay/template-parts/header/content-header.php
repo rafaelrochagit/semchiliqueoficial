@@ -139,13 +139,15 @@
 						echo '</div><!-- .shopay-cat-menu-wrapper -->';
 					}
 					?>
-						<?php
-						wp_nav_menu( array(
-							'theme_location' => 'menu-primary',
-							'menu_id'        => 'primary-menu'
-						) );
-						?>
-						<div class="main-menu-close hide"><a href="javascript:void(0);"><i class="far fa-window-close"></i></a>						</div>
+						<div id="menu-principal-semchilique">
+							<?php
+							wp_nav_menu( array(
+								'theme_location' => 'menu-primary',
+								'menu_id'        => 'primary-menu'
+							) );
+							?>
+							<div class="main-menu-close hide"><a href="javascript:void(0);"><i class="far fa-window-close"></i></a>	
+						</div>
 					</div><!-- .primary-menu-wrap -->
 	</nav><!-- #site-navigation -->
 
