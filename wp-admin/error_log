@@ -61,3 +61,16 @@ Stack trace:
 #2 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(555): MSP_Importer->download_media('/2012/10/8.jpg')
 #3 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(502): MSP_Importer->fetch_all_medias()
 #4 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/master-slider/admin/includes/classes/class-msp-importer.php(456): MSP_Impor in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-http.php on line 629
+[11-Jun-2020 19:56:42 UTC] PHP Warning:  include(/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woo-widget-product-slideshow/vendor/composer/../../widget/class-slider-widget.php): failed to open stream: No such file or directory in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/kliken-marketing-for-google/vendor/composer/ClassLoader.php on line 444
+[11-Jun-2020 19:56:42 UTC] PHP Warning:  include(/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woo-widget-product-slideshow/vendor/composer/../../widget/class-slider-widget.php): failed to open stream: No such file or directory in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/kliken-marketing-for-google/vendor/composer/ClassLoader.php on line 444
+[11-Jun-2020 19:56:42 UTC] PHP Warning:  include(): Failed opening '/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woo-widget-product-slideshow/vendor/composer/../../widget/class-slider-widget.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/kliken-marketing-for-google/vendor/composer/ClassLoader.php on line 444
+[11-Jun-2020 19:56:42 UTC] PHP Fatal error:  Uncaught Error: Class '\A3Rev\WCPSlider\Widget\Slider' not found in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-widget-factory.php:61
+Stack trace:
+#0 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/widgets.php(115): WP_Widget_Factory->register('\\A3Rev\\WCPSlide...')
+#1 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woo-widget-product-slideshow/admin/plugin-init.php(57): register_widget('\\A3Rev\\WCPSlide...')
+#2 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(287): wc_product_slider_register_widgets('')
+#3 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#4 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php(478): WP_Hook->do_action(Array)
+#5 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/widgets.php(1765): do_action('widgets_init')
+#6 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(287): wp_widgets_init('')
+#7 /hom in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-widget-factory.php on line 61
