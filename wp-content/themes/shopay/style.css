@@ -5088,6 +5088,10 @@ highlight post css
 
 /* PERSONALIZADO SEM CHILIQUE */
 
+.custom-logo-link img {
+	width: 100px;	
+}
+
 .home.page .cover-font, .blog .cover-font a {
     vertical-align: bottom;
 }
