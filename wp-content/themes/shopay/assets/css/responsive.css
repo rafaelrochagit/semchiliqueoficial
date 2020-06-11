@@ -427,17 +427,19 @@
   }
 
   .header-search-form-wrap {
-    width: 55%;
+    width: 60%;
   }
 
   .header-woo-links-wrap,
   .main-category-list-title {
-    width: 22.5%;
+    width: 20%;
   }
 
   .shopay-cat-menu.deactivate-menu {
     top: 50px;
   }
+	
+	
 
 }
 
