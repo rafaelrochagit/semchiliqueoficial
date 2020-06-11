@@ -1453,6 +1453,8 @@
 	.header-woo-links-wrap {
 		width: 20%;
 		margin-left: 0;
+		padding: 18px 0px 0px 50px;
+    	font-size: 12pt;
 	}
 }
 
