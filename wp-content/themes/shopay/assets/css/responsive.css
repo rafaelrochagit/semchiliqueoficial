@@ -803,23 +803,6 @@
 }
 @media (max-width: 768px) {
 
-	.custom-logo-link img {
-		margin-left: 50px;	
-	}
-	.site-branding-toggle-wrapper {
-		display: none;	
-	}
-	
-	.shopay-whishlist,
-	#site-header-cart .amount {
-		display: none;
-	}
-	
-	.header-woo-links-wrap {
-		padding: 17px 45px;
-    	font-size: 13pt;
-	}
-
   	.top-header-elements-wrap,
   	.top-header-description {
 		float: none;
@@ -1168,6 +1151,23 @@
 
 	#main {
 		padding: 20px 10px 20px 10px;
+	}
+	
+		.custom-logo-link img {
+		margin-left: 50px;	
+	}
+	.site-branding-toggle-wrapper {
+		display: none;	
+	}
+	
+	.shopay-whishlist,
+	#site-header-cart .amount {
+		display: none;
+	}
+	
+	.header-woo-links-wrap {
+		padding: 17px 45px;
+    	font-size: 13pt;
 	}
 }
 
