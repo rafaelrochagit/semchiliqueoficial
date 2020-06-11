@@ -5091,3 +5091,7 @@ highlight post css
 .home.page .cover-font, .blog .cover-font a {
     vertical-align: bottom;
 }
+
+.main-category-list-title {
+    padding: 10px 0;
+}
