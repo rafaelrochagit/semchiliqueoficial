@@ -807,6 +807,11 @@
 		margin-left: 50px;	
 	}
 	
+	.shopay-whishlist,
+	#site-header-cart .amount {
+		display: none;
+	}
+	
 	.header-woo-links-wrap {
 		float: right;
 		padding: 20px 10px;
