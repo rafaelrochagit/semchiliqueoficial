@@ -2760,7 +2760,7 @@ masthead css
   display: block;
 }
 
-#site-navigation ul li a .menu-item-description {
+#site-navigation #menu-principal-semchilique ul li a .menu-item-description {
   display: inline-block;
   position: absolute;
   top: -20px;
@@ -2773,7 +2773,7 @@ masthead css
   font-weight: 600;
 }
 
-#site-navigation .menu-item-description::after {
+#site-navigation #menu-principal-semchilique .menu-item-description::after {
   position: absolute;
   bottom: -3px;
   left: 0;
@@ -2788,7 +2788,7 @@ masthead css
   transition: all 0.3s ease;
 }
 
-#site-navigation ul ul li a .menu-item-description {
+#site-navigation #menu-principal-semchilique ul ul li a .menu-item-description {
   display: none;
 }
 
@@ -2818,7 +2818,7 @@ site-navigation css
   z-index: 999;
 }
 
-#site-navigation ul li {
+#site-navigation #menu-principal-semchilique ul li {
   display: inline-block;
   position: relative;
   list-style: none;
@@ -2826,16 +2826,16 @@ site-navigation css
   line-height: 2;
 }
 
-#site-navigation ul li:hover>a,
-#site-navigation ul li.current-menu-item>a,
-#site-navigation ul li.current_page_ancestor>a,
-#site-navigation ul li.current_page_item>a,
-#site-navigation ul li.current-menu-ancestor>a {
+#site-navigation #menu-principal-semchilique ul li:hover>a,
+#site-navigation #menu-principal-semchilique ul li.current-menu-item>a,
+#site-navigation #menu-principal-semchilique ul li.current_page_ancestor>a,
+#site-navigation #menu-principal-semchilique ul li.current_page_item>a,
+#site-navigation #menu-principal-semchilique ul li.current-menu-ancestor>a {
   color: #ec521e;
 }
 
-#site-navigation li.menu-item-has-children>a::after,
-#site-navigation li.page_item_has_children>a::after {
+#site-navigation #menu-principal-semchilique li.menu-item-has-children>a::after,
+#site-navigation #menu-principal-semchilique li.page_item_has_children>a::after {
   content: "\f107";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -2845,16 +2845,16 @@ site-navigation css
   font-size: 15px;
 }
 
-#site-navigation ul ul li.menu-item-has-children>a::after,
-#site-navigation ul ul li.page_item_has_children>a::after {
+#site-navigation #menu-principal-semchilique ul ul li.menu-item-has-children>a::after,
+#site-navigation #menu-principal-semchilique ul ul li.page_item_has_children>a::after {
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
 
-#site-navigation .sub-menu li.menu-item-has-children>a::after,
-#site-navigation .children li.page_item_has_children>a::after {
+#site-navigation #menu-principal-semchilique .sub-menu li.menu-item-has-children>a::after,
+#site-navigation #menu-principal-semchilique .children li.page_item_has_children>a::after {
   content: "\f107";
   top: 12px;
 }
@@ -2870,13 +2870,13 @@ site-navigation css
   line-height: 1.8;
 }
 
-#site-navigation ul#primary-menu>li.menu-item-has-children>a,
-#site-navigation #primary-menu ul>li.page_item_has_children>a {
+#site-navigation #menu-principal-semchilique ul#primary-menu>li.menu-item-has-children>a,
+#site-navigation #menu-principal-semchilique #primary-menu ul>li.page_item_has_children>a {
   padding-right: 35px;
 }
 
-#site-navigation ul li .sub-menu,
-#site-navigation ul li .children {
+#site-navigation #menu-principal-semchilique ul li .sub-menu,
+#site-navigation #menu-principal-semchilique ul li .children {
   display: block;
   background: #fff;
   min-width: 250px;
@@ -2890,42 +2890,42 @@ site-navigation css
   box-shadow: 0 1px 12px rgba(2, 2, 2, 0.1);
 }
 
-#site-navigation ul li .sub-menu li:last-child,
-#site-navigation ul li .children li:last-child {
+#site-navigation #menu-principal-semchilique ul li .sub-menu li:last-child,
+#site-navigation #menu-principal-semchilique ul li .children li:last-child {
   border-bottom: 0;
 }
 
-#site-navigation ul li .sub-menu ul,
-#site-navigation ul li .children ul {
+#site-navigation #menu-principal-semchilique ul li .sub-menu ul,
+#site-navigation #menu-principal-semchilique ul li .children ul {
   left: 100%;
   top: 0;
 }
 
-#site-navigation ul li.focus>.sub-menu,
-#site-navigation ul li.focus>.children,
-#site-navigation ul li:hover>.sub-menu,
-#site-navigation ul li:hover>.children {
+#site-navigation #menu-principal-semchilique ul li.focus>.sub-menu,
+#site-navigation #menu-principal-semchilique ul li.focus>.children,
+#site-navigation #menu-principal-semchilique ul li:hover>.sub-menu,
+#site-navigation #menu-principal-semchilique ul li:hover>.children {
   opacity: 1;
   visibility: visible;
 }
 
-#site-navigation ul li .sub-menu li,
-#site-navigation ul li .children li {
+#site-navigation #menu-principal-semchilique ul li .sub-menu li,
+#site-navigation #menu-principal-semchilique ul li .children li {
   display: block;
   border-bottom: 1px solid #ddd;
   margin: 0;
 }
 
-#site-navigation ul li .sub-menu li a,
-#site-navigation ul li .children li a {
+#site-navigation #menu-principal-semchilique ul li .sub-menu li a,
+#site-navigation #menu-principal-semchilique ul li .children li a {
   border-right: none;
   font-size: 16px;
   display: block;
   padding: 10px 15px;
 }
 
-#site-navigation ul li .sub-menu li a.sub-toggle,
-#site-navigation ul li .children li a.sub-toggle {
+#site-navigation #menu-principal-semchilique ul li .sub-menu li a.sub-toggle,
+#site-navigation #menu-principal-semchilique ul li .children li a.sub-toggle {
   display: none;
 }
 
@@ -3004,8 +3004,8 @@ site-navigation css
   display: none;
 }
 
-.is-sticky #masthead #site-navigation li.menu-item-has-children>a::after,
-3 .is-sticky #masthead #site-navigation li.page_item_has_children>a::after {
+.is-sticky #masthead #site-navigation #menu-principal-semchilique li.menu-item-has-children>a::after,
+3 .is-sticky #masthead #site-navigation #menu-principal-semchilique li.page_item_has_children>a::after {
   top: 3px;
   right: 15px;
 }
