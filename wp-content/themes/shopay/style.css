@@ -5092,6 +5092,12 @@ highlight post css
 	width: 100px;	
 }
 
+.header-woo-links-wrap {
+    float: right;
+    padding: 22px 0;
+    font-size: 11pt;
+	width: 20%;
+}
 .home.page .cover-font, .blog .cover-font a {
     vertical-align: bottom;
 }
