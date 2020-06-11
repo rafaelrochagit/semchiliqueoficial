@@ -813,10 +813,8 @@
 	}
 	
 	.header-woo-links-wrap {
-		float: right;
-		padding: 20px 10px;
-		font-size: 10pt;
-		width: 20%;
+		padding: 17px 45px;
+    	font-size: 13pt;
 	}
 
   	.top-header-elements-wrap,
