@@ -5094,7 +5094,7 @@ highlight post css
 
 .header-woo-links-wrap {
     float: right;
-    padding: 22px 0;
+    padding: 22px 0px 0px 40px;
     font-size: 11pt;
 	width: 20%;
 }
