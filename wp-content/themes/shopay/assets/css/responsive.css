@@ -806,6 +806,13 @@
 	.custom-logo-link img {
 		margin-left: 50px;	
 	}
+	
+	.header-woo-links-wrap {
+		float: right;
+		padding: 20px 10px;
+		font-size: 10pt;
+		width: 20%;
+	}
 
   	.top-header-elements-wrap,
   	.top-header-description {
@@ -1161,7 +1168,7 @@
 @media (max-width: 600px) {
 	
 	.custom-logo-link img {
-		margin-left: 30px;
+		margin-left: 55px;
 	}
 	
 	.header-site-info-wrap {
