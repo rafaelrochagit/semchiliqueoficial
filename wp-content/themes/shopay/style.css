@@ -5166,3 +5166,7 @@ highlight post css
 .header-search-form-wrap .search-form, .search-wrap {
     display: flex;
 }
+
+.header-search-form-wrap .search-form label {
+	width: 100%;
+}
