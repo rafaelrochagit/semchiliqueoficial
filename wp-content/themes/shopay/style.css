@@ -5085,3 +5085,9 @@ highlight post css
 .mt-logo {
   width: 30%;
 }
+
+/* PERSONALIZADO SEM CHILIQUE */
+
+.home.page .cover-font, .blog .cover-font a {
+    vertical-align: bottom;
+}
