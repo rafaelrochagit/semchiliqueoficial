@@ -5105,3 +5105,8 @@ highlight post css
     left: 280px;
     background: #fff;
 }
+
+.product-categories .children .children {
+    margin-left: 0;
+    left: 248px;
+}
