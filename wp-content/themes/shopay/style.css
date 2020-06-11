@@ -5098,6 +5098,45 @@ highlight post css
     font-size: 11pt;
 	width: 20%;
 }
+
+
+#search-bar-section .mt-container {
+	width: 100%;
+	display: flex;
+}
+
+.header-search-form-wrap {
+    width: 60%;
+    /* float: left; */
+    text-align: center;
+    margin: 0 auto;
+}
+
+.header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
+    width: 10%;
+    display: inline-block;
+    background: #fff;
+		height: 30px;
+		width:10px;
+    margin-left: -67px;
+    border: 1px solid #fffbfc;
+    color: black;
+}
+
+.header-search-form-wrap label .search-field, .sm_search_form .search-field {
+    width: 90%;
+    border: 0px;
+    border-radius: 6px;
+}
+
+.search-form button {
+    color: #333 !important;
+}
+
+.search-form button {
+    padding: 9px 15px;
+}
+
 .home.page .cover-font, .blog .cover-font a {
     vertical-align: bottom;
 }
