@@ -1198,6 +1198,13 @@
 		margin-left: 0px;
 	}
 	
+	.is-sticky #masthead .custom-logo {
+		-webkit-transform: scale(1) translateX(-20px);
+		-ms-transform: scale(1) translateX(-20px);
+		-o-transform: scale(1) translateX(-20px);
+		transform: scale(1) translateX(-20px); 
+	}
+	
 	
 }
 
