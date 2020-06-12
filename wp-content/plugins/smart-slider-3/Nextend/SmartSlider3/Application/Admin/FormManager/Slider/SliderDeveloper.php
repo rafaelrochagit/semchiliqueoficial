@@ -45,7 +45,7 @@ class SliderDeveloper extends AbstractSliderTab {
 
         $row1 = $table->createRow('developer-1');
 
-        new OnOff($row1, 'clear-both', n2_('Clear before'), 0, array(
+        new OnOff($row1, 'clear-both', n2_('Clear before'), 1, array(
             'tipLabel'       => n2_('Clear before'),
             'tipDescription' => n2_('Closes the unclosed float CSS codes before the slider.'),
             'tipLink'        => 'https://smartslider.helpscoutdocs.com/article/1806-slider-settings-developer#clear-before'

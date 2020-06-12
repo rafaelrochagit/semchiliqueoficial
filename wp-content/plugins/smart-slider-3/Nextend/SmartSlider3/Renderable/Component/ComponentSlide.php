@@ -37,6 +37,23 @@ class ComponentSlide extends AbstractComponent {
 
         $this->container->addContentLayer($owner, $this);
 
+        $this->upgradeData();
+
+        $this->attributes['style'] = 'padding:' . implode('px ', explode('|*|', $this->data->get('desktopportraitpadding', '10|*|10|*|10|*|10'))) . 'px' . ';';
+        $this->createDeviceProperty('padding', '10|*|10|*|10|*|10');
+    }
+
+    protected function upgradeData() {
+
+        if ($this->data->get('background-type') == '') {
+            $this->data->set('background-type', 'color');
+            if ($this->data->get('backgroundVideoMp4')) {
+                $this->data->set('background-type', 'video');
+            } else if ($this->data->get('backgroundImage')) {
+                $this->data->set('background-type', 'image');
+            }
+        }
+
         $linkV1 = $this->data->getIfEmpty('link', '');
         if (!empty($linkV1)) {
             list($link, $target) = array_pad((array)Common::parse($linkV1), 2, '');
@@ -44,10 +61,6 @@ class ComponentSlide extends AbstractComponent {
             $this->data->set('href', $link);
             $this->data->set('href-target', $target);
         }
-
-
-        $this->attributes['style'] = 'padding:' . implode('px', explode('|*|', $this->data->get('desktopportraitpadding', '10|*|10|*|10|*|10'))) . 'px' . ';';
-        $this->createDeviceProperty('padding', '10|*|10|*|10|*|10');
     }
 
     public function getPlacement() {

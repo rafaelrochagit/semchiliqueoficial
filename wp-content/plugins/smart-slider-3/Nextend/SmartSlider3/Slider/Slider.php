@@ -362,12 +362,18 @@ class Slider extends AbstractRenderable {
 
         $html = '';
 
-        if (intval($this->params->get('clear-both', 0))) {
-            $html .= '<div class="n2_clear"></div>';
+        $classes = array(
+            'n2-section-smartslider',
+            'fitvidsignore',
+            $this->params->get('classes', '')
+        );
+
+        if (intval($this->params->get('clear-both', 1))) {
+            $classes[] = 'n2_clear';
         }
 
         $html .= Html::tag("div", array(
-            'class'      => 'n2-section-smartslider fitvidsignore ' . $this->params->get('classes', ''),
+            'class'      => implode(' ', $classes),
             'role'       => 'region',
             'aria-label' => $this->params->get('aria-label', 'Slider')
         ), $slider);
@@ -441,5 +447,11 @@ class Slider extends AbstractRenderable {
         }
 
         return $this->slidesBuilder->getSlidesCount();
+    }
+
+    public function isGroup() {
+        $this->initSlider();
+
+        return $this->isGroup;
     }
 }

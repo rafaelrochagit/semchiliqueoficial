@@ -14,15 +14,15 @@ use Nextend\SmartSlider3\Application\Model\ModelLicense;
 
 class SmartSlider3Info {
 
-    public static $version = '3.4.1.7';
+    public static $version = '3.4.1.8';
 
     public static $channel = 'stable';
 
-    public static $revision = 'a1ec7496fcaa0689832881e7a7ba9c8b4fc9047f';
+    public static $revision = '70fceec40b0e84027a126b8c6fc9c014dc33808d';
 
-    public static $revisionShort = 'a1ec7496';
+    public static $revisionShort = '70fceec4';
 
-    public static $branch = 'release-3.4.1.7';
+    public static $branch = 'release-3.4.1.8';
 
     public static $completeVersion;
 

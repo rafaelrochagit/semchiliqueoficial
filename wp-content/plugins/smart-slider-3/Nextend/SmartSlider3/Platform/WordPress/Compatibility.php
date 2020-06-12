@@ -27,8 +27,15 @@ class Compatibility {
          * For ajax based page loaders
          *
          * HTTP_X_BARBA -> Rubenz theme
+         * swup -> Etc @see https://themeforest.net/item/etc-agency-freelance-portfolio-wordpress-theme/23832736
          */
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' || isset($_SERVER['HTTP_X_BARBA'])) {
+
+        $xRequestedWiths = array(
+            'XMLHttpRequest',
+            'swup'
+        );
+
+        if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && in_array($_SERVER['HTTP_X_REQUESTED_WITH'], $xRequestedWiths)) || isset($_SERVER['HTTP_X_BARBA'])) {
 
             if (intval(Settings::get('wp-ajax-iframe-slider', 0))) {
                 Shortcode::forceIframe('ajax');

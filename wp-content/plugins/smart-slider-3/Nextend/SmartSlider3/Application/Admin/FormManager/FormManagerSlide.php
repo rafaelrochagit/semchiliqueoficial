@@ -4,7 +4,6 @@
 namespace Nextend\SmartSlider3\Application\Admin\FormManager;
 
 
-use Nextend\Framework\Data\Data;
 use Nextend\Framework\Form\AbstractFormManager;
 use Nextend\Framework\Form\Element\Hidden;
 use Nextend\Framework\Form\Form;
@@ -54,17 +53,6 @@ class FormManagerSlide extends AbstractFormManager {
         $params                 += $slide;
         $params['sliderid']     = $slide['slider'];
         $params['generator_id'] = $slide['generator_id'];
-
-        $data = new Data($params);
-
-        if ($data->get('background-type') == '') {
-            $params['background-type'] = 'color';
-            if ($data->get('backgroundVideoMp4')) {
-                $params['background-type'] = 'video';
-            } else if ($data->get('backgroundImage')) {
-                $params['background-type'] = 'image';
-            }
-        }
 
         $params['first'] = isset($slide['first']) ? $slide['first'] : 0;
 

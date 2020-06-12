@@ -75,7 +75,11 @@ class ArrowImageFrontend extends AbstractWidgetFrontend {
             $nextHoverColor = $previousHoverColor;
 
             if (empty($previousImage)) {
-                $next = ResourceTranslator::pathToResource(self::getAssetsPath() . '/next/' . basename($previousValue));
+                if ($previousValue == -1) {
+                    $next = false;
+                } else {
+                    $next = ResourceTranslator::pathToResource(self::getAssetsPath() . '/next/' . basename($previousValue));
+                }
             } else {
                 $next = $previousImage;
                 $slider->addCSS('#' . $id . '-arrow-next' . '{transform: rotate(180deg);}');

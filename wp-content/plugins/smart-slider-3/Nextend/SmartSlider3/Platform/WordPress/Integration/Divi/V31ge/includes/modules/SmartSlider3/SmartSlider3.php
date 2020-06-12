@@ -62,31 +62,42 @@ class ET_Builder_Module_SmartSlider3 extends ET_Builder_Module {
 
         $slidersModel = new ModelSliders($applicationType);
 
-        $options = array();
+        $defaultID = '';
+        $options   = array();
         foreach ($slidersModel->getAll(0, 'published') as $slider) {
             if ($slider['type'] == 'group') {
+
+                $subChoices = array();
                 if (!empty($slider['alias'])) {
-                    $options[$slider['alias']] = '[' . strtoupper(n2_('Group')) . '] - ' . $slider['title'] . ' #Alias: ' . $slider['alias'];
+                    $subChoices[$slider['alias']] = '-- ' . n2_('Whole group') . ' - ' . $slider['title'] . ' #Alias: ' . $slider['alias'];
                 }
-                $options[$slider['id']] = '[' . strtoupper(n2_('Group')) . '] - ' . $slider['title'] . ' #' . $slider['id'];
+                $subChoices[$slider['id']] = '-- ' . n2_('Whole group') . ' - ' . $slider['title'] . ' #' . $slider['id'];
+                if ($defaultID === '') {
+                    $defaultID = $slider['id'];
+                }
+
                 foreach ($slidersModel->getAll($slider['id'], 'published') as $_slider) {
                     if (!empty($_slider['alias'])) {
-                        $options[$_slider['alias']] = '----' . $_slider['title'] . ' #Alias: ' . $_slider['alias'];
+                        $subChoices[$_slider['alias']] = '-- ' . $_slider['title'] . ' #Alias: ' . $_slider['alias'];
                     }
-                    $options[$_slider['id']] = '----' . $_slider['title'] . ' #' . $_slider['id'];
+                    $subChoices[$_slider['id']] = '-- ' . $_slider['title'] . ' #' . $_slider['id'];
                 }
+
+                $options[$slider['title'] . ' #' . $slider['id']] = $subChoices;
             } else {
                 if (!empty($slider['alias'])) {
                     $options[$slider['alias']] = $slider['title'] . ' #Alias: ' . $slider['alias'];
                 }
                 $options[$slider['id']] = $slider['title'] . ' #' . $slider['id'];
+                if ($defaultID === '') {
+                    $defaultID = $slider['id'];
+                }
             }
         }
-        reset($options);
 
         return array(
             'slider' => array(
-                'default'         => key($options),
+                'default'         => $defaultID,
                 'label'           => 'Slider',
                 'option_category' => 'basic_option',
                 'type'            => 'select',

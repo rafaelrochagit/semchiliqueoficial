@@ -182,7 +182,7 @@ class Shortcode {
 
 
         $attributes = array(
-            'class'       => "n2-ss-slider-frame",
+            'class'       => "n2-ss-slider-frame intrinsic-ignore",
             'style'       => 'width:100%;display:block;border:0;' . (self::$disablePointer ? 'pointer-events:none;' : ''),
             'frameborder' => 0,
             'src'         => site_url('/') . '?n2prerender=1&n2app=smartslider&n2controller=slider&n2action=iframe&sliderid=' . $sliderIDorAlias . '&iseditor=' . (self::$iframeReason == 'ajax' ? 0 : 1) . '&hash=' . md5($sliderIDorAlias . NONCE_SALT)
@@ -213,7 +213,7 @@ class Shortcode {
                 break;
         }
 
-        return $html . '<div>' . Html::tag('iframe', $attributes) . '</div>';
+        return $html . '<div class="n2_ss_slider_frame_container">' . Html::tag('iframe', $attributes) . '</div>';
     }
 
     public static function render($parameters, $usage = 'WordPress Shortcode') {

@@ -56,8 +56,14 @@ if (!empty($slidesData)) {
 
             function syncDeviceDetails() {
                 $sliders.each(function () {
-                    var slider = $(this).data('ss');
-                    syncDeviceDetailsSlider(slider);
+                    var match = $(this).attr('id').match(/n2-ss-([0-9]+)/);
+                    if (match) {
+                        n2ss.ready(match[1], function (slider) {
+                            slider.stages.done('Show', function () {
+                                syncDeviceDetailsSlider(slider);
+                            });
+                        });
+                    }
                 });
             }
 

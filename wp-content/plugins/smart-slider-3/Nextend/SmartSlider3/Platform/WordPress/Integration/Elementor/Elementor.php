@@ -7,6 +7,7 @@ namespace Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor;
 use Elementor\Plugin;
 use Nextend\SmartSlider3\Platform\WordPress\HelperTinyMCE;
 use Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode;
+use Nextend\SmartSlider3\Platform\WordPress\Widget\WidgetSmartSlider3;
 
 class Elementor {
 
@@ -19,6 +20,13 @@ class Elementor {
     }
 
     public function init() {
+
+        add_filter('elementor/widgets/black_list', function ($black_list) {
+            $black_list[] = 'N2SS3Widget';
+            $black_list[] = WidgetSmartSlider3::class;
+
+            return $black_list;
+        });
 
         add_action('template_redirect', array(
             $this,

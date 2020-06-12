@@ -39,9 +39,10 @@ class ItemVimeoFrontend extends AbstractItemFrontend {
                 $playHeight = intval($this->data->get('playbuttonheight', '48'));
                 if ($playWidth > 0 && $playHeight > 0) {
 
-                    $attributes = array(
-                        'style' => ''
-                    );
+                    $attributes = Html::addExcludeLazyLoadAttributes(array(
+                        'style' => '',
+                        'class' => ''
+                    ));
 
                     $attributes['style'] .= 'width:' . $playWidth . 'px;';
                     $attributes['style'] .= 'height:' . $playHeight . 'px;';
@@ -69,20 +70,33 @@ class ItemVimeoFrontend extends AbstractItemFrontend {
 
         $owner->addScript('new N2Classes.FrontendItemVimeo(this, "' . $this->id . '", "' . $owner->getElementID() . '", ' . $this->data->toJSON() . ', ' . $hasImage . ', ' . $owner->fill($this->data->get('start', '0')) . ');');
 
+        $aspectRatio = $this->data->get('aspect-ratio', '16:9');
+        $style       = '';
+        if ($aspectRatio == 'custom') {
+            $style = 'style="padding-top:' . ($this->data->get('aspect-ratio-height', '9') / $this->data->get('aspect-ratio-width', '16') * 100) . '%"';
+        }
+
         return Html::tag('div', array(
             'id'                => $this->id,
             'class'             => 'n2_ss_video_player n2-ss-item-content n2-ow-all',
-            'data-aspect-ratio' => $this->data->get('aspect-ratio', '16:9')
-        ), '<div class="n2_ss_video_player__placeholder"></div>' . $coverImage);
+            'data-aspect-ratio' => $aspectRatio
+        ), '<div class="n2_ss_video_player__placeholder" ' . $style . '></div>' . $coverImage);
     }
 
     public function renderAdminTemplate() {
 
+        $aspectRatio = $this->data->get('aspect-ratio', '16:9');
+
+        $style = '';
+        if ($aspectRatio == 'custom') {
+            $style = 'style="padding-top:' . ($this->data->get('aspect-ratio-height', '9') / $this->data->get('aspect-ratio-width', '16') * 100) . '%"';
+        }
+
         return Html::tag('div', array(
             "class"             => 'n2_ss_video_player n2-ow-all',
-            'data-aspect-ratio' => $this->data->get('aspect-ratio', '16:9'),
+            'data-aspect-ratio' => $aspectRatio,
             "style"             => 'background: URL(' . ResourceTranslator::toUrl($this->data->getIfEmpty('image', '$ss3-frontend$/images/placeholder/video.png')) . ') no-repeat 50% 50%; background-size: cover;'
-        ), '<div class="n2_ss_video_player__placeholder"></div>' . '<div class="n2_ss_video_player__cover">' . Html::image(Image::SVGToBase64('$ss3-frontend$/images/play.svg')) . '</div>');
+        ), '<div class="n2_ss_video_player__placeholder" ' . $style . '></div>' . '<div class="n2_ss_video_player__cover">' . Html::image(Image::SVGToBase64('$ss3-frontend$/images/play.svg')) . '</div>');
 
     }
 

@@ -228,12 +228,6 @@ class SlideBackground {
 
         $deviceAttributes = $this->getDeviceAttributes($src, $imageData);
 
-        $imageAttributes = array();
-        if (!empty($title)) {
-            $imageAttributes['title'] = $title;
-        }
-
-
         $opacity = min(100, max(0, $slide->parameters->get('backgroundImageOpacity', 100)));
 
         $style = array();
@@ -246,8 +240,10 @@ class SlideBackground {
         }
 
         $attributes = $deviceAttributes + array(
-                "class"     => 'n2-ss-slide-background-image',
-                "data-blur" => $backgroundImageBlur
+                "class"      => 'n2-ss-slide-background-image',
+                "data-blur"  => $backgroundImageBlur,
+                "data-alt"   => $alt,
+                "data-title" => $title
             );
         if (!empty($style)) {
             $attributes['style'] = implode(';', $style);
@@ -259,7 +255,7 @@ class SlideBackground {
             $attributes['data-y']       = $y;
         }
 
-        return Html::tag('div', $attributes, $this->getDefaultImage($src, $alt, $imageAttributes, $deviceAttributes));
+        return Html::tag('div', $attributes, '');
     }
 
     private function getDeviceAttributes($image, $imageData) {
@@ -292,14 +288,6 @@ class SlideBackground {
         }
 
         return $attributes;
-    }
-
-    private function getDefaultImage($src, $alt, $imageAttributes, $deviceAttributes) {
-        if (count($deviceAttributes) > 2 || $this->slider->features->lazyLoad->isEnabled > 0) {
-            return '';
-        }
-
-        return Html::image(ResourceTranslator::toUrl($src), $alt, $imageAttributes);
     }
 
     /**

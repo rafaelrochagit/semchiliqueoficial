@@ -12,6 +12,13 @@ class ViewIframe extends AbstractView {
     /** @var string|integer */
     protected $sliderIDorAlias;
 
+    /**
+     * @var integer
+     */
+    protected $sliderID;
+
+    protected $isGroup = false;
+
     protected $sliderHTML = '';
 
     public function display() {
@@ -25,6 +32,11 @@ class ViewIframe extends AbstractView {
         $sliderManager = new SliderManager($this, $this->sliderIDorAlias, false);
         $sliderManager->setUsage('iframe');
         $this->sliderHTML = $sliderManager->render(true);
+
+        $slider = $sliderManager->getSlider();
+
+        $this->sliderID = $slider->sliderId;
+        $this->isGroup  = $slider->isGroup();
 
         setlocale(LC_NUMERIC, $locale);
 
@@ -50,6 +62,20 @@ class ViewIframe extends AbstractView {
      */
     public function getSliderHTML() {
         return $this->sliderHTML;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSliderID() {
+        return $this->sliderID;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isGroup() {
+        return $this->isGroup;
     }
 
 }

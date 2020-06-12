@@ -239,7 +239,7 @@ class Html {
                 $value       = trim(html_entity_decode(strip_tags(Settings::get('scriptattributes', ''))));
                 $_attributes = explode(' ', str_replace('\'', "", str_replace("\"", "", $value)));
                 if (!empty($value) && !empty($_attributes)) {
-                    foreach ($_attributes AS $attr) {
+                    foreach ($_attributes as $attr) {
                         if (strpos($attr, '=') !== false) {
                             $atts = explode("=", $attr);
                             if (count($atts) <= 2) {
@@ -274,7 +274,7 @@ class Html {
     public static function mergeAttributes($array1, $array2 = null, $_ = null) {
         $arguments = func_get_args();
         $target    = array_shift($arguments);
-        foreach ($arguments AS $array) {
+        foreach ($arguments as $array) {
             if (isset($array['style'])) {
                 if (!isset($target['style'])) $target['style'] = '';
                 $target['style'] .= $array['style'];
@@ -311,6 +311,13 @@ class Html {
 
             if (function_exists('thb_lazy_images_filter') || defined('WP_SMUSH_VERSION')) {
                 $attrs['class'] = 'no-lazyload';
+            }
+
+            if (defined('A3_LAZY_LOAD_NAME')) {
+                /**
+                 * @see https://wordpress.org/plugins/a3-lazy-load/
+                 */
+                $attrs['class'] = 'skip-lazy';
             }
         }
 

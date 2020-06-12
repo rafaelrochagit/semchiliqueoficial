@@ -118,12 +118,22 @@ class ItemVimeo extends AbstractItem {
 
         new Select($settings, 'aspect-ratio', n2_('Aspect ratio'), '16:9', array(
             'options'            => array(
-                '16:9'  => '16:9',
-                '16:10' => '16:10',
-                '4:3'   => '4:3',
-                'fill'  => n2_('Fill layer height')
+                '16:9'   => '16:9',
+                '16:10'  => '16:10',
+                '4:3'    => '4:3',
+                'custom' => n2_('Custom'),
+                'fill'   => n2_('Fill layer height')
             ),
             'relatedValueFields' => array(
+                array(
+                    'values' => array(
+                        'custom'
+                    ),
+                    'field'  => array(
+                        'item_vimeoaspect-ratio-width',
+                        'item_vimeoaspect-ratio-height'
+                    )
+                ),
                 array(
                     'values' => array(
                         'fill'
@@ -134,11 +144,22 @@ class ItemVimeo extends AbstractItem {
                 )
             )
         ));
+
+        new Text\Number($settings, 'aspect-ratio-width', n2_('Width'), '16', array(
+            'wide' => 4,
+            'min'  => 1
+        ));
+
+        new Text\Number($settings, 'aspect-ratio-height', n2_('Height'), '9', array(
+            'wide' => 4,
+            'min'  => 1
+        ));
+
         new Notice($settings, 'aspect-ratio-notice', n2_('Fill layer height'), n2_('Set on Style tab.'));
 
         $misc = new Fieldset\LayerWindow\FieldsetLayerWindow($container, 'item-vimeo-misc', n2_('Video settings'));
 
-        new Warning($misc, 'slide-background-notice', sprintf(n2_('Video autoplaying has a lot of limitations made by browsers. %1$sLearn about them.%2$s'),'<a href="https://smartslider.helpscoutdocs.com/article/1919-video-autoplay-handling" target="_blank">','</a>'));
+        new Warning($misc, 'slide-background-notice', sprintf(n2_('Video autoplaying has a lot of limitations made by browsers. %1$sLearn about them.%2$s'), '<a href="https://smartslider.helpscoutdocs.com/article/1919-video-autoplay-handling" target="_blank">', '</a>'));
 
         new OnOff($misc, 'autoplay', n2_('Autoplay'), 0, array(
             'relatedFieldsOn' => array(
