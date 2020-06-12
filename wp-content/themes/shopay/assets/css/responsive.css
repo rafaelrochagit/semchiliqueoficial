@@ -1469,6 +1469,11 @@
 		margin-left: 0;
     	font-size: 12pt;
 	}
+	
+	.custom-logo img {
+		width: 50px;
+		margin-top: 8px;
+	}
 }
 
 @media (max-width: 480px) {
@@ -1748,11 +1753,6 @@
 		margin-top: 17px;
 	}
 	
-	.custom-logo img {
-		width: 50px;
-		margin-top: 8px;
-	}
-
 }
 
 @media (max-width:767px) {
