@@ -1168,14 +1168,25 @@
 	}
 	
 	.header-woo-links-wrap {
-		padding: 15px 0px 0px 60px;
+		padding: 15px 0px 0px 50px;
     	font-size: 13pt;
+	}
+	
+	.header-search-form-wrap {
+		width: 60%;
 	}
 	
 	.header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
 		height: 20px;
 		left: -15px;
     	top: 6px;
+	}
+	
+	.custom-logo-link {
+		width: 20%;
+		text-align: center;
+		float: left;
+		margin: 0 auto;
 	}
 	
 }
