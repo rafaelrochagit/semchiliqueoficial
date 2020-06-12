@@ -785,6 +785,11 @@
 		-o-transition: none;
 		transition: none;
 	}
+	
+	.header-woo-links-wrap {
+		float: right;
+		padding: 22px 0px 0px 25px;
+	}
 }
 
 @media(min-width: 981px) {
