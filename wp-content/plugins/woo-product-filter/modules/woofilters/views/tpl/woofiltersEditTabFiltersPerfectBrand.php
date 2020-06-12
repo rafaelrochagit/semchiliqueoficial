@@ -17,26 +17,27 @@
 		</div>
 	</div>
 </div>
-<div class="row-settings-block wpfTypeSwitchable" data-not-type="buttons">
-	<div class="settings-block-label col-xs-4 col-sm-3">
+<div class="row-settings-block">
+	<div class="settings-block-label col-xs-4 col-sm-3 wpfTypeSwitchable" data-not-type="buttons">
 		<?php esc_html_e('Show hierarchical', 'woo-product-filter'); ?>
-		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Show paternal and subsidiary brands (for checkbox list). If you display only some brands, make sure that the parent brands are selected.', 'woo-product-filter'); ?>"></i>
+		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Show paternal and subsidiary categories (for checkbox list). If you display only some categories, make sure that the parent categories are selected.', 'woo-product-filter'); ?>"></i>
 	</div>
 	<div class="settings-block-values col-xs-8 col-sm-9">
-		<div class="settings-value">
+		<div class="settings-value wpfTypeSwitchable" data-not-type="buttons">
 			<?php HtmlWpf::checkboxToggle('f_show_hierarchical', array()); ?>
 		</div>
-	</div>
-</div>
-<div class="row-settings-block wpfHidden wpfTypeSwitchable wpfSubOption" data-not-type="buttons" data-parent="f_show_hierarchical">
-	<div class="settings-block-label col-xs-4 col-sm-3">
-		<?php esc_html_e('Hide categories parent', 'woo-product-filter'); ?>
-		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Show only categories children.', 'woo-product-filter'); ?>"></i>
-	</div>
-	<div class="settings-block-values col-xs-8 col-sm-9">
-		<div class="settings-value">
+		<div class="settings-value wpfTypeSwitchable" data-not-type="buttons" data-parent-switch="f_show_hierarchical">
+			<div class="settings-value-label">
+				<?php esc_html_e('Hide categories parent', 'woo-product-filter'); ?>
+				<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Show only categories children.', 'woo-product-filter'); ?>"></i>
+			</div>
 			<?php HtmlWpf::checkboxToggle('f_hide_parent', array()); ?>
 		</div>
+		<?php
+		if ($isPro) {
+			DispatcherWpf::doAction('addEditTabFilters', 'partEditTabFiltersHierarchicalOption');
+		}
+		?>
 	</div>
 </div>
 <?php

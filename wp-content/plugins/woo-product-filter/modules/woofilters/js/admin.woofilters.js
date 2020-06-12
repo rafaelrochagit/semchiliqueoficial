@@ -735,6 +735,18 @@
 			},
 		});
 
+		jQuery(document).on('change', '.wpfFiltersBlock input.toggle', function() {
+			var filter = jQuery(this).closest('.wpfFilter'),
+				name = jQuery(this).attr('name'),
+				isActive = jQuery(this).is(':checked');
+
+			if ( isActive ) {
+				filter.find('[data-parent-switch~="'+name+'"]').show();
+			} else {
+				filter.find('[data-parent-switch~="'+name+'"]').hide();
+			}
+		});
+
 		jQuery('.wpfFiltersBlock').on('change wpf-change', 'select[name="f_frontend_type"]', function(e){
 			e.preventDefault();
 			var el = $(this),
@@ -745,10 +757,11 @@
 			filter.find('.wpfTypeSwitchable[data-type~="'+value+'"]').removeClass('wpfHidden');
 			filter.find('.wpfTypeSwitchable[data-not-type]:not([data-not-type~="'+value+'"])').removeClass('wpfHidden');
 
-			var isParentActive = filter.find('input[name="f_show_hierarchical"]').is(':checked');
+			 var isParentActive = filter.find('input[name="f_show_hierarchical"]').is(':checked');
 			if (!isParentActive) {
-				filter.find('.wpfTypeSwitchable[data-parent="f_show_hierarchical"]').addClass('wpfHidden');
+				filter.find('[data-parent-switch="f_show_hierarchical"]').hide();
 			}
+
 
 			if(el.hasClass('wpfWithProAd')) {
 				filter.find('.wpfFilterTypePro').addClass('wpfHidden');

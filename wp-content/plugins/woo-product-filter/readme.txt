@@ -4,7 +4,7 @@ Donate link: https://woobewoo.com/product/woocommerce-filter/
 Tags: product filter, woocommerce product filter, shop filter, ecommerce filter, woocommerce filter, product, filter 
 Requires at least: 3.4.0
 Tested up to: 5.4
-Stable tag: 1.3.1
+Stable tag: 1.3.3
 
 Filter products by products categories, attributes, prices and much more. Help your shoppers easily find products/items with WooCommerce Product Filter
 
@@ -141,6 +141,12 @@ If none of this advice helps you, contact us via [support form on our website](h
 You may help us translate the plugin into your language and get the PRO version of the plugin for free as soon as it is released. If this method seems to be too complicated, please send us a request and we will let you know as soon as WooBeWoo Filter plugin will be available in your localization.
 
 == Changelog ==
+
+= 1.3.3 =
+ * Fix for old Pro 
+
+= 1.3.2 =
+ * Minor issues fix
 
 = 1.3.1 =
  * Added Filter Buttons Order option

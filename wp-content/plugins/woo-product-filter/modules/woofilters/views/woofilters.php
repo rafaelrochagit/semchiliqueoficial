@@ -1873,7 +1873,11 @@ class WoofiltersViewWpf extends ViewWpf {
 		$isMulti = ( 'multi' === $type );
 
 		if (FrameWpf::_()->isPro()) {
-			$collapsibleList = FrameWpf::_()->getModule('woofilterpro')->getCollapsibleFiltreOptions();
+			if ( method_exists(FrameWpf::_()->getModule('woofilterpro'), 'getCollapsibleFiltreOptions') ) {
+				$collapsibleList = FrameWpf::_()->getModule('woofilterpro')->getCollapsibleFiltreOptions();
+			} else {
+				$collapsibleList = array('multi');
+			}
 			if ( in_array($type, $collapsibleList) ) {
 				$isCollapsible = $this->getFilterSetting($filter['settings'], 'f_multi_collapsible', false);
 			}
@@ -2018,7 +2022,7 @@ class WoofiltersViewWpf extends ViewWpf {
 					if ( $isHierarchical && !$hideParent ) {
 						$html .= '<ul' . ( empty( $isCollapsible ) ? '' : ' class="wpfHidden"' ) . '>';
 					} elseif ( $isHierarchical && $hideParent && 0 != $cat->parent ) {
-						$html .= '<ul class="wpfHideParent' . ( $isCollapsible ? ' wpfHidden' : '' ) . '">';
+						$html .= '<ul class="wpfHideParent' . ( empty($isCollapsible) ? '' : ' wpfHidden' ) . '">';
 					}
 					$html .= $this->generateTaxonomyOptionsHtml($cat->children, $filter, $selectedElem, $excludeIds, $tmpPre, false, $includeIds, $showedTerms, $countsTerms);
 					if ( $isHierarchical && !$hideParent ) {
