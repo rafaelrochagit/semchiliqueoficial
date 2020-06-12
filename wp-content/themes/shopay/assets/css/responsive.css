@@ -1168,7 +1168,7 @@
 	}
 	
 	.site-header-cart {
-		display: grid;
+		display: grid !important;
 	}
 	
 	.header-woo-links-wrap {
