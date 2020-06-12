@@ -1943,4 +1943,15 @@
     padding: 20px;
     width: 80%;
   }
+	
+	.custom-logo-link {
+		width: 40%;
+		text-align: center;
+		float: left;
+	}
+	
+	.custom-logo-link img {
+		width: 55px;
+		margin-top: 8px;
+	}
 }
