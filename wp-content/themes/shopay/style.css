@@ -5144,17 +5144,13 @@ highlight post css
 }
 
 .main-category-list-title {
-    padding: 10px 0;
+    padding: 12px 0;
 }
 
 .shopay-cat-menu.deactivate-menu {
 	border: 0px;
-}
-
-.product-categories .children {
-    position: absolute;
-    left: 280px;
-    background: #fff;
+	overflow: overlay;
+    height: 600%;
 }
 
 .product-categories .children .children {
