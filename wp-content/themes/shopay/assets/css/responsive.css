@@ -230,6 +230,10 @@
   .shopay_category_products .product-btns-wrap a.wishlist-button {
       width: 50%;
   }
+	
+	.main-category-list-title {
+    	padding: 18px 0;
+	}
 
 }
 
