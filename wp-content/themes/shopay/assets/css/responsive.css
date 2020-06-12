@@ -809,6 +809,13 @@
   }
 }
 
+@media (max-width: 900px) {
+	.header-woo-links-wrap {
+		float: right;
+		padding: 22px 0px 0px 10px;
+	}
+}
+
 @media (max-width: 768px) {
 
   	.top-header-elements-wrap,
