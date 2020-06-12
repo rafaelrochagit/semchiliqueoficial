@@ -5165,3 +5165,7 @@ highlight post css
 .header-search-form-wrap .search-form label {
 	width: 100%;
 }
+
+.search-bar-section-wrapper {
+    margin-top: 15px;
+}
