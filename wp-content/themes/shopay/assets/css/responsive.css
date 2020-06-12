@@ -1797,17 +1797,6 @@
     text-align: center;
   }
 
-  #masthead .custom-logo {
-    -webkit-transform: scale(0.65);
-    -ms-transform: scale(0.65);
-    -o-transform: scale(0.65);
-    transform: scale(0.65);
-  }
-
-  .is-sticky #masthead .header-site-info-wrap {
-    display: none;
-  }
-
   .is-sticky #site-navigation {
     width: 100%;
     float: none;
@@ -1839,26 +1828,6 @@
 
   .header-search-form-wrap {
     width: 90%;
-  }
-
-  .header-woo-links-wrap {
-    width: 100%;
-    margin-left: 0;
-    text-align: center;
-    margin: 0 auto;
-    float: none;
-  }
-
-  .shopay-whishlist {
-    display: inline-block;
-    margin-right: 12px;
-    float: none;
-    vertical-align: top;
-  }
-
-  #site-header-cart {
-    float: none;
-    display: inline-block;
   }
 
   .slide-content-wrap {
