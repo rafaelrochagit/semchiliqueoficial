@@ -443,6 +443,11 @@
 
 }
 
+@media (max-width: 1024px) {
+	.custom-logo-link img {
+		width: 70px;
+	}
+}
 
 @media (max-width: 980px) {
 	
@@ -798,11 +803,7 @@
     display: block !important;
   }
 }
-@media (max-width: 1024px) {
-	.custom-logo-link img {
-		width: 70px;
-	}
-}
+
 @media (max-width: 768px) {
 
   	.top-header-elements-wrap,
