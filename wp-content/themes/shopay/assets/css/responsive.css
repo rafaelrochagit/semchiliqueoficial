@@ -1747,6 +1747,11 @@
 	.header-woo-links-wrap {
 		margin-top: 17px;
 	}
+	
+	#masthead .custom-logo {
+		width: 50px;
+		margin-top: 8px;
+	}
 
 }
 
