@@ -1199,10 +1199,10 @@
 	}
 	
 	.is-sticky #masthead .custom-logo {
-		-webkit-transform: scale(1) translateX(-20px);
-		-ms-transform: scale(1) translateX(-20px);
-		-o-transform: scale(1) translateX(-20px);
-		transform: scale(1) translateX(-20px); 
+		-webkit-transform: scale(1) translateX(0px);
+		-ms-transform: scale(1) translateX(0px);
+		-o-transform: scale(1) translateX(0px);
+		transform: scale(1) translateX(0px); 
 	}
 	
 	
