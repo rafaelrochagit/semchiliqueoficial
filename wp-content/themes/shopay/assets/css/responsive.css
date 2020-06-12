@@ -1383,17 +1383,13 @@
 		width: 97%;
 	}
 
-	.header-woo-links-wrap {
-		width: 33%;
-		margin-left: 2%;
-	}
 
 	.main-category-list-title {
 		width: 10%;
 	}
 
 	.header-search-form-wrap {
-		width: 55%;
+		width: 60%;
 	}
 
 	.blogs-wrap .post-thumb {
@@ -1406,20 +1402,6 @@
 
 	.entry-title a {
 		font-size: 22px;
-	}
-
-	#masthead .custom-logo {
-		-webkit-transform: scale(0.8) translateX(-25px);
-		-ms-transform: scale(0.8) translateX(-25px);
-		-o-transform: scale(0.8) translateX(-25px);
-		transform: scale(0.8) translateX(-25px);
-	}
-
-	.is-sticky #masthead .custom-logo {
-		-webkit-transform: scale(0.7) translateX(-40px);
-		-ms-transform: scale(0.7) translateX(-40px);
-		-o-transform: scale(0.7) translateX(-40px);
-		transform: scale(0.7) translateX(-40px);
 	}
 
 	.search-article-wrapper article {
