@@ -1172,11 +1172,12 @@
     	font-size: 13pt;
 	}
 	
-	header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
+	.header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
 		height: 20px;
 		left: -15px;
     	top: 6px;
 	}
+	
 }
 
 @media (max-width: 600px) {
