@@ -8,7 +8,7 @@
 
 /* Foto anuncio*/
 #media_image-3 img{
-	width:90%;
+	width:90% !important;
 	height:200px;
 }
 
