@@ -19,6 +19,7 @@
 	
 	<?php wp_head(); ?>
 	<link rel="stylesheet" href="/wp-content/themes/shopay/style2.css">
+	<link rel="stylesheet" href="/wp-content/themes/shopay/style3.css">
 </head>
 
 <body <?php body_class(); ?>>
