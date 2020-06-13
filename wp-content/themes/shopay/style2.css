@@ -6,6 +6,15 @@
 
 /*Fim barra lateral pag de produtos  */
 
+/* Foto anuncio*/
+#media_image-3 img{
+	width:90%;
+	height:200px;
+}
+
+
+/*  Fim foto anucio*/
+
 #site-navigation #menu-principal-semchilique ul li {
     display: inline-block;
     position: relative;
