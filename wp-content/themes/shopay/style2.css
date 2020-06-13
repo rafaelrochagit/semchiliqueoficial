@@ -1,97 +1,13 @@
 /* APARENCIA */
 
-/*Botao de selecionar cor */
-.woocommerce div.product form.cart .variations select{
-	min-width:34% !important;
-}
-
-/* FIM do botao de selecionar cor*/
-
-/*Botao do frete */
-div#cfpp div.calculo-de-frete div#calcular-frete {
-	background:pink!important;
-}
-/* FIM do botao do frete */
-
-/*cotato */
-div.wpforms-container-full .wpforms-form label.wpforms{
-	color:pink !important;
-}
-
-}
-div.wpforms-container-full .wpforms-form .wpforms-required-label{
-	color:#f76a98 !important;
-}
-
-/*  FIM do contato */
-
-
-/* pag do carrinho */
-body .woocommerce .cart .button, body .woocommerce .cart input.button, body .woocommerce #respond input#submit, body .woocommerce a.button, body .woocommerce button.button, body .woocommerce input.button {
-	background: pink !important;align-content
-}
-
-body .woocommerce #respond input#submit.alt, body .woocommerce a.button.alt, body .woocommerce button.button.alt, body .woocommerce input.button.alt {
-	background: pink;align-content
-}
-
-body .woocommerce .cart .button, body .woocommerce .cart input.button, body .woocommerce #respond input#submit, body .woocommerce a.button, body .woocommerce button.button, body .woocommerce input.button{
-	background:pink !important;
+/* Foto anuncio*/
+#media_image-3 img{
+	width:90%;
+	height:200px;
 }
 
 
-/* FIM da pag de carrinho */
-
-/*  Pag de finalizacao*/
-.elementor-element.elementor-button-danger .elementor-button {
-	background-color: pink !important;
-}
-.elementor-element.elementor-button-danger .elementor-button:hover {
-	background-color:pink!important;
-}
-
-.woocommerce-cart .woocommerce table.shop_table, .woocommerce-checkout .woocommerce table.shop_table {
-	width:150%;
-}
-
-#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
-    width: 150%;
-}
-
-.woocommerce .woocommerce-checkout h3 {
-    text-align: center;
-    background: pink !important;
-    padding: 5px;
-    border-radius: 10px;
-		box-shadow: 2px 2px;
-
-}
-
-#order_review_heading{
-	float:left !important;
-	width:48% !important
-}
-
-.woocommerce-checkout #order_review_heading, .woocommerce-checkout #order_review{
-	float:none !important
-}
-
-.woocommerce-cart .woocommerce table.shop_table, .woocommerce-checkout .woocommerce table.shop_table {
-	width:100% !Important;
-}
-
-body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order{
-	background:pink !Important;
-}
-
-/* FIM da pag de finalizacao de compras */
-
-/*barra lateral pagina de produtos */
-.widget-area .widget{
-	width:90% !important;
-}
-
-/*Fim barra lateral pag de produtos  */
+/*  Fim foto anucio*/
 
 #site-navigation #menu-principal-semchilique ul li {
     display: inline-block;
@@ -862,17 +778,6 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 		width:100%;
 	}
 	/* fim pag mais procurados*/
-}
-
-@media (max-width:700px){
-	/* Pag de checkout */
-	#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment{
-		width:100% !important
-	}
-	#add_payment_method #payment div.payment_box input.input-text, #add_payment_method #payment div.payment_box textarea, .woocommerce-cart #payment div.payment_box input.input-text, .woocommerce-cart #payment div.payment_box textarea, .woocommerce-checkout #payment div.payment_box input.input-text, .woocommerce-checkout #payment div.payment_box textarea {
-		width:100%
-	}
-	/* FIM da pag de checkout */
 }
 	
 @media (max-width: 407px){
