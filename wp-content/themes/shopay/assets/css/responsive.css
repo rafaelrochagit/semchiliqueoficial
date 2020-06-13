@@ -451,6 +451,10 @@
 	.custom-logo-link img {
 		width: 70px;
 	}
+	
+	.main-category-list-title {
+		padding: 12px 0;
+	}
 }
 
 @media (max-width: 980px) {
