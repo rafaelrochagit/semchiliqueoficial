@@ -43,6 +43,12 @@
   }
 }
 
+@media (max-width: 1440px) {
+	.main-category-list-title {
+		padding: 7px 0;
+	}
+}
+
 @media (max-width: 1400px) {
   .mt-container {
     width: auto;
