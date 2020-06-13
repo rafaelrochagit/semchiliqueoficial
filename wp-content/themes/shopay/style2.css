@@ -1,4 +1,13 @@
 /* APARENCIA */
+
+#site-navigation #menu-principal-semchilique ul li {
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    margin: 5px 15px;
+    line-height: 2;
+}
+
 .header-site-info-wrap, #site-navigation, #search-bar-section {
 	background: #fdfdfd  !important;
 }
