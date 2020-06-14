@@ -18,8 +18,8 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	
 	<?php wp_head(); ?>
-	<link rel="stylesheet" href="/wp-content/themes/shopay/style2.css">
-	<link rel="stylesheet" href="/wp-content/themes/shopay/style3.css">
+	<link rel="stylesheet" href="/wp-content/themes/shopay/style2.css?v=<?=date('Y-m-d:His')?>">
+	<link rel="stylesheet" href="/wp-content/themes/shopay/style3.css?v=<?=date('Y-m-d:His')?>">
 </head>
 
 <body <?php body_class(); ?>>
