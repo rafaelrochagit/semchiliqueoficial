@@ -1,3 +1,25 @@
+
+/* Set Product Table Border styling */
+.woocommerce .woocommerce-cart-form table.shop_table,
+.woocommerce .woocommerce-cart-form table.shop_table tr,
+.woocommerce .woocommerce-cart-form table.shop_table td,
+.woocommerce .woocommerce-cart-form table.shop_table th {
+  border: 1px solid black;
+  border-radius: 0;
+}
+
+/* Set Product table Column header weight */
+.woocommerce-cart-form table.shop_table th {
+  font-weight: 500 !important;
+}
+
+/* Hide Cart Cross Sells on Mobile */
+@media only screen and (max-width: 480px) {
+  .cart-collaterals .cross-sells {
+    display: none;
+  }
+}
+
 /* shipping details */
 .woocommerce div.cart-collaterals div.cart_totals {
   width: auto !important;
