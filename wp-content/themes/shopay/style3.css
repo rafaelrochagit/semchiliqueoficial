@@ -1,80 +1,40 @@
-.woocommerce-cart .woocommerce {
-  display: flex;
+/* shipping details */
+.woocommerce div.cart-collaterals div.cart_totals {
+  width: auto !important;
 }
-
-
-/* The table containing the list of products and our custom elements */
-.woocommerce-cart .woocommerce-cart-form {
-  flex: 1 0 70%; /* 100% at small screens; 70% on larger screens */
-  margin-right: 30px;
-}
-
-/* The element that contains the cart totals */
-.woocommerce-cart .cart-collaterals {
-  flex: 1 0 30%; /* 100% at small screens; 30% on larger screens */
-  margin-left: 30px;
-}
-
-/* Some minor tweak to make sure the cart totals fill the space */
-.woocommerce-cart .cart-collaterals .cart_totals {
-  width: 100%;
-  padding: 0 20px 70px;
-}
-
-/* The "Apply Coupon" button */
-.button[name="apply_coupon"] {
-  background-color: transparent;
-  color: #13aff0;
-}
-/* Fill the "Apply Coupon" button background color and underline it on hover */
-.button[name="apply_coupon"]:hover {
-  background-color: transparent;
-  text-decoration: underline;
-}
-
-/* The "Update Cart" button */
-.button[name="update_cart"] {
-  background-color: #e2e2e2;
-  color: #13aff0;
-}
-/* Brighten up the button on hover */
-.button[name="update_cart"]:hover {
-  filter: brightness(115%);
-}
-
-@media(min-width: 1100px) {
-  .woocommerce-cart .woocommerce {
-    display: flex;
+/* example shrink table in steps */
+@media screen and (max-width: 480px) {
+  .woocommerce .content .container .container_inner,
+  .woocommerce-page .content .container .container_inner {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+    width: 380px !important;
   }
-  .woocommerce-cart .woocommerce-cart-form {
-    flex: 1 0 70%;
-    margin-right: 30px;
-  }    
-  .woocommerce-cart .cart-collaterals {
-    flex: 1 0 30%;
-    margin-left: 30px;
+  .vc_column_container .vc_column-inner {
+    padding-left: 0 !important ;
+    padding-right: 0 !important ;
+   }
+   .woocommerce-cart-form {
+     font-size: 14px;
+   }
+   .product-thumbnail {
+     display: none;
+   }
+}
+@media screen and (max-width: 375px) {
+  .woocommerce .content .container .container_inner,
+  .woocommerce-page .content .container .container_inner {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    width: 300px !important;
+  }
+  .woocommerce-cart-form {
+     font-size: 13px;
   }
 }
-
-.button[name="apply_coupon"] {
-  background-color: transparent;
-  color: #13aff0;
+@media screen and (max-width: 360px) {
+  .woocommerce .content .container .container_inner,
+  .woocommerce-page .content .container .container_inner {
+    width: 284px !important;
+  }
 }
-
-.button[name="apply_coupon"]:hover {
-  text-decoration: underline;
-  background-color: transparent;
-  color: #13aff0;
-}
-
-.button[name="update_cart"] {
-  background-color: #e2e2e2;
-  color: #13aff0;
-}
-
-.button[name="update_cart"]:hover {
-  background-color: #e2e2e2;
-  color: #13aff0;
-  filter: brightness(115%);
-}
-
