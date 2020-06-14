@@ -1,4 +1,10 @@
 /* APARENCIA */
+/*barra lateral pagina de produtos */
+.widget-area .widget{
+	width:75%;
+}
+
+/*Fim barra lateral pag de produtos  */
 
 #site-navigation #menu-principal-semchilique ul li {
     display: inline-block;
