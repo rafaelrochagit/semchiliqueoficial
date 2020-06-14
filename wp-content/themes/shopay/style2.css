@@ -1,7 +1,7 @@
 /* APARENCIA */
 /*barra lateral pagina de produtos */
 .widget-area .widget{
-	width:75%;
+	width:75% !important;
 }
 
 /*Fim barra lateral pag de produtos  */
