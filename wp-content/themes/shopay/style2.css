@@ -1,13 +1,7 @@
 /* APARENCIA */
-/* Pag de cadastro*/
-
-/*  Fim pag de finalizacao de compra*/
-
-.elementor-element.elementor-button-danger .elementor-button {
-	background-color:#fe80a6!important;
-}
-.elementor-element.elementor-button-danger .elementor-button:hover {
-	background-color:pink!important;
+/*barra lateral pagina de produtos */
+.widget-area .widget{
+	width:75%;
 }
 
 /*Fim barra lateral pag de produtos  */
