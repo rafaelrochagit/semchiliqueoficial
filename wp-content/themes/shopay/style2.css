@@ -782,6 +782,14 @@
 		width:100%;
 	}
 	/* fim pag mais procurados*/
+	
+	/* logo RKR*/
+.payment-image img{
+	width:7% !important;
+}
+
+/*FIM logo RKR   */
+	
 }
 	
 @media (max-width: 407px){
