@@ -39,9 +39,9 @@ body .woocommerce .cart .button, body .woocommerce .cart input.button, body .woo
 	background:pink !important;
 }
 
-@media (min-width:1066px){
+@media (min-width:910px){
 .woocommerce-cart .woocommerce .cart-collaterals .cart_totals {
-    margin-right: -60px !important;
+    margin-right: -70px !important;
 		margin-top: 20px !important;	
 }
 	
