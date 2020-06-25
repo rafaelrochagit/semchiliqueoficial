@@ -20,6 +20,8 @@
 	<?php wp_head(); ?>
 	<link rel="stylesheet" href="/wp-content/themes/shopay/style2.css?v=<?=date('YmdHis')?>">
 	<link rel="stylesheet" href="/wp-content/themes/shopay/style3.css?v=<?=date('YmdHis')?>">
+	<link rel="stylesheet" href="/wp-content/themes/shopay/stylerkr2.css?v=<?=date('YmdHis')?>">
+	<link rel="stylesheet" href="/wp-content/themes/shopay/stylerkr3.css?v=<?=date('YmdHis')?>">
 </head>
 
 <body <?php body_class(); ?>>
