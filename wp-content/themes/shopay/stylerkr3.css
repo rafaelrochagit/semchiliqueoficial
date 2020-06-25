@@ -1,0 +1,13 @@
+/*SLIDER DA HOMEPAGE*/
+
+#smartslider3-5{
+	display:none;
+}
+@media only screen and (max-width: 770px){
+	#smartslider3-5{
+		display:block;
+	}
+	#smartslider3-3{
+		display:none;
+	}
+}
