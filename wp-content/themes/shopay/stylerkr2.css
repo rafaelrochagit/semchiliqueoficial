@@ -27,6 +27,12 @@ div.wpforms-container-full .wpforms-form .wpforms-required-label{
 
 
 /* pag do carrinho */
+.woocommerce-cart .woocommerce table.shop_table th {
+	    border-bottom: 2px solid pink !important;
+	color:pink !important;
+}
+
+
 body .woocommerce .cart .button, body .woocommerce .cart input.button, body .woocommerce #respond input#submit, body .woocommerce a.button, body .woocommerce button.button, body .woocommerce input.button {
 	background: pink !important;align-content
 }
@@ -95,6 +101,10 @@ body .woocommerce .cart .button, body .woocommerce .cart input.button, body .woo
 }
 
 body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order{
+	background:pink !Important;
+}
+
+body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order:hover{
 	background:pink !Important;
 }
 
