@@ -39,6 +39,20 @@ body .woocommerce .cart .button, body .woocommerce .cart input.button, body .woo
 	background:pink !important;
 }
 
+@media (min-width:1066px){
+.woocommerce-cart .woocommerce .cart-collaterals .cart_totals {
+    margin-right: -60px !important;
+		margin-top: 20px !important;	
+}
+	
+}	
+
+body .woocommerce .cart .button, body .woocommerce .cart input.button, body .woocommerce #respond input#submit, body .woocommerce a.button, body .woocommerce button.button, body .woocommerce input.button{
+	border-radius: 10px !important;
+	margin-bottom:10px !important;
+}
+
+
 
 /* FIM da pag de carrinho */
 
