@@ -74,3 +74,76 @@ Stack trace:
 #5 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/widgets.php(1765): do_action('widgets_init')
 #6 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(287): wp_widgets_init('')
 #7 /hom in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-widget-factory.php on line 61
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/wp-mail-smtp/wp_mail_smtp.php): failed to open stream: No such file or directory in /home2/qinteres/semchilique.opasaquei.com.br/wp-settings.php on line 371
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(): Failed opening '/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/wp-mail-smtp/wp_mail_smtp.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home2/qinteres/semchilique.opasaquei.com.br/wp-settings.php on line 371
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/yellow-pencil-visual-theme-customizer/yellow-pencil.php): failed to open stream: No such file or directory in /home2/qinteres/semchilique.opasaquei.com.br/wp-settings.php on line 371
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(): Failed opening '/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/yellow-pencil-visual-theme-customizer/yellow-pencil.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home2/qinteres/semchilique.opasaquei.com.br/wp-settings.php on line 371
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  strpos(): Empty needle in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php on line 687
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/includes/compatibility/divi-theme-builder.php): failed to open stream: No such file or directory in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/main.php on line 549
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(): Failed opening '/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/includes/compatibility/divi-theme-builder.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/main.php on line 549
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/includes/compatibility/beaver-builder.php): failed to open stream: No such file or directory in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/main.php on line 550
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(): Failed opening '/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/includes/compatibility/beaver-builder.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/main.php on line 550
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/includes/filters/dynamic_data_template.php): failed to open stream: No such file or directory in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/main.php on line 584
+[25-Jun-2020 19:47:02 UTC] PHP Warning:  include_once(): Failed opening '/home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/includes/filters/dynamic_data_template.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/main.php on line 584
+[25-Jun-2020 19:47:02 UTC] PHP Fatal error:  Uncaught Error: Class 'BeRocket_AAPF_dynamic_data_template' not found in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/main.php:585
+Stack trace:
+#0 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(287): BeRocket_AAPF->plugins_loaded('')
+#1 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#2 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php(478): WP_Hook->do_action(Array)
+#3 /home2/qinteres/semchilique.opasaquei.com.br/wp-settings.php(403): do_action('plugins_loaded')
+#4 /home2/qinteres/semchilique.opasaquei.com.br/wp-config.php(96): require_once('/home2/qinteres...')
+#5 /home2/qinteres/semchilique.opasaquei.com.br/wp-load.php(37): require_once('/home2/qinteres...')
+#6 /home2/qinteres/semchilique.opasaquei.com.br/wp-admin/admin.php(34): require_once('/home2/qinteres...')
+#7 /home2/qinteres/semchilique.opasaquei.com.br/wp-admin/plugins.php(10): require_once(' in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/woocommerce-ajax-filters/main.php on line 585
+[25-Jun-2020 19:47:03 UTC] PHP Fatal error:  Uncaught Error: Class 'WPMailSMTP\WP' not found in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/wp-mail-smtp/src/Core.php:135
+Stack trace:
+#0 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(287): WPMailSMTP\Core->init('')
+#1 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#2 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php(478): WP_Hook->do_action(Array)
+#3 /home2/qinteres/semchilique.opasaquei.com.br/wp-settings.php(540): do_action('init')
+#4 /home2/qinteres/semchilique.opasaquei.com.br/wp-config.php(96): require_once('/home2/qinteres...')
+#5 /home2/qinteres/semchilique.opasaquei.com.br/wp-load.php(37): require_once('/home2/qinteres...')
+#6 /home2/qinteres/semchilique.opasaquei.com.br/wp-admin/admin-ajax.php(22): require_once('/home2/qinteres...')
+#7 {main}
+  thrown in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/wp-mail-smtp/src/Core.php on line 135
