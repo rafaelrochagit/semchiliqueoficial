@@ -1,4 +1,11 @@
 /* APARENCIA */
+/* logo RKR*/
+.payment-image img{
+	width:4% !important;
+}
+
+/*FIM logo RKR   */
+
 /*barra lateral pagina de produtos */
 .widget-area .widget{
 	width:90% !important;
