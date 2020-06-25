@@ -147,3 +147,4 @@ Stack trace:
 #6 /home2/qinteres/semchilique.opasaquei.com.br/wp-admin/admin-ajax.php(22): require_once('/home2/qinteres...')
 #7 {main}
   thrown in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/wp-mail-smtp/src/Core.php on line 135
+[25-Jun-2020 20:00:23 UTC] PHP Warning:  Error while sending QUERY packet. PID=858681 in /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/wp-db.php on line 2024
