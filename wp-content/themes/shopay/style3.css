@@ -118,7 +118,7 @@ body .woocommerce #respond input#submit.alt:hover,
 body .woocommerce a.button.alt:hover, 
 body .woocommerce button.button.alt:hover, 
 body .woocommerce input.button.alt:hover {
-	background: #034997 !important; 
+	background: #034997; 
 }
 
 body .woocommerce .cart .button, 
