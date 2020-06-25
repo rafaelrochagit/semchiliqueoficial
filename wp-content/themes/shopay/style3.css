@@ -110,7 +110,7 @@ body .woocommerce #respond input#submit.alt,
 body .woocommerce a.button.alt, 
 body .woocommerce button.button.alt, 
 body .woocommerce input.button.alt {
-	background: #72A40D !important; 
+	background: #72A40D ; 
 	font-weight: 500;
 }
 
