@@ -1,4 +1,11 @@
 /* APARENCIA */
+/*Pag de login */
+.elementor-987 .elementor-element.elementor-element-76894fa .elementor-heading-title{
+	font-size:95% !important;
+}
+
+/*FIM da pag de login  */
+
 
 /*Botao de selecionar cor */
 .woocommerce div.product form.cart .variations select{
