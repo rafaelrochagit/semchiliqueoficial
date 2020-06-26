@@ -887,6 +887,17 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 		width:100%;
 	}
 	/* fim pag mais procurados*/
+	
+	/*pag login  */
+	
+.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register{
+	width:100% !important;
+	margin-left:0 !important;
+}
+	
+	/* FIM da pag login */
+	
+	
 }
 
 @media (max-width:700px){
@@ -908,15 +919,6 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 	}
 	
 	/* Fim da pag do produto*/
-	
-	/*pag login  */
-	
-.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register{
-	width:100% !important;
-	margin-left:0 !important;
-}
-	
-	/* FIM da pag login */
 	
 	
 } 
