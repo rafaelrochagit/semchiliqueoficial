@@ -25,7 +25,7 @@ div#cfpp div.calculo-de-frete div#calcular-frete {
 }
 /* FIM do botao do frete */
 
-/*cotato */
+/* Pag cotato */
 div.wpforms-container-full .wpforms-form label.wpforms{
 	color:pink !important;
 }
@@ -35,7 +35,12 @@ div.wpforms-container-full .wpforms-form .wpforms-required-label{
 	color:#f76a98 !important;
 }
 
-/*  FIM do contato */
+.elementor-2363 .elementor-element.elementor-element-745c5d9 .elementor-heading-title{
+	font-size:90% !important;
+}
+
+
+/*  FIM Pag do contato */
 
 
 /* pag do carrinho */
