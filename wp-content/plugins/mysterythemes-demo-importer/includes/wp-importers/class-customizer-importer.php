@@ -46,8 +46,14 @@ class MTDI_Customizer_Importer {
 		}
 
 		//if ( $demo_data['theme_slug'] != $template ) {
-		if ( strpos( $demo_data['theme_slug'], $template ) === false ) {
-			return new WP_Error( 'mtdi_import_wrong_theme', __( 'The customizer import file is not suitable for current theme. You can only import customizer settings for the same theme or a child theme.', 'mysterythemes-demo-importer' ) );
+		if( is_child_theme() ) {
+			if ( strpos( $demo_data['parent_slug'], $template ) === false ) {
+				return new WP_Error( 'mtdi_import_wrong_theme', __( 'The customizer import file is not suitable for current theme. You can only import customizer settings for the same theme or a child theme.', 'mysterythemes-demo-importer' ) );
+			}
+		} else {
+			if ( strpos( $demo_data['theme_slug'], $template ) === false ) {
+				return new WP_Error( 'mtdi_import_wrong_theme', __( 'The customizer import file is not suitable for current theme. You can only import customizer settings for the same theme or a child theme.', 'mysterythemes-demo-importer' ) );
+			}
 		}
 
 		// Import images.

@@ -3,7 +3,7 @@
  * Plugin Name:		Mystery Themes Demo Importer
  * Plugin URI: 		https://wordpress.org/plugins/mysterythemes-demo-importer/
  * Description:		One Click Demo Importer For Mystery Themes official themes demo content, customization options, widgets and theme settings.
- * Version:			1.0.2
+ * Version:			1.0.3
  * Author:			Mystery Themes
  * Author URI:		https://mysterythemes.com/
  * License:			GPLv3 or later

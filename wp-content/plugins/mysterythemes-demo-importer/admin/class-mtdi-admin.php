@@ -171,6 +171,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 			}
 
 			$selected_demo 	= get_template();
+			delete_transient( 'mtdi_theme_packages' );
 			$demodata 		= get_transient( 'mtdi_theme_packages' );
 
 			if ( empty( $demodata ) || $demodata == false ) {
@@ -410,12 +411,18 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 
 				$template = get_option( 'template' );
 				do_action( 'mtdi_ajax_before_demo_import' );
+				delete_transient( 'mtdi_theme_packages' );
 				$xmldemopackages = get_transient( 'mtdi_theme_packages' );
 				if( empty ( $xmldemopackages ) ) {
 					$xmldemopackages = $this->retrieve_demo_by_activatetheme( $template );
 				}
 
-				$demo_data            = $xmldemopackages[ $slug ];
+				if( is_child_theme() ) {
+					$parent_theme = get_template();
+					$demo_data	= $xmldemopackages[$parent_theme]['child_themes'][ $slug ];
+				} else {
+					$demo_data	= $xmldemopackages[ $slug ];
+				}
 				$demoName             = strtoupper( $slug );
 				$status['demoName']   = str_replace( '-', ' ', $demoName );
 				$status['previewUrl'] = get_home_url();

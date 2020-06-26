@@ -13,18 +13,29 @@ defined('ABSPATH') or die("No script kiddies please!");
 */
 
 if ( !empty( $demodata ) ) {
-$plugin_name		= isset ( $demodata[$selected_demo]['name'] ) ? $demodata[$selected_demo]['name']: '';
-$theme_slug 		= isset ( $demodata[$selected_demo]['theme_slug'] ) ? $demodata[$selected_demo]['theme_slug']: '';
-$xml_file 			= isset ( $demodata[$selected_demo]['xml_file'] ) ? $demodata[$selected_demo]['xml_file']: '';
-$theme_settings 	= isset ( $demodata[$selected_demo]['theme_settings'] )? $demodata[$selected_demo]['theme_settings']: '';
-$widgets_file 		= isset ( $demodata[$selected_demo]['widgets_file'] ) ? $demodata[$selected_demo]['widgets_file']: '';
-$demo_url   		= isset ( $demodata[$selected_demo]['preview_url'] ) ? $demodata[$selected_demo]['preview_url']: '';
-$required_plugins 	= isset ( $demodata[$selected_demo]['plugins_list'] ) ? $demodata[$selected_demo]['plugins_list']: '';
+if( is_child_theme() ) {
+	$parent_theme = get_template();
+	$plugin_name		= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['name'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['name']: '';
+	$theme_slug 		= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['theme_slug'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['theme_slug']: '';
+	$xml_file 			= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['xml_file'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['xml_file']: '';
+	$theme_settings 	= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['theme_settings'] )? $demodata[$parent_theme]['child_themes'][$selected_demo]['theme_settings']: '';
+	$widgets_file 		= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['widgets_file'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['widgets_file']: '';
+	$demo_url   		= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['preview_url'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['preview_url']: '';
+	$required_plugins 	= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['plugins_list'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['plugins_list']: '';
+} else {
+	$plugin_name		= isset ( $demodata[$selected_demo]['name'] ) ? $demodata[$selected_demo]['name']: '';
+	$theme_slug 		= isset ( $demodata[$selected_demo]['theme_slug'] ) ? $demodata[$selected_demo]['theme_slug']: '';
+	$xml_file 			= isset ( $demodata[$selected_demo]['xml_file'] ) ? $demodata[$selected_demo]['xml_file']: '';
+	$theme_settings 	= isset ( $demodata[$selected_demo]['theme_settings'] )? $demodata[$selected_demo]['theme_settings']: '';
+	$widgets_file 		= isset ( $demodata[$selected_demo]['widgets_file'] ) ? $demodata[$selected_demo]['widgets_file']: '';
+	$demo_url   		= isset ( $demodata[$selected_demo]['preview_url'] ) ? $demodata[$selected_demo]['preview_url']: '';
+	$required_plugins 	= isset ( $demodata[$selected_demo]['plugins_list'] ) ? $demodata[$selected_demo]['plugins_list']: '';
+}
+
 $json_plugin_lists 	= json_encode ( $required_plugins );
 
 $current_theme	= wp_get_theme( $theme_slug );
 $theme_version 	= $current_theme->get( 'Version' );
-
 ?>
 <div class="mtdi-popup-wrapper theme-overlay">
 	<div class="theme-overlay">
