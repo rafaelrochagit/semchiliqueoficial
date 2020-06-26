@@ -1,38 +1,4 @@
 /* APARENCIA */
-/*Produtos recentes */
-@media (min-width:775px){
-.latest-products-wrap{
-	float:none !important;
-	width:100%;
-}
-
-.shopay_latest_product .latest-products-wrap li{
-	width:20% !important;
-}
-
-
-.shopay-image-figure-wrapper{
-	float:none;
-	width:100%;
-}
-
-.shopay-bg-image.cover-image{
-	height:350px !important;
-}
-
-}
-
-/* FIM produtos recentes */
-
-/* pag de recuperar senha */
-@media (min-width:700px){
-#user-registration{
-	width:50% !important;
-}
-}
-
-/* FIM pag de recuperar senha */
-
 /*Pag de login */
 .elementor-987 .elementor-element.elementor-element-76894fa .elementor-heading-title{
 	font-size:95% !important;
@@ -73,9 +39,6 @@ div.wpforms-container-full .wpforms-form .wpforms-required-label{
 	font-size:90% !important;
 }
 
-.elementor-2363 .elementor-element.elementor-element-1ca8194 .elementor-heading-title{
-	font-size: 200% !important;
-}
 
 /*  FIM Pag do contato */
 
@@ -628,8 +591,7 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 }
 
 .is-sticky #site-navigation.menuFixo {
-    display: flex;
-	margin-top: -30px;
+    display:none;
 }
 
 .is-sticky .search-bar-section-wrapper {
