@@ -4,6 +4,11 @@
 	font-size:95% !important;
 }
 
+.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register{
+	width:45% !important;
+	margin-left:26% !important;
+}
+
 /*FIM da pag de login  */
 
 
