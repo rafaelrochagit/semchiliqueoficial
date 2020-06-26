@@ -12,6 +12,11 @@
 	}
 }
 /* Configuração pagina Promoção para mobile*/
+.wc-block-grid__product .wc-block-grid__product-add-to-cart, .wc-block-grid__product .wc-block-grid__product-image, .wc-block-grid__product .wc-block-grid__product-price, .wc-block-grid__product .wc-block-grid__product-rating, .wc-block-grid__product .wc-block-grid__product-title {
+    margin-top: 10%;
+    margin-right: 10%;
+    margin-left: 10%;
+}
 /* Image */
 .hentry p img{
 	border-top-left-radius:15px;
