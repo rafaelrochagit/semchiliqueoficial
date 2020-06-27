@@ -1,4 +1,11 @@
 /* APARENCIA */
+/* pag de recuperar senha */
+#user-registration *, #user-registration.user-registration{
+	width:50% !important;
+}
+
+/* FIM pag de recuperar senha */
+
 /*Pag de login */
 .elementor-987 .elementor-element.elementor-element-76894fa .elementor-heading-title{
 	font-size:95% !important;
