@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: YITH WooCommerce Wishlist\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/init\n"
 "POT-Creation-Date: 2020-06-11 01:37+0000\n"
-"PO-Revision-Date: 2020-06-11 01:46+0000\n"
+"PO-Revision-Date: 2020-06-26 22:45+0000\n"
 "Last-Translator: Kleberson Rocha\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPathExcluded-0: ../plugin-fw\n"
-"X-Loco-Version: 2.4.0; wp-5.4.1"
+"X-Loco-Version: 2.4.0; wp-5.4.2"
 
 #: ../includes/class.yith-wcwl-admin.php:126
 #, fuzzy
@@ -934,7 +934,7 @@ msgstr ""
 
 #: ../plugin-options/wishlist_page-options.php:55
 msgid "Product price"
-msgstr ""
+msgstr "Preço Produto"
 
 #: ../plugin-options/wishlist_page-options.php:64
 msgid "Product stock (show if the product is available or not)"
@@ -1559,7 +1559,7 @@ msgstr ""
 
 #: ../templates/wishlist-view-mobile.php:137
 msgid "Price:"
-msgstr ""
+msgstr "Preço:"
 
 #: ../templates/wishlist-view-mobile.php:164
 msgid "Quantity:"
