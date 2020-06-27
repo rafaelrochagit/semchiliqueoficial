@@ -1,7 +1,9 @@
 /* APARENCIA */
 /* pag de recuperar senha */
+@media (min-width:700px){
 #user-registration{
 	width:50% !important;
+}
 }
 
 /* FIM pag de recuperar senha */
