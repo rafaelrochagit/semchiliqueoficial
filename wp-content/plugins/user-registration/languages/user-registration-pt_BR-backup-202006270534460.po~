@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: User Registration\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-26 20:54+0000\n"
-"PO-Revision-Date: 2020-06-26 22:38+0000\n"
+"PO-Revision-Date: 2020-06-26 22:41+0000\n"
 "Last-Translator: Kleberson Rocha\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -2792,16 +2792,16 @@ msgstr ""
 
 #: templates/myaccount/form-edit-profile.php:68
 msgid "Remove"
-msgstr ""
+msgstr "Remover"
 
 #: includes/functions-ur-core.php:694
 #: includes/admin/settings/class-ur-settings-general.php:261
 msgid "Required"
-msgstr ""
+msgstr "Requerido"
 
 #: includes/functions-ur-template.php:192
 msgid "required"
-msgstr ""
+msgstr "requerido"
 
 #: includes/frontend/class-ur-frontend-form-handler.php:164
 msgid "Required form field not found."
@@ -2974,7 +2974,7 @@ msgstr ""
 #: includes/admin/class-ur-admin-profile.php:139
 #: includes/admin/class-ur-admin-profile.php:151
 msgid "Select"
-msgstr ""
+msgstr "Selecionar"
 
 #: includes/class-ur-form-block.php:49
 msgid "Select &#38; display one of your form."
@@ -3044,7 +3044,7 @@ msgstr ""
 #: includes/class-ur-install.php:638
 #: includes/admin/class-ur-admin-menus.php:590
 msgid "Settings"
-msgstr ""
+msgstr "Configurações"
 
 #: includes/form/class-ur-form-field-country.php:231
 msgid "Seychelles"
@@ -3265,7 +3265,7 @@ msgstr ""
 
 #: includes/admin/class-ur-admin.php:123
 msgid "Thank You!"
-msgstr ""
+msgstr "Obrigado!"
 
 #: includes/class-ur-form-handler.php:515
 msgid "Thanks for confirming your erasure request."
@@ -3487,6 +3487,7 @@ msgstr ""
 #: includes/admin/class-ur-admin-registrations-table-list.php:48
 msgid "Title"
 msgstr ""
+"Título\n"
 
 #: includes/admin/views/html-notice-registration.php:14
 #, php-format
@@ -3498,7 +3499,7 @@ msgstr ""
 
 #: templates/dashboard-widget.php:40
 msgid "Today"
-msgstr ""
+msgstr "Hoje"
 
 #: includes/form/class-ur-form-field-country.php:256
 msgid "Togo"
@@ -3688,7 +3689,7 @@ msgstr ""
 
 #: includes/form/class-ur-form-field-user-pass.php:40
 msgid "User Password"
-msgstr ""
+msgstr "Usar senha"
 
 #: includes/class-ur-form-handler.php:214
 msgid "User profile updated successfully."
@@ -3952,7 +3953,7 @@ msgstr ""
 
 #: includes/admin/views/html-admin-page-status-logs.php:36
 msgid "View"
-msgstr ""
+msgstr "Ver"
 
 #: includes/class-ur-post-types.php:57
 msgid "View registration"
@@ -4094,7 +4095,7 @@ msgstr ""
 
 #: includes/functions-ur-core.php:700 includes/functions-ur-core.php:711
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: includes/class-ur-ajax.php:69
 msgid "You are already logged in."

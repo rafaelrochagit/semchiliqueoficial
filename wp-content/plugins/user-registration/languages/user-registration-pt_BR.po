@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: User Registration\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-26 20:54+0000\n"
-"PO-Revision-Date: 2020-06-26 22:41+0000\n"
+"PO-Revision-Date: 2020-06-27 05:34+0000\n"
 "Last-Translator: Kleberson Rocha\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -2788,7 +2788,7 @@ msgstr ""
 
 #: templates/myaccount/form-login.php:90
 msgid "Remember me"
-msgstr ""
+msgstr "Lembrar-me"
 
 #: templates/myaccount/form-edit-profile.php:68
 msgid "Remove"
