@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: User Registration\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-26 20:54+0000\n"
-"PO-Revision-Date: 2020-06-26 22:28+0000\n"
+"PO-Revision-Date: 2020-06-26 22:38+0000\n"
 "Last-Translator: Kleberson Rocha\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -2053,7 +2053,7 @@ msgstr ""
 #: includes/class-ur-ajax.php:145 includes/class-ur-shortcodes.php:138
 #: includes/functions-ur-account.php:110
 msgid "Logout"
-msgstr ""
+msgstr "Sair"
 
 #: includes/admin/views/html-admin-page-status.php:12
 msgid "Logs"
@@ -2074,11 +2074,11 @@ msgstr ""
 
 #: includes/functions-ur-account.php:53 includes/functions-ur-account.php:56
 msgid "Lost Your Password?"
-msgstr ""
+msgstr "Perdeu sua Senha?"
 
 #: templates/myaccount/form-login.php:103
 msgid "Lost your password?"
-msgstr ""
+msgstr "Perdeu sua senha?"
 
 #: templates/myaccount/form-lost-password.php:29
 msgid ""
@@ -2313,7 +2313,7 @@ msgstr ""
 
 #: includes/functions-ur-core.php:699 includes/functions-ur-core.php:710
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: includes/shortcodes/class-ur-shortcode-my-account.php:194
 msgid "No profile details found."
@@ -2370,7 +2370,7 @@ msgstr ""
 #: includes/form/class-ur-form-field-number.php:42
 #: includes/admin/settings/class-ur-settings-general.php:291
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 #: includes/admin/class-ur-admin-assets.php:305
 msgid "Ok"
@@ -2386,7 +2386,7 @@ msgstr ""
 
 #: includes/functions-ur-core.php:739
 msgid "Options"
-msgstr ""
+msgstr "Opções"
 
 #: includes/class-ur-privacy.php:65
 msgid ""
@@ -2466,20 +2466,28 @@ msgstr "Senha"
 #: includes/frontend/class-ur-frontend-form-handler.php:352
 msgid "Password and confirm password not matched"
 msgstr ""
+"\n"
+"Senha e confirmação de senha não correspondem."
 
 #: includes/class-ur-frontend-scripts.php:354
 #: includes/admin/settings/class-ur-settings-general.php:317
 msgid "Password and confirm password not matched."
 msgstr ""
+"\n"
+"Senha e confirmação de senha não correspondem."
 
 #: includes/class-ur-form-handler.php:297
 msgid "Password changed successfully."
 msgstr ""
+"\n"
+"Senha alterada com sucesso."
 
 #: includes/form/class-ur-form-field-password.php:35
 #: includes/form/class-ur-form-field-password.php:40
 msgid "Password Field"
 msgstr ""
+"\n"
+"Campo Senha"
 
 #: templates/myaccount/lost-password-confirmation.php:24
 msgid "Password reset email has been sent."
@@ -2490,19 +2498,25 @@ msgstr ""
 #: includes/admin/settings/emails/class-ur-settings-reset-password-email.php:59
 msgid "Password Reset Email: {{blog_info}}"
 msgstr ""
+"\n"
+"E-mail de redefinição de senha: {{blog_info}}"
 
 #: includes/shortcodes/class-ur-shortcode-my-account.php:329
 msgid "Password reset is not allowed for this user"
 msgstr ""
+"\n"
+"A redefinição de senha não é permitida para este usuário"
 
 #: includes/frontend/class-ur-frontend-form-handler.php:448
 msgid "Password should not match with Username or Email address."
-msgstr ""
+msgstr "A senha não corresponde ao nome de usuário ou endereço de email."
 
 #: includes/form/settings/class-ur-setting-password.php:31
 #: includes/form/settings/class-ur-setting-password.php:38
 msgid "Password Size"
 msgstr ""
+"\n"
+"Tamanho da senha"
 
 #: includes/class-ur-frontend-scripts.php:364
 msgid "Password strength is not strong enough"
@@ -2515,29 +2529,35 @@ msgstr ""
 #: includes/class-ur-form-handler.php:463
 msgid "Passwords do not match."
 msgstr ""
+"\n"
+"As senhas não coincidem."
 
 #: includes/class-ur-privacy.php:81
 msgid "Payments"
 msgstr ""
+"\n"
+"Pagamentos"
 
 #: includes/class-ur-email-confirmation.php:150
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
 #: includes/admin/class-ur-admin-user-manager.php:361
 msgid "pending"
 msgstr ""
+"\n"
+"pendente"
 
 #. %s: count
 #: includes/admin/class-ur-admin-registrations-table-list.php:245
 #: includes/admin/class-ur-admin-registrations-table-list.php:246
 #, php-format
 msgid "Pending <span class=\"count\">(%s)</span>"
-msgstr ""
+msgstr "Pendente <span class=\"count\">(%s)</span>"
 
 #: includes/admin/class-ur-admin-user-list-manager.php:152
 msgid "pending approval."
-msgstr ""
+msgstr "Aprovação Pendente"
 
 #: includes/form/class-ur-form-field-country.php:207
 msgid "Peru"
@@ -2558,16 +2578,16 @@ msgstr ""
 #: includes/class-ur-emailer.php:268
 #: includes/admin/settings/emails/class-ur-settings-email-confirmation.php:52
 msgid "Please confirm your registration on {{blog_info}}"
-msgstr ""
+msgstr "Confirme seu registro em {{blog_info}}"
 
 #: includes/class-ur-frontend-scripts.php:372
 msgid "Please enter a stronger password."
-msgstr ""
+msgstr "Digite uma senha mais forte."
 
 #: includes/class-ur-frontend-scripts.php:351
 #: includes/admin/settings/class-ur-settings-general.php:277
 msgid "Please enter a valid email address."
-msgstr ""
+msgstr "Por favor insira um endereço de e-mail válido."
 
 #: includes/class-ur-frontend-scripts.php:353
 #: includes/admin/settings/class-ur-settings-general.php:297
@@ -2586,18 +2606,22 @@ msgstr ""
 #: includes/class-ur-form-handler.php:264
 msgid "Please enter your current password."
 msgstr ""
+"\n"
+"Por favor, digite sua senha atual."
 
 #: includes/class-ur-form-handler.php:267
 msgid "Please enter your new password."
-msgstr ""
+msgstr "Por favor digite sua nova senha."
 
 #: includes/class-ur-form-handler.php:459
 msgid "Please enter your password."
-msgstr ""
+msgstr "Por favor digite sua senha."
 
 #: includes/class-ur-form-handler.php:261
 msgid "Please fill out all password fields."
 msgstr ""
+"\n"
+"Por favor, preencha todos os campos de senha."
 
 #: includes/admin/settings/class-ur-settings-general.php:431
 msgid ""
@@ -2610,6 +2634,8 @@ msgstr ""
 #: includes/class-ur-form-handler.php:270
 msgid "Please re-enter your password."
 msgstr ""
+"\n"
+"Por favor, digite sua senha novamente.\n"
 
 #: includes/class-ur-privacy.php:92
 msgid ""
