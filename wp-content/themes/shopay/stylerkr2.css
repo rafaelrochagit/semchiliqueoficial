@@ -574,7 +574,7 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 }
 
 .is-sticky #site-navigation.menuFixo {
-    display:none;
+    display: flex;
 }
 
 .is-sticky .search-bar-section-wrapper {
