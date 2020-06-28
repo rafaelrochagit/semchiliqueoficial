@@ -575,6 +575,7 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 
 .is-sticky #site-navigation.menuFixo {
     display: flex;
+	margin-top: -30px;
 }
 
 .is-sticky .search-bar-section-wrapper {
