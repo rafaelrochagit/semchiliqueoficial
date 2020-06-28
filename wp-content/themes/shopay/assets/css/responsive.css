@@ -18,6 +18,10 @@
     width: 1300px;
     margin: 0 auto;
   }
+	
+	.home .main-category-list-title {
+    	padding: 16px 0;
+	}
 }
 
 @media (max-width:1600px) {
