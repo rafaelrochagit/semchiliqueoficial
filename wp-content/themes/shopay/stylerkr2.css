@@ -1,4 +1,50 @@
 /* APARENCIA */
+/*Produtos recentes */
+@media (min-width:775px){
+.latest-products-wrap{
+	float:none !important;
+	width:100%;
+}
+
+.shopay_latest_product .latest-products-wrap li{
+	width:20% !important;
+}
+
+
+.shopay-image-figure-wrapper{
+	float:none;
+	width:100%;
+}
+
+.shopay-bg-image.cover-image{
+	height:350px !important;
+}
+
+}
+
+/* FIM produtos recentes */
+
+/* pag de recuperar senha */
+@media (min-width:700px){
+#user-registration{
+	width:50% !important;
+}
+}
+
+/* FIM pag de recuperar senha */
+
+/*Pag de login */
+.elementor-987 .elementor-element.elementor-element-76894fa .elementor-heading-title{
+	font-size:95% !important;
+}
+
+.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register{
+	width:45% !important;
+	margin-left:26% !important;
+}
+
+/*FIM da pag de login  */
+
 
 /*Botao de selecionar cor */
 .woocommerce div.product form.cart .variations select{
@@ -13,7 +59,7 @@ div#cfpp div.calculo-de-frete div#calcular-frete {
 }
 /* FIM do botao do frete */
 
-/*cotato */
+/* Pag cotato */
 div.wpforms-container-full .wpforms-form label.wpforms{
 	color:pink !important;
 }
@@ -23,7 +69,15 @@ div.wpforms-container-full .wpforms-form .wpforms-required-label{
 	color:#f76a98 !important;
 }
 
-/*  FIM do contato */
+.elementor-2363 .elementor-element.elementor-element-745c5d9 .elementor-heading-title{
+	font-size:90% !important;
+}
+
+.elementor-2363 .elementor-element.elementor-element-1ca8194 .elementor-heading-title{
+	font-size: 200% !important;
+}
+
+/*  FIM Pag do contato */
 
 
 /* pag do carrinho */
