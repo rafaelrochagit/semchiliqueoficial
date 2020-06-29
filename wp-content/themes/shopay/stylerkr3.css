@@ -1,4 +1,18 @@
 /*KLEBERSON COMEÇOU*/
+
+/*POPUP MAKER*/
+#popmake-2503{
+	display:none !important;
+}
+@media only screen and (max-width: 770px){
+	#popmake-2503{
+		display:block !important;
+	}
+	#popmake-2227{
+		display:none !important;
+	}
+}
+
 /*SLIDER DA HOMEPAGE*/
 #smartslider3-5{
 	display:none;
@@ -12,6 +26,11 @@
 	}
 }
 /* Configuração pagina Promoção para mobile*/
+.wc-block-grid__product .wc-block-grid__product-add-to-cart, .wc-block-grid__product .wc-block-grid__product-image, .wc-block-grid__product .wc-block-grid__product-price, .wc-block-grid__product .wc-block-grid__product-rating, .wc-block-grid__product .wc-block-grid__product-title {
+    margin-top: 10%;
+    margin-right: 10%;
+    margin-left: 10%;
+}
 /* Image */
 .hentry p img{
 	border-top-left-radius:15px;
@@ -43,12 +62,12 @@ div #main .hentry .entry-content .wp-block-product-on-sale .wc-block-grid__produ
 
 /* List Item */
 .wp-block-product-on-sale li{
-	box-shadow:0px 0px 15px 0px #fe80a6 inset;
-	border-width:10px;
-	border-top-left-radius:3em;
-	border-top-right-radius:3em;
-	border-bottom-left-radius:3em;
-	border-bottom-right-radius:3em;
+	box-shadow: 0px 0px 5px 0px #fe80a6 inset;
+    border-width: 15px;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
 }
 
 /* Thumbnail Image */
