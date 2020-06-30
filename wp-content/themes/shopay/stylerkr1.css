@@ -4,6 +4,10 @@
 	width: 100px;	
 }
 
+#masthead .custom-logo {
+    width: 80px;
+}
+
 .woocommerce ul.products li.product .button.yith-wcqv-button {
     display: none;
 }
