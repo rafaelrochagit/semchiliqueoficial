@@ -5,7 +5,7 @@
 }
 
 #masthead .custom-logo {
-    width: 80px;
+    width: 100px;
 }
 
 .woocommerce ul.products li.product .button.yith-wcqv-button {
@@ -139,6 +139,10 @@
 	padding: 0px 0px 0px 20px;
 }
 
+.mt-woo-product-search-wrapper {
+	padding-right: 10px;
+}
+
 @media(max-width: 1600px) {
 	h2.main-category-list-title.cover-font {
 		padding: 17px 0;
@@ -147,6 +151,10 @@
 
 
 @media(max-width: 768px) {
+	#masthead .custom-logo {
+		width: 80px;
+	}
+	
 	.header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
 		width: 10%;
 		display: inline-block;
