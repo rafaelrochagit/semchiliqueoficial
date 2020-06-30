@@ -33,6 +33,10 @@
 	display: flex;
 }
 
+.mt-woo-product-search-wrapper {
+	padding-left: 10px;
+}
+
 .header-search-form-wrap {
     width: 60%;
     /* float: left; */
@@ -139,9 +143,6 @@
 	padding: 0px 0px 0px 20px;
 }
 
-.mt-woo-product-search-wrapper {
-	padding-right: 10px;
-}
 
 @media(max-width: 1600px) {
 	h2.main-category-list-title.cover-font {
