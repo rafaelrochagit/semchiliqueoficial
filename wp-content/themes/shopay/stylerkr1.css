@@ -12,6 +12,10 @@
 	display: none;
 }
 
+#woocommerce_product_categories-1 {
+	display: none;
+}
+
 .header-woo-links-wrap {
     float: right;
     padding: 22px 0px 0px 40px;
