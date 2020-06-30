@@ -804,6 +804,66 @@ var PUM;
 }(jQuery, document));
 
 /**
+ * Initialize Popup Maker.
+ * Version 1.8
+ */
+(function ($, document, undefined) {
+    "use strict";
+    // Defines the current version.
+    $.fn.popmake.version = 1.8;
+
+    // Stores the last open popup.
+    $.fn.popmake.last_open_popup = null;
+
+    window.PUM.init = function () {
+        console.log('init popups ✔');
+        $('.pum').popmake();
+        $(document).trigger('pumInitialized');
+
+        /**
+         * Process php based form submissions when the form_success args are passed.
+         */
+        if (typeof pum_vars.form_success === 'object') {
+            pum_vars.form_success = $.extend({
+                popup_id: null,
+                settings: {}
+            });
+
+            PUM.forms.success(pum_vars.form_success.popup_id, pum_vars.form_success.settings);
+        }
+
+        // Initiate integrations.
+        PUM.integrations.init();
+    };
+
+    $(document).ready(function () {
+        // TODO can this be moved outside doc.ready since we are awaiting our own promises first?
+        var initHandler = PUM.hooks.applyFilters('pum.initHandler', PUM.init);
+        var initPromises = PUM.hooks.applyFilters('pum.initPromises', []);
+
+        Promise.all(initPromises).then(initHandler);
+    });
+
+    /**
+     * Add hidden field to all popup forms.
+     */
+    $('.pum').on('pumInit', function () {
+        var $popup = PUM.getPopup(this),
+            popupID = PUM.getSetting($popup, 'id'),
+            $forms = $popup.find('form');
+
+        /**
+         * If there are forms in the popup add a hidden field for use in retriggering the popup on reload.
+         */
+        if ($forms.length) {
+            $forms.append('<input type="hidden" name="pum_form_popup_id" value="' + popupID + '" />');
+        }
+    });
+
+
+}(jQuery));
+
+/**
  * Defines the core $.popmake binds.
  * Version 1.4
  */
@@ -961,12 +1021,12 @@ var PUM_Analytics;
             var beacon = new Image(),
                 url = rest_enabled ? pum_vars.restapi : pum_vars.ajaxurl,
                 opts = {
-                    route: '/analytics/',
-                    data: $.extend({
+                    route: pum.hooks.applyFilters( 'pum.analyticsBeaconRoute', '/analytics/' ),
+                    data: pum.hooks.applyFilters( 'pum.AnalyticsBeaconData', $.extend( true, {
                         event: 'open',
                         pid: null,
                         _cache: (+(new Date()))
-                    }, data),
+                    }, data ) ),
                     callback: typeof callback === 'function' ? callback : function () {
                     }
                 };
@@ -3796,63 +3856,3 @@ var pum_debug_mode = false,
 
     return FormSerializer;
 }));
-/**
- * Initialize Popup Maker.
- * Version 1.8
- */
-(function ($, document, undefined) {
-    "use strict";
-    // Defines the current version.
-    $.fn.popmake.version = 1.8;
-
-    // Stores the last open popup.
-    $.fn.popmake.last_open_popup = null;
-
-    window.PUM.init = function () {
-        console.log('init popups ✔');
-        $('.pum').popmake();
-        $(document).trigger('pumInitialized');
-
-        /**
-         * Process php based form submissions when the form_success args are passed.
-         */
-        if (typeof pum_vars.form_success === 'object') {
-            pum_vars.form_success = $.extend({
-                popup_id: null,
-                settings: {}
-            });
-
-            PUM.forms.success(pum_vars.form_success.popup_id, pum_vars.form_success.settings);
-        }
-
-        // Initiate integrations.
-        PUM.integrations.init();
-    };
-
-    $(document).ready(function () {
-        // TODO can this be moved outside doc.ready since we are awaiting our own promises first?
-        var initHandler = PUM.hooks.applyFilters('pum.initHandler', PUM.init);
-        var initPromises = PUM.hooks.applyFilters('pum.initPromises', []);
-
-        Promise.all(initPromises).then(initHandler);
-    });
-
-
-    /**
-     * Add hidden field to all popup forms.
-     */
-    $('.pum').on('pumInit', function () {
-        var $popup = PUM.getPopup(this),
-            popupID = PUM.getSetting($popup, 'id'),
-            $forms = $popup.find('form');
-
-        /**
-         * If there are forms in the popup add a hidden field for use in retriggering the popup on reload.
-         */
-        if ($forms.length) {
-            $forms.append('<input type="hidden" name="pum_form_popup_id" value="' + popupID + '" />');
-        }
-    });
-
-
-}(jQuery));
