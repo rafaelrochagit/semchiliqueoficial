@@ -181,7 +181,7 @@
 	}
 }
 
-@media (max-width: 425px) {
+@media (max-width: 480px) {
 	#masthead .custom-logo {
 		width: 55px;
 	}
