@@ -78,6 +78,10 @@
 	display: none;
 }
 
+.sm_search_form {
+	display: flex;
+}
+
 .header-search-form-wrap .search-form, .search-wrap {
     display: block;
 }
