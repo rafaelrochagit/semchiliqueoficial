@@ -159,5 +159,9 @@
 	.is-sticky #masthead .custom-logo {
 		width: 60px;
 	}
+	
+	.site-header-cart {
+		margin-top: -8px !important;
+	}
 }
 
