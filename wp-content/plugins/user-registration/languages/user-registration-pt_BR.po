@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: User Registration\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-26 20:54+0000\n"
-"PO-Revision-Date: 2020-06-27 05:34+0000\n"
+"PO-Revision-Date: 2020-06-29 19:08+0000\n"
 "Last-Translator: Kleberson Rocha\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -1140,6 +1140,9 @@ msgid ""
 "accounts pages. They should be unique and can be left blank to disable the "
 "endpoint."
 msgstr ""
+"Os pontos de extremidade são anexados aos URLs da sua página para lidar com "
+"ações específicas nas páginas das contas. Eles devem ser exclusivos e podem "
+"ser deixados em branco para desativar o terminal.\n"
 
 #: includes/admin/settings/class-ur-settings-general.php:154
 msgid "Endpoints: "
@@ -1618,6 +1621,15 @@ msgid ""
 "\n"
 "Thank You!"
 msgstr ""
+"\n"
+"Olá {{nomedeusuário}}, <br/>\n"
+"\n"
+"Você se registrou em <a href=\"{{home_url}}\"> {{blog_info}} </a>. <br/>\n"
+"\n"
+"Clique neste link de verificação {{home_url}} / {{ur_login}}? Ur_token = "
+"{{email_token}} para confirmar o registro. <br/>\n"
+"\n"
+"Obrigado!"
 
 #: includes/admin/settings/emails/class-ur-settings-awaiting-admin-approval-email.php:92
 msgid ""
@@ -1630,6 +1642,14 @@ msgid ""
 "\n"
 "Thank You!"
 msgstr ""
+"Olá {{nomedeusuário}}, <br/>\n"
+"\n"
+"Você se registrou em <a href=\"{{home_url}}\"> {{blog_info}} </a>. <br/>\n"
+"\n"
+"Aguarde até que o administrador do site aprove seu registro. Você será "
+"notificado após a aprovação. <br/>\n"
+"\n"
+"Obrigado!"
 
 #: includes/admin/settings/emails/class-ur-settings-registration-denied-email.php:92
 msgid ""
@@ -1642,6 +1662,18 @@ msgid ""
 "\n"
 "Thank You!"
 msgstr ""
+"Olá {{nomedeusuário}}, <br/>\n"
+"\n"
+"Seu registro no <a href=\"{{home_url}}\"> {{blog_info}} </a> foi aprovado. "
+"<br/>\n"
+"\n"
+"Olá {{nomedeusuário}}, <br/>\n"
+"\n"
+"Você se registrou em <a href=\"{{home_url}}\"> {{blog_info}} </a>. <br/>\n"
+"\n"
+"Infelizmente seu registro foi negado. Desculpe pela inconveniência. <br/>\n"
+"\n"
+"Obrigado!"
 
 #: includes/admin/settings/emails/class-ur-settings-successfully-registered-email.php:91
 msgid ""
@@ -1656,6 +1688,16 @@ msgid ""
 "\n"
 "Thank You!"
 msgstr ""
+"Olá {{nomedeusuário}}, <br/>\n"
+"\n"
+"Você concluiu com êxito o registro do usuário em <a href=\"{{home_url}}\"> "
+"{{blog_info}} </a>. <br/>\n"
+"\n"
+"Visite a página '<b> Minha conta </b>' para editar os detalhes da sua conta "
+"e criar seu perfil de usuário em <a href=\"{{home_url}}\"> {{blog_info}} </a>"
+". <br/>\n"
+"\n"
+"Obrigado!"
 
 #: includes/admin/settings/emails/class-ur-settings-registration-approved-email.php:92
 msgid ""
@@ -1670,6 +1712,16 @@ msgid ""
 "\n"
 "Thank You!"
 msgstr ""
+"Olá {{nomedeusuário}}, <br/>\n"
+"\n"
+"Seu registro no <a href=\"{{home_url}}\"> {{blog_info}} </a> foi aprovado. "
+"<br/>\n"
+"\n"
+"Visite a página '<b> Minha conta </b>' para editar os detalhes da sua conta "
+"e criar seu perfil de usuário em <a href=\"{{home_url}}\"> {{blog_info}} </a>"
+". <br/>\n"
+"\n"
+"Obrigado!"
 
 #: includes/admin/settings/emails/class-ur-settings-registration-pending-email.php:95
 msgid ""
@@ -1684,6 +1736,17 @@ msgid ""
 "\n"
 "Thank You!"
 msgstr ""
+"\n"
+"Olá {{nomedeusuário}}, <br/>\n"
+"\n"
+"Seu registro em <a href=\"{{home_url}}\"> {{blog_info}} </a> foi alterado "
+"para pendente. <br/>\n"
+"\n"
+"Desculpe pela inconveniência. <br/>\n"
+"\n"
+"Você será notificado após a aprovação. <br/>\n"
+"\n"
+"Obrigado!"
 
 #: includes/functions-ur-core.php:705
 msgid "Hide Label"
@@ -1702,6 +1765,8 @@ msgid ""
 "Hint: To make password stronger, use upper and lower case letters, numbers, "
 "and symbols like ! \" ? $ % ^ & )."
 msgstr ""
+"Dica: Para tornar a senha mais forte, use letras maiúsculas e minúsculas, "
+"números e símbolos como ( ! ? $ % ^ & )."
 
 #: includes/form/class-ur-form-field-country.php:133
 msgid "Honduras"
@@ -1758,6 +1823,9 @@ msgid ""
 "number, which will be used to populate the form fields for future "
 "submissions."
 msgstr ""
+"Se você criar uma conta, armazenaremos seu nome, endereço, email e número de "
+"telefone, que serão usados ​​para preencher os campos do formulário para "
+"envios futuros.\n"
 
 #. 1: WooCommerce 2:: five stars
 #: includes/admin/class-ur-admin.php:121
@@ -1871,6 +1939,7 @@ msgstr ""
 #: includes/class-ur-form-handler.php:498
 msgid "Invalid Key"
 msgstr ""
+"Chave inválida\n"
 
 #: includes/form/class-ur-form-field-user-login.php:68
 msgid "Invalid username ! "
@@ -2168,7 +2237,7 @@ msgstr ""
 #: includes/class-ur-frontend-scripts.php:376
 #: includes/functions-ur-core.php:910
 msgid "Medium"
-msgstr ""
+msgstr "Média"
 
 #: includes/class-ur-privacy.php:70
 msgid ""
@@ -2454,6 +2523,7 @@ msgstr ""
 #: includes/functions-ur-core.php:523
 msgid "Passowrd can not be changed."
 msgstr ""
+"A senha não pode ser alterada.\n"
 
 #: templates/myaccount/form-login.php:58
 msgid "Password"
@@ -2521,10 +2591,12 @@ msgstr ""
 #: includes/class-ur-frontend-scripts.php:364
 msgid "Password strength is not strong enough"
 msgstr ""
+"A força da senha não é forte o suficiente\n"
 
 #: includes/class-ur-frontend-scripts.php:378
 msgid "Password with confirm password not matched."
 msgstr ""
+"Senha com senha de confirmação não correspondida.\n"
 
 #: includes/class-ur-form-handler.php:463
 msgid "Passwords do not match."
@@ -2593,10 +2665,12 @@ msgstr "Por favor insira um endereço de e-mail válido."
 #: includes/admin/settings/class-ur-settings-general.php:297
 msgid "Please enter a valid number."
 msgstr ""
+"por favor insira um número válido.\n"
 
 #: includes/class-ur-frontend-scripts.php:355
 msgid "Please enter a valid phone number."
 msgstr ""
+"Por favor insira um número de telefone válido.\n"
 
 #: includes/class-ur-frontend-scripts.php:352
 #: includes/admin/settings/class-ur-settings-general.php:287
@@ -3020,6 +3094,7 @@ msgstr ""
 #: includes/class-ur-privacy.php:58
 msgid "Send you information about your account and order"
 msgstr ""
+"Envie informações sobre sua conta e faça o pedido\n"
 
 #: includes/class-ur-privacy.php:64
 msgid "Send you marketing messages, if you choose to receive them"
@@ -3040,6 +3115,7 @@ msgstr ""
 #: includes/class-ur-privacy.php:61
 msgid "Set up your account for our site"
 msgstr ""
+"Configure sua conta para o nosso site\n"
 
 #: includes/class-ur-install.php:638
 #: includes/admin/class-ur-admin-menus.php:590
@@ -3126,25 +3202,43 @@ msgid ""
 "\n"
 "Thank You!"
 msgstr ""
+"\n"
+"Alguém solicitou uma redefinição de senha para a seguinte conta: <br/>\n"
+"\n"
+"Nome do site: {{blog_info}} <br/>\n"
+"Nome de usuário: {{nome de usuário}} <br/>\n"
+"\n"
+"Se isso foi um erro, ignore este e-mail e nada acontecerá. <br/>\n"
+"\n"
+"Para redefinir sua senha, visite o seguinte endereço: <br/>\n"
+"<a href=\"{{home_url}}/{{ur_login}}?action=rp&key={{key}}&login={{username}} "
+"\"rel=\"noreferrer noopener\" target=\"_blank\"> Clique aqui </ a> <br/>\n"
+"\n"
+"Obrigado!"
 
 #: includes/class-ur-form-handler.php:98
 msgid ""
 "Something went wrong while uploading, please contact your site administrator."
 msgstr ""
+"Ocorreu um erro ao fazer o upload. Entre em contato com o administrador do "
+"site.\n"
 
 #: includes/frontend/class-ur-frontend-form-handler.php:114
 msgid "Something went wrong! please try again"
 msgstr ""
+"Algo deu errado! Por favor, tente novamente\n"
 
 #: includes/class-ur-emailer.php:376
 #: includes/admin/settings/emails/class-ur-settings-registration-pending-email.php:61
 msgid "Sorry! Registration changed to pending on {{blog_info}}"
 msgstr ""
+"Desculpe! Registro alterado para pendente em {{blog_info}}\n"
 
 #: includes/class-ur-emailer.php:288 includes/class-ur-emailer.php:388
 #: includes/admin/settings/emails/class-ur-settings-registration-denied-email.php:60
 msgid "Sorry! Registration denied on {{blog_info}}"
 msgstr ""
+"Desculpe! Registro negado em {{blog_info}}\n"
 
 #: includes/admin/class-ur-admin-user-list-manager.php:190
 msgid "Source"
@@ -3186,7 +3280,7 @@ msgstr ""
 #: includes/class-ur-frontend-scripts.php:377
 #: includes/functions-ur-core.php:911
 msgid "Strong"
-msgstr ""
+msgstr "Forte"
 
 #: includes/admin/settings/class-ur-settings-general.php:212
 msgid "Success Messages"
@@ -3258,10 +3352,12 @@ msgstr ""
 #: includes/admin/settings/emails/class-ur-settings-awaiting-admin-approval-email.php:60
 msgid "Thank you for registration on {{blog_info}}"
 msgstr ""
+"Obrigado por se registrar em {{blog_info}}\n"
 
 #: includes/admin/class-ur-admin.php:134
 msgid "Thank you for using User Registration."
 msgstr ""
+"Obrigado por usar o Registro do Usuário.\n"
 
 #: includes/admin/class-ur-admin.php:123
 msgid "Thank You!"
@@ -3269,11 +3365,12 @@ msgstr "Obrigado!"
 
 #: includes/class-ur-form-handler.php:515
 msgid "Thanks for confirming your erasure request."
-msgstr ""
+msgstr "Thanks for confirming your erasure request."
 
 #: includes/class-ur-form-handler.php:513
 msgid "Thanks for confirming your export request."
 msgstr ""
+"Obrigado por confirmar sua solicitação de exportação.\n"
 
 #: includes/admin/class-ur-admin-user-list-manager.php:85
 msgctxt "The action on users list page"
@@ -3321,6 +3418,8 @@ msgstr ""
 #: includes/shortcodes/class-ur-shortcode-my-account.php:342
 msgid "The email could not be sent. Contact your site administrator. "
 msgstr ""
+"Não foi possível enviar o email. Entre em contato com o administrador do "
+"site.\n"
 
 #: includes/admin/settings/emails/class-ur-settings-awaiting-admin-approval-email.php:57
 #: includes/admin/settings/emails/class-ur-settings-successfully-registered-email.php:57
@@ -3359,6 +3458,8 @@ msgid ""
 "The provided license is invalid. Please <a href=\"%s\" target=\"_blank\">"
 "visit your account page</a> and verify it."
 msgstr ""
+"A licença fornecida é inválida. <a href=\"%s\" target=\"_blank\"> visite a "
+"página da sua conta </a> e verifique-a.\n"
 
 #: includes/class-ur-plugin-updater.php:303
 #, php-format
@@ -3367,6 +3468,9 @@ msgid ""
 "target=\"_blank\">visit your account page</a> to manage your license key "
 "URLs."
 msgstr ""
+"A licença fornecida não está ativa para este URL. <a href=\"%s\" "
+"target=\"_blank\"> visite a página da sua conta </a> para gerenciar os URLs "
+"da chave de licença.\n"
 
 #: includes/class-ur-plugin-updater.php:320
 #, php-format
@@ -3381,6 +3485,8 @@ msgid ""
 "The provided license key expired on %1$s. Please <a href=\"%2$s\" "
 "target=\"_blank\">renew your license key</a>."
 msgstr ""
+"A chave de licença fornecida expirou em% 1 $ s. <a href=\"%2$s\" "
+"target=\"_blank\"> renove sua chave de licença </a>.\n"
 
 #: includes/class-ur-plugin-updater.php:294
 #, php-format
@@ -3479,6 +3585,13 @@ msgid ""
 "consulting with a lawyer when deciding what information to disclose on your "
 "privacy policy."
 msgstr ""
+"Esta política de exemplo inclui os conceitos básicos sobre quais dados "
+"pessoais você pode estar coletando, armazenando e compartilhando, além de "
+"quem pode ter acesso a esses dados. Dependendo de quais configurações estão "
+"ativadas e de quais plug-ins adicionais são usados, as informações "
+"específicas compartilhadas pelo seu formulário variam. Recomendamos "
+"consultar um advogado ao decidir quais informações divulgar em sua política "
+"de privacidade.\n"
 
 #: includes/form/class-ur-form-field-country.php:255
 msgid "Timor-Leste"
@@ -3527,6 +3640,9 @@ msgid ""
 "provide subscription packs, and keep track of your payment details for "
 "subscription packs!"
 msgstr ""
+"Detalhes da transação: solicitaremos que você digite isso para que possamos, "
+"por exemplo, fornecer pacotes de assinatura e acompanhar seus detalhes de "
+"pagamento para pacotes de assinatura!\n"
 
 #: includes/admin/class-ur-admin-registrations-table-list.php:114
 #: includes/admin/class-ur-admin-assets.php:285
@@ -3605,6 +3721,7 @@ msgstr ""
 #: templates/myaccount/form-edit-profile.php:46
 msgid "Upload your new profile image."
 msgstr ""
+"Carregue sua nova imagem de perfil.\n"
 
 #: includes/class-ur-logger.php:137
 #, php-format
@@ -3709,11 +3826,14 @@ msgid ""
 "User registered. Verify your email by clicking on the link sent to your "
 "email."
 msgstr ""
+"Usuário registrado. Verifique seu email clicando no link enviado ao seu "
+"email.\n"
 
 #: includes/class-ur-frontend-scripts.php:359
 #: includes/admin/settings/class-ur-settings-general.php:245
 msgid "User registered. Wait until admin approves your registration."
 msgstr ""
+"Usuário registrado. Aguarde até o administrador aprovar seu registro.\n"
 
 #. Name of the plugin
 #: includes/class-ur-privacy.php:31 includes/class-ur-form-block.php:48
@@ -3945,7 +4065,7 @@ msgstr ""
 #: includes/class-ur-frontend-scripts.php:374
 #: includes/functions-ur-core.php:908
 msgid "Very Weak"
-msgstr ""
+msgstr "Muito fraca"
 
 #: includes/form/class-ur-form-field-country.php:277
 msgid "Vietnam"
@@ -3985,6 +4105,10 @@ msgid ""
 "data will be passed to PayPal, including information required to process or "
 "support the payment, such as the purchase total and billing information."
 msgstr ""
+"Aceitamos pagamentos através do PayPal. Ao processar pagamentos, alguns de "
+"seus dados serão repassados ​​ao PayPal, incluindo informações necessárias "
+"para processar ou dar suporte ao pagamento, como o total da compra e as "
+"informações de cobrança.\n"
 
 #: includes/class-ur-privacy.php:48
 msgid ""
@@ -4000,6 +4124,11 @@ msgid ""
 "submission information for XXX years for geolocating and marketting purposes."
 " This includes your name, address, email, phone number."
 msgstr ""
+"Geralmente, armazenamos informações sobre você pelo tempo que precisarmos "
+"para os fins para os quais coletamos e usamos, e não somos legalmente "
+"obrigados a continuar mantendo-os. Por exemplo, armazenaremos informações de "
+"envio de formulários por XXX anos para fins de geolocalização e "
+"comercialização. Isso inclui seu nome, endereço, email, número de telefone.\n"
 
 #: includes/admin/views/html-notice-update.php:12
 msgid "We need to update your site's database to the latest version."
@@ -4023,7 +4152,7 @@ msgstr ""
 #: includes/class-ur-frontend-scripts.php:375
 #: includes/functions-ur-core.php:909
 msgid "Weak"
-msgstr ""
+msgstr "Fraca"
 
 #: includes/form/class-ur-form-field-user-url.php:35
 #: includes/form/class-ur-form-field-user-url.php:40
@@ -4114,6 +4243,7 @@ msgstr ""
 #: templates/myaccount/form-edit-profile.php:75
 msgid "You can change your profile picture on"
 msgstr ""
+"Você pode alterar sua foto do perfil em\n"
 
 #: includes/admin/updater/class-ur-addon-updater.php:426
 msgid "You do not have permission to install plugin updates"
@@ -4130,6 +4260,7 @@ msgstr ""
 #: includes/class-ur-user-approval.php:192
 msgid "Your account has been denied."
 msgstr ""
+"Sua conta foi negada.\n"
 
 #: includes/class-ur-user-approval.php:308
 msgid ""
@@ -4141,6 +4272,7 @@ msgstr ""
 #: includes/class-ur-user-approval.php:187
 msgid "Your account is still pending approval."
 msgstr ""
+"Sua conta ainda está com aprovação pendente.\n"
 
 #: includes/class-ur-user-approval.php:207
 #: includes/class-ur-email-confirmation.php:352
@@ -4149,6 +4281,8 @@ msgid ""
 "Your account is still pending approval. Verify your email by clicking on the "
 "link sent to your email. %s"
 msgstr ""
+"Sua conta ainda está com aprovação pendente. Verifique seu email clicando no "
+"link enviado ao seu email. % s\n"
 
 #: includes/class-ur-user-approval.php:221
 #, php-format
@@ -4156,10 +4290,13 @@ msgid ""
 "Your account is still pending payment. Process the payment by clicking on "
 "this: %s"
 msgstr ""
+"Sua conta ainda está com pagamento pendente. Processe o pagamento clicando "
+"aqui:% s\n"
 
 #: includes/class-ur-form-handler.php:276
 msgid "Your current password is incorrect."
 msgstr ""
+"Sua senha atual está incorreta.\n"
 
 #: includes/admin/views/html-notice-updating.php:12
 msgid "Your database is being updated in the background."
@@ -4174,14 +4311,17 @@ msgstr ""
 #, php-format
 msgid "Your licence for <strong>%s</strong> has been deactivated."
 msgstr ""
+"Sua licença para <strong>% s </strong> foi desativada.\n"
 
 #: includes/shortcodes/class-ur-shortcode-my-account.php:59
 msgid "Your password has been reset successfully."
 msgstr ""
+"Sua senha foi redefinida com sucesso.\n"
 
 #: includes/admin/class-ur-admin-settings.php:79
 msgid "Your settings have been saved."
 msgstr ""
+"Suas configurações foram salvas.\n"
 
 #: includes/form/class-ur-form-field-country.php:282
 msgid "Zambia"
