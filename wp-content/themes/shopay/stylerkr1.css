@@ -172,3 +172,12 @@
 	}
 }
 
+@media (max-width: 425px)
+	.header-woo-links-wrap {
+		float: right;
+		padding: 0px 0px 0px 0px;
+		font-size: 11pt;
+		width: 20%;
+	}
+}
+
