@@ -1,4 +1,78 @@
 /* APARENCIA */
+/*Página de compra */
+
+
+@media (min-width:575px){
+.woocommerce ul.products.columns-3 li.product, .woocommerce-page ul.products.columns-3 li.product{
+	width:30% !important; 
+	float:none !important;	
+}
+	
+	.woocommerce .yith-wcwl-add-button a.add_to_wishlist:after, .product-btns-wrap a.added_to_cart:after, .product-btns-wrap a.wishlist-button:after, .product-btns-wrap a.add_to_cart_button::after{
+		margin-left:5% !important;
+	}
+	
+	.woocommerce ul.products li.product .button{
+		width:100%!important;
+	}
+
+		.product-btns-wrap a.wishlist-button{
+		width:100% !important;
+	}
+	
+	
+}
+
+@media (min-width:721px){
+.woocommerce ul.products.columns-3 li.product, .woocommerce-page ul.products.columns-3 li.product{
+	width:30% !important;
+	margin-left:13%;
+}
+
+	
+}
+
+@media (min-width:769px){
+	.woocommerce ul.products.columns-3 li.product, .woocommerce-page ul.products.columns-3 li.product{
+	width:23% !important;
+	margin-left:7%;
+	float:left !important;
+}
+	ul.products li.product .woocommerce-loop-product__title {
+    font-size: 80% !important;
+}
+	.product-btns-wrap a.wishlist-button{
+		font-size:66% !important;
+	}
+	
+}
+
+@media (min-width:991px){
+	.woocommerce .yith-wcwl-add-button a.add_to_wishlist:after, .product-btns-wrap a.added_to_cart:after, .product-btns-wrap a.wishlist-button:after, .product-btns-wrap a.add_to_cart_button::after{
+	margin-left:-3% !important;	
+	}
+	
+}
+
+@media (min-width:1200px){
+	.product-btns-wrap a.wishlist-button{
+		width:100% !important;
+	}
+	
+	.product-btns-wrap a.button{
+		width: 100% !important;
+	}
+	
+}
+
+
+
+
+
+/*FIM da página de compra */
+
+
+
 /* pag de recuperar senha */
 @media (min-width:700px){
 #user-registration{
