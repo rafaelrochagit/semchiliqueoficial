@@ -154,3 +154,14 @@ Stack trace:
 [25-Jun-2020 20:07:53 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/gitium/functions.php on line 241
 [25-Jun-2020 20:07:54 UTC] PHP Warning:  flock() expects parameter 1 to be resource, null given in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/gitium/functions.php on line 240
 [25-Jun-2020 20:07:54 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, null given in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/gitium/functions.php on line 241
+[30-Jun-2020 21:12:26 UTC] PHP Fatal error:  Uncaught Error: Class 'Mega_Menu_Nav_Menus' not found in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/megamenu/megamenu.php:105
+Stack trace:
+#0 /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/megamenu/megamenu.php(54): Mega_Menu->__construct()
+#1 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(287): Mega_Menu::init('')
+#2 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#3 /home2/qinteres/semchilique.opasaquei.com.br/wp-includes/plugin.php(478): WP_Hook->do_action(Array)
+#4 /home2/qinteres/semchilique.opasaquei.com.br/wp-settings.php(403): do_action('plugins_loaded')
+#5 /home2/qinteres/semchilique.opasaquei.com.br/wp-config.php(96): require_once('/home2/qinteres...')
+#6 /home2/qinteres/semchilique.opasaquei.com.br/wp-load.php(37): require_once('/home2/qinteres...')
+#7 /home2/qinteres/semchilique.opasaquei.com.br/wp-admin/admin-ajax.php(22): require_once('/home2/qinteres...')
+#8 {ma in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/megamenu/megamenu.php on line 105
