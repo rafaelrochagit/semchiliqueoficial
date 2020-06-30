@@ -160,8 +160,11 @@
 		width: 60px;
 	}
 	
-	.site-header-cart {
-		margin-top: -8px !important;
+	.header-woo-links-wrap {
+		float: right;
+		padding: 12px 0px 0px 0px;
+		font-size: 11pt;
+		width: 20%;
 	}
 }
 
