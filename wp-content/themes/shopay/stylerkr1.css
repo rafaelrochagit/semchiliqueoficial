@@ -1,0 +1,121 @@
+/* PERSONALIZADO SEM CHILIQUE */
+
+.custom-logo-link img {
+	width: 100px;	
+}
+
+.header-woo-links-wrap {
+    float: right;
+    padding: 22px 0px 0px 40px;
+    font-size: 11pt;
+	width: 20%;
+}
+
+
+#search-bar-section .mt-container {
+	width: 100%;
+	display: flex;
+}
+
+.header-search-form-wrap {
+    width: 60%;
+    /* float: left; */
+    text-align: center;
+    margin: 0 auto;
+}
+
+.header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
+    width: 10%;
+    display: inline-block;
+    background: #fff;
+    height: 30px;
+    width: 10px;
+    border: 0px;
+    color: black;
+    float: right;
+    left: -35px;
+    top: 3px;
+}
+
+.header-search-form-wrap label .search-field, .sm_search_form .search-field {
+    width: 90%;
+    border: 0px;
+    border-radius: 6px;
+}
+
+.search-form button {
+    color: #333 !important;
+}
+
+.search-form button {
+    padding: 9px 15px;
+}
+
+.home.page .cover-font, .blog .cover-font a {
+    vertical-align: bottom;
+}
+
+.main-category-list-title {
+    padding: 5px 0;
+}
+
+.shopay-cat-menu.deactivate-menu {
+	border: 0px;
+	overflow: overlay;
+    height: 600%;
+}
+
+.product-categories .children .children {
+    margin-left: 0;
+    left: 248px;
+}
+
+#searchsubmit .fa-search {
+	color: #000;
+}
+
+.search-wrap .sm_search_wrap {
+	display: none;
+}
+
+.header-search-form-wrap .search-form, .search-wrap {
+    display: block;
+}
+
+.header-search-form-wrap .search-form label {
+	width: 100%;
+}
+
+.search-bar-section-wrapper {
+    margin-top: 15px;
+}
+
+.widget_product_categories a:before {
+    color: #555;
+    content: "";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    left: -23px;
+    position: absolute;
+    top: 1px;
+    -webkit-transition: color 0.3s ease;
+    -moz-transition: color 0.3s ease;
+    -ms-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.widget_nav_menu li a:before {
+    content: "";
+    font-size: 8px;
+}
+
+#site-navigation #menu-principal-semchilique ul li .sub-menu li a {
+    font-size: 12px !important;
+}
+
+.footer-widget .wpforms-container-full {
+	padding: 0px 0px 0px 20px;
+}
+
