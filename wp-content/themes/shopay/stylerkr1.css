@@ -141,3 +141,19 @@
 	}
 }
 
+
+@media(max-width: 768px) {
+	.header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
+		width: 10%;
+		display: inline-block;
+		background: #fff;
+		height: 20px;
+		width: 10px;
+		border: 0px;
+		color: black;
+		float: right;
+		left: -20px;
+		top: 5px;
+	}
+}
+
