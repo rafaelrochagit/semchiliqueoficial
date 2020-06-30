@@ -135,3 +135,9 @@
 	padding: 0px 0px 0px 20px;
 }
 
+@media(max-width: 1600px) {
+	h2.main-category-list-title.cover-font {
+		padding: 17px 0;
+	}
+}
+
