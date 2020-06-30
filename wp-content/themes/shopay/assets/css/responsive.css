@@ -61,6 +61,10 @@
 	.main-category-list-title {
 		padding: 7px 0;
 	}
+	
+	.home .main-category-list-title {
+		padding: 17px 0;
+	}
 }
 
 @media (max-width: 1400px) {
