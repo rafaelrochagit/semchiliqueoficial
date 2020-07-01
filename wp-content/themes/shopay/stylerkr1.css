@@ -165,6 +165,11 @@
 		width: 10%;
 	}
 	
+	.shopay-cat-menu.deactivate-menu {
+    	width: 285px;
+		z-index: 100;
+	}
+	
 	#masthead .custom-logo {
 		width: 80px;
 	}
