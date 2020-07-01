@@ -199,6 +199,10 @@
     	width: 0% !important;
 	}
 	
+	h2.main-category-list-title.cover-font {
+		padding: 15px 10px;
+	}
+	
 	.header-woo-links-wrap {
 		float: right;
 		padding: 0px 0px 0px 0px;
