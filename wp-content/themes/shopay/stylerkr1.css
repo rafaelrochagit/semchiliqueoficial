@@ -236,3 +236,9 @@
 	}
 }
 
+
+@media (max-width: 360px) {
+	.home h2.main-category-list-title.cover-font {
+    	padding: 17px 10px;
+	}
+}
