@@ -191,6 +191,10 @@
 		width: 55px;
 	}
 	
+	.shopay-cat-menu-wrapper {
+		display: contents !important;
+	}
+	
 	.header-woo-links-wrap {
 		float: right;
 		padding: 0px 0px 0px 0px;
