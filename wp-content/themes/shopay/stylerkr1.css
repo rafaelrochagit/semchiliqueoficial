@@ -145,6 +145,10 @@
 
 
 @media(max-width: 1600px) {
+	.home h2.main-category-list-title.cover-font {
+		padding: 6px 0;
+	}
+	
 	h2.main-category-list-title.cover-font {
 		padding: 6px 0;
 	}
