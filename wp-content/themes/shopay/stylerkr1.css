@@ -157,6 +157,10 @@
     	display: block !important;
 	}
 	
+	h2.main-category-list-title.cover-font {
+		padding: 10px 0px;
+	}
+	
 	#masthead .custom-logo {
 		width: 80px;
 	}
