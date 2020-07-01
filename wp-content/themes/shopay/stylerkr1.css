@@ -241,4 +241,12 @@
 	.home h2.main-category-list-title.cover-font {
     	padding: 17px 10px;
 	}
+	
+	.shopay-cat-menu.deactivate-menu {
+		width: 222px;
+	}
+	
+	#site-navigation #menu-principal-semchilique ul li .sub-menu li a, #site-navigation #menu-principal-semchilique ul li .children li a {
+		line-height: 1.5;
+	}
 }
