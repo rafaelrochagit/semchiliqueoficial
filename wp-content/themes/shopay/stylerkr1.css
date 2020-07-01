@@ -166,6 +166,7 @@
 	
 	#site-navigation #menu-principal-semchilique ul li {
     	display: block !important;
+		text-align: left;
 	}
 	
 	h2.main-category-list-title.cover-font {
