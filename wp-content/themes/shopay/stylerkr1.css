@@ -152,6 +152,11 @@
 
 
 @media(max-width: 768px) {
+	
+	#site-navigation #menu-principal-semchilique ul li {
+    	display: block !important;
+	}
+	
 	#masthead .custom-logo {
 		width: 80px;
 	}
