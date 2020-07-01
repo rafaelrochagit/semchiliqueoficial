@@ -160,7 +160,7 @@
 @media(max-width: 768px) {
 	
 	#site-navigation #menu-principal-semchilique ul li .sub-menu li a, #site-navigation #menu-principal-semchilique ul li .children li a {
-		padding: 6px 20px;
+		padding: 6px 20px !important;
 		text-align: left;
 	}
 	
