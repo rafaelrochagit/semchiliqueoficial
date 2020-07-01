@@ -216,6 +216,10 @@
 		width: 55px;
 	}
 	
+	.home h2.main-category-list-title.cover-font {
+		padding: 17px 10px;
+	}
+	
 	.shopay-cat-menu-wrapper {
 		display: contents !important;
 	}
