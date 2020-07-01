@@ -1,7 +1,61 @@
 /* APARENCIA */
 
+/* Produtos recentes*/
+
+@media (min-width:721px){
+.shopay-image-figure-wrapper {
+    
+		width: 100% !important;
+    float:none;
+    position: relative;
+}
+
+.shopay-bg-image.cover-image{
+	height:250px !important;
+}
+
+	.latest-products-wrap{
+		float:none !important;
+		width:100% !important;
+	}
+	
+	.shopay_latest_product .latest-products-wrap li{
+		width:20% !important;
+		left:-2% !important;
+	}
+}
 
 
+@media (min-width:575px){
+.shopay-image-figure-wrapper {
+    
+		width: 100% !important;
+    float:none;
+    position: relative;
+}
+
+.shopay-bg-image.cover-image{
+	height:250px !important;
+}
+.latest-products-wrap li{
+		width:35% !important;
+	  left:10% !important;
+}
+
+	.latest-products-wrap li{
+	float:none;
+}
+	.shopay_latest_product .latest-products-wrap li{
+		width:20% !important;
+		left:-2% !important;
+	}
+	
+	.product-btns-wrap a.button{
+		width:100% !important;
+	}
+	
+}
+/* FIM produtos recentes*/
 
 
 
