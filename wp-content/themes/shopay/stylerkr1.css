@@ -195,6 +195,10 @@
 		display: contents !important;
 	}
 	
+	.main-category-list-title {
+    	width: 0% !important;
+	}
+	
 	.header-woo-links-wrap {
 		float: right;
 		padding: 0px 0px 0px 0px;
