@@ -156,14 +156,7 @@
 	
 }
 
-@media(max-width: 1024px) {
-	
-	.header-woo-links-wrap {
-		float: right;
-		padding: 20px 0px 0px 15px;
-		font-size: 11pt;
-		width: 20%;
-	}
+@media(max-width: 1200px) {
 	
 	.woocommerce button.button {
 		padding: 5px 22px;
@@ -175,6 +168,17 @@
 	
 	.woocommerce button.button:disabled, .woocommerce button.button:disabled[disabled] {
 		padding: 5px 5px;
+	}
+	
+}
+
+@media(max-width: 1024px) {
+	
+	.header-woo-links-wrap {
+		float: right;
+		padding: 20px 0px 0px 15px;
+		font-size: 11pt;
+		width: 20%;
 	}
 	    
 }
