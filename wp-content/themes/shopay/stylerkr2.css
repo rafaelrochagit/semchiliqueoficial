@@ -15,6 +15,7 @@
 
 .latest-products-wrap li{
 	float:none;
+	width:100% !important;
 }
 	.shopay_latest_product .latest-products-wrap li{
 		width:20% !important;
