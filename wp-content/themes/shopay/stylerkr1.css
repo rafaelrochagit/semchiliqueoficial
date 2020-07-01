@@ -156,6 +156,14 @@
 	
 }
 
+@media(max-width: 1024px) {
+	.header-woo-links-wrap {
+		float: right;
+		padding: 20px 0px 0px 15px;
+		font-size: 11pt;
+		width: 20%;
+	}
+}
 
 @media(max-width: 768px) {
 	
