@@ -143,6 +143,21 @@
 	padding: 0px 0px 0px 20px;
 }
 
+.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images {
+    float: left;
+    width: 28%;
+}
+
+.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+    float: right;
+    width: 68%;
+    clear: none;
+}
+
+.woocommerce #shipping-calc {
+     padding-right: 50%;
+}
+
 
 @media(max-width: 1600px) {
 	
