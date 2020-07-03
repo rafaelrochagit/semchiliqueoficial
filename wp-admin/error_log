@@ -165,3 +165,7 @@ Stack trace:
 #6 /home2/qinteres/semchilique.opasaquei.com.br/wp-load.php(37): require_once('/home2/qinteres...')
 #7 /home2/qinteres/semchilique.opasaquei.com.br/wp-admin/admin-ajax.php(22): require_once('/home2/qinteres...')
 #8 {ma in /home2/qinteres/semchilique.opasaquei.com.br/wp-content/plugins/megamenu/megamenu.php on line 105
+[03-Jul-2020 18:20:02 UTC] id was called incorrectly. As propriedades do produto não devem ser acessadas diretamente. Backtrace: do_action('wp_ajax_wscp_ajax_postcode'), WP_Hook->do_action, WP_Hook->apply_filters, Correios_Shipping_Ajax_Postcode->wscp_ajax_postcode, Correios_Shipping_Ajax_Postcode->get_product_shipping_estimate, WC_Abstract_Legacy_Product->__get, wc_doing_it_wrong. This message was added in version 3.0.
+[03-Jul-2020 18:20:02 UTC] The WC_Product::get_price_excluding_tax function is deprecated since version 3.0. Replace with wc_get_price_excluding_tax.
+[03-Jul-2020 18:20:02 UTC] The WC_Product::get_price_including_tax function is deprecated since version 3.0. Replace with wc_get_price_including_tax.
+[03-Jul-2020 18:20:02 UTC] id was called incorrectly. As propriedades do produto não devem ser acessadas diretamente. Backtrace: do_action('wp_ajax_wscp_ajax_postcode'), WP_Hook->do_action, WP_Hook->apply_filters, Correios_Shipping_Ajax_Postcode->wscp_ajax_postcode, Correios_Shipping_Ajax_Postcode->get_product_shipping_estimate, WC_Abstract_Legacy_Product->__get, wc_doing_it_wrong. This message was added in version 3.0.
