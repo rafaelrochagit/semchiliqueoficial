@@ -270,6 +270,10 @@
 		display: block !important;
 	}
 	
+	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images {
+		width: 40%;
+	}
+	
 	.woocommerce #shipping-calc #wscp-button {
       	margin-top: 10px !important;
 	}
