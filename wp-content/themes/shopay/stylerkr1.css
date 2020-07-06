@@ -301,6 +301,10 @@
 		font-size: 11pt;
 		width: 20%;
 	}
+	
+	.woocommerce #shipping-calc #wscp-button, .woocommerce #shipping-calc #wscp-postcode.text {
+		width: 100%;
+	}
 }
 
 
