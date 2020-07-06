@@ -236,7 +236,7 @@
 	}
 	
 	.summary .single_add_to_wishlist.button, div.product .woocommerce-price-and-add .single_add_to_wishlist.button {
-    	width: 60%;
+    	width: 60% !important;
 	}
 	
 	.header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
@@ -266,12 +266,12 @@
 
 @media (max-width: 680px) {
 	.woocommerce #shipping-calc #wscp-postcode.text {
-		width: 100%;
-		display: block;
+		width: 100% !important;
+		display: block !important;
 	}
 	
 	.woocommerce #shipping-calc #wscp-button {
-      	margin-top: 10px;
+      	margin-top: 10px !important;
 	}
 }
 @media (max-width: 480px) {
@@ -303,7 +303,7 @@
 	}
 	
 	.woocommerce #shipping-calc #wscp-button, .woocommerce #shipping-calc #wscp-postcode.text {
-		width: 100%;
+		width: 100% !important;
 	}
 	
 	.woocommerce div.product form.cart .button {
