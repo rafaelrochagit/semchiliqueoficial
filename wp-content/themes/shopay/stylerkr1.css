@@ -231,6 +231,10 @@
 		width: 80px;
 	}
 	
+	.woocommerce div.product form.cart .button {
+    	width: 60%;
+	}
+	
 	.header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
 		width: 10%;
 		display: inline-block;
