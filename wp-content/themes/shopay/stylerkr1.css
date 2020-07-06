@@ -264,6 +264,16 @@
 	}
 }
 
+@media (max-width: 680px) {
+	.woocommerce #shipping-calc #wscp-postcode.text {
+		width: 100%;
+		display: block;
+	}
+	
+	.woocommerce #shipping-calc #wscp-button {
+      	margin-top: 10px;
+	}
+}
 @media (max-width: 480px) {
 	#masthead .custom-logo {
 		width: 55px;
