@@ -271,7 +271,11 @@
 	}
 	
 	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images {
-		width: 40%;
+		width: 38%;
+	}
+	
+	.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+    	width: 58%;
 	}
 	
 	.woocommerce #shipping-calc #wscp-button {
