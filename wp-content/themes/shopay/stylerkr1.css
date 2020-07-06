@@ -305,6 +305,10 @@
 	.woocommerce #shipping-calc #wscp-button, .woocommerce #shipping-calc #wscp-postcode.text {
 		width: 100%;
 	}
+	
+	.summary .single_add_to_wishlist.button, div.product .woocommerce-price-and-add .single_add_to_wishlist.button {
+    	width: 100%;
+	}
 }
 
 
