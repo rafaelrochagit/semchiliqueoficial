@@ -195,6 +195,10 @@
 		font-size: 11pt;
 		width: 20%;
 	}
+	
+	.woocommerce #shipping-calc {
+		padding-right: 0%;
+	}
 	    
 }
 
