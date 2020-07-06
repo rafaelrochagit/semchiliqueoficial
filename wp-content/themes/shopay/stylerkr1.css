@@ -290,6 +290,11 @@
 		margin: 0 auto;
 	}
 	
+	.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+		float: none;
+		width: 90%;
+	}
+	
 	#masthead .custom-logo {
 		width: 55px;
 	}
