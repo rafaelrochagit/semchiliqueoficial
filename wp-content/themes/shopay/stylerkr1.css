@@ -283,6 +283,13 @@
 	}
 }
 @media (max-width: 480px) {
+	
+	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images {
+		float: none;
+		width: 50%;
+		margin: 0 auto;
+	}
+	
 	#masthead .custom-logo {
 		width: 55px;
 	}
