@@ -170,6 +170,10 @@
 }
 
 
+.woocommerce-shipping-calculator {
+	width: 100%;
+}
+
 @media(max-width: 1600px) {
 	
 	.home h2.main-category-list-title.cover-font {
