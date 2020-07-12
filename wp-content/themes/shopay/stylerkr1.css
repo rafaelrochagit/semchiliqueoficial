@@ -158,11 +158,11 @@
      padding-right: 50%;
 }
 
-row-seg {
+.row-seg {
 	display: flex;
 }
 
-col-seg {
+.col-seg {
 	width: 50%;
 	display: inline-flex;
 }
