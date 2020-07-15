@@ -194,6 +194,13 @@ h1.entry-title {
 	
 }
 
+@media(max-width: 1440px) {
+	h1.entry-title {
+		margin-left: 1%;
+	}
+
+}
+
 @media(max-width: 1200px) {
 	
 	.woocommerce button.button {
