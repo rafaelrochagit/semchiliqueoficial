@@ -188,6 +188,10 @@ h1.entry-title {
 		padding: 6px 0;
 	}
 	
+	h1.entry-title {
+		margin-left: 3%;
+	}
+	
 }
 
 @media(max-width: 1200px) {
