@@ -1076,7 +1076,8 @@ ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTempl
 		background: #fff;
 		display: none;
 		left: 0;
-		height: 100%
+		height: 100%;
+		background: #bbb6b6eb;
 	}
 	
 	#woocommerce_layered_nav_filters-1 {
