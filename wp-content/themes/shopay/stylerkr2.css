@@ -991,6 +991,15 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 
 @media (max-width: 768px) 
 {
+	
+	#secondary, .home.blog #secondary {
+		float: right;
+		width: 27%;
+		/* bottom: 2350px; */
+		top: 200px;
+		position: absolute !important;
+	}
+	
 	div#n2-ss-2 .n2-ss-slider-2 {
 		height: 315px !important;	
 	}
