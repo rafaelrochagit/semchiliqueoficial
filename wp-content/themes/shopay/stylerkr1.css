@@ -22,7 +22,8 @@
     font-weight: 600;
     text-decoration: none;
     text-transform: initial;
-    display: block;
+	display: inherit;
+    padding-left: 5px;
 }
 
 .primary-menu-phone-wrap ul 
