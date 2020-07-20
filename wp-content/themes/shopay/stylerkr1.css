@@ -430,4 +430,8 @@ h1.entry-title {
 	#site-navigation #menu-principal-semchilique ul li .sub-menu li a, #site-navigation #menu-principal-semchilique ul li .children li a {
 		line-height: 1.5;
 	}
+	
+	.primary-menu-phone-wrap ul li a, .primary-menu-phone-wrap ul li.current_page_item > a {
+		font-size: 11px;
+	}
 }
