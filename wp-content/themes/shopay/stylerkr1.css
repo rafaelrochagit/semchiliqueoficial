@@ -43,6 +43,7 @@
     text-align: left;
     position: absolute;
     top: 35px;
+	z-index: 100;
 }
 
 .primary-menu-phone-wrap ul li .sub-menu .sub-menu {
