@@ -1071,6 +1071,10 @@ ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTempl
 		display: none;
 	}
 	
+	#closeFiltro {
+		display: none;
+	}
+	
 	.woocommerce ul.products[class*=columns-] li.product:nth-child(2n), .woocommerce-page ul.products[class*=columns-] li.product:nth-child(2n) {
 		float: none;
 		clear: initial !important;
