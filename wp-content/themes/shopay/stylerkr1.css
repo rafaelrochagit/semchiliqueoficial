@@ -296,10 +296,11 @@ h1.entry-title {
 		text-align: left;
 	}
 	
-	.primary-menu-phone-wrap {
+	#masthead .primary-menu-phone-wrap {
+		margin: 0 auto;
+		transition: all 0.5s;
 		display: grid;
 	}
-
 	
 	h2.main-category-list-title.cover-font {
 		padding: 10px 0px;
