@@ -1083,6 +1083,10 @@ ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTempl
 		display: none;
 	}
 	
+	#secondary .widget-area .widget {
+		margin: 0 0 0px;
+	}
+	
 	#closeFiltro {
 		display: none;
 	}
