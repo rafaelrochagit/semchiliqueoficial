@@ -35,6 +35,16 @@
     top: 13px;
 }
 
+.primary-menu-phone-wrap ul li .sub-menu, 
+.primary-menu-phone-wrap ul li .children {
+    display: block;
+    background: #fff;
+    min-width: 250px;
+    text-align: left;
+    position: absolute;
+    top: 45px;
+}
+
 .custom-logo-link img {
 	width: 100px;	
 }
