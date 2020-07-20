@@ -15,6 +15,15 @@
     line-height: 2;
 }
 
+.primary-menu-phone-wrap ul li.current_page_item > a {
+    font-size: 13px;
+    color: #585858 !important;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: initial;
+    display: block;
+}
+
 .custom-logo-link img {
 	width: 100px;	
 }
