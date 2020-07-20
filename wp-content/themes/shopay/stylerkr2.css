@@ -1081,12 +1081,18 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 	}
 	/* FIM da pag de checkout */
 }
+
+@media (max-width: 420px){
+	.woocommerce ul.products li.product .woocommerce-loop-category__title, .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3{
+		font-size:98% !important;
+	}
+}
 	
 @media (max-width: 407px){
 	
 	/* pag do produto*/
 .woocommerce .yith-wcwl-add-button a.add_to_wishlist::after, .product-btns-wrap a.added_to_cart::after, .product-btns-wrap a.wishlist-button::after, .product-btns-wrap a.add_to_cart_button::after{
-	left:78% !important;
+	left:83% !important;
 	}
 	
 	/* Fim da pag do produto*/
