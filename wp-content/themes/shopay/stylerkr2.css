@@ -745,7 +745,7 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 }
 
 .is-sticky #site-navigation.menuFixo {
-    display: flex;
+    display: grid;
     margin-top: -30px;
 }
 
@@ -767,7 +767,7 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 }
 
 #site-navigation {
-	display: flex;
+	display: grid;
 }
 
 /*FOOTER*/
