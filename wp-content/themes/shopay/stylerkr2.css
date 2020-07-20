@@ -947,15 +947,15 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 	}
 	
 	#site-navigation {
-    width: 100%;
-    background: #fe80a6;
-		display: flex;
+    	width: 100%;
+    	background: #fe80a6;
+		display: grid;
 	}
 	
 	#masthead .menu-toggle {
-    display: block;
-    font-weight: 600;
-    margin: 0 auto;
+    	display: block;
+    	font-weight: 600;
+    	margin: 0 auto;
 		color: #fff;
 	}
 	
