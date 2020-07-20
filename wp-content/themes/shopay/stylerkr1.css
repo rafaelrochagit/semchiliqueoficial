@@ -15,6 +15,7 @@
     line-height: 2;
 }
 
+.primary-menu-phone-wrap ul li a,
 .primary-menu-phone-wrap ul li.current_page_item > a {
     font-size: 13px;
     color: #585858 !important;
