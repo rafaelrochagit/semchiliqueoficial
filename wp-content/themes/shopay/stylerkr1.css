@@ -47,7 +47,7 @@
 }
 
 .primary-menu-phone-wrap ul li .sub-menu .sub-menu {
-    display: contents;
+    /*display: contents; */
 }
 
 .custom-logo-link img {
