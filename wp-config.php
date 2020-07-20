@@ -21,19 +21,24 @@
 // ** Configurações do MySQL - Você pode pegar estas informações com o serviço de hospedagem ** //
 /** O nome do banco de dados do WordPress */
 define('REVISR_GIT_PATH', ''); // Added by Revisr
-define( 'DB_NAME', 'qinteres_semchilique' );
+define( 'DB_NAME', "semchi85_semchilique" );
+
 
 /** Usuário do banco de dados MySQL */
-define( 'DB_USER', 'qinteres_admin' );
+define( 'DB_USER', "semchi85_admin" );
+
 
 /** Senha do banco de dados MySQL */
-define( 'DB_PASSWORD', 'admin' );
+define( 'DB_PASSWORD', "semchi85_admin" );
+
 
 /** Nome do host do MySQL */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', "localhost:3306" );
+
 
 /** Charset do banco de dados a ser usado na criação das tabelas. */
 define( 'DB_CHARSET', 'utf8mb4' );
+
 
 /** O tipo de Collate do banco de dados. Não altere isso se tiver dúvidas. */
 define( 'DB_COLLATE', '' );
@@ -52,13 +57,21 @@ define( 'DB_COLLATE', '' );
  * @since 2.6.0
  */
 define( 'AUTH_KEY',         'N@^H-74{*L4@3kC=p#n$E=xNQ({D4_G2UoIp>EUwVv|sZ}5,oP/6,t:,#JsAh~rr' );
+
 define( 'SECURE_AUTH_KEY',  '9Kl&RcpX6E.02bYL-ZZH&Yy/`*FdZr{~NqvI!y*N{!`P`:?Uz[~J+SD&?e],YhUd' );
+
 define( 'LOGGED_IN_KEY',    '0s^n*]fAJMH0Fv>=vw4|OP;V-L@,[l@xSaqR_hfP{Ip(vF,xrj<$n_9BcYL74?sa' );
+
 define( 'NONCE_KEY',        '1t(m>jX<dL!dvUUs)?tudqh%;XiSZ_G7y>a-:HNiNKO-xR2#R={e-F]-vsn 5@X~' );
+
 define( 'AUTH_SALT',        '*1Fy8:S$fEj824m@#Q:9 #wx(5C)+lN2v_/[<QOuloQ7C>X?txIa[3aEyySs|OcK' );
+
 define( 'SECURE_AUTH_SALT', 'eY*WBkcOi:j/B%$G[tH[F6?$Z}+BjP1{dBYm]pV3cJc{,QH&HEAdE:|d^TATc5S2' );
+
 define( 'LOGGED_IN_SALT',   ',Auqju:HVj=Er$_tY!Aaw#!yhPDqB=gZKBI`)zT&[8mGc7B0OXf+x17=/2`j<A&x' );
+
 define( 'NONCE_SALT',       'Z<zip9(0i;~0r>*H^NE]477b^skC2LfvL+NgP^(=6TF-)1&Y[z*MUod`re-QA:*N' );
+
 
 /**#@-*/
 
@@ -69,6 +82,7 @@ define( 'NONCE_SALT',       'Z<zip9(0i;~0r>*H^NE]477b^skC2LfvL+NgP^(=6TF-)1&Y[z*
  * um prefixo único para cada um. Somente números, letras e sublinhados!
  */
 $table_prefix = 'wp_';
+
 
 /**
  * Para desenvolvedores: Modo de debug do WordPress.
