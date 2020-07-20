@@ -25,6 +25,11 @@
     display: block;
 }
 
+.primary-menu-phone-wrap ul 
+.primary-menu-phone-wrap > li.menu-item-has-children>a {
+    padding-right: 35px;
+}
+
 .custom-logo-link img {
 	width: 100px;	
 }
