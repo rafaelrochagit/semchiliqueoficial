@@ -4,7 +4,7 @@
 #masthead .primary-menu-phone-wrap {
     margin: 0 auto;
     transition: all 0.5s;
-    display: flex;
+    display: grid;
 }
 
 .primary-menu-phone-wrap ul li {
