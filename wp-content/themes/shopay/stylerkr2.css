@@ -137,6 +137,9 @@
 
 
 
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    float: none;
+}
 
 
 /*FIM da página de compra */
@@ -654,6 +657,19 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 /* fim da pag de compras*/
 
 /* pagina-Categorias*/
+
+#calc_shipping_country_field {
+	display: none !important;	
+}
+
+#calc_shipping_state_field {
+	display: none !important;
+}
+
+#calc_shipping_city_field {
+	display: none !important;
+}
+
 .widget-area .widget{
 	width:100%;
 }
@@ -784,6 +800,17 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTemplate .spinner, .woobewoo-filter-loader.spinner {
     /*background: url("https://static.wixstatic.com/media/399425_4c36936a860f498088a8c1972d16f9da~mv2.gif") !important;*/
 }
+
+.woocommerce ul.products.columns-3 li.product, .woocommerce-page ul.products.columns-3 li.product {
+	width: 29%;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 3%;
+}
+	
+	.woocommerce .yith-wcwl-add-button a.add_to_wishlist::after, .product-btns-wrap a.added_to_cart::after, .product-btns-wrap a.wishlist-button::after,.product-btns-wrap a.add_to_cart_button::after {
+		left: 91%;
+	}
 
 /*FOOTER*/
 
@@ -926,7 +953,7 @@ ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTempl
 		margin-right: 3%;
 	}
 	
-	.product-btns-wrap a.add_to_cart_button::after {
+	.woocommerce .yith-wcwl-add-button a.add_to_wishlist::after, .product-btns-wrap a.added_to_cart::after, .product-btns-wrap a.wishlist-button::after,.product-btns-wrap a.add_to_cart_button::after {
 		left: 91%;
 	}
 
@@ -1018,20 +1045,32 @@ ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTempl
 
 @media (max-width: 768px) 
 {
+	#rowFiltro {
+		float: left;
+		margin-left: -25px;
+		margin-bottom: 15px;
+	}
 	
 	#secondary, .home.blog #secondary {
-		/*
+		
 		float: right;
 		width: 100%;
-		/* bottom: 2350px; 
-		top: 200px;
+		top: 210px;
 		position: absolute !important;
-		*/
+		background: #fff;
+		display: none;
 	}
 	
 	.woocommerce ul.products[class*=columns-] li.product:nth-child(2n), .woocommerce-page ul.products[class*=columns-] li.product:nth-child(2n) {
 		float: none;
 		clear: initial !important;
+	}
+	
+	.woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product {
+		float: none;
+		clear: both;
+		margin: 0 0 2.992em;
+		margin-right: 3%;
 	}
 	
 	div#n2-ss-2 .n2-ss-slider-2 {

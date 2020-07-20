@@ -166,6 +166,9 @@ if ( ! function_exists( 'shopay_woocommerce_wrapper_before' ) ) {
 ?>
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main" role="main">
+                <div id="rowFiltro" class="row">
+                    <button id="filtroPhone" class="btn">Filtro</button>
+                </div>
 <?php
 	}
 
