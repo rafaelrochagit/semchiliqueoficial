@@ -366,6 +366,11 @@ h1.entry-title {
 }
 @media (max-width: 480px) {
 	
+	
+	.primary-menu-phone-wrap ul li a, .primary-menu-phone-wrap ul li.current_page_item > a {
+    	font-size: 12px;
+	}
+
 	.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images {
 		float: none;
 		width: 60%;
