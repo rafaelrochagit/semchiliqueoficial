@@ -45,6 +45,10 @@
     top: 35px;
 }
 
+.primary-menu-phone-wrap ul li .sub-menu > .sub-menu {
+    display: contents;
+}
+
 .custom-logo-link img {
 	width: 100px;	
 }
