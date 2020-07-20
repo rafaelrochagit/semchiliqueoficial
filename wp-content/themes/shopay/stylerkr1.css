@@ -8,7 +8,7 @@
 }
 
 .primary-menu-phone-wrap ul li {
-    display: inline-block;
+    display: initial;
     position: relative;
     list-style: none;
     margin: 5px 15px;
