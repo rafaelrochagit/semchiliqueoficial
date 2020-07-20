@@ -63,8 +63,10 @@
 
 @media (min-width:575px){
 .woocommerce ul.products.columns-3 li.product, .woocommerce-page ul.products.columns-3 li.product{
+	/*
 	width:30% !important; 
 	float:none !important;	
+	*/
 }
 	
 	.woocommerce .yith-wcwl-add-button a.add_to_wishlist:after, .product-btns-wrap a.added_to_cart:after, .product-btns-wrap a.wishlist-button:after, .product-btns-wrap a.add_to_cart_button::after{
@@ -75,7 +77,7 @@
 		width:100%!important;
 	}
 
-		.product-btns-wrap a.wishlist-button{
+	.product-btns-wrap a.wishlist-button{
 		width:100% !important;
 	}
 	
@@ -83,25 +85,34 @@
 }
 
 @media (min-width:721px){
-.woocommerce ul.products.columns-3 li.product, .woocommerce-page ul.products.columns-3 li.product{
-	width:30% !important;
-	margin-left:13%;
-}
+	.woocommerce ul.products.columns-3 li.product, .woocommerce-page ul.products.columns-3 li.product{
+		/*
+		width:30% !important;
+		margin-left:13%;
+		*/
+	}
 
 	
 }
 
 @media (min-width:769px){
 	.woocommerce ul.products.columns-3 li.product, .woocommerce-page ul.products.columns-3 li.product{
-	width:23% !important;
-	margin-left:7%;
-	float:left !important;
-}
+		/*
+		width:23% !important;
+		margin-left:7%;
+		float:left !important;
+		*/
+	}
 	ul.products li.product .woocommerce-loop-product__title {
-    font-size: 80% !important;
-}
+		/*
+		font-size: 80% !important;
+		*/
+	}
+	
 	.product-btns-wrap a.wishlist-button{
+		/*
 		font-size:66% !important;
+		*/
 	}
 	
 }
@@ -771,7 +782,7 @@ body .woocommerce #payment #place_order, .woocommerce-page #payment #place_order
 }
 
 ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTemplate .spinner, .woobewoo-filter-loader.spinner {
-    background: url("https://static.wixstatic.com/media/399425_4c36936a860f498088a8c1972d16f9da~mv2.gif") !important;
+    /*background: url("https://static.wixstatic.com/media/399425_4c36936a860f498088a8c1972d16f9da~mv2.gif") !important;*/
 }
 
 /*FOOTER*/
@@ -908,6 +919,18 @@ ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTempl
 		margin-left: 42%;
 	}
 	
+	.woocommerce ul.products.columns-3 li.product, .woocommerce-page ul.products.columns-3 li.product {
+		width: 29%;
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 3%;
+	}
+	
+	.product-btns-wrap a.add_to_cart_button::after {
+		left: 91%;
+	}
+
+	
 }
 	
 	
@@ -997,11 +1020,18 @@ ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTempl
 {
 	
 	#secondary, .home.blog #secondary {
+		/*
 		float: right;
 		width: 100%;
-		/* bottom: 2350px; */
+		/* bottom: 2350px; 
 		top: 200px;
 		position: absolute !important;
+		*/
+	}
+	
+	.woocommerce ul.products[class*=columns-] li.product:nth-child(2n), .woocommerce-page ul.products[class*=columns-] li.product:nth-child(2n) {
+		float: none;
+		clear: initial !important;
 	}
 	
 	div#n2-ss-2 .n2-ss-slider-2 {
