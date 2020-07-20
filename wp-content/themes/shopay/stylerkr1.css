@@ -293,6 +293,7 @@ h1.entry-title {
 		margin: 0 auto;
 		transition: all 0.5s;
 		display: grid;
+		padding-bottom: 5px;
 	}
 	
 	h2.main-category-list-title.cover-font {
