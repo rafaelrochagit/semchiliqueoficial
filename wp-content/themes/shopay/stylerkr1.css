@@ -30,6 +30,11 @@
     padding-right: 35px;
 }
 
+.primary-menu-phone-wrap .sub-toggle {
+    margin-right: 10px;
+    top: 13px;
+}
+
 .custom-logo-link img {
 	width: 100px;	
 }
