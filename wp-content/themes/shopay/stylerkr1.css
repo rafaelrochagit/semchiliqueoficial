@@ -45,7 +45,7 @@
     top: 35px;
 }
 
-.primary-menu-phone-wrap ul li .sub-menu > .sub-menu {
+.primary-menu-phone-wrap ul li .sub-menu .sub-menu {
     display: contents;
 }
 
