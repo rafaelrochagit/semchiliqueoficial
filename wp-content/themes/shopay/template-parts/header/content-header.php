@@ -118,7 +118,12 @@
 		</div><!-- mt-container -->
 	</div><!-- #search-bar-section --> 
 	<nav id="site-navigation" class="main-navigation clearfix">
-					<div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i><?php esc_html_e( 'MENU', 'shopay' ); ?></a></div>
+					<div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                    	<a href="javascript:void(0);">
+                        	<i class="fas fa-ellipsis-v"></i>
+                    			<?php esc_html_e( 'MENU', 'shopay' ); ?>
+                         </a>
+                    </div>
 					<div class="primary-menu-wrap">
 					<?php 
 					$shopay_cat_menu_option = get_theme_mod( 'shopay_cat_menu_option', true );
@@ -147,8 +152,18 @@
 							) );
 							?>
 							<div class="main-menu-close hide"><a href="javascript:void(0);"><i class="far fa-window-close"></i></a>	
-						</div>
-					</div><!-- .primary-menu-wrap -->
+                			</div>
+                        </div>
+                        </div><!-- .primary-menu-wrap -->
+                        
+                        <div class="primary-menu-phone-wrap">
+                         <?php
+                             wp_nav_menu( array(
+                             'theme_location' => 'menu-primary-phone',
+                             'menu_id'        => 'primary-menu-phone'
+                             ) );
+                         ?>
+                        </div>
 	</nav><!-- #site-navigation -->
 
             <!-- AQUI ESTAVA header-site-info-wrap -->

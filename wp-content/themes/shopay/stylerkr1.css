@@ -1,5 +1,12 @@
 /* PERSONALIZADO SEM CHILIQUE */
 
+
+#masthead .primary-menu-phone-wrap {
+    margin: 0 auto;
+    transition: all 0.5s;
+    display: flex;
+}
+
 .custom-logo-link img {
 	width: 100px;	
 }
