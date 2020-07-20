@@ -1062,7 +1062,7 @@ ul.products .spinner, .la-spinner, .wpfIconPreview .spinner, .wpfLoaderIconTempl
 	}
 	
 	#secondary, .home.blog #secondary {
-		
+		z-index: 1000;
 		float: right;
 		width: 100%;
 		top: 210px;
