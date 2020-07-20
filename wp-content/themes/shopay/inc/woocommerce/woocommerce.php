@@ -169,13 +169,7 @@ if ( ! function_exists( 'shopay_woocommerce_wrapper_before' ) ) {
                 <div id="rowFiltro" class="row">
                     <button id="filtroPhone" class="btn">Filtro</button>
                 </div>
-                <script>
-                	jQuery('#filtroPhone').click(
-                    	function() {
-                      		jQuery('#secondary').show();
-                      	}
-                    );
-                </script>
+                
 <?php
 	}
 
