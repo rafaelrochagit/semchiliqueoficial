@@ -190,6 +190,7 @@ h1.entry-title {
 	
 }
 
+
 @media(max-width: 1440px) {
 
 }
@@ -206,6 +207,10 @@ h1.entry-title {
 	
 	.woocommerce button.button:disabled, .woocommerce button.button:disabled[disabled] {
 		padding: 5px 5px;
+	}
+	
+	.woocommerce-loop-product__title {
+		font-size: 14px;
 	}
 	
 }
