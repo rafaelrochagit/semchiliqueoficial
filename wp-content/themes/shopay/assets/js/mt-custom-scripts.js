@@ -40,7 +40,7 @@ jQuery(document).ready(function($){
     var sidebarSticky = shopayObject.sidebar_sticky;
     if( sidebarSticky === 'on' ) {
         $('#primary, #secondary').theiaStickySidebar({
-            additionalMarginTop: 40
+            additionalMarginTop: 0
         });
     }
 
