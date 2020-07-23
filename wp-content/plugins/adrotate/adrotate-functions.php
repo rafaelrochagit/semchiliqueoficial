@@ -467,6 +467,20 @@ function adrotate_apply_jetpack_photon($image) {
 }
 
 /*-------------------------------------------------------------
+ Name:      adrotate_sanitize_file_name
+ Purpose:   Clean up file names of files that are being uploaded.
+ Since:		3.11.3
+-------------------------------------------------------------*/
+function adrotate_sanitize_file_name($filename) {
+    $filename_raw = $filename;
+    $special_chars = array("?", "[", "]", "/", "\\", "=", "<", ">", ":", ";", ",", "'", "\"", "&", "$", "#", "*", "(", ")", "|", "~", "`", "!", "{", "}");
+    $filename = str_replace($special_chars, '', $filename);
+    $filename = preg_replace('/[\s-]+/', '-', $filename);
+    $filename = strtolower(trim($filename, '.-_'));
+    return $filename;
+}
+
+/*-------------------------------------------------------------
  Name:      adrotate_get_sorted_roles
  Purpose:   Returns all roles and capabilities, sorted by user level. Lowest to highest.
  Since:		3.2
@@ -529,6 +543,7 @@ function adrotate_dashboard_scripts() {
 		wp_enqueue_script('raphael', plugins_url('/library/raphael-min.js', __FILE__), array('jquery'));
 		wp_enqueue_script('elycharts', plugins_url('/library/elycharts.min.js', __FILE__), array('jquery', 'raphael'));
 		wp_enqueue_script('textatcursor', plugins_url('/library/textatcursor.js', __FILE__), ADROTATE_VERSION);
+		wp_enqueue_script('goosebox', plugins_url('/library/goosebox.js', __FILE__), ADROTATE_VERSION);
 		wp_enqueue_script('tablesorter', plugins_url('/library/jquery.tablesorter.min.js', __FILE__), array('jquery'), ADROTATE_VERSION);
 		wp_enqueue_script('adrotate-tablesorter', plugins_url('/library/jquery.adrotate.tablesorter.js', __FILE__), array('jquery', 'tablesorter'), ADROTATE_VERSION);
 		wp_enqueue_script('adrotate-datepicker', plugins_url('/library/jquery.adrotate.datepicker.js', __FILE__), array('jquery'), ADROTATE_VERSION);
@@ -654,6 +669,89 @@ function adrotate_subfolder_contents($asset_folder, $level = 1) {
 }
 
 /*-------------------------------------------------------------
+ Name:      adrotate_mediapage_folder_contents
+ Purpose:   List sub-folder contents for media manager
+ Since:		4.9
+-------------------------------------------------------------*/
+function adrotate_mediapage_folder_contents($asset_folder, $level = 1) {
+	$index = $assets = array();
+
+	// Read Banner folder
+	if($handle = opendir($asset_folder)) {
+	    while(false !== ($file = readdir($handle))) {
+	        if($file != "." AND $file != ".." AND $file != "index.php" AND $file != ".DS_Store") {
+	            $assets[] = $file;
+	        }
+	    }
+	    closedir($handle);
+
+	    if(count($assets) > 0) {
+			$new_level = $level + 1;
+			$extensions = array('jpg', 'jpeg', 'gif', 'png', 'svg', 'swf', 'flv', 'html', 'htm', 'js');
+
+			foreach($assets as $key => $asset) {
+				$fileinfo = pathinfo($asset);
+				unset($fileinfo['dirname']);
+				if(is_dir($asset_folder.'/'.$asset)) { // Read subfolder
+					if($level <= 2) { // Not to deep
+						$fileinfo['contents'] = adrotate_mediapage_folder_contents($asset_folder.'/'.$asset, $new_level);
+						$index[] = $fileinfo;
+					}
+				} else { // It's a file
+					if(in_array($fileinfo['extension'], $extensions)) {
+						$index[] = $fileinfo;
+					}
+				}
+				unset($fileinfo);
+			}
+			unset($level, $new_level);
+		}
+	}
+	
+	return $index;
+}
+
+/*-------------------------------------------------------------
+ Name:      adrotate_unlink
+
+ Purpose:   Delete a file or folder from the banners folder
+ Receive:   $file
+ Return:    boolean
+ Since:		4.9
+-------------------------------------------------------------*/
+function adrotate_unlink($asset) {
+	global $adrotate_config;
+
+	$access_type = get_filesystem_method();
+	if($access_type === 'direct') {
+		$credentials = request_filesystem_credentials(site_url().'/wp-admin/', '', false, false, array());
+	
+		if(!WP_Filesystem($credentials)) {
+			return false;
+		}	
+	
+		global $wp_filesystem;
+
+		$path = WP_CONTENT_DIR."/".$adrotate_config['banner_folder']."/".$asset;
+		if(!is_dir($path)) { // It's a file
+			if(unlink($path)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else { // It's a folder
+			if($wp_filesystem->rmdir($path, true)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	} else {
+		return false;
+	}
+}
+
+/*-------------------------------------------------------------
  Name:      adrotate_return
  Purpose:   Internal redirects
  Since:		3.12
@@ -696,12 +794,24 @@ function adrotate_status($status, $args = null) {
 			echo '<div id="message" class="updated"><p>'. __('Group saved', 'adrotate') .'</p></div>';
 		break;
 
+		case '202' :
+			echo '<div id="message" class="updated"><p>'. __('Banner image saved', 'adrotate') .'</p></div>';
+		break;
+
 		case '203' :
 			echo '<div id="message" class="updated"><p>'. __('Ad(s) deleted', 'adrotate') .'</p></div>';
 		break;
 
 		case '204' :
 			echo '<div id="message" class="updated"><p>'. __('Group deleted', 'adrotate') .'</p></div>';
+		break;
+
+		case '206' :
+			echo '<div id="message" class="updated"><p>'. __('Asset(s) deleted', 'adrotate') .'</p></div>';
+		break;
+
+		case '207' :
+			echo '<div id="message" class="updated"><p>'. __('Something went wrong deleting the file or folder. Make sure your permissions are in order.', 'adrotate') .'</p></div>';
 		break;
 
 		case '208' :

@@ -96,7 +96,7 @@ function adrotate_stats($ad, $archive = false, $when = 0, $until = 0) {
 	global $wpdb;
 
 	if($when > 0 AND is_numeric($when) AND $until > 0 AND is_numeric($until)) { // date range
-		$whenquery = " AND `thetime` >= '$when' AND `thetime` <= '$until' GROUP BY `ad` ASC";
+		$whenquery = " AND `thetime` >= '$when' AND `thetime` <= '$until' GROUP BY `ad` ORDER BY `ad` ASC";
 	} else if($when > 0 AND is_numeric($when) AND $until == 0) { // one day
 		$until = $when + 86400;
 		$whenquery =  " AND `thetime` >= '$when' AND `thetime` <= '$until'";
@@ -186,19 +186,19 @@ function adrotate_stats_graph($type, $archive = false, $id, $chartid, $start, $e
 	}
 
 	if($type == 'ads' OR $type == 'advertiser') {
-		$stats = $wpdb->get_results($wpdb->prepare("SELECT `thetime`, SUM(`clicks`) as `clicks`, SUM(`impressions`) as `impressions` FROM `{$wpdb->prefix}{$table}` WHERE `ad` = %d AND `thetime` >= %d AND `thetime` <= %d GROUP BY `thetime` ASC;", $id, $start, $end), ARRAY_A);
+		$stats = $wpdb->get_results($wpdb->prepare("SELECT `thetime`, SUM(`clicks`) as `clicks`, SUM(`impressions`) as `impressions` FROM `{$wpdb->prefix}{$table}` WHERE `ad` = %d AND `thetime` >= %d AND `thetime` <= %d GROUP BY `thetime` ORDER BY `thetime` ASC;", $id, $start, $end), ARRAY_A);
 	}
 
 	if($type == 'groups') {
-		$stats = $wpdb->get_results($wpdb->prepare("SELECT `thetime`, SUM(`clicks`) as `clicks`, SUM(`impressions`) as `impressions` FROM `{$wpdb->prefix}{$table}` WHERE `group` = %d AND `thetime` >= %d AND `thetime` <= %d GROUP BY `thetime` ASC;", $id, $start, $end), ARRAY_A);
+		$stats = $wpdb->get_results($wpdb->prepare("SELECT `thetime`, SUM(`clicks`) as `clicks`, SUM(`impressions`) as `impressions` FROM `{$wpdb->prefix}{$table}` WHERE `group` = %d AND `thetime` >= %d AND `thetime` <= %d GROUP BY `thetime` ORDER BY `thetime` ASC;", $id, $start, $end), ARRAY_A);
 	}
 
 	if($type == 'fullreport') {
-		$stats = $wpdb->get_results($wpdb->prepare("SELECT `thetime`, SUM(`clicks`) as `clicks`, SUM(`impressions`) as `impressions` FROM `{$wpdb->prefix}{$table}` WHERE `thetime` >= %d AND `thetime` <= %d GROUP BY `thetime` ASC;", $start, $end), ARRAY_A);
+		$stats = $wpdb->get_results($wpdb->prepare("SELECT `thetime`, SUM(`clicks`) as `clicks`, SUM(`impressions`) as `impressions` FROM `{$wpdb->prefix}{$table}` WHERE `thetime` >= %d AND `thetime` <= %d GROUP BY `thetime` ORDER BY `thetime` ASC;", $start, $end), ARRAY_A);
 	}
 	
 	if($type == 'advertiserfull') {
-		$stats = $wpdb->get_results($wpdb->prepare("SELECT `thetime`, SUM(`clicks`) as `clicks`, SUM(`impressions`) as `impressions` FROM `{$wpdb->prefix}{$table}`, `{$wpdb->prefix}adrotate_linkmeta` WHERE `{$wpdb->prefix}adrotate_stats`.`ad` = `{$wpdb->prefix}adrotate_linkmeta`.`ad` AND `{$wpdb->prefix}adrotate_linkmeta`.`user` = %d AND `{$wpdb->prefix}adrotate_stats`.`thetime` >= %d AND `{$wpdb->prefix}adrotate_stats`.`thetime` <= %d GROUP BY `thetime` ASC;", $id, $start, $end), ARRAY_A);
+		$stats = $wpdb->get_results($wpdb->prepare("SELECT `thetime`, SUM(`clicks`) as `clicks`, SUM(`impressions`) as `impressions` FROM `{$wpdb->prefix}{$table}`, `{$wpdb->prefix}adrotate_linkmeta` WHERE `{$wpdb->prefix}adrotate_stats`.`ad` = `{$wpdb->prefix}adrotate_linkmeta`.`ad` AND `{$wpdb->prefix}adrotate_linkmeta`.`user` = %d AND `{$wpdb->prefix}adrotate_stats`.`thetime` >= %d AND `{$wpdb->prefix}adrotate_stats`.`thetime` <= %d GROUP BY `thetime` ORDER BY `thetime` ASC;", $id, $start, $end), ARRAY_A);
 	}
 
 	if($stats) {

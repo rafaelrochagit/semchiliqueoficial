@@ -6,7 +6,7 @@ Author: Arnan de Gans
 Author URI: https://www.arnan.me/?pk_campaign=adrotatefree&pk_keyword=plugin_info
 Description: Monetise your website with adverts while keeping things simple. Start making money today!
 Text Domain: adrotate
-Version: 5.8.4
+Version: 5.8.6
 License: GPLv3
 */
 
@@ -21,7 +21,7 @@ License: GPLv3
 ------------------------------------------------------------------------------------ */
 
 /*--- AdRotate values ---------------------------------------*/
-define("ADROTATE_DISPLAY", '5.8.4');
+define("ADROTATE_DISPLAY", '5.8.6');
 define("ADROTATE_VERSION", 399);
 define("ADROTATE_DB_VERSION", 66);
 $plugin_folder = plugin_dir_path(__FILE__);
@@ -32,7 +32,7 @@ include_once($plugin_folder.'/adrotate-setup.php');
 include_once($plugin_folder.'/adrotate-manage-publisher.php');
 include_once($plugin_folder.'/adrotate-functions.php');
 include_once($plugin_folder.'/adrotate-statistics.php');
-require_once($plugin_folder.'/adrotate-portability.php');
+include_once($plugin_folder.'/adrotate-portability.php');
 include_once($plugin_folder.'/adrotate-output.php');
 include_once($plugin_folder.'/adrotate-widget.php');
 /*-----------------------------------------------------------*/
@@ -83,6 +83,8 @@ if(is_admin()) {
 	if(isset($_POST['adrotate_generate_submit'])) add_action('init', 'adrotate_generate_input');
 	if(isset($_POST['adrotate_ad_submit'])) add_action('init', 'adrotate_insert_input');
 	if(isset($_POST['adrotate_group_submit'])) add_action('init', 'adrotate_insert_group');
+	if(isset($_POST['adrotate_media_submit'])) add_action('init', 'adrotate_insert_media');
+	if(isset($_POST['adrotate_folder_submit'])) add_action('init', 'adrotate_insert_folder');
 	if(isset($_POST['adrotate_action_submit'])) add_action('init', 'adrotate_request_action');
 	if(isset($_POST['adrotate_disabled_action_submit'])) add_action('init', 'adrotate_request_action');
 	if(isset($_POST['adrotate_error_action_submit'])) add_action('init', 'adrotate_request_action');
@@ -101,7 +103,7 @@ function adrotate_dashboard() {
 
 	add_menu_page('AdRotate', 'AdRotate', 'adrotate_ad_manage', 'adrotate', 'adrotate_info', plugins_url('/images/icon-menu.png', __FILE__), '25.8');
 	$adrotate_page = add_submenu_page('adrotate', 'AdRotate · '.__('General Info', 'adrotate'), __('General Info', 'adrotate'), 'adrotate_ad_manage', 'adrotate', 'adrotate_info');
-	$adrotate_pro = add_submenu_page('adrotate', 'AdRotate · '.__('AdRotate Pro', 'adrotate'), __('AdRotate Pro', 'adrotate'), 'adrotate_ad_manage', 'adrotate-pro', 'adrotate_pro');
+	$adrotate_pro = add_submenu_page('adrotate', 'AdRotate · '.__('Get AdRotate Pro', 'adrotate'), __('Get AdRotate Pro', 'adrotate'), 'adrotate_ad_manage', 'adrotate-pro', 'adrotate_pro');
 	$adrotate_adverts = add_submenu_page('adrotate', 'AdRotate · '.__('Manage Adverts', 'adrotate'), __('Manage Adverts', 'adrotate'), 'adrotate_ad_manage', 'adrotate-ads', 'adrotate_manage');
 	$adrotate_groups = add_submenu_page('adrotate', 'AdRotate · '.__('Manage Groups', 'adrotate'), __('Manage Groups', 'adrotate'), 'adrotate_group_manage', 'adrotate-groups', 'adrotate_manage_group');
 	$adrotate_schedules = add_submenu_page('adrotate', 'AdRotate · '.__('Manage Schedules', 'adrotate'), __('Manage Schedules', 'adrotate'), 'adrotate_ad_manage', 'adrotate-schedules', 'adrotate_manage_schedules');
@@ -443,7 +445,7 @@ function adrotate_manage_media() {
 
 		<?php if($status > 0) adrotate_status($status); ?>
 
-		<p><?php _e('Upload images to the AdRotate Pro banners folder from here. This is useful if you have HTML5 adverts containing multiple files.', 'adrotate'); ?><br /><?php _e('Get more features', 'adrotate'); ?> - <a href="admin.php?page=adrotate-pro"><?php _e('Get AdRotate Pro', 'adrotate'); ?></a>!</p>
+		<p><?php _e('Upload images to the AdRotate Pro banners folder from here. This is useful if you have HTML5 adverts containing multiple files.', 'adrotate'); ?></p>
 
 		<?php
 		include("dashboard/publisher/media.php");

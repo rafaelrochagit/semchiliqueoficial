@@ -11,6 +11,35 @@
 ?>
 
 <div id="dashboard-widgets-wrap">
+	<div style="text-align: center; margin-top: 30px;">
+		<div class="ajdg-sales-widget" style="display: inline-block; margin-right:20px; width: 230px;">
+			<a href="https://ajdg.solutions/product/adrotate-pro-single/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="header"><img src="<?php echo plugins_url("/images/pro/single.jpg", dirname(__FILE__)); ?>" alt="WordPress Maintenance & Updates" width="228" height="120"></div></a>
+			<a href="https://ajdg.solutions/product/adrotate-pro-single/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="title">AdRotate Professional</div></a>
+			<div class="sub_title">Use on 1 website<br /><a href="https://ajdg.solutions/product/adrotate-pro-single/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">More information</a></div>
+			<div class="cta"><a role="button" class="cta_button" href="https://ajdg.solutions/?add-to-cart=1124&pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">Buy now for &euro; 39</a></div>
+		</div>
+		<div class="ajdg-sales-widget" style="display: inline-block; margin-right:20px; width: 230px;">
+			<a href="https://ajdg.solutions/product/adrotate-pro-duo/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="header"><img src="<?php echo plugins_url("/images/pro/duo.jpg", dirname(__FILE__)); ?>" alt="WordPress Maintenance & Updates" width="228" height="120"></div></a>
+			<a href="https://ajdg.solutions/product/adrotate-pro-duo/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="title">AdRotate Professional</div></a>
+			<div class="sub_title">Use on 2 websites<br /><a href="https://ajdg.solutions/product/adrotate-pro-duo/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">More information</a></div>
+			<div class="cta"><a role="button" class="cta_button" href="https://ajdg.solutions/?add-to-cart=1126&pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">Buy now for &euro; 49</a></div>
+		</div>
+		<div class="ajdg-sales-widget" style="display: inline-block; margin-right:20px; width: 230px;">
+			<a href="https://ajdg.solutions/product/adrotate-pro-multi/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="header"><img src="<?php echo plugins_url("/images/pro/multi.jpg", dirname(__FILE__)); ?>" alt="WordPress Maintenance & Updates" width="228" height="120"></div></a>
+			<a href="https://ajdg.solutions/product/adrotate-pro-multi/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="title">AdRotate Professional</div></a>
+			<div class="sub_title">Use on up-to 5 websites<br /><a href="https://ajdg.solutions/product/adrotate-pro-multi/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">More information</a></div>
+			<div class="cta"><a role="button" class="cta_button" href="https://ajdg.solutions/?add-to-cart=1128&pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">Buy now for &euro; 99</a></div>
+		</div>
+		<div class="ajdg-sales-widget" style="display: inline-block; margin-right:20px; width: 230px;">
+			<a href="https://ajdg.solutions/product/adrotate-pro-developer/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="header"><img src="<?php echo plugins_url("/images/pro/developer.jpg", dirname(__FILE__)); ?>" alt="WordPress Maintenance & Updates" width="228" height="120"></div></a>
+			<a href="https://ajdg.solutions/product/adrotate-pro-developer/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="title">AdRotate Professional</div></a>
+			<div class="sub_title">Use on up-to 100 websites<br /><a href="https://ajdg.solutions/product/adrotate-pro-developer/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">More information</a></div>
+			<div class="cta"><a role="button" class="cta_button" href="https://ajdg.solutions/?add-to-cart=1130&pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">Buy now for &euro; 199</a></div>
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
 	<div id="dashboard-widgets" class="metabox-holder">
 		<div id="left-column" class="ajdg-postbox-container">
 
@@ -81,35 +110,6 @@
 				</div>
 			</div>
 
-		</div>
-	</div>
-
-	<div class="clear"></div>
-	
-	<div style="text-align: center; margin-top: 30px;">
-		<div class="ajdg-sales-widget" style="display: inline-block; margin-right:20px; width: 230px;">
-			<a href="https://ajdg.solutions/product/adrotate-pro-single/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="header"><img src="<?php echo plugins_url("/images/pro/single.jpg", dirname(__FILE__)); ?>" alt="WordPress Maintenance & Updates" width="228" height="120"></div></a>
-			<a href="https://ajdg.solutions/product/adrotate-pro-single/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="title">AdRotate Professional</div></a>
-			<div class="sub_title">Use on 1 website<br /><a href="https://ajdg.solutions/product/adrotate-pro-single/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">More information</a></div>
-			<div class="cta"><a role="button" class="cta_button" href="https://ajdg.solutions/?add-to-cart=1124&pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">Buy now for &euro; 39</a></div>
-		</div>
-		<div class="ajdg-sales-widget" style="display: inline-block; margin-right:20px; width: 230px;">
-			<a href="https://ajdg.solutions/product/adrotate-pro-duo/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="header"><img src="<?php echo plugins_url("/images/pro/duo.jpg", dirname(__FILE__)); ?>" alt="WordPress Maintenance & Updates" width="228" height="120"></div></a>
-			<a href="https://ajdg.solutions/product/adrotate-pro-duo/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="title">AdRotate Professional</div></a>
-			<div class="sub_title">Use on 2 websites<br /><a href="https://ajdg.solutions/product/adrotate-pro-duo/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">More information</a></div>
-			<div class="cta"><a role="button" class="cta_button" href="https://ajdg.solutions/?add-to-cart=1126&pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">Buy now for &euro; 49</a></div>
-		</div>
-		<div class="ajdg-sales-widget" style="display: inline-block; margin-right:20px; width: 230px;">
-			<a href="https://ajdg.solutions/product/adrotate-pro-multi/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="header"><img src="<?php echo plugins_url("/images/pro/multi.jpg", dirname(__FILE__)); ?>" alt="WordPress Maintenance & Updates" width="228" height="120"></div></a>
-			<a href="https://ajdg.solutions/product/adrotate-pro-multi/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="title">AdRotate Professional</div></a>
-			<div class="sub_title">Use on up-to 5 websites<br /><a href="https://ajdg.solutions/product/adrotate-pro-multi/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">More information</a></div>
-			<div class="cta"><a role="button" class="cta_button" href="https://ajdg.solutions/?add-to-cart=1128&pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">Buy now for &euro; 99</a></div>
-		</div>
-		<div class="ajdg-sales-widget" style="display: inline-block; margin-right:20px; width: 230px;">
-			<a href="https://ajdg.solutions/product/adrotate-pro-developer/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="header"><img src="<?php echo plugins_url("/images/pro/developer.jpg", dirname(__FILE__)); ?>" alt="WordPress Maintenance & Updates" width="228" height="120"></div></a>
-			<a href="https://ajdg.solutions/product/adrotate-pro-developer/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank"><div class="title">AdRotate Professional</div></a>
-			<div class="sub_title">Use on up-to 100 websites<br /><a href="https://ajdg.solutions/product/adrotate-pro-developer/?pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">More information</a></div>
-			<div class="cta"><a role="button" class="cta_button" href="https://ajdg.solutions/?add-to-cart=1130&pk_campaign=adrotatefree&pk_keyword=adrotatepro_page" target="_blank">Buy now for &euro; 199</a></div>
 		</div>
 	</div>
 

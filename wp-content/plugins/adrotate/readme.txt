@@ -5,7 +5,7 @@ Tags: adverts, ads, banners, advert manager, ad manager, banner manager, monetis
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.4.2
-Stable tag: 5.8.4
+Stable tag: 5.8.6
 License: GPLv3
 
 AdRotate is the only advert manager you'll ever need for WordPress.
@@ -61,43 +61,35 @@ For more detailed instructions check out the [installation steps](https://ajdg.s
 
 For the full changelog check out the [development page](https://ajdg.solutions/support/adrotate-development/?pk_campaign=adrotatefree&pk_keyword=readme).
 
-= AdRotate 5.8.4 =
-* [fix] Possible SQL injection vulnerability for certain urls</li>
+= AdRotate 5.8.6 =
+* [CAUTION] PHP snippet syntax has changed, check manual!
+* [new] Added/Unlocked AdRotate Media Manager
+* [new] Create folders from the Media Manager
+* [change] Redesigned Info dashboard
+* [change] Removed affiliate offers
+* [change] Re-arranged AdRotate Pro page
 
-= AdRotate 5.8.3.1 =
-* [i18n] Updated Dutch translation
-* [i18n] Updated French translation
-* [i18n] Updated Italian translation
-
-= AdRotate 5.8.3 =
-* [new] Configuration notifications when editing groups
-* [new] Portable adverts
-* [change] Dashboard tweaks
-* [fix] 'Unexpected output' notice on activation of the plugin
-* [i18n] Updated Dutch, French, German and Italian
+= AdRotate Professional 5.8.4 =
+* [CAUTION] PHP snippet syntax has changed, check manual!
+* [new] License validity available in your Dashboard
+* [new] Remove wrapper code from advert for inline use with PHP
+* [new] Remove wrapper code from advert for inline use with Shortcode
+* [new] Create folders from the Media Manager
+* [change] Geo Lookup requests for may now take up to 5 seconds
+* [fix] Faulty ; in the group CSS output for margins
+* [fix] Plugin updates not always showing without an active license
+* [fix] Check for update when activating license
+* [fix] Possible SQL injection vulnerability for certain urls
+* [fix] Improved MySQL 8 compatibility
+* [fix] Improved error handling for AdRotate Geo
+* [fix] Advertisers no longer create empty ads when adding new adverts
+* [api] Updated license (de)activation routine
+* [api] Smaller data size for update checks and Geotargeting (faster)
+* [api] Requests may now take up to 5 seconds (up from 2 seconds)
+* [api] Clearer status message for invalid and expired licenses
+* [api] More accurate latency calculation
 
 Be a Pro and get [AdRotate Professional](https://ajdg.solutions/product-category/adrotate-pro/?pk_campaign=adrotatefree&pk_keyword=readme)!
-
-= AdRotate Professional 5.8.3 =
-* [new] Configuration notifications when editing groups
-* [new] Configuration notifications when editing schedules
-* [new] Set schedule to auto-delete when creating an advert
-* [new] Added ipstack status notifications
-* [new] Portable adverts
-* [fix] Better handling for errors when the update check fails
-* [change] Better 'onboarding' for new users
-* [change] Tweaks to notification banner for upgrading users
-* [change] Tweaks to AdRotate Geo notifications
-* [change] Dashboard tweaks
-* [i18n] Updated Dutch, French, German, Italian and Spanish
-* [api] Provide basic update info for inactive licenses
-
-= AdRotate Professional 5.8.2 =
-* Improved WordPress 5.4.1 compatibility
-* [i18n] Updated french translation
-
-= AdRotate Professional 5.8.1 =
-* [fix] Uninstall not working for some people
 
 == Upgrade Notice ==
 
@@ -114,7 +106,7 @@ Yes, clicks and impressions.
 
 = Can I use my adverts from Google AdSense? =
 Yes, usually you can use their code as-is.
-Googles new Auto-Ads are supported as well.
+Googles new Auto-Ads work as well.
 
 = Does AdRotate support HTML5 adverts? =
 Yes!
@@ -145,9 +137,6 @@ Yes!
 
 = Does AdRotate work with bbPress? =
 Yes!
-
-= Are emails sent by AdRotate sent through my installed SMTP plugin? =
-Yes! Such plugins take over the wp_mail() function which is what AdRotate uses.
 
 == Screenshots ==
 

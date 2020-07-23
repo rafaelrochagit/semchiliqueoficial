@@ -421,6 +421,126 @@ function adrotate_insert_group() {
 	}
 }
 
+
+/*-------------------------------------------------------------
+ Name:      adrotate_insert_media
+ Purpose:   Prepare input form on saving new or updated banners
+ Since:		0.1 
+-------------------------------------------------------------*/
+function adrotate_insert_media() {
+	global $wpdb, $adrotate_config;
+
+	if(wp_verify_nonce($_POST['adrotate_nonce'], 'adrotate_save_media')) {
+		if(current_user_can('adrotate_ad_manage')) {
+			
+			if($_FILES["adrotate_image"]["size"] > 0 AND $_FILES["adrotate_image"]["size"] <= 512000) {
+				$allowedExts = array("jpg", "jpeg", "gif", "png", "html", "js", "svg", "zip");
+				$filename = adrotate_sanitize_file_name($_FILES["adrotate_image"]["name"]);
+				$extension = explode(".", $filename);
+				$extension = end($extension);
+				$location = esc_attr($_POST['adrotate_image_location']);
+				$image_path = WP_CONTENT_DIR."/".$location."/";
+
+				if(
+					(
+						//Images
+						$_FILES["adrotate_image"]["type"] == "image/gif"
+						OR $_FILES["adrotate_image"]["type"] == "image/jpeg" 
+						OR $_FILES["adrotate_image"]["type"] == "image/pjpeg"
+						OR $_FILES["adrotate_image"]["type"] == "image/jpg" 
+						OR $_FILES["adrotate_image"]["type"] == "image/png"
+						OR $_FILES["adrotate_image"]["type"] == "image/svg+xml"
+						
+						// HTML5 Assets
+						OR $_FILES["adrotate_image"]["type"] == "text/html"
+						OR $_FILES["adrotate_image"]["type"] == "application/x-javascript"
+						OR $_FILES["adrotate_image"]["type"] == "application/javascript"
+						OR $_FILES["adrotate_image"]["type"] == "text/javascript"
+						
+						// Zip files
+						OR $_FILES["adrotate_image"]["type"] == "application/zip"
+					)
+					AND in_array($extension, $allowedExts)
+				) {
+					if ($_FILES["adrotate_image"]["error"] > 0) {
+						if($_FILES["adrotate_image"]["error"] == 1 OR $_FILES["adrotate_image"]["error"] == 2) $errorcode = 511;
+						else if($_FILES["adrotate_image"]["error"] == 3) $errorcode = 506;
+						else if($_FILES["adrotate_image"]["error"] == 4) $errorcode = 506;
+						else if($_FILES["adrotate_image"]["error"] == 6 OR $_FILES["adrotate_image"]["error"] == 7) $errorcode = 506;
+						else $errorcode = '';
+						adrotate_return('adrotate-media', $errorcode); // Other error
+					} else {
+						if(!move_uploaded_file($_FILES["adrotate_image"]["tmp_name"], $image_path.$filename)) {
+							adrotate_return('adrotate-media', 506); // Upload error
+						}
+
+						if($_FILES["adrotate_image"]["type"] == "application/zip" AND $extension == "zip") {
+							require_once(ABSPATH .'/wp-admin/includes/file.php');
+
+							$creds = request_filesystem_credentials(wp_nonce_url('admin.php?page=adrotate-media'), '', false, $image_path, null);
+						    if(!WP_Filesystem($creds)) {
+								request_filesystem_credentials(wp_nonce_url('admin.php?page=adrotate-media'), '', true, $image_path, null);
+
+								$unzipfile = unzip_file($image_path.$filename, $image_path);
+								if(is_wp_error($unzipfile)) {
+									adrotate_return('adrotate-media', 512); // Can not unzip file
+								}
+							}
+
+							// Delete the uploaded zip
+							adrotate_unlink($filename);
+						}
+
+						adrotate_return('adrotate-media', 202); // Success
+					}
+				} else {
+					adrotate_return('adrotate-media', 510); // Filetype
+				}
+			} else {
+				adrotate_return('adrotate-media', 511); // Size
+			}
+		} else {
+			adrotate_return('adrotate-media', 500); // No access/permission
+		}
+	} else {
+		adrotate_nonce_error();
+		exit;
+	}
+}
+
+/*-------------------------------------------------------------
+ Name:      adrotate_insert_folder
+ Purpose:   Create a folder
+ Since:		5.8.6
+-------------------------------------------------------------*/
+function adrotate_insert_folder() {
+	global $adrotate_config;
+
+	if(wp_verify_nonce($_POST['adrotate_nonce'], 'adrotate_save_media')) {
+		if(current_user_can('adrotate_ad_manage')) {
+			
+			$folder = (isset($_POST['adrotate_folder'])) ? esc_attr(strip_tags(trim($_POST['adrotate_folder']))) : '';
+
+			if(strlen($folder) > 0 and strlen($folder) <= 100) {
+				$folder = adrotate_sanitize_file_name($folder);
+
+				if(wp_mkdir_p(WP_CONTENT_DIR."/".$adrotate_config['banner_folder']."/".$folder)) {
+					adrotate_return('adrotate-media', 223); // Success
+				} else {
+					adrotate_return('adrotate-media', 516); // error
+				}
+			} else {
+				adrotate_return('adrotate-media', 515); // name length
+			}
+		} else {
+			adrotate_return('adrotate-media', 500); // No access/permission
+		}
+	} else {
+		adrotate_nonce_error();
+		exit;
+	}
+}
+
 /*-------------------------------------------------------------
  Name:      adrotate_request_action
  Purpose:   Prepare action for banner or group from database
@@ -694,21 +814,12 @@ function adrotate_options_submit() {
 
 			// Turn options off. Available in AdRotate Pro only
 			$notifications['notification_email'] = 'N';
-			$notifications['notification_push'] = 'N';
 			$notifications['notification_email_publisher'] = array(get_option('admin_email'));
-			$notifications['notification_email_advertiser'] = array(get_option('admin_email'));
 			$notifications['notification_mail_geo'] = 'N';
 			$notifications['notification_mail_status'] = 'N';
 			$notifications['notification_mail_queue'] = 'N';
 			$notifications['notification_mail_approved'] = 'N';
 			$notifications['notification_mail_rejected'] = 'N';
-			$notifications['notification_push_user'] = '';
-			$notifications['notification_push_api'] = '';
-			$notifications['notification_push_geo'] = 'N';
-			$notifications['notification_push_status'] = 'N';
-			$notifications['notification_push_queue'] = 'N';
-			$notifications['notification_push_approved'] = 'N';
-			$notifications['notification_push_rejected'] = 'N';		
 
 			update_option('adrotate_notifications', $notifications);
 		}

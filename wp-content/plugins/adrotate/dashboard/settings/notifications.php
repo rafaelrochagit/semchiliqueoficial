@@ -66,13 +66,6 @@
 			<span class="description"><?php _e('Messages are sent once every 24 hours.  Maximum of 5 addresses. Comma separated. This field may not be empty!', 'adrotate'); ?></span>
 		</td>
 	</tr>
-	<tr>
-		<th valign="top"><?php _e('Advertisers', 'adrotate'); ?></th>
-		<td>
-			<textarea name="adrotate_notification_email_advertiser" cols="50" rows="2" disabled="1"><?php echo get_option('admin_email'); ?></textarea><br />
-			<span class="description"><?php _e('Who gets email from advertisers. Maximum of 5 addresses. Comma separated. This field may not be empty!', 'adrotate'); ?></span>
-		</td>
-	</tr>
 </table>
 
 <p class="submit">

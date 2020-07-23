@@ -44,13 +44,45 @@ $data = get_option("adrotate_advert_status");
 			</div>
 
 			<div class="ajdg-postbox">
-				<h2 class="ajdg-postbox-title">AdRotate Banner Manager</h2>
+				<h2 class="ajdg-postbox-title">Your help is important</h2>
 				<div id="services" class="ajdg-postbox-content">
-					<p><strong>Your help and support is important</strong></p>
-					<p>Consider writing a review or making a donation if you like the plugin or if you find the plugin useful. Reviews cost you nothing but are super helpful as promotion which helps to ensure future development. Thank you for your consideration and support!</p>
-					<center><a class="button-primary" href="https://ajdg.solutions/go/donate/adrotatefree" target="_blank">Donate via Paypal</a> <a class="button" target="_blank" href="https://wordpress.org/support/plugin/adrotate/reviews/?rate=5#new-post">Write review on WordPress.org</a></center></p>
+					<p>Consider writing a review, sharing AdRotate in Social media or making a donation if you like the plugin or if you find it useful. Writing a review and sharing AdRotate on social media costs you nothing but doing so is super helpful as promotion which helps to ensure future development. Thank you for your consideration and support!</p>
+					
+					<p><a href="https://twitter.com/intent/tweet?hashtags=wordpress%2Cplugin%2Cadvertising&related=arnandegans%2Cwordpress&text=I%20am%20using%20AdRotate%20for%20@WordPress.%20Check%20it%20out.&url=https%3A%2F%2Fwordpress.org/plugins/adrotate/" target="_blank" class="button-primary goosebox"><i class="icn-t"></i>Post Tweet</a> <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwordpress.org%2Fplugins%2Fadrotate%2F&amp;src=adrotate" target="_blank" class="button-primary goosebox"><i class="icn-fb"></i>Share on Facebook</a> <a class="button-primary" href="https://ajdg.solutions/go/donate/adrotatefree" target="_blank">Donate via Paypal</a> <a class="button" target="_blank" href="https://wordpress.org/support/plugin/adrotate/reviews/?rate=5#new-post">Write review on WordPress.org</a></p>
+				</div>
+			</div>
 
-					<p><strong>More plugins and services</strong></p>
+			<div class="ajdg-postbox">
+				<h2 class="ajdg-postbox-title">News & Updates</h2>
+				<div id="news" class="ajdg-postbox-content">
+					<?php wp_widget_rss_output(array(
+						'url' => 'http://ajdg.solutions/feed/', 
+						'items' => 4, 
+						'show_summary' => 1, 
+						'show_author' => 0, 
+						'show_date' => 1)
+					); ?>
+				</div>
+			</div>
+
+		</div>
+		<div id="right-column" class="ajdg-postbox-container">
+						
+			<div class="ajdg-postbox">				
+				<h2 class="ajdg-postbox-title">Get more features</h2>
+				<div id="get-pro" class="ajdg-postbox-content">
+					<p><a href="https://ajdg.solutions/plugins/adrotate-for-wordpress/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=buy_pro" target="_blank"><img src="<?php echo plugins_url('/images/logo-60x60.png', dirname(__FILE__)); ?>" class="alignleft pro-image" /></a><?php _e('AdRotate Professional has a lot more functions for even better advertising management. Check out the feature comparison tab on any of the product pages to see what AdRotate Pro has to offer for you!', 'adrotate'); ?></p>
+					<a href="https://ajdg.solutions/plugins/adrotate-for-wordpress/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=buy_pro"><img src="<?php echo plugins_url('/images/adrotate-product.png', dirname(__FILE__)); ?>" alt="adrotate-product" width="150" height="150" align="right" style="padding: 0 0 10px 10px;" /></a>
+					<p><a href="https://ajdg.solutions/product/adrotate-pro-single/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=single" target="_blank"><strong><?php _e('Single License', 'adrotate'); ?> (&euro; 39.00)</strong></a><br /><em><?php _e('Use on ONE WordPress installation.', 'adrotate'); ?> <a href="https://ajdg.solutions/?add-to-cart=1124&pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=single" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></em></p>
+					<p><a href="https://ajdg.solutions/product/adrotate-pro-duo/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=duo" target="_blank"><strong><?php _e('Duo License', 'adrotate'); ?> (&euro; 49.00)</strong></a><br /><em><?php _e('Use on TWO WordPress installations.', 'adrotate'); ?> <a href="https://ajdg.solutions/?add-to-cart=1126&pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=duo" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></em></p>
+					<p><a href="https://ajdg.solutions/product/adrotate-pro-multi/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=multi" target="_blank"><strong><?php _e('Multi License', 'adrotate'); ?> (&euro; 99.00)</strong></a><br /><em><?php _e('Use on up to FIVE WordPress installations.', 'adrotate'); ?> <a href="https://ajdg.solutions/?add-to-cart=1128&pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=multi" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></em></p>
+					<p><a href="https://ajdg.solutions/product/adrotate-pro-developer/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=developer" target="_blank"><strong><?php _e('Developer License', 'adrotate'); ?> (&euro; 199.00)</strong></a><br /><em><?php _e('Use on up to a HUNDRED WordPress installations and/or networks.', 'adrotate'); ?> <a href="https://ajdg.solutions/?add-to-cart=1130&pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=developer" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></em></p>
+				</div>
+			</div>
+
+			<div class="ajdg-postbox">				
+				<h2 class="ajdg-postbox-title">Other plugins and services by Arnan</h2>
+				<div id="empty" class="ajdg-postbox-content">
 					<p>Check out these and more services in more details on my website. I also make more plugins. If you like AdRotate - Maybe you like some of those as well. Take a look at the <a href="https://ajdg.solutions/plugins/?pk_campaign=adrotatefree&pk_keyword=info_page" target="_blank">plugins</a> and overall <a href="https://ajdg.solutions/pricing/?pk_campaign=adrotatefree&pk_keyword=info_page" target="_blank">pricing</a> page for more.</p>
 					<table width="100%">
 						<tr>
@@ -86,67 +118,7 @@ $data = get_option("adrotate_advert_status");
 							</td>
 						</tr>
 					</table>
-				</div>
-			</div>
-
-		</div>
-		<div id="right-column" class="ajdg-postbox-container">
-						
-			<div class="ajdg-postbox">
-				<h2 class="ajdg-postbox-title">News & Updates</h2>
-				<div id="news" class="ajdg-postbox-content">
-					<?php wp_widget_rss_output(array(
-						'url' => 'http://ajdg.solutions/feed/', 
-						'items' => 4, 
-						'show_summary' => 1, 
-						'show_author' => 0, 
-						'show_date' => 1)
-					); ?>
-				</div>
-			</div>
-			
-			<div class="ajdg-postbox">
-				<h2 class="ajdg-postbox-title"><?php _e('Buy AdRotate Professional', 'adrotate'); ?></h2>
-				<div id="get-pro" class="ajdg-postbox-content">
-					<p><a href="https://ajdg.solutions/plugins/adrotate-for-wordpress/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=buy_pro" target="_blank"><img src="<?php echo plugins_url('/images/logo-60x60.png', dirname(__FILE__)); ?>" class="alignleft pro-image" /></a><?php _e('AdRotate Professional has a lot more functions for even better advertising management. Check out the feature comparison tab on any of the product pages to see what AdRotate Pro has to offer for you!', 'adrotate'); ?></p>
-					<a href="https://ajdg.solutions/plugins/adrotate-for-wordpress/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=buy_pro"><img src="<?php echo plugins_url('/images/adrotate-product.png', dirname(__FILE__)); ?>" alt="adrotate-product" width="150" height="150" align="right" style="padding: 0 0 10px 10px;" /></a>
-					<p><a href="https://ajdg.solutions/product/adrotate-pro-single/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=single" target="_blank"><strong><?php _e('Single License', 'adrotate'); ?> (&euro; 39.00)</strong></a><br /><em><?php _e('Use on ONE WordPress installation.', 'adrotate'); ?> <a href="https://ajdg.solutions/?add-to-cart=1124&pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=single" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></em></p>
-					<p><a href="https://ajdg.solutions/product/adrotate-pro-duo/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=duo" target="_blank"><strong><?php _e('Duo License', 'adrotate'); ?> (&euro; 49.00)</strong></a><br /><em><?php _e('Use on TWO WordPress installations.', 'adrotate'); ?> <a href="https://ajdg.solutions/?add-to-cart=1126&pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=duo" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></em></p>
-					<p><a href="https://ajdg.solutions/product/adrotate-pro-multi/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=multi" target="_blank"><strong><?php _e('Multi License', 'adrotate'); ?> (&euro; 99.00)</strong></a><br /><em><?php _e('Use on up to FIVE WordPress installations.', 'adrotate'); ?> <a href="https://ajdg.solutions/?add-to-cart=1128&pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=multi" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></em></p>
-					<p><a href="https://ajdg.solutions/product/adrotate-pro-developer/?pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=developer" target="_blank"><strong><?php _e('Developer License', 'adrotate'); ?> (&euro; 199.00)</strong></a><br /><em><?php _e('Use on up to a HUNDRED WordPress installations and/or networks.', 'adrotate'); ?> <a href="https://ajdg.solutions/?add-to-cart=1130&pk_campaign=adrotatefree&pk_keyword=info_page&pk_content=developer" target="_blank"><?php _e('Buy now', 'adrotate'); ?> &raquo;</a></em></p>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>
-
-<div class="clear"></div>
-
-<hr>
-<h1><?php _e('Advertising Partners & Affiliates', 'adrotate'); ?></h1>
-<em><?php _e('A selection of quality advertiser networks and useful products. If you need adverts or just want more or more diverse adverts. Check out these great options!', 'adrotate'); ?><br /><?php _e('Check out these and other preferred products or providers on my', 'adrotate'); ?> <a rel="nofollow" href="https://ajdg.solutions/recommended-products/&pk_campaign=adrotatefree&pk_keyword=info_page"><?php _e('recommended products page', 'adrotate'); ?></a>.</em>
-
-<div id="dashboard-widgets-wrap">
-	<div id="dashboard-widgets" class="metabox-holder">
-		<div id="left-column" class="ajdg-postbox-container">
-
-			<div class="ajdg-postbox">				
-				<h2 class="ajdg-postbox-title">Give your websites a speed boost with a VPS from Inmotion Hosting</h2>
-				<div id="namecheap" class="ajdg-postbox-content">
-					<p>A VPS is a great step up from regular hosting and it gives you a lot more room to grow your website. Whether you host many websites to save money or put your bigger wedsites on it, Inmotion Hosting is up to the task. Get more control and speed with a VPS from Inmotion Hosting. I've been using their VPS servers for several years now and have no complaints!</p>
-					<p><center><a rel="nofollow" href="https://ajdg.solutions/go/imh-vps"><img src="<?php echo plugins_url("/images/offers/inmotionhosting-vps.jpg", dirname(__FILE__)); ?>" width="440" alt="inmotionhosting.com"></a></center></p>
-				</div>
-			</div>
-
-		</div>
-		<div id="right-column" class="ajdg-postbox-container">
-
-			<div class="ajdg-postbox">				
-				<h2 class="ajdg-postbox-title">Get a SSL Certificate from Namecheap</h2>
-				<div id="namecheap" class="ajdg-postbox-content">
-					<p>With the increasing risks on the internet it's smart to keep the trust of your visitors by installing a SSL certificate on your website. Show them that you care about their privacy with a good and solid certificate. NameCheap has plenty of affordable options for all kinds of protection. I've been a satisfied customer of NameCheap for many years.</p>
-					<p><center><a rel="nofollow" href="https://ajdg.solutions/go/namecheap/"><img src="<?php echo plugins_url("/images/offers/namecheap-ssl.jpg", dirname(__FILE__)); ?>" width="440" alt="Namecheap.com"></a></center></p>
+					<p>If you're in need of adverts, faster hosting, SSL certificates or similar services, check out the <a rel="nofollow" href="https://ajdg.solutions/recommended-products/?pk_campaign=adrotatefree&pk_keyword=info_page">recommended products page</a> for some great offers.</p>
 				</div>
 			</div>
 
