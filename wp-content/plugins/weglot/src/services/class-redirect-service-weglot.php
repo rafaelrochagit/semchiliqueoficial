@@ -33,9 +33,9 @@ class Redirect_Service_Weglot {
 	 * @since 2.0
 	 */
 	public function __construct() {
-		$this->option_services           = weglot_get_service( 'Option_Service_Weglot' );
-		$this->request_url_services      = weglot_get_service( 'Request_Url_Service_Weglot' );
-		$this->private_services          = weglot_get_service( 'Private_Language_Service_Weglot' );
+		$this->option_services      = weglot_get_service( 'Option_Service_Weglot' );
+		$this->request_url_services = weglot_get_service( 'Request_Url_Service_Weglot' );
+		$this->private_services     = weglot_get_service( 'Private_Language_Service_Weglot' );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class Redirect_Service_Weglot {
 		}
 
 		if ( isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) { //phpcs:ignore
-            $server_lang           = substr( $_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, apply_filters('weglot_number_of_character_for_language',2) );
+			$server_lang = substr( $_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, apply_filters( 'weglot_number_of_character_for_language', 2 ) );
 		} else {
 			if ( isset( $_SERVER['HTTP_CF_IPCOUNTRY'] ) ) { // phpcs:ignore
 				// Compatibility Cloudfare
@@ -94,18 +94,18 @@ class Redirect_Service_Weglot {
 			exit();
 		}
 
-        if (
-            !in_array( $server_lang, $destination_languages ) && // phpcs:ignore
-            $server_lang !== weglot_get_original_language() &&
-            weglot_get_original_language() === $this->request_url_services->get_current_language() &&
-            ! $this->private_services->is_active_private_mode_for_lang( $server_lang ) &&
-            $this->option_services->get_option('autoswitch_fallback') !== null
-        ) {
-            $url_auto_redirect = apply_filters( 'weglot_url_auto_redirect', $this->request_url_services->get_weglot_url()->getForLanguage( $this->option_services->get_option('autoswitch_fallback') ) );
-            header( "Location: $url_auto_redirect", true, 302 );
-            exit();
-        }
-    }
+		if (
+ 			! in_array( $server_lang, $destination_languages ) // phpcs:ignore
+			&& $server_lang !== weglot_get_original_language()
+			&& weglot_get_original_language() === $this->request_url_services->get_current_language()
+			&& ! $this->private_services->is_active_private_mode_for_lang( $server_lang )
+			&& $this->option_services->get_option( 'autoswitch_fallback' ) !== null
+		) {
+			$url_auto_redirect = apply_filters( 'weglot_url_auto_redirect', $this->request_url_services->get_weglot_url()->getForLanguage( $this->option_services->get_option( 'autoswitch_fallback' ) ) );
+			header( "Location: $url_auto_redirect", true, 302 );
+			exit();
+		}
+	}
 
 	/**
 	 * @since 2.0

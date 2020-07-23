@@ -12,12 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 class Helper_Rollback_Weglot extends \Plugin_Upgrader {
 
 	/**
 	 * Plugin rollback.
 	 *
-	 * @param       $plugin
+	 * @param $plugin
 	 * @param array $args
 	 *
 	 * @return array|bool|\WP_Error
@@ -51,17 +52,19 @@ class Helper_Rollback_Weglot extends \Plugin_Upgrader {
 		add_filter( 'upgrader_pre_install', array( $this, 'deactivate_plugin_before_upgrade' ), 10, 2 );
 		add_filter( 'upgrader_clear_destination', array( $this, 'delete_old_plugin' ), 10, 4 );
 
-		$this->run( array(
-			'package'           => $url,
-			'destination'       => WP_PLUGIN_DIR,
-			'clear_destination' => true,
-			'clear_working'     => true,
-			'hook_extra'        => array(
-				'plugin' => $plugin,
-				'type'   => 'plugin',
-				'action' => 'update',
-			),
-		) );
+		$this->run(
+			array(
+				'package'           => $url,
+				'destination'       => WP_PLUGIN_DIR,
+				'clear_destination' => true,
+				'clear_working'     => true,
+				'hook_extra'        => array(
+					'plugin' => $plugin,
+					'type'   => 'plugin',
+					'action' => 'update',
+				),
+			)
+		);
 
 		// Cleanup our hooks, in case something else does a upgrade on this connection.
 		remove_filter( 'upgrader_pre_install', array( $this, 'deactivate_plugin_before_upgrade' ) );

@@ -7,7 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use WeglotWP\Models\Hooks_Interface_Weglot;
-
 use WeglotWP\Helpers\Helper_Pages_Weglot;
 use WeglotWP\Helpers\Helper_Tabs_Admin_Weglot;
 
@@ -38,8 +37,8 @@ class Pages_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'admin_menu', [ $this, 'weglot_plugin_menu' ] );
-		add_action( 'admin_bar_menu', [ $this, 'add_admin_bar_menu' ], PHP_INT_MAX );
+		add_action( 'admin_menu', array( $this, 'weglot_plugin_menu' ) );
+		add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu' ), PHP_INT_MAX );
 	}
 
 	/**
@@ -114,7 +113,7 @@ class Pages_Weglot implements Hooks_Interface_Weglot {
 
 		$menu_icon = 'data:image/svg+xml;base64,' . base64_encode( $weglot_logo_svg );
 
-		add_menu_page( 'Weglot', 'Weglot', 'manage_options', Helper_Pages_Weglot::SETTINGS, [ $this, 'weglot_plugin_settings_page' ], $menu_icon );
+		add_menu_page( 'Weglot', 'Weglot', 'manage_options', Helper_Pages_Weglot::SETTINGS, array( $this, 'weglot_plugin_settings_page' ), $menu_icon );
 	}
 
 	/**

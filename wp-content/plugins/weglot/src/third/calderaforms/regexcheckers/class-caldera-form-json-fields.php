@@ -2,24 +2,24 @@
 
 namespace WeglotWP\Third\Calderaforms\Regexcheckers;
 
-use Weglot\Parser\Check\Regex\RegexChecker;
-use Weglot\Util\SourceType;
-
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Weglot\Parser\Check\Regex\RegexChecker;
+use Weglot\Util\SourceType;
+
+
 /**
  * @since 2.0.7
  */
-class Caldera_Form_Json_Fields
-{
-    const REGEX = '#CF_VALIDATOR_STRINGS = (.*?);#';
+class Caldera_Form_Json_Fields {
 
-    const TYPE = SourceType::SOURCE_JSON;
+	const REGEX = '#CF_VALIDATOR_STRINGS = (.*?);#';
 
-    const VAR_NUMBER = 1;
+	const TYPE = SourceType::SOURCE_JSON;
 
-    public static $KEYS = array( "defaultMessage","email","url","number","integer","digits","alphanum","required","pattern","min","max","range","minlength","maxlength","length","mincheck","maxcheck","check","equalto","notblank" );
+	const VAR_NUMBER = 1;
+
+	public static $KEYS = array( 'defaultMessage', 'email', 'url', 'number', 'integer', 'digits', 'alphanum', 'required', 'pattern', 'min', 'max', 'range', 'minlength', 'maxlength', 'length', 'mincheck', 'maxcheck', 'check', 'equalto', 'notblank' );
 }

@@ -4,7 +4,7 @@ Tags: translate, multilingual, language, translation, localization
 Requires at least: 4.5
 Tested up to: 5.4
 Requires PHP: 5.4
-Stable tag: 3.1.7
+Stable tag: 3.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -200,6 +200,15 @@ See changelog for upgrade changes.
 
 
 == Changelog ==
+
+= 3.1.8 (02/07/2020) =
+* Exclude URL by languages
+* Translate by default all Woocommerce mails with customer language
+* Update URLs translation, possibility to use custom URLs for hierarchical pages
+* Translate External URLs
+* Add SVG files to media translation
+* Exclude wp-cron.php from translation
+* Fix links translation with custom URLS
 
 = 3.1.7 (04/05/2020) =
 * Add a Weglot Menu to admin bar

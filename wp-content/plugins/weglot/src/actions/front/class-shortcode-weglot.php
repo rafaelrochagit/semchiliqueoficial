@@ -21,7 +21,7 @@ class Shortcode_Weglot {
 		$this->button_services      = weglot_get_service( 'Button_Service_Weglot' );
 		$this->request_url_services = weglot_get_service( 'Request_Url_Service_Weglot' );
 
-		add_shortcode( 'weglot_switcher', [ $this, 'weglot_switcher_callback' ] );
+		add_shortcode( 'weglot_switcher', array( $this, 'weglot_switcher_callback' ) );
 	}
 
 	/**

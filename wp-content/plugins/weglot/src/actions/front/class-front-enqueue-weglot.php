@@ -19,7 +19,7 @@ class Front_Enqueue_Weglot implements Hooks_Interface_Weglot {
 	 * @since 2.0
 	 */
 	public function __construct() {
-		$this->option_services         = weglot_get_service( 'Option_Service_Weglot' );
+		$this->option_services = weglot_get_service( 'Option_Service_Weglot' );
 	}
 
 	/**
@@ -29,8 +29,8 @@ class Front_Enqueue_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'wp_enqueue_scripts', [ $this, 'weglot_wp_enqueue_scripts' ] );
-		add_action( 'login_enqueue_scripts', [ $this, 'weglot_wp_enqueue_scripts' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'weglot_wp_enqueue_scripts' ) );
+		add_action( 'login_enqueue_scripts', array( $this, 'weglot_wp_enqueue_scripts' ) );
 	}
 
 

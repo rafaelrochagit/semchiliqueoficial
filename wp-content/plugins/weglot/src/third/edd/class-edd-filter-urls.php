@@ -9,13 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Models\Hooks_Interface_Weglot;
 use WeglotWP\Helpers\Helper_Filter_Url_Weglot;
 
+
 class Edd_Filter_Urls implements Hooks_Interface_Weglot {
 
 	/**
 	 * @return void
 	 */
 	public function __construct() {
-		$this->edd_active_services       = weglot_get_service( 'Edd_Active' );
+		$this->edd_active_services = weglot_get_service( 'Edd_Active' );
 	}
 
 	/**
@@ -28,9 +29,9 @@ class Edd_Filter_Urls implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		add_filter( 'edd_get_success_page_uri',  [ '\WeglotWP\Helpers\Helper_Filter_Url_Weglot', 'filter_url_lambda' ] );
-		add_filter( 'edd_get_checkout_uri',  [ '\WeglotWP\Helpers\Helper_Filter_Url_Weglot', 'filter_url_lambda' ] );
+		add_filter( 'edd_get_success_page_uri', array( '\WeglotWP\Helpers\Helper_Filter_Url_Weglot', 'filter_url_lambda' ) );
+		add_filter( 'edd_get_checkout_uri', array( '\WeglotWP\Helpers\Helper_Filter_Url_Weglot', 'filter_url_lambda' ) );
 	}
 
-	
+
 }

@@ -9,7 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Helpers\Helper_Tabs_Admin_Weglot;
 use WeglotWP\Helpers\Helper_Pages_Weglot;
 use WeglotWP\Helpers\Helper_Flag_Type;
-
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
 /**
@@ -35,11 +34,11 @@ class Options_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'admin_post_weglot_save_settings', [ $this, 'weglot_save_settings' ] );
+		add_action( 'admin_post_weglot_save_settings', array( $this, 'weglot_save_settings' ) );
 		$api_key = $this->option_services->get_api_key( true );
 		if ( empty( $api_key ) && ( ! isset( $_GET['page'] ) || strpos( $_GET['page'], 'weglot-settings' ) === false) ) { // phpcs:ignore
 			//We don't show the notice if we are on Weglot configuration
-			add_action( 'admin_notices', [ '\WeglotWP\Notices\No_Configuration_Weglot', 'admin_notice' ] );
+			add_action( 'admin_notices', array( '\WeglotWP\Notices\No_Configuration_Weglot', 'admin_notice' ) );
 		}
 	}
 
@@ -69,20 +68,19 @@ class Options_Weglot implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		$tab         = $_GET[ 'tab' ]; //phpcs:ignore
-		$options     = $_POST[ WEGLOT_SLUG ]; //phpcs:ignore
+		$tab = $_GET[ 'tab' ]; //phpcs:ignore
+		$options = $_POST[ WEGLOT_SLUG ]; //phpcs:ignore
 		$options_bdd = $this->option_services->get_options_bdd_v3();
 		switch ( $tab ) {
 			case Helper_Tabs_Admin_Weglot::SETTINGS:
-
 				$has_first_settings = $this->option_services->get_has_first_settings();
 				$options            = $this->sanitize_options_settings( $options, $has_first_settings );
-				$response           = $this->option_services->save_options_to_weglot( $options,  $has_first_settings );
+				$response           = $this->option_services->save_options_to_weglot( $options, $has_first_settings );
 
 				if ( $response['success'] ) {
 					delete_transient( 'weglot_cache_cdn' );
 
-					$api_key_private        = $this->option_services->get_api_key_private();
+					$api_key_private = $this->option_services->get_api_key_private();
 
 					$option_v2 = $this->option_services->get_options_from_v2();
 					if ( ! $api_key_private && $option_v2 ) {
@@ -110,23 +108,21 @@ class Options_Weglot implements Hooks_Interface_Weglot {
 			case Helper_Tabs_Admin_Weglot::SUPPORT:
 				if ( array_key_exists( 'active_wc_reload', $options ) && $options['active_wc_reload'] === 'on' ) {
 					$options_bdd['active_wc_reload'] = true;
-				}
-				else {
+				} else {
 					$options_bdd['active_wc_reload'] = false;
 				}
 
 				$this->option_services->set_options( $options_bdd );
 				break;
 			case Helper_Tabs_Admin_Weglot::CUSTOM_URLS:
-				if (null === $options_bdd) {
-					$options_bdd['custom_urls'] = [];
+				if ( null === $options_bdd ) {
+					$options_bdd['custom_urls'] = array();
 				}
 
 				if ( array_key_exists( 'custom_urls', $options ) ) {
 					$options_bdd['custom_urls'] = $options['custom_urls'];
-				}
-				else {
-					$options_bdd['custom_urls'] = [];
+				} else {
+					$options_bdd['custom_urls'] = array();
 				}
 
 				$this->option_services->set_options( $options_bdd );
@@ -145,8 +141,8 @@ class Options_Weglot implements Hooks_Interface_Weglot {
 	 * @return array
 	 */
 	public function sanitize_options_settings( $options, $has_first_settings = false ) {
-		$user_info        = $this->user_api_services->get_user_info( $options['api_key_private'] );
-		$plans            = $this->user_api_services->get_plans();
+		$user_info = $this->user_api_services->get_user_info( $options['api_key_private'] );
+		$plans     = $this->user_api_services->get_plans();
 
 		// Limit language
 		if (
@@ -162,10 +158,10 @@ class Options_Weglot implements Hooks_Interface_Weglot {
 
 		$default_options = $this->option_services->get_options_default();
 
-		$options['custom_settings']['button_style']['is_dropdown']    = isset( $options['custom_settings']['button_style']['is_dropdown'] );
-		$options['custom_settings']['button_style']['with_flags']     = isset( $options['custom_settings']['button_style']['with_flags'] );
-		$options['custom_settings']['button_style']['full_name']      = isset( $options['custom_settings']['button_style']['full_name'] );
-		$options['custom_settings']['button_style']['with_name']      = isset( $options['custom_settings']['button_style']['with_name'] );
+		$options['custom_settings']['button_style']['is_dropdown'] = isset( $options['custom_settings']['button_style']['is_dropdown'] );
+		$options['custom_settings']['button_style']['with_flags']  = isset( $options['custom_settings']['button_style']['with_flags'] );
+		$options['custom_settings']['button_style']['full_name']   = isset( $options['custom_settings']['button_style']['full_name'] );
+		$options['custom_settings']['button_style']['with_name']   = isset( $options['custom_settings']['button_style']['with_name'] );
 
 		if ( $has_first_settings ) {
 			$options['custom_settings']['button_style']['is_dropdown'] = $default_options['custom_settings']['button_style']['is_dropdown'];
@@ -174,15 +170,15 @@ class Options_Weglot implements Hooks_Interface_Weglot {
 			$options['custom_settings']['button_style']['with_name']   = $default_options['custom_settings']['button_style']['with_name'];
 		}
 
-		$options['custom_settings']['button_style']['custom_css']   = isset( $options['custom_settings']['button_style']['custom_css'] ) ? stripcslashes( $options['custom_settings']['button_style']['custom_css'] ) : '';
+		$options['custom_settings']['button_style']['custom_css'] = isset( $options['custom_settings']['button_style']['custom_css'] ) ? stripcslashes( $options['custom_settings']['button_style']['custom_css'] ) : '';
 
-		$options['custom_settings']['button_style']['flag_type']    = isset( $options['custom_settings']['button_style']['flag_type'] ) ? $options['custom_settings']['button_style']['flag_type'] : Helper_Flag_Type::RECTANGLE_MAT;
+		$options['custom_settings']['button_style']['flag_type'] = isset( $options['custom_settings']['button_style']['flag_type'] ) ? $options['custom_settings']['button_style']['flag_type'] : Helper_Flag_Type::RECTANGLE_MAT;
 
-		$options['custom_settings']['translate_email']              = isset( $options['custom_settings']['translate_email'] );
-		$options['custom_settings']['translate_search']             = isset( $options['custom_settings']['translate_search'] );
-		$options['custom_settings']['translate_amp']                = isset( $options['custom_settings']['translate_amp'] );
+		$options['custom_settings']['translate_email']  = isset( $options['custom_settings']['translate_email'] );
+		$options['custom_settings']['translate_search'] = isset( $options['custom_settings']['translate_search'] );
+		$options['custom_settings']['translate_amp']    = isset( $options['custom_settings']['translate_amp'] );
 
-		$options['auto_switch']                = isset( $options['auto_switch'] );
+		$options['auto_switch'] = isset( $options['auto_switch'] );
 		foreach ( $options['languages'] as $key => $language ) {
 			if ( 'active' === $key ) {
 				continue;
@@ -190,29 +186,17 @@ class Options_Weglot implements Hooks_Interface_Weglot {
 			$options['languages'][ $key ]['enabled'] = ! isset( $options['languages'][ $key ]['enabled'] );
 		}
 
-		if ( ! isset( $options['excluded_paths'] ) ) {
-			$options['excluded_paths'] = [];
-		} else {
-			$options['excluded_paths'] = array_values( $options['excluded_paths'] );
-		}
-
-		foreach ( $options['excluded_paths'] as $key => $item ) {
-			if ( empty( $item['value'] ) ) {
-				unset( $options['excluded_paths'][ $key ] );
-			}
-			else {
-				$options['excluded_paths'][ $key ]['value'] = stripcslashes( $item['value'] );
-			}
-		}
-
 		if ( ! isset( $options['excluded_blocks'] ) ) {
-			$options['excluded_blocks'] = [];
+			$options['excluded_blocks'] = array();
+		} else {
+			array_walk_recursive(
+				$options['excluded_blocks'],
+				function ( &$element ) {
+					//We remove unwanted backslashes
+					$element = stripslashes( $element );
+				}
+			);
 		}
-		else {
-            array_walk_recursive( $options['excluded_blocks'], function ( &$element ) { //We remove unwanted backslashes
-                $element = stripslashes( $element );
-            } );
-        }
 
 		return $options;
 	}

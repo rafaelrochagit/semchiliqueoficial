@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Helpers\Helper_Is_Admin;
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
+
 /**
  * Wp_Optimize_Cache
  *

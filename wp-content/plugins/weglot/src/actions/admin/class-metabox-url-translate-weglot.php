@@ -21,8 +21,8 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 	 * @since 2.1.0
 	 */
 	public function __construct() {
-		$this->language_services   = weglot_get_service( 'Language_Service_Weglot' );
-		$this->option_services     = weglot_get_service( 'Option_Service_Weglot' );
+		$this->language_services = weglot_get_service( 'Language_Service_Weglot' );
+		$this->option_services   = weglot_get_service( 'Option_Service_Weglot' );
 	}
 
 	/**
@@ -32,13 +32,13 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'add_meta_boxes', [ $this, 'add_meta_boxes_url_translate' ] );
-		add_action( 'save_post', [ $this, 'save_post_meta_boxes_url_translate' ], 10, 3 );
-		add_action( 'wp_ajax_weglot_post_name', [ $this, 'weglot_post_name' ] );
-		add_action( 'wp_ajax_weglot_reset_custom_url', [ $this, 'weglot_reset_custom_url' ] );
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes_url_translate' ) );
+		add_action( 'save_post', array( $this, 'save_post_meta_boxes_url_translate' ), 10, 3 );
+		add_action( 'wp_ajax_weglot_post_name', array( $this, 'weglot_post_name' ) );
+		add_action( 'wp_ajax_weglot_reset_custom_url', array( $this, 'weglot_reset_custom_url' ) );
 
-		add_filter( 'wp_insert_post_data', [ $this, 'weglot_wp_insert_post_data' ], 10, 2 );
-		add_filter( 'wp_unique_post_slug', [ $this, 'weglot_wp_unique_post_slug' ] );
+		add_filter( 'wp_insert_post_data', array( $this, 'weglot_wp_insert_post_data' ), 10, 2 );
+		add_filter( 'wp_unique_post_slug', array( $this, 'weglot_wp_unique_post_slug' ) );
 	}
 
 	/**
@@ -53,16 +53,18 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 			! isset( $_POST['custom_url'] ) || //phpcs:ignore
 			! isset( $_POST['id'] ) //phpcs:ignore
 		) {
-			wp_send_json_error( [
-				'code'    => 'missing_parameter',
-			] );
+			wp_send_json_error(
+				array(
+					'code' => 'missing_parameter',
+				)
+			);
 			return;
 		}
 
-		$code_lang          = sanitize_text_field( wp_unslash( $_POST['code_lang'] ) ); //phpcs:ignore
-		$post_name_weglot   = sanitize_text_field( wp_unslash( $_POST['custom_url'] ) ); //phpcs:ignore
+		$code_lang = sanitize_text_field( wp_unslash( $_POST['code_lang'] ) ); //phpcs:ignore
+		$post_name_weglot = sanitize_text_field( wp_unslash( $_POST['custom_url'] ) ); //phpcs:ignore
 
-		$custom_urls  = $this->option_services->get_option( 'custom_urls' );
+		$custom_urls = $this->option_services->get_option( 'custom_urls' );
 
 		if ( isset( $custom_urls[ $code_lang ] ) && isset( $custom_urls[ $code_lang ][ $post_name_weglot ] ) ) {
 			unset( $custom_urls[ $code_lang ] [ $post_name_weglot ] );
@@ -71,11 +73,13 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 
 		$post = get_post( $_POST['id'] ); //phpcs:ignore
 
-		wp_send_json_success( [
-			'result' => [
-				'slug' => $post->post_name,
-			],
-		] );
+		wp_send_json_success(
+			array(
+				'result' => array(
+					'slug' => $post->post_name,
+				),
+			)
+		);
 	}
 
 	/**
@@ -89,7 +93,7 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 	protected function search_unique_key_post_name( $slug, $custom_urls, $suffix = 2 ) {
 		foreach ( $custom_urls as $key_code => $urls ) {
 			if ( isset( $urls[ $slug ] ) ) {
-				$alt_post_name      = _truncate_post_slug( $slug, 200 - ( strlen( $suffix ) + 1 ) ) . "-$suffix";
+				$alt_post_name = _truncate_post_slug( $slug, 200 - ( strlen( $suffix ) + 1 ) ) . "-$suffix";
 				return $this->search_unique_key_post_name( $alt_post_name, $custom_urls, ++$suffix );
 			}
 		}
@@ -103,7 +107,7 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param string $slug          The post slug.
+	 * @param string $slug The post slug.
 	 */
 	public function weglot_wp_unique_post_slug( $slug ) {
 		$custom_urls = $this->option_services->get_option( 'custom_urls' );
@@ -117,36 +121,42 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 	 */
 	public function weglot_post_name() {
 		$weglot_post_name = ( isset( $_POST['post_name'] ) && ! empty( $_POST['post_name'] ) ) ? sanitize_title( $_POST['post_name'] ) : null ; //phpcs:ignore
-		$code_language    = ( isset( $_POST['lang'] ) && ! empty( $_POST['lang'] ) ) ? sanitize_text_field( $_POST['lang'] ) : null ; //phpcs:ignore
-		$post_id          = ( isset( $_POST['id'] ) && ! empty( $_POST['id'] ) ) ? sanitize_text_field( $_POST['id'] ) : null ; //phpcs:ignore
+		$code_language = ( isset( $_POST['lang'] ) && ! empty( $_POST['lang'] ) ) ? sanitize_text_field( $_POST['lang'] ) : null ; //phpcs:ignore
+		$post_id = ( isset( $_POST['id'] ) && ! empty( $_POST['id'] ) ) ? sanitize_text_field( $_POST['id'] ) : null ; //phpcs:ignore
 
 		$custom_urls = $this->option_services->get_option( 'custom_urls' );
 
 		if ( ! $weglot_post_name || ! $code_language || ! $post_id ) {
-			wp_send_json_error( [
-				'success' => false,
-				'code'    => 'missing_parameter',
-			] );
+			wp_send_json_error(
+				array(
+					'success' => false,
+					'code'    => 'missing_parameter',
+				)
+			);
 			return;
 		}
 
 		// Check if not an autosave.
 		if ( wp_is_post_autosave( $post_id ) ) {
-			wp_send_json_error( [
-				'success' => false,
-			] );
+			wp_send_json_error(
+				array(
+					'success' => false,
+				)
+			);
 			return;
 		}
 
 		// Check if not a revision.
 		if ( wp_is_post_revision( $post_id ) ) {
-			wp_send_json_error( [
-				'success' => false,
-			] );
+			wp_send_json_error(
+				array(
+					'success' => false,
+				)
+			);
 			return;
 		}
 
-		$post             = get_post( $post_id );
+		$post = get_post( $post_id );
 		if ( $post->post_name === $weglot_post_name ) {
 			if ( in_array( $post->post_name, $custom_urls[ $code_language ] ) ) { // phpcs:ignore
 				$key_post_name = array_search( $post->post_name, $custom_urls[ $code_language ] );// phpcs:ignore
@@ -154,18 +164,22 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 
 				$this->option_services->set_option_by_key( 'custom_urls', $custom_urls );
 
-				wp_send_json_success( [
-					'success' => true,
-					'result'  => [
-						'slug' => $weglot_post_name,
-					],
-				] );
+				wp_send_json_success(
+					array(
+						'success' => true,
+						'result'  => array(
+							'slug' => $weglot_post_name,
+						),
+					)
+				);
 				return;
 			}
 
-			wp_send_json_success( [
-				'code'     => 'same_post_name',
-			] );
+			wp_send_json_success(
+				array(
+					'code' => 'same_post_name',
+				)
+			);
 
 			return;
 		}
@@ -173,9 +187,11 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 		if ( isset( $custom_urls[ $code_language ] ) ) {
 			// Same use
 			if ( isset( $custom_urls[ $code_language ][ $weglot_post_name ] ) && $custom_urls[ $code_language ][ $weglot_post_name ] === $post->post_name ) {
-				wp_send_json_success( [
-					'code'     => 'same_post_name',
-				] );
+				wp_send_json_success(
+					array(
+						'code' => 'same_post_name',
+					)
+				);
 				return;
 			}
 
@@ -190,12 +206,14 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 		$custom_urls[ $code_language ] [ $weglot_unique_slug ] = $post->post_name;
 		$this->option_services->set_option_by_key( 'custom_urls', $custom_urls );
 
-		wp_send_json_success( [
-			'success' => true,
-			'result'  => [
-				'slug' => $weglot_unique_slug,
-			],
-		] );
+		wp_send_json_success(
+			array(
+				'success' => true,
+				'result'  => array(
+					'slug' => $weglot_unique_slug,
+				),
+			)
+		);
 	}
 
 	/**
@@ -210,17 +228,22 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 
 		$post_type = get_post_type();
 
-		$exclude_post_type_metabox = apply_filters( 'weglot_url_translate_metabox_post_type_exclude', [
-			'attachment',
-			'seopress_404',
-			'product',
-		] );
+		$exclude_post_type_metabox = apply_filters(
+			'weglot_url_translate_metabox_post_type_exclude',
+			array(
+				'attachment',
+				'seopress_404',
+				'product',
+				'shop_order',
+				'shop_coupon',
+			)
+		);
 
 		if ( in_array( $post_type, $exclude_post_type_metabox ) ) { //phpcs:ignore
 			return;
 		}
 
-		add_meta_box( 'weglot-url-translate', __( 'Weglot URL Translate', 'weglot' ), [ $this, 'weglot_url_translate_box' ] );
+		add_meta_box( 'weglot-url-translate', __( 'Weglot URL Translate', 'weglot' ), array( $this, 'weglot_url_translate_box' ) );
 	}
 
 	/**
@@ -263,7 +286,7 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 	public function save_post_meta_boxes_url_translate( $post_id, $post, $update ) {
 
 		// Add nonce for security and authentication.
-		$post_name_weglot   = isset( $_POST[ Helper_Post_Meta_Weglot::POST_NAME_WEGLOT ] ) ? $_POST[ Helper_Post_Meta_Weglot::POST_NAME_WEGLOT ] : []; //phpcs:ignore
+		$post_name_weglot = isset( $_POST[ Helper_Post_Meta_Weglot::POST_NAME_WEGLOT ] ) ? $_POST[ Helper_Post_Meta_Weglot::POST_NAME_WEGLOT ] : []; //phpcs:ignore
 
 		if ( ! isset( $post_name_weglot ) ) {
 			return;
@@ -284,7 +307,7 @@ class Metabox_Url_Translate_Weglot implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		$custom_urls   = $this->option_services->get_option( 'custom_urls' );
+		$custom_urls = $this->option_services->get_option( 'custom_urls' );
 
 		// Update new post_name
 		if ( $this->old_post_name !== $this->new_post_name ) {

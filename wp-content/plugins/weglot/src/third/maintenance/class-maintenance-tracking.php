@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Helpers\Helper_Is_Admin;
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
+
 /**
  * Maintenance_Tracking
  *
@@ -30,15 +31,15 @@ class Maintenance_Tracking implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-        if( ! Helper_Is_Admin::is_wp_admin()) {
-            return;
-        }
+		if ( ! Helper_Is_Admin::is_wp_admin() ) {
+			return;
+		}
 
 		if ( ! $this->maintenance_active_services->is_active() ) {
 			return;
 		}
 
-		add_filter( 'weglot_tabs_admin_options_available', [ $this, 'weglot_maintenance_tracking' ] );
+		add_filter( 'weglot_tabs_admin_options_available', array( $this, 'weglot_maintenance_tracking' ) );
 	}
 
 
@@ -48,7 +49,7 @@ class Maintenance_Tracking implements Hooks_Interface_Weglot {
 	 */
 	public function weglot_maintenance_tracking( $options_available ) {
 
-		if (isset($options_available['api_key_private']['description'])) {
+		if ( isset( $options_available['api_key_private']['description'] ) ) {
 
 			$register_link         = 'https://dashboard.weglot.com/register-wordpress';
 			$register_link_tracked = 'https://weglot.com/ad-track?origin=maintenance&redirectTo=https://dashboard.weglot.com/register-wordpress';

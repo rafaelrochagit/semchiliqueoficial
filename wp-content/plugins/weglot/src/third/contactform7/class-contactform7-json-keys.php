@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Helpers\Helper_Is_Admin;
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
+
 /**
  * Contactform7_Add_Json_Keys
  *
@@ -35,7 +36,7 @@ class Contactform7_Json_Keys implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		add_filter( 'weglot_add_json_keys', [ $this, 'weglot_contactform7_keys' ] );
+		add_filter( 'weglot_add_json_keys', array( $this, 'weglot_contactform7_keys' ) );
 	}
 
 

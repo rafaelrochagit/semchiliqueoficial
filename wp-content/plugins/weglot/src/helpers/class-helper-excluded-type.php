@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Weglot\Util\Regex\RegexEnum;
 
+
 /**
  * @since 3.0.0
  */
@@ -17,13 +18,13 @@ class Helper_Excluded_Type {
 	 * @return array
 	 */
 	public static function get_excluded_type() {
-		return [
+		return array(
 			RegexEnum::START_WITH,
 			RegexEnum::END_WITH,
 			RegexEnum::CONTAIN,
 			RegexEnum::IS_EXACTLY,
 			RegexEnum::MATCH_REGEX,
-		];
+		);
 	}
 
 	/**

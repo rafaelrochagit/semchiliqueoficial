@@ -2,32 +2,33 @@
 
 namespace WeglotWP\Domlisteners;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Weglot\Parser\Listener\AbstractCrawlerAfterListener;
 use Weglot\Parser\Parser;
 use Weglot\Client\Api\Enum\WordType;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 /**
  * @since 2.0
  */
 final class Meta_Listener_Weglot extends AbstractCrawlerAfterListener {
-	protected $attributes = [
-		'name' => [
+	protected $attributes = array(
+		'name' => array(
 			'twitter:image',
 			'twitter:card',
 			'twitter:site',
 			'twitter:creator',
-		],
-	];
+		),
+	);
 
 	/**
 	 * {@inheritdoc}
 	 */
 	protected function xpath() {
-		$selectors = [];
+		$selectors = array();
 		foreach ( $this->attributes as $name => $values ) {
 			foreach ( $values as $value ) {
 				$selectors[] = '@' . $name . ' = \'' . $value . '\'';

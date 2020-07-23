@@ -6,11 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
 use Weglot\Client\Endpoint\Languages;
 use Weglot\Client\Client;
 use Weglot\Client\Api\LanguageCollection;
 use Weglot\Client\Factory\Languages as LanguagesFactory;
+
 
 /**
  * Language service
@@ -44,19 +44,19 @@ class Language_Service_Weglot {
 	 * @param array $params
 	 * @return array
 	 */
-	public function get_languages_available( $params = [] ) {
+	public function get_languages_available( $params = array() ) {
 		if ( null !== $this->languages ) {
 			return $this->languages;
 		}
 
-		$client           = weglot_get_service( 'Parser_Service_Weglot' )->get_client();
+		$client = weglot_get_service( 'Parser_Service_Weglot' )->get_client();
 
-		$languages        = new Languages( $client );
-		$this->languages  = $languages->handle();
+		$languages       = new Languages( $client );
+		$this->languages = $languages->handle();
 
 		if ( isset( $params['sort'] ) && $params['sort'] ) {
 			$this->languages = $this->languages->jsonSerialize();
-			usort( $this->languages, [ $this, 'compare_language' ] );
+			usort( $this->languages, array( $this, 'compare_language' ) );
 
 			$language_collection = new LanguageCollection();
 
@@ -79,8 +79,8 @@ class Language_Service_Weglot {
 	 */
 	public function get_language( $key_code ) {
 
-        $language_code_rewrited = apply_filters('weglot_language_code_replace' ,  array());
-		$language = ($key = array_search($key_code,$language_code_rewrited)) ? $this->get_languages_available()[ $key ]:$this->get_languages_available()[ $key_code ];
+		$language_code_rewrited = apply_filters( 'weglot_language_code_replace', array() );
+		$language               = ( $key = array_search( $key_code, $language_code_rewrited ) ) ? $this->get_languages_available()[ $key ] : $this->get_languages_available()[ $key_code ];
 		return $language;
 	}
 
@@ -90,15 +90,44 @@ class Language_Service_Weglot {
 	 * @param null|string $type
 	 */
 	public function get_languages_configured( $type = null ) {
-		$languages = [];
+		$languages         = array();
 		$original_language = weglot_get_original_language();
 
-		if( $original_language ){
+		if ( $original_language ) {
 			$languages[] = $original_language;
 		}
-		$languages        = array_merge( $languages, weglot_get_destination_languages() );
+		$languages = array_merge( $languages, weglot_get_destination_languages() );
 
-		$languages_object = [];
+		$languages_object = array();
+		foreach ( $languages as $language ) {
+			switch ( $type ) {
+				case 'code':
+					$languages_object[] = $this->get_language( $language )->getIso639();
+					break;
+				default:
+					$languages_object[] = $this->get_language( $language );
+					break;
+			}
+		}
+		return $languages_object;
+	}
+
+	/**
+	 * @since 2.0
+	 * @return array
+	 * @param null|string $type
+	 */
+	public function get_current_languages_configured( $type = null ) {
+
+		$languages         = array();
+		$original_language = weglot_get_original_language();
+
+		if ( $original_language ) {
+			$languages[] = $original_language;
+		}
+		$languages = array_merge( $languages, weglot_get_current_destination_languages() );
+
+		$languages_object = array();
 		foreach ( $languages as $language ) {
 			switch ( $type ) {
 				case 'code':
@@ -120,10 +149,11 @@ class Language_Service_Weglot {
 	 */
 	public function get_current_language_entry_from_key( $key_code ) {
 
-		$languages = $this->get_languages_available();
-        $language_code_rewrited = apply_filters('weglot_language_code_replace' ,  array());
-		if($key = array_search($key_code,$language_code_rewrited))
-            $key_code = $key;
+		$languages              = $this->get_languages_available();
+		$language_code_rewrited = apply_filters( 'weglot_language_code_replace', array() );
+		if ( $key = array_search( $key_code, $language_code_rewrited ) ) {
+			$key_code = $key;
+		}
 
 		if ( isset( $languages[ $key_code ] ) ) {
 			$current_language_entry = $languages[ $key_code ];

@@ -2,12 +2,13 @@
 
 namespace WeglotWP\Domcheckers;
 
-use Weglot\Parser\Check\Dom\AbstractDomChecker;
-use Weglot\Client\Api\Enum\WordType;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+use Weglot\Parser\Check\Dom\AbstractDomChecker;
+use Weglot\Client\Api\Enum\WordType;
+
 
 /**
  * @since 2.0.6

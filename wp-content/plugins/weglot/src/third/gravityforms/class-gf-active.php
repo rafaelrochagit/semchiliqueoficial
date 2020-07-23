@@ -6,9 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
 use WeglotWP\Models\Third_Active_Interface_Weglot;
-
 
 
 /**
@@ -22,7 +20,7 @@ class Gf_Active implements Third_Active_Interface_Weglot {
 	 */
 	public function is_active() {
 		if ( ! function_exists( 'is_plugin_active' ) ) {
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
 		if ( ! is_plugin_active( 'gravityforms/gravityforms.php' ) ) {

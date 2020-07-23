@@ -21,8 +21,8 @@ class Search_Weglot implements Hooks_Interface_Weglot {
 	 * @since 2.4.0
 	 */
 	public function __construct() {
-		$this->option_services  = weglot_get_service( 'Option_Service_Weglot' );
-		$this->parser_services  = weglot_get_service( 'Parser_Service_Weglot' );
+		$this->option_services = weglot_get_service( 'Option_Service_Weglot' );
+		$this->parser_services = weglot_get_service( 'Parser_Service_Weglot' );
 	}
 
 	/**
@@ -33,15 +33,15 @@ class Search_Weglot implements Hooks_Interface_Weglot {
 	 */
 	public function hooks() {
 
-        if( Helper_Is_Admin::is_wp_admin()) {
-            return;
-        }
+		if ( Helper_Is_Admin::is_wp_admin() ) {
+			return;
+		}
 
 		$search_active = $this->option_services->get_option( 'active_search' );
 
 		if ( $search_active ) {
-			add_action( 'pre_get_posts', [ $this, 'pre_get_posts_translate' ] );
-			add_filter( 'get_search_query', [ $this, 'get_search_query_translate' ] );
+			add_action( 'pre_get_posts', array( $this, 'pre_get_posts_translate' ) );
+			add_filter( 'get_search_query', array( $this, 'get_search_query_translate' ) );
 		}
 	}
 
@@ -67,12 +67,12 @@ class Search_Weglot implements Hooks_Interface_Weglot {
 		}
 
 		try {
-            $language_code_rewrited = apply_filters('weglot_language_code_replace' ,  array());
-            $toTranslateLanguageIso = ($key = array_search($current_language,$language_code_rewrited)) ? $key:$current_language;
+			$language_code_rewrited = apply_filters( 'weglot_language_code_replace', array() );
+			$to_translate_language_iso = ( $key = array_search( $current_language, $language_code_rewrited ) ) ? $key : $current_language;
 
 			$parser           = $this->parser_services->get_parser();
 			$this->old_search = $query->query_vars['s'];
-			$this->new_search = $parser->translate( $query->query_vars[ 's' ], $toTranslateLanguageIso, $original_language ); //phpcs:ignore
+			$this->new_search = $parser->translate( $query->query_vars[ 's' ], $to_translate_language_iso, $original_language ); //phpcs:ignore
 
 			if ( empty( $this->new_search ) ) {
 				return;
@@ -90,6 +90,6 @@ class Search_Weglot implements Hooks_Interface_Weglot {
 	 * @return string
 	 */
 	public function get_search_query_translate( $string ) {
-		return ($this->old_search) ? $this->old_search : $string;
+		return ( $this->old_search ) ? $this->old_search : $string;
 	}
 }

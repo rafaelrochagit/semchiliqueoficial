@@ -2,10 +2,10 @@
 
 namespace WeglotWP\Helpers;
 
-// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 
 /**
  * @since 3.0.0

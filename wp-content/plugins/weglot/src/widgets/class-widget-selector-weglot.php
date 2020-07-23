@@ -2,7 +2,9 @@
 
 namespace WeglotWP\Widgets;
 
-defined( 'ABSPATH' ) or die( 'Cheatin&#8217; uh?' );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 
 class Widget_Selector_Weglot extends \WP_Widget {
@@ -14,9 +16,9 @@ class Widget_Selector_Weglot extends \WP_Widget {
 		parent::__construct(
 			WEGLOT_SLUG,
 			__( 'Weglot Translate', 'weglot' ),
-			[
+			array(
 				'description' => __( 'Display Weglot selector in widget', 'weglot' ),
-			]
+			)
 		);
 	}
 
@@ -32,7 +34,7 @@ class Widget_Selector_Weglot extends \WP_Widget {
 		if ( ! weglot_current_url_is_eligible() ) {
 			return;
 		}
-		$title = (isset($instance['title'])) ? $instance['title'] : '';
+		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : '';
 		$title = apply_filters( 'widget_title', $title );
 
 		$tt = ( ! empty( $title ) ) ? $args['before_title'] . $title . $args['after_title'] : '';
@@ -75,8 +77,8 @@ class Widget_Selector_Weglot extends \WP_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance            = [];
-		$instance['title']   = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( strip_tags( $new_instance['title'] ) ) : '';
+		$instance          = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( strip_tags( $new_instance['title'] ) ) : '';
 		return $instance;
 	}
 }

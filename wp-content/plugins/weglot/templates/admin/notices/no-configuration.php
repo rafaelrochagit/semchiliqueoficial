@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use WeglotWP\Helpers\Helper_Tabs_Admin_Weglot;
 
+
 $tab_settings = Helper_Tabs_Admin_Weglot::get_full_tabs()[ Helper_Tabs_Admin_Weglot::SETTINGS ];
 
 ?>

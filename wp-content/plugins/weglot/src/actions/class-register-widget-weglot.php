@@ -2,7 +2,9 @@
 
 namespace WeglotWP\Actions;
 
-defined( 'ABSPATH' ) or die( 'Cheatin&#8217; uh?' );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
@@ -18,7 +20,7 @@ class Register_Widget_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'widgets_init', [ $this, 'register_widget_weglot' ] );
+		add_action( 'widgets_init', array( $this, 'register_widget_weglot' ) );
 	}
 
 	/**

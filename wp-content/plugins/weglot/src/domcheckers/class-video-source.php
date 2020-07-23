@@ -2,12 +2,14 @@
 
 namespace WeglotWP\Domcheckers;
 
-use Weglot\Parser\Check\Dom\AbstractDomChecker;
-use Weglot\Client\Api\Enum\WordType;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+use Weglot\Parser\Check\Dom\AbstractDomChecker;
+use Weglot\Client\Api\Enum\WordType;
+
+
 class Video_Source extends AbstractDomChecker {
 	/**
 	 * {@inheritdoc}

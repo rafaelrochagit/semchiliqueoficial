@@ -20,12 +20,12 @@ class Customize_Menu_Weglot implements Hooks_Interface_Weglot {
 	 * @since 2.0
 	 */
 	public function __construct() {
-		$this->language_services          = weglot_get_service( 'Language_Service_Weglot' );
-		$this->option_services            = weglot_get_service( 'Option_Service_Weglot' );
-		$this->request_url_services       = weglot_get_service( 'Request_Url_Service_Weglot' );
-		$this->button_services            = weglot_get_service( 'Button_Service_Weglot' );
-		$this->private_language_services  = weglot_get_service( 'Private_Language_Service_Weglot' );
-		$this->menu_options_services      = weglot_get_service( 'Menu_Options_Service_Weglot' );
+		$this->language_services         = weglot_get_service( 'Language_Service_Weglot' );
+		$this->option_services           = weglot_get_service( 'Option_Service_Weglot' );
+		$this->request_url_services      = weglot_get_service( 'Request_Url_Service_Weglot' );
+		$this->button_services           = weglot_get_service( 'Button_Service_Weglot' );
+		$this->private_language_services = weglot_get_service( 'Private_Language_Service_Weglot' );
+		$this->menu_options_services     = weglot_get_service( 'Menu_Options_Service_Weglot' );
 		return $this;
 	}
 
@@ -38,9 +38,9 @@ class Customize_Menu_Weglot implements Hooks_Interface_Weglot {
 	 */
 	public function hooks() {
 
-		add_action( 'admin_head-nav-menus.php', [ $this, 'add_nav_menu_meta_boxes' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'nav_admin_enqueue_scripts' ] );
-		add_action( 'wp_update_nav_menu_item', [ $this, 'custom_wp_update_nav_menu_item' ], 10, 2 );
+		add_action( 'admin_head-nav-menus.php', array( $this, 'add_nav_menu_meta_boxes' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'nav_admin_enqueue_scripts' ) );
+		add_action( 'wp_update_nav_menu_item', array( $this, 'custom_wp_update_nav_menu_item' ), 10, 2 );
 	}
 
 
@@ -65,7 +65,7 @@ class Customize_Menu_Weglot implements Hooks_Interface_Weglot {
 
 		$options_menu = $this->option_services->get_option( 'menu_switcher' );
 		if ( ! $options_menu ) {
-			$options_menu = [];
+			$options_menu = array();
 		}
 
 		if ( array_key_exists( 'menu-item-weglot-dropdown', $_POST ) ) {
@@ -94,11 +94,11 @@ class Customize_Menu_Weglot implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		wp_enqueue_script( 'weglot_nav_menu', WEGLOT_URL_DIST . '/nav-js.js', [ 'jquery' ], WEGLOT_VERSION );
+		wp_enqueue_script( 'weglot_nav_menu', WEGLOT_URL_DIST . '/nav-js.js', array( 'jquery' ), WEGLOT_VERSION );
 
-		$data['title']             = 'Weglot switcher'; // No translate this!
-		$data['options']           = $this->option_services->get_option_by_key_v3( 'menu_switcher' );
-		$data['list_options']      = $this->menu_options_services->get_list_options_menu_switcher();
+		$data['title']        = 'Weglot switcher'; // No translate this!
+		$data['options']      = $this->option_services->get_option_by_key_v3( 'menu_switcher' );
+		$data['list_options'] = $this->menu_options_services->get_list_options_menu_switcher();
 
 		wp_localize_script( 'weglot_nav_menu', 'weglot_data', $data );
 	}
@@ -111,7 +111,7 @@ class Customize_Menu_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function add_nav_menu_meta_boxes() {
-		add_meta_box( 'weglot_nav_link', __( 'Weglot switcher', 'weglot' ), [ $this, 'nav_menu_links' ], 'nav-menus', 'side', 'low' );
+		add_meta_box( 'weglot_nav_link', __( 'Weglot switcher', 'weglot' ), array( $this, 'nav_menu_links' ), 'nav-menus', 'side', 'low' );
 	}
 
 	/**

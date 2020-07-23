@@ -9,7 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
 
-
 /**
  * Translate Emails who use wp_mail
  *
@@ -34,7 +33,7 @@ class Email_Translate_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-		add_filter( 'wp_mail', [ $this, 'weglot_translate_emails' ], 10, 1 );
+		add_filter( 'wp_mail', array( $this, 'weglot_translate_emails' ), 10, 1 );
 	}
 
 	/**
@@ -55,10 +54,10 @@ class Email_Translate_Weglot implements Hooks_Interface_Weglot {
 		$current_and_original_language        = weglot_get_current_and_original_language();
 		$current_and_original_language_forced = apply_filters( 'weglot_translate_email_languages_forced', false );
 
-		$message_and_subject = [
+		$message_and_subject = array(
 			'subject' => $args['subject'],
 			'message' => $args['message'],
-		];
+		);
 
 		$message_and_subject_translated = false;
 

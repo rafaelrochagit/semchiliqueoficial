@@ -21,7 +21,7 @@ class Migration_Service_Weglot {
 	 * @since 2.0
 	 */
 	public function __construct() {
-		$this->option_services           = weglot_get_service( 'Option_Service_Weglot' );
+		$this->option_services = weglot_get_service( 'Option_Service_Weglot' );
 	}
 }
 

@@ -1,11 +1,12 @@
 <?php
 namespace WeglotWP\Domcheckers;
 
-use Weglot\Parser\Check\Dom\LinkHref;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+use Weglot\Parser\Check\Dom\LinkHref;
+
 
 class Link_Data_Href extends LinkHref {
 	/**

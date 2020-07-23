@@ -6,17 +6,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 /**
  * @since 3.0.0
  */
 abstract class Helper_API {
+
 	const API_BASE         = 'https://api.weglot.com';
-
-	const API_BASE_STAGING = 'https://api-staging.weglot.com';
-
+	const API_BASE_STAGING = 'https://api.weglot.dev';
 	const API_BASE_OLD     = 'https://weglot.com/api/';
-
-	const CDN_BASE = 'https://cdn.weglot.com/projects-settings/';
+	const CDN_BASE         = 'https://cdn.weglot.com/projects-settings/';
 
 	/**
 	 * @since 3.0.0

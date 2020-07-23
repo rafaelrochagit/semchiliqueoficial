@@ -77,46 +77,7 @@ $languages = array_values( $languages );
 			<p class="sub-label"><?php echo esc_html( $options_available['exclude_urls']['description'] ); ?></p>
 		</th>
 		<td class="forminp forminp-text">
-			<div id="container-<?php echo esc_attr( $options_available['exclude_urls']['key'] ); ?>">
-				<?php
-				if ( ! empty( $this->options[ $options_available['exclude_urls']['key'] ] ) ) :
-					foreach ( $this->options[ $options_available['exclude_urls']['key'] ] as $key => $option ) :
-						$type_option  = RegexEnum::MATCH_REGEX;
-						$value        = $option;
-						if ( is_array( $option ) ) {
-							$type_option  = $option['type'];
-							$value        = $option['value'];
-						}
-						?>
-						<div class="item-exclude">
-							<select
-								name="<?php echo esc_attr( sprintf( '%s[excluded_paths][%s][type]', WEGLOT_SLUG, $key ) ); ?>"
-							>
-								<?php foreach ( Helper_Excluded_Type::get_excluded_type() as $type ) : ?>
-									<option
-										value="<?php echo esc_attr( $type ); ?>"
-										<?php echo selected( $type_option, $type ); ?>
-									>
-										<?php echo esc_html( Helper_Excluded_Type::get_label_type( $type ) ); ?>
-									</option>
-								<?php endforeach; ?>
-							</select>
-							<input
-									type="text"
-									placeholder="/my-awesome-url"
-									name="<?php echo esc_attr( sprintf( '%s[excluded_paths][%s][value]', WEGLOT_SLUG, $key ) ); ?>"
-									value="<?php echo esc_attr( $value ); ?>"
-							>
-							<button class="js-btn-remove js-btn-remove-exclude-url">
-								<span class="dashicons dashicons-minus"></span>
-							</button>
-						</div>
-						<?php
-					endforeach;
-				endif;
-				?>
-			</div>
-			<button id="js-add-exclude-url" class="btn btn-soft"><span class="dashicons dashicons-plus-alt"></span> <?php esc_html_e( 'Add an URL to exclude', 'weglot' ); ?></button>
+			<a class="btn btn-soft" href="https://dashboard.weglot.com/settings/exclusions" target="_blank"><span class="dashicons dashicons-admin-generic"></span> <?php esc_html_e( 'Manage URL to exclude', 'weglot' ); ?></a>
 		</td>
 	</tr>
 	<tr valign="top">
@@ -297,10 +258,10 @@ $languages = array_values( $languages );
 <template id="tpl-exclusion-block">
 	<div class="item-exclude">
 		<input
-				type="text"
-				placeholder=".my-class"
-				name="<?php echo esc_attr( sprintf( '%s[excluded_blocks][][value]', WEGLOT_SLUG ) ); ?>"
-				value=""
+			type="text"
+			placeholder=".my-class"
+			name="<?php echo esc_attr( sprintf( '%s[excluded_blocks][][value]', WEGLOT_SLUG ) ); ?>"
+			value=""
 		>
 		<button class="js-btn-remove js-btn-remove-exclude">
 			<span class="dashicons dashicons-minus"></span>

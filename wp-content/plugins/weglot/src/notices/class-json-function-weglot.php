@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use WeglotWP\Models\Abstract_Notices_Weglot;
 
+
 /**
  * @since 2.0.1
  */

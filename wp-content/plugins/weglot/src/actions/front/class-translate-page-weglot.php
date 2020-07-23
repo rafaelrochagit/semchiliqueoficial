@@ -9,7 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Helpers\Helper_Is_Admin;
 use WeglotWP\Models\Hooks_Interface_Weglot;
 use WeglotWP\Helpers\Helper_Post_Meta_Weglot;
-
 use Weglot\Client\Api\Enum\BotType;
 use Weglot\Util\Server;
 
@@ -25,12 +24,12 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 	 * @since 2.0
 	 */
 	public function __construct() {
-		$this->option_services                = weglot_get_service( 'Option_Service_Weglot' );
-		$this->request_url_services           = weglot_get_service( 'Request_Url_Service_Weglot' );
-		$this->redirect_services              = weglot_get_service( 'Redirect_Service_Weglot' );
-		$this->translate_services             = weglot_get_service( 'Translate_Service_Weglot' );
-		$this->private_language_services      = weglot_get_service( 'Private_Language_Service_Weglot' );
-		$this->href_lang_services             = weglot_get_service( 'Href_Lang_Service_Weglot' );
+		$this->option_services           = weglot_get_service( 'Option_Service_Weglot' );
+		$this->request_url_services      = weglot_get_service( 'Request_Url_Service_Weglot' );
+		$this->redirect_services         = weglot_get_service( 'Redirect_Service_Weglot' );
+		$this->translate_services        = weglot_get_service( 'Translate_Service_Weglot' );
+		$this->private_language_services = weglot_get_service( 'Private_Language_Service_Weglot' );
+		$this->href_lang_services        = weglot_get_service( 'Href_Lang_Service_Weglot' );
 	}
 
 	/**
@@ -40,15 +39,15 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-        if( Helper_Is_Admin::is_wp_admin()) {
-            return;
-        }
+		if ( Helper_Is_Admin::is_wp_admin() ) {
+			return;
+		}
 
 		if ( is_admin() && ( ! wp_doing_ajax() || $this->no_translate_action_ajax() ) ) {
 			return;
 		}
 
-		$this->api_key            = $this->option_services->get_option( 'api_key' );
+		$this->api_key = $this->option_services->get_option( 'api_key' );
 
 		if ( ! $this->api_key ) {
 			return;
@@ -60,9 +59,9 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 		) {
 			return;
 		}
-        $this->request_url_services->init_weglot_url();
+		$this->request_url_services->init_weglot_url();
 		$this->request_url_services->get_weglot_url()->detectUrlDetails();
-		$this->current_language   = $this->request_url_services->get_current_language();
+		$this->current_language = $this->request_url_services->get_current_language();
 
 		if ( $this->private_language_services->is_active_private_mode_for_lang( $this->current_language ) ) {
 			return;
@@ -71,8 +70,8 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 		$this->prepare_request_uri();
 		$this->prepare_rtl_language();
 
-		add_action( 'init', [ $this, 'weglot_init' ], 11 );
-		add_action( 'wp_head', [ $this, 'weglot_href_lang' ] );
+		add_action( 'init', array( $this, 'weglot_init' ), 11 );
+		add_action( 'wp_head', array( $this, 'weglot_href_lang' ) );
 	}
 
 	/**
@@ -81,22 +80,25 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 	 * @return boolean
 	 */
 	protected function no_translate_action_ajax() {
-		$action_ajax_no_translate = apply_filters( 'weglot_ajax_no_translate', [
-			'add-menu-item', // WP Core
-			'query-attachments', // WP Core
-			'avia_ajax_switch_menu_walker', // Enfold theme
-			'query-themes', // WP Core
-			'wpestate_ajax_check_booking_valability_internal', // WP Estate theme
-			'wpestate_ajax_add_booking', // WP Estate theme
-			'wpestate_ajax_check_booking_valability', // WP Estate theme
-			'mailster_get_template', // Mailster Pro,
-			'mmp_map_settings', // MMP Map,
-			'elementor_ajax', // Elementor since 2.5
-			'ct_get_svg_icon_sets', // Oxygen
-			'oxy_render_nav_menu', // Oxygen
-			'hotel_booking_ajax_add_to_cart', // Hotel booking plugin
-			'imagify_get_admin_bar_profile', // Imagify Admin Bar
-		] );
+		$action_ajax_no_translate = apply_filters(
+			'weglot_ajax_no_translate',
+			array(
+				'add-menu-item', // WP Core
+				'query-attachments', // WP Core
+				'avia_ajax_switch_menu_walker', // Enfold theme
+				'query-themes', // WP Core
+				'wpestate_ajax_check_booking_valability_internal', // WP Estate theme
+				'wpestate_ajax_add_booking', // WP Estate theme
+				'wpestate_ajax_check_booking_valability', // WP Estate theme
+				'mailster_get_template', // Mailster Pro,
+				'mmp_map_settings', // MMP Map,
+				'elementor_ajax', // Elementor since 2.5
+				'ct_get_svg_icon_sets', // Oxygen
+				'oxy_render_nav_menu', // Oxygen
+				'hotel_booking_ajax_add_to_cart', // Hotel booking plugin
+				'imagify_get_admin_bar_profile', // Imagify Admin Bar
+			)
+		);
 
 		if ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['action'] ) && in_array( $_POST['action'], $action_ajax_no_translate ) ) { //phpcs:ignore
 			return true;
@@ -108,7 +110,6 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 
 		return false;
 	}
-
 
 	/**
 	 * @see init
@@ -123,8 +124,8 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		$this->noredirect         = false;
-		$this->original_language  = $this->option_services->get_option( 'original_language' );
+		$this->noredirect        = false;
+		$this->original_language = $this->option_services->get_option( 'original_language' );
 		if ( empty( $this->original_language ) ) {
 			return;
 		}
@@ -171,8 +172,6 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 		}
 	}
 
-
-
 	/**
 	 * @since 2.0
 	 *
@@ -215,15 +214,23 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		$request_without_language = array_values(array_filter( explode( '/', str_replace(
-			'/' . $current_language . '/',
-			'/',
-            strpos($_SERVER['REQUEST_URI'], "?") ? substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], "?")) : $_SERVER['REQUEST_URI']
-        ) ), 'strlen' ));
+		$request_without_language = array_values(
+			array_filter(
+				explode(
+					'/',
+					str_replace(
+						'/' . $current_language . '/',
+						'/',
+						strpos( $_SERVER['REQUEST_URI'], '?' ) ? substr( $_SERVER['REQUEST_URI'], 0, strpos( $_SERVER['REQUEST_URI'], '?' ) ) : $_SERVER['REQUEST_URI']
+					)
+				),
+				'strlen'
+			)
+		);
 
 		$index_entries = count( $request_without_language ) - 1;
 		if ( isset( $request_without_language[ $index_entries ] ) ) {
-			$slug_in_work  = $request_without_language[ $index_entries ];
+			$slug_in_work = $request_without_language[ $index_entries ];
 		}
 
 		// Like is_home
@@ -235,32 +242,23 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 		$custom_urls = $this->option_services->get_option( 'custom_urls' );
 
 		// No language configured
-        $language_code_rewrited = apply_filters('weglot_language_code_replace' ,  array());
-        $toTranslateLanguageIso = ($key = array_search($current_language,$language_code_rewrited)) ? $key:$current_language;
+		$language_code_rewrited    = apply_filters( 'weglot_language_code_replace', array() );
+		$to_translate_language_iso = ( $key = array_search( $current_language, $language_code_rewrited ) ) ? $key : $current_language;
 
-        if ( ! isset( $custom_urls[ $toTranslateLanguageIso ] ) ) {
+		if ( ! isset( $custom_urls[ $to_translate_language_iso ] ) ) {
 			$this->request_uri_default();
-			return;
-		}
-
-		$key_slug = array_search( $slug_in_work, $custom_urls[ $toTranslateLanguageIso ] ); //phpcs:ignore
-
-        // No custom URL for this language with this slug
-		if ( ! isset( $custom_urls[ $toTranslateLanguageIso ][ $slug_in_work ] ) && false === $key_slug ) {
-			$this->request_uri_default();
-			return;
-		}
-
-		// Custom URL exist but not good slug
-		if ( ! isset( $custom_urls[ $toTranslateLanguageIso ][ $slug_in_work ] ) ) {
 			return;
 		}
 
 		$_SERVER['REQUEST_URI'] = str_replace(
 			'/' . $current_language . '/',
 			'/',
-			str_replace( $slug_in_work, $custom_urls[ $toTranslateLanguageIso ][ $slug_in_work ], $_SERVER['REQUEST_URI'] ) //phpcs:ignore
+			$_SERVER['REQUEST_URI']
 		);
+
+		foreach ( $custom_urls[ $to_translate_language_iso ] as $key => $value ) {
+			$_SERVER['REQUEST_URI'] = str_replace( '/' . $key . '/', '/' . $value . '/', $_SERVER['REQUEST_URI'] );
+		}
 	}
 
 	/**
@@ -286,5 +284,3 @@ class Translate_Page_Weglot implements Hooks_Interface_Weglot {
 		echo $this->href_lang_services->generate_href_lang_tags(); //phpcs:ignore
 	}
 }
-
-

@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 /**
  * Compatibility WP < 4.7.0
  */
@@ -28,7 +29,7 @@ if ( ! function_exists( 'is_rest' ) ) {
 	 * Case #1: After WP_REST_Request initialisation
 	 * Case #2: Support "plain" permalink settings
 	 * Case #3: URL Path begins with wp-json/ (your REST prefix)
-	 *          Also supports WP installations in subfolders
+	 * Also supports WP installations in subfolders
 	 *
 	 * @returns boolean
 	 * @author matzeeable

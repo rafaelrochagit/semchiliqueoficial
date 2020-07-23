@@ -6,8 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
 use WeglotWP\Helpers\Helper_Menu_Options_Weglot;
+
 
 /**
  * @since 2.4.0
@@ -28,9 +28,15 @@ class Menu_Options_Service_Weglot {
 	public function get_options_default() {
 		$keys = Helper_Menu_Options_Weglot::get_keys();
 
-		return apply_filters( 'weglot_menu_switcher_options_default', array_map( function() {
-			return false;
-		}, array_flip( $keys ) ) );
+		return apply_filters(
+			'weglot_menu_switcher_options_default',
+			array_map(
+				function() {
+					return false;
+				},
+				array_flip( $keys )
+			)
+		);
 	}
 
 	/**

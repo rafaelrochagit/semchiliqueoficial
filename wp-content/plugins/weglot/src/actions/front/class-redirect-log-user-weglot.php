@@ -22,7 +22,7 @@ class Redirect_Log_User_Weglot implements Hooks_Interface_Weglot {
 	 */
 	public function hooks() {
 		// add_filter( 'login_redirect', [ '\WeglotWP\Helpers\Helper_Filter_Url_Weglot', 'filter_url_log_redirect' ] );
-		add_filter( 'logout_redirect', [ '\WeglotWP\Helpers\Helper_Filter_Url_Weglot', 'filter_url_log_redirect' ] );
+		add_filter( 'logout_redirect', array( '\WeglotWP\Helpers\Helper_Filter_Url_Weglot', 'filter_url_log_redirect' ) );
 	}
 }
 

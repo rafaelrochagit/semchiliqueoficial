@@ -23,9 +23,9 @@ class Dom_Listeners_Service_Weglot {
 		if ( '1' === WEGLOT_LIB_PARSER ) {
 			return;
 		}
-		$this->dom_listeners = [
+		$this->dom_listeners = array(
 			'parser.crawler.after' => new \WeglotWP\Domlisteners\Meta_Listener_Weglot(),
-		];
+		);
 	}
 
 	/**

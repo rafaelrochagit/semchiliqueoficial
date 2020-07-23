@@ -9,13 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Helpers\Helper_Is_Admin;
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
+
 /**
  * WC_Mail_Weglot
  *
  * @since 3.1.6
  */
 class WC_Mail_Weglot implements Hooks_Interface_Weglot {
-
 
 	/**
 	 * @since 3.1.6
@@ -30,12 +30,12 @@ class WC_Mail_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-		if ( ! $this->wc_active_services->is_active() || ! apply_filters( 'weglot_wooccommerce_translate_following_mail', false ) ) {
+		if ( ! $this->wc_active_services->is_active() || ! apply_filters( 'weglot_woocommerce_translate_following_mail', true ) ) {
 			return;
 		}
 
-		add_action( 'woocommerce_new_order', [ $this, 'save_language' ], 10, 1 );
-		add_action( 'woocommerce_mail_callback_params', [ $this, 'translate_following_mail' ], 10, 2 );
+		add_action( 'woocommerce_new_order', array( $this, 'save_language' ), 10, 1 );
+		add_action( 'woocommerce_mail_callback_params', array( $this, 'translate_following_mail' ), 10, 2 );
 	}
 
 	/**

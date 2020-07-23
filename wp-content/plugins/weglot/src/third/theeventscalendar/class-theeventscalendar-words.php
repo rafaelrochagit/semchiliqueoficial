@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Helpers\Helper_Is_Admin;
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
+
 /**
  * Theeventscalendar_Active
  *
@@ -35,7 +36,7 @@ class Theeventscalendar_Words implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		add_filter( 'weglot_words_translate', [ $this, 'weglot_theeventscalendar_words' ] );
+		add_filter( 'weglot_words_translate', array( $this, 'weglot_theeventscalendar_words' ) );
 	}
 
 

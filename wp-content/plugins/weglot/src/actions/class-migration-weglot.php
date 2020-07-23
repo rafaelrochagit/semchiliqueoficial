@@ -2,7 +2,9 @@
 
 namespace WeglotWP\Actions;
 
-defined( 'ABSPATH' ) or die( 'Cheatin&#8217; uh?' );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use Morphism\Morphism;
 use WeglotWP\Models\Hooks_Interface_Weglot;
@@ -20,7 +22,7 @@ class Migration_Weglot implements Hooks_Interface_Weglot {
 	 * @since 2.0.0
 	 */
 	public function __construct() {
-		$this->migration_services   = weglot_get_service( 'Migration_Service_Weglot' );
+		$this->migration_services = weglot_get_service( 'Migration_Service_Weglot' );
 	}
 
 

@@ -22,7 +22,7 @@ class Plugin_Links_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-		add_filter( 'plugin_action_links_' . WEGLOT_BNAME, [ $this, 'weglot_plugin_action_links' ] );
+		add_filter( 'plugin_action_links_' . WEGLOT_BNAME, array( $this, 'weglot_plugin_action_links' ) );
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Plugin_Links_Weglot implements Hooks_Interface_Weglot {
 	 * @return array
 	 */
 	public function weglot_plugin_action_links( $links ) {
-		$url  = get_admin_url( null, sprintf( 'admin.php?page=%s', Helper_Pages_Weglot::SETTINGS ) );
+		$url = get_admin_url( null, sprintf( 'admin.php?page=%s', Helper_Pages_Weglot::SETTINGS ) );
 		$text = __( 'Settings', 'weglot' );
 
 		$links[] = sprintf( '<a href="%s">%s</a>', $url, $text );

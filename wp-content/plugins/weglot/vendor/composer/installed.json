@@ -133,23 +133,23 @@
     },
     {
         "name": "weglot/translation-definitions",
-        "version": "v2.1.9",
-        "version_normalized": "2.1.9.0",
+        "version": "v2.1.10",
+        "version_normalized": "2.1.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/weglot/weglot-translation-definitions.git",
-            "reference": "b93e636cf0544812f4dbf0e50683ce442c690954"
+            "reference": "e8f743d8e762600993edd4954f34b6068c13b83f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/weglot/weglot-translation-definitions/zipball/b93e636cf0544812f4dbf0e50683ce442c690954",
-            "reference": "b93e636cf0544812f4dbf0e50683ce442c690954",
+            "url": "https://api.github.com/repos/weglot/weglot-translation-definitions/zipball/e8f743d8e762600993edd4954f34b6068c13b83f",
+            "reference": "e8f743d8e762600993edd4954f34b6068c13b83f",
             "shasum": ""
         },
         "require": {
             "php": ">=5"
         },
-        "time": "2020-04-09T16:21:17+00:00",
+        "time": "2020-06-08T15:20:54+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -171,17 +171,17 @@
     },
     {
         "name": "weglot/weglot-php",
-        "version": "1.0.5",
-        "version_normalized": "1.0.5.0",
+        "version": "1.0.6",
+        "version_normalized": "1.0.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/weglot/weglot-php.git",
-            "reference": "ac9544e015537967c630f9d05817462256853f55"
+            "reference": "81984950d616e0b67426dcb2f6297919e9aeb018"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/weglot/weglot-php/zipball/ac9544e015537967c630f9d05817462256853f55",
-            "reference": "ac9544e015537967c630f9d05817462256853f55",
+            "url": "https://api.github.com/repos/weglot/weglot-php/zipball/81984950d616e0b67426dcb2f6297919e9aeb018",
+            "reference": "81984950d616e0b67426dcb2f6297919e9aeb018",
             "shasum": ""
         },
         "require": {
@@ -194,7 +194,7 @@
             "codeception/codeception": "^2.4",
             "vlucas/phpdotenv": "^2.4"
         },
-        "time": "2020-04-14T15:04:18+00:00",
+        "time": "2020-07-07T08:16:22+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

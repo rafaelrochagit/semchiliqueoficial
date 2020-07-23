@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Helpers\Helper_Is_Admin;
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
+
 /**
  * WC_Cart_Reload_Weglot
  *
@@ -22,7 +23,7 @@ class WC_Cart_Reload_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->wc_active_services        = weglot_get_service( 'Wc_Active' );
+		$this->wc_active_services = weglot_get_service( 'Wc_Active' );
 	}
 
 	/**
@@ -31,9 +32,9 @@ class WC_Cart_Reload_Weglot implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-        if( Helper_Is_Admin::is_wp_admin()) {
-            return;
-        }
+		if ( Helper_Is_Admin::is_wp_admin() ) {
+			return;
+		}
 
 		if ( ! $this->wc_active_services->is_active() ) {
 			return;
@@ -45,18 +46,18 @@ class WC_Cart_Reload_Weglot implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		add_action( 'wp_footer', [ $this, 'weglot_wc_footer' ] );
+		add_action( 'wp_footer', array( $this, 'weglot_wc_footer' ) );
 	}
 
 	/**
 	 * @since 2.4.0
 	 * @return void
 	 */
-	public  function weglot_wc_footer() {
+	public function weglot_wc_footer() {
 		$click_selector = apply_filters( 'weglot_wc_reload_selector', '.weglot-lang a' );
 		?>
 		<script>
-            document.addEventListener('DOMContentLoaded', function () {
+ document.addEventListener('DOMContentLoaded', function () {
 				if (!String.prototype.startsWith) {
 					String.prototype.startsWith = function (searchString, position) {
 						position = position || 0;
@@ -74,7 +75,7 @@ class WC_Cart_Reload_Weglot implements Hooks_Interface_Weglot {
 					window.location.replace(href);
 				})
 			})
-        </script>
+ </script>
 		<?php
 	}
 }

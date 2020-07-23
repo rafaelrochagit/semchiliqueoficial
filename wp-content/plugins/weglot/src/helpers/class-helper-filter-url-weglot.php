@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 /**
  * Function helper for URL replace filter
  *
@@ -19,7 +20,7 @@ abstract class Helper_Filter_Url_Weglot {
 	 * @return string
 	 */
 	protected static function prevent_subfolder_install( $url ) {
-		$current_and_original_language   = weglot_get_current_and_original_language();
+		$current_and_original_language = weglot_get_current_and_original_language();
 
 		$url_translate   = $url->getForLanguage( $current_and_original_language['current'] );
 		$double_language = sprintf( '/%s/%s/', $current_and_original_language['current'], $current_and_original_language['current'] );
@@ -50,8 +51,8 @@ abstract class Helper_Filter_Url_Weglot {
 	 * @return string
 	 */
 	public static function filter_url_lambda( $url ) {
-		$current_and_original_language   = weglot_get_current_and_original_language();
-		$request_url_service             = weglot_get_request_url_service();
+		$current_and_original_language = weglot_get_current_and_original_language();
+		$request_url_service           = weglot_get_request_url_service();
 
 		if ( $current_and_original_language['current'] === $current_and_original_language['original'] ) {
 			return $url;
@@ -70,18 +71,18 @@ abstract class Helper_Filter_Url_Weglot {
 	 * @return string
 	 */
 	public static function filter_url_log_redirect( $url_filter ) {
-		$current_and_original_language   = weglot_get_current_and_original_language();
-		$request_url_service             = weglot_get_request_url_service();
-		$choose_current_language         = $current_and_original_language['current'];
+		$current_and_original_language = weglot_get_current_and_original_language();
+		$request_url_service           = weglot_get_request_url_service();
+		$choose_current_language       = $current_and_original_language['current'];
 
 		$url_filter = self::get_clean_base_url( $url_filter );
 
-		$url        = $request_url_service->create_url_object( $url_filter );
+		$url = $request_url_service->create_url_object( $url_filter );
 
 		if ( $current_and_original_language['current'] === $current_and_original_language['original']
 			&& isset( $_SERVER['HTTP_REFERER'] ) //phpcs:ignore
 		) {
-			$url                     = $request_url_service->create_url_object( $_SERVER['HTTP_REFERER'] ); //phpcs:ignore
+			$url = $request_url_service->create_url_object( $_SERVER['HTTP_REFERER'] ); //phpcs:ignore
 			$choose_current_language = $url->detectCurrentLanguage();
 
 			if ( $choose_current_language !== $current_and_original_language['original'] ) {
@@ -128,7 +129,7 @@ abstract class Helper_Filter_Url_Weglot {
 		} else {
 			if ( isset( $_SERVER['HTTP_REFERER'] ) ) { //phpcs:ignore
 				// Ajax
-				$url                     = $request_url_service->create_url_object( $_SERVER['HTTP_REFERER'] ); //phpcs:ignore
+				$url = $request_url_service->create_url_object( $_SERVER['HTTP_REFERER'] ); //phpcs:ignore
 				$choose_current_language = $url->detectCurrentLanguage();
 				$url                     = $request_url_service->create_url_object( $url_filter );
 			}

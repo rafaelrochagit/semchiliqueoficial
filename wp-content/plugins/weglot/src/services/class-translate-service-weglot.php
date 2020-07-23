@@ -38,7 +38,7 @@ class Translate_Service_Weglot {
 		$this->set_original_language( weglot_get_original_language() );
 		$this->set_current_language( $this->request_url_services->get_current_language() );
 
-		ob_start( [ $this, 'weglot_treat_page' ] );
+		ob_start( array( $this, 'weglot_treat_page' ) );
 	}
 
 	/**
@@ -83,19 +83,18 @@ class Translate_Service_Weglot {
 
 		try {
 
-		    $language_code_rewrited = apply_filters('weglot_language_code_replace' ,  array());
-            $toTranslateLanguageIso = ($key = array_search($this->current_language,$language_code_rewrited)) ? $key:$this->current_language;
-
+			$language_code_rewrited = apply_filters( 'weglot_language_code_replace', array() );
+			$to_translate_language_iso = ( $key = array_search( $this->current_language, $language_code_rewrited ) ) ? $key : $this->current_language;
 
 			switch ( $type ) {
 				case 'json':
 					$extraKeys          = apply_filters( 'weglot_add_json_keys', array() );
-					$translated_content = $parser->translate( $content, $this->original_language, $toTranslateLanguageIso, $extraKeys );
+					$translated_content = $parser->translate( $content, $this->original_language, $to_translate_language_iso, $extraKeys );
 					$translated_content = json_encode( $this->replace_url_services->replace_link_in_json( json_decode( $translated_content, true ) ) );
 					$translated_content = apply_filters( 'weglot_json_treat_page', $translated_content );
 					return $translated_content;
 				case 'html':
-				    $translated_content = $parser->translate( $content, $this->original_language, $toTranslateLanguageIso ); // phpcs:ignore
+					$translated_content = $parser->translate( $content, $this->original_language, $to_translate_language_iso ); // phpcs:ignore
 					$translated_content = apply_filters( 'weglot_html_treat_page', $translated_content );
 					return $this->weglot_render_dom( $translated_content );
 				default:

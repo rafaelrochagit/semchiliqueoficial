@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Models\Hooks_Interface_Weglot;
 use WeglotWP\Helpers\Helper_Filter_Url_Weglot;
 
+
 /**
  * @since 3.0.0
  */
@@ -19,7 +20,7 @@ class GF_Filter_Urls implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->gf_active_services        = weglot_get_service( 'Gf_Active' );
+		$this->gf_active_services = weglot_get_service( 'Gf_Active' );
 	}
 
 	/**
@@ -33,7 +34,7 @@ class GF_Filter_Urls implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		add_filter( 'gform_confirmation', [ $this, 'weglot_gform_confirmation' ] );
+		add_filter( 'gform_confirmation', array( $this, 'weglot_gform_confirmation' ) );
 	}
 
 	/**
@@ -42,15 +43,15 @@ class GF_Filter_Urls implements Hooks_Interface_Weglot {
 	 * @return array
 	 */
 	public function weglot_gform_confirmation( $data ) {
-		if( ! is_array( $data ) ){
+		if ( ! is_array( $data ) ) {
 			return $data;
 		}
 
-		if( ! array_key_exists( 'redirect', $data ) ){
+		if ( ! array_key_exists( 'redirect', $data ) ) {
 			return $data;
 		}
 
-		$data['redirect'] = Helper_Filter_Url_Weglot::filter_url_with_ajax($data['redirect']);
+		$data['redirect'] = Helper_Filter_Url_Weglot::filter_url_with_ajax( $data['redirect'] );
 		return $data;
 
 	}

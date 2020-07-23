@@ -22,7 +22,7 @@ class Private_Language_Service_Weglot {
 	 * @since 2.3.0
 	 */
 	public function __construct() {
-		$this->option_services           = weglot_get_service( 'Option_Service_Weglot' );
+		$this->option_services = weglot_get_service( 'Option_Service_Weglot' );
 	}
 
 	/**
@@ -32,7 +32,7 @@ class Private_Language_Service_Weglot {
 	 * @return boolean
 	 */
 	public function is_active_private_mode_for_lang( $key_lang ) {
-		$private_mode_languages    = $this->option_services->get_option( 'private_mode' );
+		$private_mode_languages = $this->option_services->get_option( 'private_mode' );
 
 		if ( ! is_array( $private_mode_languages ) ) {
 			return false;
@@ -53,15 +53,15 @@ class Private_Language_Service_Weglot {
 	}
 
 	public function is_allowed_view_private() {
-	    return current_user_can( $this->role_private_mode ) || strpos(weglot_get_current_full_url(), 'weglot-private=1') !== false;
-    }
+		return current_user_can( $this->role_private_mode ) || strpos( weglot_get_current_full_url(), 'weglot-private=1' ) !== false;
+	}
 
 	/**
 	 * @since 2.4.0
 	 * @return bool
 	 */
 	public function private_mode_for_all_languages() {
-		$private_mode_languages    = $this->option_services->get_option( 'private_mode' );
+		$private_mode_languages = $this->option_services->get_option( 'private_mode' );
 		if ( $this->is_allowed_view_private() ) { // No check if admin
 			return false;
 		}

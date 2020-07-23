@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
+
 /**
  * Init plugin
  *
@@ -19,14 +20,14 @@ class Bootstrap_Weglot {
 	 * @since 2.0
 	 * @var array
 	 */
-	protected $actions = [];
+	protected $actions = array();
 
 	/**
 	 * List class services
 	 * @since 2.0
 	 * @var array
 	 */
-	protected $services = [];
+	protected $services = array();
 
 	/**
 	 * Set actions

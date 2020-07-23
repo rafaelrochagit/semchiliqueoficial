@@ -63,11 +63,20 @@ function weglot_get_destination_languages() {
 }
 
 /**
+ * Get currrent destinations language with filters enable on specific URL
+ * @since 3.2.0
+ * @return array
+ */
+function weglot_get_current_destination_languages( $current_url = null ) {
+	return Context_Weglot::weglot_get_context()->get_service( 'Option_Service_Weglot' )->get_current_destination_languages( $current_url );
+}
+
+/**
  * @since 2.3.0
  * @return array
  */
 function weglot_get_all_languages_configured() {
-	$destinations   = weglot_get_destination_languages();
+	$destinations   = weglot_get_current_destination_languages();
 	$original       = weglot_get_original_language();
 	array_unshift( $destinations, $original );
 	return $destinations;
@@ -111,6 +120,16 @@ function weglot_get_languages_available() {
  */
 function weglot_get_languages_configured( $type = null ) {
 	return Context_Weglot::weglot_get_context()->get_service( 'Language_Service_Weglot' )->get_languages_configured( $type );
+}
+
+/**
+ * @since 2.0
+ *
+ * @param null|string $type
+ * @return array
+ */
+function weglot_get_current_languages_configured( $type = null ) {
+	return Context_Weglot::weglot_get_context()->get_service( 'Language_Service_Weglot' )->get_current_languages_configured( $type );
 }
 
 /**

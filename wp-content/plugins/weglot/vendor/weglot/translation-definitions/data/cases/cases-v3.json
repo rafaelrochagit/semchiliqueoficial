@@ -430,5 +430,15 @@
         "w": "test"
       }
     ]
+  },
+  {
+    "name": "Sentence with 2 comments",
+    "body": "<h2><!-- Comment 1 --><!--Comment2-->Hi there</h2>",
+    "expected": [
+      {
+        "t": 1,
+        "w": "Hi there"
+      }
+    ]
   }
 ]

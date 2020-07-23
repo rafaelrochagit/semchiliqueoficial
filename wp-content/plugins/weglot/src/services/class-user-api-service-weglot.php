@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use WeglotWP\Helpers\Helper_API;
 
+
 /**
  * @since 2.0
  */
@@ -19,16 +20,16 @@ class User_Api_Service_Weglot {
 	 * @return array
 	 */
 	public function get_plans() {
-		return [
-			'starter_free' => [
-				'ids'            => [ 2, 3 ],
+		return array(
+			'starter_free' => array(
+				'ids'            => array( 2, 3 ),
 				'limit_language' => 1,
-			],
-			'business' => [
-				'ids'            => [ 4, 5 ],
+			),
+			'business'     => array(
+				'ids'            => array( 4, 5 ),
 				'limit_language' => 5,
-			],
-		];
+			),
+		);
 	}
 
 	/**
@@ -47,8 +48,8 @@ class User_Api_Service_Weglot {
 		}
 
 		try {
-			$results   = $this->do_request( Helper_API::get_api_url() . '/projects/owner?api_key=' . $api_key, null );
-			$json      = \json_decode( $results, true );
+			$results = $this->do_request( Helper_API::get_api_url() . '/projects/owner?api_key=' . $api_key, null );
+			$json    = \json_decode( $results, true );
 
 			if ( \json_last_error() !== JSON_ERROR_NONE ) {
 				throw new \Exception( 'Unknown error with Weglot Api (0001) : ' . \json_last_error() );
@@ -71,9 +72,9 @@ class User_Api_Service_Weglot {
 
 			throw new \Exception( 'Unknown error with Weglot Api (0002) : ' . $json );
 		} catch ( \Exception $e ) {
-			return [
+			return array(
 				'not_exist' => false,
-			];
+			);
 		}
 	}
 
@@ -83,9 +84,9 @@ class User_Api_Service_Weglot {
 	 * @return int
 	 */
 	public function get_limit_destination_language() {
-		$user_info        = $this->get_user_info();
-		$plans            = $this->get_plans();
-		$limit            = 1000;
+		$user_info = $this->get_user_info();
+		$plans     = $this->get_plans();
+		$limit     = 1000;
 		if (
 			$user_info['plan_id'] <= 1 ||
 			in_array( $user_info['plan_id'], $plans['starter_free']['ids'] ) // phpcs:ignore
@@ -120,9 +121,9 @@ class User_Api_Service_Weglot {
 						'headers'     => array(
 							'Content-type' => 'application/json',
 						),
-						'body'      => $payload,
-						'cookies'   => array(),
-						'sslverify' => false,
+						'body'        => $payload,
+						'cookies'     => array(),
+						'sslverify'   => false,
 					)
 				);
 			} else {
@@ -131,18 +132,18 @@ class User_Api_Service_Weglot {
 		} else {
 			$response = wp_remote_get( //phpcs:ignore
 				$url,
-				[
+				array(
 					'method'      => 'GET',
 					'timeout'     => 45,
 					'redirection' => 5,
 					'blocking'    => true,
-					'headers'     => [
+					'headers'     => array(
 						'Content-type' => 'application/json',
-					],
-					'body'      => null,
-					'cookies'   => [],
-					'sslverify' => false,
-				]
+					),
+					'body'        => null,
+					'cookies'     => array(),
+					'sslverify'   => false,
+				)
 			);
 		}
 

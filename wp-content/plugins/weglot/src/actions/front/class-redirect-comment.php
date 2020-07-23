@@ -21,7 +21,7 @@ class Redirect_Comment implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function hooks() {
-		add_filter( 'comment_post_redirect', [ '\WeglotWP\Helpers\Helper_Filter_Url_Weglot', 'filter_url_lambda' ] );
+		add_filter( 'comment_post_redirect', array( '\WeglotWP\Helpers\Helper_Filter_Url_Weglot', 'filter_url_lambda' ) );
 	}
 }
 

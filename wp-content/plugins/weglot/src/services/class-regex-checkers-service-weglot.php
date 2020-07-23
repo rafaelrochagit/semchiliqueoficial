@@ -10,6 +10,7 @@ use Weglot\Parser\Check\Regex\RegexChecker;
 use Weglot\Util\SourceType;
 use Weglot\Util\Text;
 
+
 /**
  * Dom Checkers
  *
@@ -18,12 +19,12 @@ use Weglot\Util\Text;
  */
 class Regex_Checkers_Service_Weglot {
 
-    /**
-     * @since 2.3.0
-     */
-    public function __construct() {
+	/**
+	 * @since 2.3.0
+	 */
+	public function __construct() {
 
-    }
+	}
 
 	/**
 	 * @since 2.0
@@ -31,44 +32,43 @@ class Regex_Checkers_Service_Weglot {
 	 */
 	public function get_regex_checkers() {
 
-        $checkers = array();
+		$checkers = array();
 
-        $other_words = apply_filters( 'weglot_words_translate', [] );
-        foreach ($other_words as $other_word) {
-          array_push($checkers, new RegexChecker( '#\b' . $other_word . '\b#u' , SourceType::SOURCE_TEXT , 0));
-        }
+		$other_words = apply_filters( 'weglot_words_translate', array() );
+		foreach ( $other_words as $other_word ) {
+			array_push( $checkers, new RegexChecker( '#\b' . $other_word . '\b#u', SourceType::SOURCE_TEXT, 0 ) );
+		}
 
+		$thirds = array_diff( scandir( WEGLOT_DIR . '/src/third' ), array( '..', '.' ) );
+		foreach ( $thirds as $third ) {
+			$files = array_diff( scandir( WEGLOT_DIR . '/src/third/' . $third ), array( '..', '.' ) );
 
-        $thirds      = array_diff( scandir( WEGLOT_DIR . '/src/third' ), [ '..', '.' ] );
-        foreach ($thirds as $third) {
-            $files = array_diff( scandir(  WEGLOT_DIR . '/src/third/' . $third ), [ '..', '.' ] );
+			foreach ( $files as $file ) {
+				if ( strpos( $file, 'active.php' ) !== false ) {
+					$file    = Text::removeFileExtension( $file );
+					$file    = str_replace( 'class-', '', $file );
+					$file    = implode( '_', array_map( 'ucfirst', explode( '-', $file ) ) );
+					$service = weglot_get_service( $file );
+					if ( isset( $service ) ) {
+						$active = $service->is_active();
+						if ( $active ) {
+								$regexDir = WEGLOT_DIR . '/src/third/' . $third . '/regexcheckers/';
+							if ( is_dir( $regexDir ) ) {
+								$regexFiles = array_diff( scandir( WEGLOT_DIR . '/src/third/' . $third . '/regexcheckers/' ), array( '..', '.' ) );
 
-            foreach ($files as $file) {
-                if (strpos($file, 'active.php') !== false) {
-                    $file = Text::removeFileExtension( $file );
-                    $file = str_replace( 'class-', '', $file );
-                    $file = implode( '_', array_map( 'ucfirst', explode( '-', $file ) ) );
-                    $service = weglot_get_service( $file );
-                    if(isset($service)) {
-                        $active = $service->is_active();
-                        if($active) {
-                            $regexDir = WEGLOT_DIR . '/src/third/' . $third . '/regexcheckers/';
-                            if(is_dir($regexDir)) {
-                                $regexFiles = array_diff( scandir(  WEGLOT_DIR . '/src/third/' . $third . '/regexcheckers/' ), [ '..', '.' ] );
-
-                                foreach ($regexFiles as $regexFile) {
-                                    $filename = Text::removeFileExtension( $regexFile );
-                                    $filename = str_replace( 'class-', '', $filename );
-                                    $filename = implode( '_', array_map( 'ucfirst', explode( '-', $filename ) ) );
-                                    $class =  '\\WeglotWP\\Third\\' . implode( '', array_map( 'ucfirst', explode( '-', $third ) ) ) . '\\Regexcheckers\\' . $filename;
-                                    array_push($checkers, new RegexChecker( $class::REGEX , $class::TYPE, $class::VAR_NUMBER , $class::$KEYS));
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+								foreach ( $regexFiles as $regexFile ) {
+									$filename = Text::removeFileExtension( $regexFile );
+									$filename = str_replace( 'class-', '', $filename );
+									$filename = implode( '_', array_map( 'ucfirst', explode( '-', $filename ) ) );
+									$class    = '\\WeglotWP\\Third\\' . implode( '', array_map( 'ucfirst', explode( '-', $third ) ) ) . '\\Regexcheckers\\' . $filename;
+									array_push( $checkers, new RegexChecker( $class::REGEX, $class::TYPE, $class::VAR_NUMBER, $class::$KEYS ) );
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 
 		return apply_filters( 'weglot_get_regex_checkers', $checkers );
 	}

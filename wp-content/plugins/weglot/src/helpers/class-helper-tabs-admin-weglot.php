@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 /**
  * Name pages
  *
@@ -42,12 +43,12 @@ abstract class Helper_Tabs_Admin_Weglot {
 	 * @return array
 	 */
 	public static function get_tabs() {
-		return [
+		return array(
 			self::SETTINGS,
 			self::STATUS,
 			self::CUSTOM_URLS,
-			self::SUPPORT
-		];
+			self::SUPPORT,
+		);
 	}
 
 	/**
@@ -58,19 +59,19 @@ abstract class Helper_Tabs_Admin_Weglot {
 	 * @return array
 	 */
 	public static function get_full_tabs() {
-		return [
-			self::SETTINGS => [
+		return array(
+			self::SETTINGS    => array(
 				'title' => __( 'Settings', 'weglot' ),
 				'url'   => get_admin_url( null, sprintf( 'admin.php?page=%s&tab=%s', Helper_Pages_Weglot::SETTINGS, self::SETTINGS ) ),
-			],
-			self::STATUS   => [
+			),
+			self::STATUS      => array(
 				'title' => __( 'Status', 'weglot' ),
 				'url'   => get_admin_url( null, sprintf( 'admin.php?page=%s&tab=%s', Helper_Pages_Weglot::SETTINGS, self::STATUS ) ),
-			],
-			self::CUSTOM_URLS   => [
+			),
+			self::CUSTOM_URLS => array(
 				'title' => __( 'Custom URLs', 'weglot' ),
 				'url'   => get_admin_url( null, sprintf( 'admin.php?page=%s&tab=%s', Helper_Pages_Weglot::SETTINGS, self::CUSTOM_URLS ) ),
-			],
-		];
+			),
+		);
 	}
 }

@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Models\Hooks_Interface_Weglot;
 use WeglotWP\Helpers\Helper_Flag_Type;
 
+
 /**
  * Amp_Enqueue_Weglot
  *
@@ -40,7 +41,7 @@ class Amp_Enqueue_Weglot implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		add_action( 'weglot_render_dom', [ $this, 'weglot_amp_css' ] );
+		add_action( 'weglot_render_dom', array( $this, 'weglot_amp_css' ) );
 	}
 
 
@@ -64,7 +65,7 @@ class Amp_Enqueue_Weglot implements Hooks_Interface_Weglot {
 		$type_flags           = weglot_get_option( 'type_flags' );
 		$type_flags           = Helper_Flag_Type::get_flag_number_with_type( $type_flags );
 		$with_flags           = weglot_get_option( 'with_flags' );
-		$css                  = file_get_contents( WEGLOT_DIR_DIST . '/css/front-amp-css.css' ); //phpcs:ignore
+		$css = file_get_contents( WEGLOT_DIR_DIST . '/css/front-amp-css.css' ); //phpcs:ignore
 		$css                  = str_replace( '../images/', WEGLOT_URL_DIST . '/images/', $css );
 		$css .= $this->option_services->get_flag_css(); //phpcs:ignore
 

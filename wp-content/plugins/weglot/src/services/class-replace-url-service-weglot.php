@@ -10,6 +10,7 @@ use Weglot\Parser\Parser;
 use Weglot\Util\SourceType;
 use WeglotWP\Helpers\Helper_Replace_Url_Weglot;
 
+
 /**
  * Replace URL
  *
@@ -38,7 +39,7 @@ class Replace_Url_Service_Weglot {
 			$dom = $this->modify_link( $value, $dom, $key );
 		}
 
-		$current_language       = weglot_get_current_language();
+		$current_language = weglot_get_current_language();
 		$language_code_rewrited = array_search( $current_language, apply_filters( 'weglot_language_code_replace', array() ) );
 
 		if ( ! empty( $language_code_rewrited ) ) {
@@ -85,11 +86,11 @@ class Replace_Url_Service_Weglot {
 		preg_match_all( $pattern, $translated_page, $out, PREG_PATTERN_ORDER );
 		$count_out_0 = count( $out[0] );
 		for ( $i = 0;$i < $count_out_0; $i++ ) {
-			$sometags    = ( isset( $out[1] ) ) ? $out[1][ $i ] : null;
-			$quote1      = ( isset( $out[2] ) ) ? $out[2][ $i ] : null;
+			$sometags = ( isset( $out[1] ) ) ? $out[1][ $i ] : null;
+			$quote1 = ( isset( $out[2] ) ) ? $out[2][ $i ] : null;
 			$current_url = ( isset( $out[3] ) ) ? $out[3][ $i ] : null;
-			$quote2      = ( isset( $out[4] ) ) ? $out[4][ $i ] : null;
-			$sometags2   = ( isset( $out[5] ) ) ? $out[5][ $i ] : null;
+			$quote2 = ( isset( $out[4] ) ) ? $out[4][ $i ] : null;
+			$sometags2 = ( isset( $out[5] ) ) ? $out[5][ $i ] : null;
 
 			$length_link = apply_filters( 'weglot_length_replace_a', 1500 ); // Prevent error on long URL (preg_match_all Compilation failed: regular expression is too large at offset)
 			if ( strlen( $current_url ) >= $length_link ) {
@@ -129,8 +130,8 @@ class Replace_Url_Service_Weglot {
 	 * @return string
 	 */
 	public function check_link( $current_url, $sometags = null, $sometags2 = null ) {
-		$admin_url   = admin_url();
-		$parsed_url  = wp_parse_url( $current_url );
+		$admin_url = admin_url();
+		$parsed_url = wp_parse_url( $current_url );
 		$server_host = apply_filters( 'weglot_check_link_server_host', $_SERVER['HTTP_HOST'] ); //phpcs:ignore
 
 		return (
@@ -162,6 +163,7 @@ class Replace_Url_Service_Weglot {
 			'jpg',
 			'jpeg',
 			'png',
+			'svg',
 			'ppt',
 			'pptx',
 			'xls',
@@ -187,7 +189,7 @@ class Replace_Url_Service_Weglot {
 	 * @return boolean
 	 */
 	public function ends_with( $haystack, $needle ) {
-		$temp       = strlen( $haystack );
+		$temp = strlen( $haystack );
 		$len_needle = strlen( $needle );
 
 		return '' === $needle ||

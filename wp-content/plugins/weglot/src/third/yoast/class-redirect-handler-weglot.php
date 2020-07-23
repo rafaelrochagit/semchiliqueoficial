@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 /**
  * Override Yoast Premium
  */
@@ -69,7 +70,7 @@ class Redirect_Handler_Weglot extends \WPSEO_Redirect_Handler {
 	 */
 	protected function handle_normal_redirects( $request_url ) {
 		// Setting the redirects.
-		$redirects       = $this->get_redirects( $this->normal_option_name );
+		$redirects = $this->get_redirects( $this->normal_option_name );
 		$this->redirects = $this->normalize_redirects( $redirects );
 
 		// Trim the slashes, to match the variants of a request URL (Like: url, /url, /url/, url/).
@@ -82,7 +83,7 @@ class Redirect_Handler_Weglot extends \WPSEO_Redirect_Handler {
 		if ( isset( $request_url[2] ) && '/' === $request_url[2] ) {
 			$code_language = explode( '/', $request_url );
 
-			$langs = weglot_get_languages_configured( 'code' );
+			$langs = weglot_get_current_languages_configured( 'code' );
 
 			if ( ! in_array( $code_language[0], $langs ) ) { // phpcs:ignore
 				//Default behavior Yoast

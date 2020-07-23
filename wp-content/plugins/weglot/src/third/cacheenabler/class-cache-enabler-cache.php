@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WeglotWP\Helpers\Helper_Is_Admin;
 use WeglotWP\Models\Hooks_Interface_Weglot;
 
+
 /**
  * Cache_Enabler_Cache
  *
@@ -36,8 +37,8 @@ class Cache_Enabler_Cache implements Hooks_Interface_Weglot {
 			return;
 		}
 
-		add_filter( 'bypass_cache', [ $this, 'bypass_cache' ] );
-		add_action( 'wp_head', [ $this, 'buffer_start' ] );
+		add_filter( 'bypass_cache', array( $this, 'bypass_cache' ) );
+		add_action( 'wp_head', array( $this, 'buffer_start' ) );
 	}
 
 	/**
@@ -58,7 +59,7 @@ class Cache_Enabler_Cache implements Hooks_Interface_Weglot {
 	 * @return void
 	 */
 	public function buffer_start() {
-		ob_start( [ $this, 'add_default_switcher' ] );
+		ob_start( array( $this, 'add_default_switcher' ) );
 	}
 
 	/**
