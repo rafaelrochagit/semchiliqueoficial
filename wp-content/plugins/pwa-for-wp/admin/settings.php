@@ -632,6 +632,17 @@ function pwaforwp_list_addons(){
                     'p-desc' => 'PWA to APK Plugin for PWA extension to create apk for your website',
                     'p-tab'	 => false
          ),
+         'ofpwa'  => array(
+                    'p-slug' => 'offline-forms-for-pwa-for-wp/offline-forms-for-pwa-for-wp.php',
+                    'p-name' => 'Offline Forms for PWA for WP',
+                    'p-short-prefix'=> 'OFPWA',
+                    'p-title' => 'Offline Forms for PWA for WP',
+                    'p-url'	 => 'https://pwa-for-wp.com/extensions/offline-forms-for-pwa-for-wp/',
+                    'p-icon-img' => PWAFORWP_PLUGIN_URL.'images/offline-forms-for-pwa-for-wp.png',
+                    'p-background-color'=> '#acb1b5',
+                    'p-desc' => 'Offline Forms for PWA extension to store forms for your website',
+                    'p-tab'	 => false
+         ),
      );
 	return $add_on_list;
 }
@@ -1378,58 +1389,45 @@ function pwaforwp_splash_icon_callback(){
 		?>
 	</p>
 	<label>
-	<input type="checkbox" class="switch_apple_splash_screen" name="pwaforwp_settings[switch_apple_splash_screen]" value="1" <?php if(isset($settings['switch_apple_splash_screen']) && $settings['switch_apple_splash_screen']==1){ echo "checked"; } ?> > Setup splash screen for IOS</label>
+	<input type="checkbox" class="switch_apple_splash_screen" name="pwaforwp_settings[switch_apple_splash_screen]" value="1" <?php if(isset($settings['switch_apple_splash_screen']) && $settings['switch_apple_splash_screen']==1){ echo "checked"; } ?> > Setup Splash Screen for iOS</label>
 	<div class="ios-splash-images" <?php if(isset($settings['switch_apple_splash_screen']) && !$settings['switch_apple_splash_screen']){ echo 'style="display:none"'; }?>>
-		<div class="ios-splash-images-field">
-			<label>iPhone: 320x460</label>
-			<input type="text" name="pwaforwp_settings[ios_splash_icon][320x460]" id="pwaforwp_settings[ios_splash_icon][320x460]" class="pwaforwp-splash-icon regular-text" size="50" value="<?php echo isset( $settings['ios_splash_icon']['320x460'] ) ? esc_attr( pwaforwp_https($settings['ios_splash_icon']['320x460'])) : ''; ?>">
-			<button type="button" class="button pwaforwp-ios-splash-icon-upload" data-editor="content">
-				<span class="dashicons dashicons-format-image" style="margin-top: 4px;"></span> <?php echo esc_html__('Choose Icon', 'pwa-for-wp'); ?>
-			</button>
-		</div>
-		<div class="ios-splash-images-field">
-			<label>iPhone (Retina): 640x920</label>
-			<input type="text" name="pwaforwp_settings[ios_splash_icon][640x920]" id="pwaforwp_settings[ios_splash_icon][640x920]" class="pwaforwp-splash-icon regular-text" size="50" value="<?php echo isset( $settings['ios_splash_icon']['640x920'] ) ? esc_attr( pwaforwp_https($settings['ios_splash_icon']['640x920'])) : ''; ?>">
-			<button type="button" class="button pwaforwp-ios-splash-icon-upload" data-editor="content">
-				<span class="dashicons dashicons-format-image" style="margin-top: 4px;"></span> <?php echo esc_html__('Choose Icon', 'pwa-for-wp'); ?>
-			</button>
-		</div>
-		<div class="ios-splash-images-field">
-			<label>iPad (portrait): 768x1004</label>
-			<input type="text" name="pwaforwp_settings[ios_splash_icon][768x1004]" id="pwaforwp_settings[ios_splash_icon][768x1004]" class="pwaforwp-splash-icon regular-text" size="50" value="<?php echo isset( $settings['ios_splash_icon']['768x1004'] ) ? esc_attr( pwaforwp_https($settings['ios_splash_icon']['768x1004'])) : ''; ?>">
-			<button type="button" class="button pwaforwp-ios-splash-icon-upload" data-editor="content">
-				<span class="dashicons dashicons-format-image" style="margin-top: 4px;"></span> <?php echo esc_html__('Choose Icon', 'pwa-for-wp'); ?>
-			</button>
-		</div>
-		<div class="ios-splash-images-field">
-			<label>iPad (landscape): 748x1024</label>
-			<input type="text" name="pwaforwp_settings[ios_splash_icon][748x1024]" id="pwaforwp_settings[ios_splash_icon][748x1024]" class="pwaforwp-splash-icon regular-text" size="50" value="<?php echo isset( $settings['ios_splash_icon']['748x1024'] ) ? esc_attr( pwaforwp_https($settings['ios_splash_icon']['748x1024'])) : ''; ?>">
-			<button type="button" class="button pwaforwp-ios-splash-icon-upload" data-editor="content">
-				<span class="dashicons dashicons-format-image" style="margin-top: 4px;"></span> <?php echo esc_html__('Choose Icon', 'pwa-for-wp'); ?>
-			</button>
-		</div>
-		<div class="ios-splash-images-field">
-			<label>iPad (landscape): 1536x2008</label>
-			<input type="text" name="pwaforwp_settings[ios_splash_icon][1536x2008]" id="pwaforwp_settings[ios_splash_icon][1536x2008]" class="pwaforwp-splash-icon regular-text" size="50" value="<?php echo isset( $settings['ios_splash_icon']['1536x2008'] ) ? esc_attr( pwaforwp_https($settings['ios_splash_icon']['1536x2008'])) : ''; ?>">
-			<button type="button" class="button pwaforwp-ios-splash-icon-upload" data-editor="content">
-				<span class="dashicons dashicons-format-image" style="margin-top: 4px;"></span> <?php echo esc_html__('Choose Icon', 'pwa-for-wp'); ?>
-			</button>
-		</div>
-		<div class="ios-splash-images-field">
-			<label>iPad (Retina, landscape): 2048x1496</label>
-			<input type="text" name="pwaforwp_settings[ios_splash_icon][2048x1496]" id="pwaforwp_settings[ios_splash_icon][2048x1496]" class="pwaforwp-splash-icon regular-text" size="50" value="<?php echo isset( $settings['ios_splash_icon']['2048x1496'] ) ? esc_attr( pwaforwp_https($settings['ios_splash_icon']['2048x1496'])) : ''; ?>">
-			<button type="button" class="button pwaforwp-ios-splash-icon-upload" data-editor="content">
-				<span class="dashicons dashicons-format-image" style="margin-top: 4px;"></span> <?php echo esc_html__('Choose Icon', 'pwa-for-wp'); ?>
-			</button>
-		</div>
-		<div class="ios-splash-images-field">
-			<label>iPhone 6/7/8: 750x1334</label>
-			<input type="text" name="pwaforwp_settings[ios_splash_icon][750x1334]" id="pwaforwp_settings[ios_splash_icon][750x1334]" class="pwaforwp-splash-icon regular-text" size="50" value="<?php echo isset( $settings['ios_splash_icon']['750x1334'] ) ? esc_attr( pwaforwp_https($settings['ios_splash_icon']['750x1334'])) : ''; ?>">
-			<button type="button" class="button pwaforwp-ios-splash-icon-upload" data-editor="content">
-				<span class="dashicons dashicons-format-image" style="margin-top: 4px;"></span> <?php echo esc_html__('Choose Icon', 'pwa-for-wp'); ?>
-			</button>
+		<div class="field" style="margin-bottom: 10px;">
+			<label style="display: inline-block;width: 50%;">iOS Splash Screen Method</label>
+			<select name="pwaforwp_settings[iosSplashScreenOpt]" id="ios-splash-gen-opt">
+				<option value="">Select</option>
+				<option value="generate-auto" <?php echo isset($settings['iosSplashScreenOpt']) && $settings['iosSplashScreenOpt']=='generate-auto'? 'selected': ''; ?>>Automatic</option>
+				<option  value="manually" <?php echo isset($settings['iosSplashScreenOpt']) && $settings['iosSplashScreenOpt']=='manually'? 'selected': ''; ?>>Manual</option>
+			</select>
 		</div>
 
+		<?php
+		$splashIcons = ios_splashscreen_files_data();
+		echo '<div class="panel pwaforwp-hide" id="generate-auto-1"  style="max-height: 100%;">
+				<div class="ios-splash-screen-creator">
+					<div class="field"><label>Select image (Only PNG)</label><input type="file" id="file-upload-ios" accept="image/png"><img style="display:none" id="thumbnail"></div>
+					<div class="field"><label>Background color</label><input type="text" id="ios-splash-color" value="#FFFFFF"></div>
+					<div style="padding-left: 25%;"><input type="button" onclick="pwa_getimageZip(this)" class="button" value="Generate">
+					<span id="pwa-ios-splashmessage" style="font-size:17px"> </span></div>
+				</div>
+			</div>
+			
+			';
+		?>
+		<div class="panel pwaforwp-hide" id="manually-1" style="max-height: 100%;">
+		<?php
+		foreach ($splashIcons as $key => $splashValue) {
+			
+		?>
+			<div class="ios-splash-images-field">
+				<label><?php echo $splashValue['name']." ($key) [".ucfirst($splashValue['orientation'])."]" ?></label>
+				<input type="text" name="pwaforwp_settings[ios_splash_icon][<?php echo $key ?>]" id="pwaforwp_settings[ios_splash_icon][<?php echo $key ?>]" class="pwaforwp-splash-icon regular-text" size="50" value="<?php echo isset( $settings['ios_splash_icon'][$key] ) ? esc_attr( pwaforwp_https($settings['ios_splash_icon'][$key])) : ''; ?>">
+				<button type="button" class="button pwaforwp-ios-splash-icon-upload" data-editor="content">
+					<span class="dashicons dashicons-format-image" style="margin-top: 4px;"></span> <?php echo esc_html__('Choose Icon', 'pwa-for-wp'); ?>
+				</button>
+			</div>
+		<?php } ?>
+		</div>
+		
 	</div>
 
 	<?php
@@ -1936,7 +1934,8 @@ function pwaforwp_enqueue_style_js( $hook ) {
             'splash_uploader_title'     => esc_html('Splash Screen Icon', 'pwa-for-wp'),
             'uploader_button'           => esc_html('Select Icon', 'pwa-for-wp'),
             'file_status'               => esc_html('Check permission or download from manual', 'pwa-for-wp'),
-            'pwaforwp_security_nonce'   => wp_create_nonce('pwaforwp_ajax_check_nonce')
+            'pwaforwp_security_nonce'   => wp_create_nonce('pwaforwp_ajax_check_nonce'),
+            'iosSplashIcon'				=> ios_splashscreen_files_data(),
         );
         
         $object_name = apply_filters('pwaforwp_localize_filter',$object_name,'pwaforwp_obj');
@@ -1959,6 +1958,7 @@ function pwaforwp_enqueue_style_js( $hook ) {
         wp_enqueue_style( 'pwaforwp-main-css', PWAFORWP_PLUGIN_URL . 'assets/css/main-css.min.css',array(), PWAFORWP_PLUGIN_VERSION,'all' );      
 		wp_style_add_data( 'pwaforwp-main-css', 'rtl', 'replace' );      
         // Main JS
+        wp_enqueue_script('pwaforwp-zip-js', PWAFORWP_PLUGIN_URL . 'assets/js/jszip.min.js', array(), PWAFORWP_PLUGIN_VERSION, true);
         wp_register_script('pwaforwp-main-js', PWAFORWP_PLUGIN_URL . 'assets/js/main-script.min.js', array( 'wp-color-picker', 'plugin-install', 'wp-util', 'wp-a11y','updates' ), PWAFORWP_PLUGIN_VERSION, true);
         
         wp_enqueue_script('pwaforwp-main-js');
@@ -2255,11 +2255,15 @@ function pwaforwp_features_settings(){
 									'enable_field' => 'utmtracking_feature',
 									'section_name' => 'pwaforwp_utmtracking_setting_section',
 									'setting_title' => 'UTM Tracking',
+									'tooltip_option'=> 'Urchin Traffic Monitor Tracking',
+									'tooltip_link'	=> 'https://pwa-for-wp.com/docs/article/how-to-add-utm-tracking-in-pwa/'
 									),
 				'loader' => array(
 									'enable_field' => 'loader_feature',
 									'section_name' => 'pwaforwp_loaders_setting_section',
 									'setting_title' => 'Loader',
+									'tooltip_option'=> 'Loader for complete website',
+									'tooltip_link'	=> 'https://pwa-for-wp.com/docs/article/how-to-use-loading-icon-library-for-pwa/'
 									),
 				'calltoaction'	=> array(
 									'enable_field' => 'call_to_action',
@@ -2269,6 +2273,8 @@ function pwaforwp_features_settings(){
 									'pro_link'		=> $addonLists['ctafp']['p-url'],
 									'pro_active'    => (is_plugin_active($addonLists['ctafp']['p-slug'])? 1: 0),
 									'pro_deactive'    => (isset($allplugins[$addonLists['ctafp']['p-slug']]) && !is_plugin_active($addonLists['ctafp']['p-slug'])? 1: 0),
+									'tooltip_option'=> 'CTA feature for PWA',
+									'tooltip_link'	=> 'https://pwa-for-wp.com/docs/article/how-to-use-call-to-action-cta-in-pwa/'
 									),
 				'dataAnalytics' => array(
 									'enable_field' => 'data_analytics',
@@ -2278,6 +2284,8 @@ function pwaforwp_features_settings(){
 									'pro_link'		=> $addonLists['dafp']['p-url'],
 									'pro_active'    => (is_plugin_active($addonLists['dafp']['p-slug'])? 1: 0),
 									'pro_deactive'    => (isset($allplugins[$addonLists['dafp']['p-slug']]) && !is_plugin_active($addonLists['dafp']['p-slug'])? 1: 0),
+									'tooltip_option'=> 'Analytics for the number of people who are installing PWA',
+									'tooltip_link'	=> 'https://pwa-for-wp.com/docs/article/how-to-use-data-analytics-for-pwa/'
 									),
 				'pulltorefresh' => array(
                                     'enable_field' => 'pull_to_refresh',
@@ -2287,6 +2295,8 @@ function pwaforwp_features_settings(){
                                     'pro_link'      => $addonLists['ptrfp']['p-url'],
                                     'pro_active'    => (is_plugin_active($addonLists['ptrfp']['p-slug'])? 1: 0),
                                     'pro_deactive'    => (isset($allplugins[$addonLists['ptrfp']['p-slug']]) && !is_plugin_active($addonLists['ptrfp']['p-slug'])? 1: 0),
+                                    'tooltip_option'=> 'Refresh the PWA APP page',
+									'tooltip_link'	=> 'https://pwa-for-wp.com/docs/article/how-to-use-data-analytics-for-pwa/'
                                     ),
 				'progressbar' => array(
                                     'enable_field' => 'scroll_progress_bar',
@@ -2296,15 +2306,41 @@ function pwaforwp_features_settings(){
                                     'pro_link'      => $addonLists['spbfp']['p-url'],
                                     'pro_active'    => (is_plugin_active($addonLists['spbfp']['p-slug'])? 1: 0),
                                     'pro_deactive'    => (isset($allplugins[$addonLists['spbfp']['p-slug']]) && !is_plugin_active($addonLists['spbfp']['p-slug'])? 1: 0),
+                                    'tooltip_option'=> 'Show Scroll progress bar',
+									'tooltip_link'	=> 'https://pwa-for-wp.com/docs/article/scroll-progress-bar-for-pwa/'
                                     ),
 				'pwatoapkplugin' => array(
                                     'enable_field' => 'pwa_to_apk_plugin',
                                     'section_name' => 'pwaforwp_pwa_to_apk_plugin_setting_section',
-                                    'setting_title' => 'PWA to APK plugin',
+                                    'setting_title' => 'PWA to Android APP (APK)',
                                     'is_premium'    => true,
                                     'pro_link'      => $addonLists['ptafp']['p-url'],
                                     'pro_active'    => (is_plugin_active($addonLists['ptafp']['p-slug'])? 1: 0),
                                     'pro_deactive'    => (isset($allplugins[$addonLists['ptafp']['p-slug']]) && !is_plugin_active($addonLists['ptafp']['p-slug'])? 1: 0),
+                                    'tooltip_option'=> 'Generate APK for website',
+									'tooltip_link'	=> 'https://pwa-for-wp.com/docs/article/how-to-use-pwa-to-apk-plugin/'
+                                    ),
+				'offlineforms' => array(
+                                    'enable_field' => 'offline_forms',
+                                    'section_name' => 'pwaforwp_offline_forms_setting_section',
+                                    'setting_title' => 'Offline Forms',
+                                    'is_premium'    => true,
+                                    'pro_link'      => $addonLists['ofpwa']['p-url'],
+                                    'pro_active'    => (is_plugin_active($addonLists['ofpwa']['p-slug'])? 1: 0),
+                                    'pro_deactive'    => (isset($allplugins[$addonLists['ofpwa']['p-slug']]) && !is_plugin_active($addonLists['ofpwa']['p-slug'])? 1: 0),
+                                    'tooltip_option'=> 'Support forms to work on offline mode',
+									'tooltip_link'	=> 'https://pwa-for-wp.com/docs/article/how-to-use-offline-forms/'
+                                    ),
+				'autosaveforms' => array(
+                                    'enable_field' => 'autosave_forms',
+                                    'section_name' => 'pwaforwp_autosave_forms_setting_section',
+                                    'setting_title' => 'Auto Save Forms',
+                                    'is_premium'    => true,
+                                    'pro_link'      => $addonLists['ofpwa']['p-url'],
+                                    'pro_active'    => (is_plugin_active($addonLists['ofpwa']['p-slug'])? 1: 0),
+                                    'pro_deactive'    => (isset($allplugins[$addonLists['ofpwa']['p-slug']]) && !is_plugin_active($addonLists['ofpwa']['p-slug'])? 1: 0),
+                                    'tooltip_option'=> 'It auto saves the data on the fly',
+									'tooltip_link'	=> 'https://pwa-for-wp.com/docs/article/how-to-use-auto-save-forms/'
                                     ),
 								);
 	$featuresHtml = '';
@@ -2485,6 +2521,8 @@ function pwaforwp_update_features_options(){
 		$actualFields = apply_filters('pwaforwp_features_update_data_save', $actualFields);
 
 		update_option( 'pwaforwp_settings', $actualFields ) ;
+		global $pwaforwp_settings;
+		$pwaforwp_settings = array();
 		pwaforwp_required_file_creation();
 		echo json_encode(array('status'=> 200, 'message'=> 'Settings Saved.', 'options'=>$actualFields));
 			die;
@@ -2585,5 +2623,47 @@ if(!function_exists('pwaforwp_subscribe_newsletter')){
 	    $response = wp_remote_retrieve_body( $response );
 	    echo $response;
 	    die;
+	} 	
+} 
+
+if(!function_exists('pwaforwp_splashscreen_uploader')){
+	add_action('wp_ajax_pwaforwp_splashscreen_uploader','pwaforwp_splashscreen_uploader');
+
+	function pwaforwp_splashscreen_uploader(){
+		if ( ! isset( $_GET['pwaforwp_security_nonce'] ) ){
+            echo json_encode(array("status"=>500, "message"=> "Splash screen uploaded successfully"));
+            die;
+        }
+        if ( !wp_verify_nonce( $_GET['pwaforwp_security_nonce'], 'pwaforwp_ajax_check_nonce' ) ){
+           echo json_encode(array("status"=>500, "message"=> "Splash screen uploaded successfully"));
+           die;
+        }
+		$pwaforwp_settings = pwaforwp_defaultSettings();
+		
+		$upload = wp_upload_dir();
+		$path = $upload['basedir']."/pwa-splash-screen/";
+		wp_mkdir_p($path);
+		  $zipfilename = $path."file.zip";
+	      $input = fopen('php://input', 'rb');
+		  $file = fopen($zipfilename, 'wb'); 
+
+		  // Note: we don't need open and stream to stream, 
+		  // we could've used file_get_contents and file_put_contents
+		  stream_copy_to_stream($input, $file);
+		  fclose($input);
+		  fclose($file);
+
+		unzip_file($zipfilename, $path);
+		$pathURL = $upload['baseurl']."/pwa-splash-screen/splashscreens/";
+		$iosdata = ios_splashscreen_files_data(); 
+		foreach ($iosdata as $key => $value) {
+			$pwaforwp_settings['ios_splash_icon'][$key] = $pathURL.$value['file'];
+		}
+		$pwaforwp_settings['iosSplashScreenOpt']='generate-auto';
+
+		update_option( 'pwaforwp_settings', $pwaforwp_settings ) ;
+		unlink($zipfilename);
+		echo json_encode(array("status"=>200, "message"=> "Splash screen uploaded successfully"));
+		  die;
 	} 	
 } 
