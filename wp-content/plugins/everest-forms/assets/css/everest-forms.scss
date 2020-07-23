@@ -106,6 +106,11 @@
 			line-height: 1.5;
 			margin: 0 0 10px 0;
 		}
+
+		&.evf-privacy-policy-consent-message {
+			display: inline;
+			margin-bottom: 0;
+		}
 	}
 
 	input[type='text'],
@@ -147,7 +152,8 @@
 		}
 	}
 
-	input {
+	input,
+	textarea {
 		&:focus {
 			outline: none;
 			border: 1px solid $blue;
@@ -190,10 +196,17 @@
 
 	.evf-field-container {
 		.evf-frontend-row {
-			display: flex;
-			flex-wrap: wrap;
-			margin-left: -15px;
-			margin-right: -15px;
+			// Prevents style conflict on entries list-table.
+			&:not(.wp-list-table) {
+				display: flex;
+				flex-wrap: wrap;
+				margin-left: -15px;
+				margin-right: -15px;
+
+				select {
+					appearance: menulist;
+				}
+			}
 
 			.everest-forms-one-half {
 				width: 48%;
@@ -450,10 +463,6 @@
 				}
 			}
 
-			select {
-				appearance: menulist;
-			}
-
 			textarea {
 				width: 100%;
 				max-width: 100%;
@@ -474,9 +483,10 @@
 		}
 	}
 
-	button,
 	input[type='submit'],
 	button[type='submit'],
+	a.button:not(.button-large),
+	button.button:not(.button-large),
 	.everest-forms-part-button {
 		color: #555;
 		height: auto;
@@ -591,12 +601,49 @@
 		}
 	}
 
+	.everest-forms-notice--info {
+		padding: 1em 1.6em;
+		color: $color_gray-base;
+		background: lighten($blue, 47%);
+		border: 1px solid adjust-color($blue, $saturation: -15%, $lightness: +20%);
+
+		&::before {
+			visibility: hidden;
+		}
+
+		.everest-forms-notice--actions {
+			margin-top: 10px;
+
+			a.button {
+				float: left;
+				line-height: 1;
+				cursor: pointer;
+				margin-right: 7px;
+				padding: 0.618em 1em;
+				box-shadow: none;
+				text-shadow: none;
+				text-decoration: none;
+				background-image: none;
+				color: $color_gray-base;
+				background-color: $color_gray-light-skin;
+
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+	}
+
 	.everest-forms-notice--success {
 		background-color: $green;
 
 		&::before {
 			content: '\f147';
 		}
+	}
+
+	.everest-forms-notice--warning {
+		background-color: $orange;
 	}
 
 	.everest-forms-notice--error {

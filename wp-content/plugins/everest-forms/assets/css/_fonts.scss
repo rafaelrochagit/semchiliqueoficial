@@ -2,7 +2,7 @@
  * _fonts.scss
  * Custom EverestForms fonts.
  */
-@font-face {
+ @font-face {
 	font-family: 'EverestForms';
 	src: url('../fonts/EverestForms.eot?l00bnz');
 	src: url('../fonts/EverestForms.eot?l00bnz#iefix') format('embedded-opentype'),
@@ -12,4 +12,33 @@
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
+}
+
+/**
+ * Icons
+ * Icon size should be 24dp.
+ **/
+.evf-icon {
+	padding: 8px;
+	border-radius: 4px;
+
+	* {
+		display: block;
+	}
+}
+
+
+/**
+ * Headings
+ **/
+.evf-h2 {
+	font-size: 28px;
+	font-weight: 600;
+}
+
+/**
+ * Text
+ **/
+.evf-text-center {
+	text-align: center;
 }

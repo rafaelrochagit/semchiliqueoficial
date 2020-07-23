@@ -2,7 +2,7 @@
 ( function( $, params ) {
 
 	// Colorpicker.
-	$( '.colorpicker' ).wpColorPicker();
+	$( '.evf-colorpicker' ).wpColorPicker();
 
 	// Enable Perfect Scrollbar.
 	$( document ).on( 'init_perfect_scrollbar', function() {
@@ -277,4 +277,11 @@
 			}
 		});
 	});
+
+	// Adding active class for button group
+	$('.everest-forms-btn-group .everest-forms-btn').on('click', function() {
+		$(this).siblings().removeClass('is-active')
+		$(this).addClass('is-active');
+	})
+
 })( jQuery, everest_forms_admin );

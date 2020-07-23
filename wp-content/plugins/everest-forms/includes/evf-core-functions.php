@@ -100,7 +100,7 @@ function evf_get_template( $template_name, $args = array(), $template_path = '',
 	if ( $filter_template !== $template ) {
 		if ( ! file_exists( $filter_template ) ) {
 			/* translators: %s template */
-			evf_doing_it_wrong( __FUNCTION__, sprintf( __( '%s does not exist.', 'everest-forms' ), '<code>' . $template . '</code>' ), '1.0.0' );
+			evf_doing_it_wrong( __FUNCTION__, sprintf( __( '%s does not exist.', 'everest-forms' ), '<code>' . $filter_template . '</code>' ), '1.0.0' );
 			return;
 		}
 		$template = $filter_template;
@@ -1687,7 +1687,7 @@ function evf_get_countries() {
 		'LT' => esc_html__( 'Lithuania', 'everest-forms' ),
 		'LU' => esc_html__( 'Luxembourg', 'everest-forms' ),
 		'MO' => esc_html__( 'Macao', 'everest-forms' ),
-		'MK' => esc_html__( 'Macedonia (Republic of)', 'everest-forms' ),
+		'MK' => esc_html__( 'North Macedonia (Republic of)', 'everest-forms' ),
 		'MG' => esc_html__( 'Madagascar', 'everest-forms' ),
 		'MW' => esc_html__( 'Malawi', 'everest-forms' ),
 		'MY' => esc_html__( 'Malaysia', 'everest-forms' ),
@@ -1809,6 +1809,70 @@ function evf_get_countries() {
 	);
 
 	return (array) apply_filters( 'everest_forms_countries', $countries );
+}
+
+/**
+ * Get U.S. States.
+ *
+ * @since  1.7.0
+ * @return array
+ */
+function evf_get_states() {
+	$states = array(
+		'AL' => esc_html__( 'Alabama', 'everest-forms' ),
+		'AK' => esc_html__( 'Alaska', 'everest-forms' ),
+		'AZ' => esc_html__( 'Arizona', 'everest-forms' ),
+		'AR' => esc_html__( 'Arkansas', 'everest-forms' ),
+		'CA' => esc_html__( 'California', 'everest-forms' ),
+		'CO' => esc_html__( 'Colorado', 'everest-forms' ),
+		'CT' => esc_html__( 'Connecticut', 'everest-forms' ),
+		'DE' => esc_html__( 'Delaware', 'everest-forms' ),
+		'DC' => esc_html__( 'District of Columbia', 'everest-forms' ),
+		'FL' => esc_html__( 'Florida', 'everest-forms' ),
+		'GA' => esc_html__( 'Georgia', 'everest-forms' ),
+		'HI' => esc_html__( 'Hawaii', 'everest-forms' ),
+		'ID' => esc_html__( 'Idaho', 'everest-forms' ),
+		'IL' => esc_html__( 'Illinois', 'everest-forms' ),
+		'IN' => esc_html__( 'Indiana', 'everest-forms' ),
+		'IA' => esc_html__( 'Iowa', 'everest-forms' ),
+		'KS' => esc_html__( 'Kansas', 'everest-forms' ),
+		'KY' => esc_html__( 'Kentucky', 'everest-forms' ),
+		'LA' => esc_html__( 'Louisiana', 'everest-forms' ),
+		'ME' => esc_html__( 'Maine', 'everest-forms' ),
+		'MD' => esc_html__( 'Maryland', 'everest-forms' ),
+		'MA' => esc_html__( 'Massachusetts', 'everest-forms' ),
+		'MI' => esc_html__( 'Michigan', 'everest-forms' ),
+		'MN' => esc_html__( 'Minnesota', 'everest-forms' ),
+		'MS' => esc_html__( 'Mississippi', 'everest-forms' ),
+		'MO' => esc_html__( 'Missouri', 'everest-forms' ),
+		'MT' => esc_html__( 'Montana', 'everest-forms' ),
+		'NE' => esc_html__( 'Nebraska', 'everest-forms' ),
+		'NV' => esc_html__( 'Nevada', 'everest-forms' ),
+		'NH' => esc_html__( 'New Hampshire', 'everest-forms' ),
+		'NJ' => esc_html__( 'New Jersey', 'everest-forms' ),
+		'NM' => esc_html__( 'New Mexico', 'everest-forms' ),
+		'NY' => esc_html__( 'New York', 'everest-forms' ),
+		'NC' => esc_html__( 'North Carolina', 'everest-forms' ),
+		'ND' => esc_html__( 'North Dakota', 'everest-forms' ),
+		'OH' => esc_html__( 'Ohio', 'everest-forms' ),
+		'OK' => esc_html__( 'Oklahoma', 'everest-forms' ),
+		'OR' => esc_html__( 'Oregon', 'everest-forms' ),
+		'PA' => esc_html__( 'Pennsylvania', 'everest-forms' ),
+		'RI' => esc_html__( 'Rhode Island', 'everest-forms' ),
+		'SC' => esc_html__( 'South Carolina', 'everest-forms' ),
+		'SD' => esc_html__( 'South Dakota', 'everest-forms' ),
+		'TN' => esc_html__( 'Tennessee', 'everest-forms' ),
+		'TX' => esc_html__( 'Texas', 'everest-forms' ),
+		'UT' => esc_html__( 'Utah', 'everest-forms' ),
+		'VT' => esc_html__( 'Vermont', 'everest-forms' ),
+		'VA' => esc_html__( 'Virginia', 'everest-forms' ),
+		'WA' => esc_html__( 'Washington', 'everest-forms' ),
+		'WV' => esc_html__( 'West Virginia', 'everest-forms' ),
+		'WI' => esc_html__( 'Wisconsin', 'everest-forms' ),
+		'WY' => esc_html__( 'Wyoming', 'everest-forms' ),
+	);
+
+	return (array) apply_filters( 'everest_forms_states', $states );
 }
 
 /**
@@ -1999,3 +2063,302 @@ function evf_cleanup_logs() {
 	}
 }
 add_action( 'everest_forms_cleanup_logs', 'evf_cleanup_logs' );
+
+
+/**
+ * Check whether it device is table or not from HTTP user agent
+ *
+ * @since 1.7.0
+ *
+ * @return bool
+ */
+function evf_is_tablet() {
+	return false !== stripos( evf_get_user_agent(), 'tablet' ) || false !== stripos( evf_get_user_agent(), 'tab' );
+}
+
+/**
+ * Get user device from user agent from HTTP user agent.
+ *
+ * @since 1.7.0
+ *
+ * @return string
+ */
+function evf_get_user_device() {
+	if ( evf_is_tablet() ) {
+		return esc_html__( 'Tablet', 'everest-forms' );
+	} elseif ( wp_is_mobile() ) {
+		return esc_html__( 'Mobile', 'everest-forms' );
+	} else {
+		return esc_html__( 'Desktop', 'everest-forms' );
+	}
+}
+
+
+/**
+ * A wp_parse_args() for multi-dimensional array.
+ *
+ * @see https://developer.wordpress.org/reference/functions/wp_parse_args/
+ *
+ * @since 1.7.0
+ *
+ * @param array $args       Value to merge with $defaults.
+ * @param array $defaults   Array that serves as the defaults.
+ *
+ * @return array    Merged user defined values with defaults.
+ */
+function evf_parse_args( &$args, $defaults ) {
+	$args     = (array) $args;
+	$defaults = (array) $defaults;
+	$result   = $defaults;
+	foreach ( $args as $k => &$v ) {
+		if ( is_array( $v ) && isset( $result[ $k ] ) ) {
+			$result[ $k ] = evf_parse_args( $v, $result[ $k ] );
+		} else {
+			$result[ $k ] = $v;
+		}
+	}
+	return $result;
+}
+
+/**
+ * Get date of ranges.
+ *
+ * @since 1.7.0
+ *
+ * @param string $first Starting date.
+ * @param string $last  End date.
+ * @param string $step Date step.
+ * @param string $format Date format.
+ *
+ * @return array Range dates.
+ */
+function evf_date_range( $first, $last = '', $step = '+1 day', $format = 'Y/m/d' ) {
+	$dates   = array();
+	$current = strtotime( $first );
+	$last    = strtotime( $last );
+
+	while ( $current <= $last ) {
+		$dates[] = date_i18n( $format, $current );
+		$current = strtotime( $step, $current );
+	}
+
+	return $dates;
+}
+
+/**
+ * Process syntaxes in a text.
+ *
+ * @since 1.7.0
+ *
+ * @param string $text Text to be processed.
+ * @param bool   $escape_html Whether to escape all the htmls before processing or not.
+ * @param bool   $trim_trailing_spaces Whether to trim trailing spaces or not.
+ *
+ * @return string Processed text.
+ */
+function evf_process_syntaxes( $text, $escape_html = true, $trim_trailing_spaces = true ) {
+
+	if ( true === $trim_trailing_spaces ) {
+		$text = trim( $text );
+	}
+	if ( true === $escape_html ) {
+		$text = esc_html( $text );
+	}
+	$text = evf_process_hyperlink_syntax( $text );
+	$text = evf_process_italic_syntax( $text );
+	$text = evf_process_bold_syntax( $text );
+	$text = evf_process_underline_syntax( $text );
+	$text = evf_process_line_breaks( $text );
+	return $text;
+}
+
+/**
+ * Extract page ids from a text.
+ *
+ * @since 1.7.0
+ *
+ * @param string $text Text to extract page ids from.
+ *
+ * @return mixed
+ */
+function evf_extract_page_ids( $text ) {
+	$page_id_syntax_matches = array();
+	$page_ids               = array();
+
+	while ( preg_match( '/page_id=([0-9]+)/', $text, $page_id_syntax_matches ) ) {
+		$page_id    = $page_id_syntax_matches[1];
+		$page_ids[] = $page_id;
+		$text       = str_replace( 'page_id=' . $page_id, '', $text );
+	}
+
+	if ( count( $page_ids ) > 0 ) {
+		return $page_ids;
+	}
+	return false;
+}
+
+/**
+ * Process hyperlink syntaxes in a text.
+ * The syntax used for hyperlink is: [Link Label](Link URL)
+ * Example: [Google Search Page](https://google.com)
+ *
+ * @since 1.7.0
+ *
+ * @param string $text         Text to process.
+ * @param string $use_no_a_tag If set to `true` only the link will be used and no `a` tag. Particularly useful for exporting CSV,
+ *                             as the html tags are escaped in a CSV file.
+ *
+ * @return string Processed text.
+ */
+function evf_process_hyperlink_syntax( $text, $use_no_a_tag = false ) {
+	$matches = array();
+	$regex   = '/(\[[^\[\]]*\])(\([^\(\)]*\))/';
+
+	while ( preg_match( $regex, $text, $matches ) ) {
+		$matched_string = $matches[0];
+		$label          = $matches[1];
+		$link           = $matches[2];
+		$class          = '';
+		$page_id        = '';
+
+		// Trim brackets.
+		$label = trim( substr( $label, 1, -1 ) );
+		$link  = trim( substr( $link, 1, -1 ) );
+
+		// Proceed only if label or link is not empty.
+		if ( ! empty( $label ) || ! empty( $link ) ) {
+
+			// Use hash(#) if the link is empty.
+			if ( empty( $link ) ) {
+				$link = '#';
+			}
+
+			// Use link as label if it's empty.
+			if ( empty( $label ) ) {
+				$label = $link;
+			}
+
+			// See if it's a link to a local page.
+			if ( strpos( $link, '?' ) === 0 ) {
+				$class .= ' evf-privacy-policy-local-page-link';
+
+				// Extract page id.
+				$page_ids = evf_extract_page_ids( $link );
+
+				if ( false !== $page_ids ) {
+					$page_id = $page_ids[0];
+					$link    = get_page_link( $page_id );
+
+					if ( empty( $link ) ) {
+						$link = '#';
+					}
+				}
+			}
+
+			// Insert hyperlink html.
+			if ( true === $use_no_a_tag ) {
+				$html = $link;
+			} else {
+				$html = sprintf( '<a data-page-id="%s" target="_blank" rel="noopener noreferrer nofollow" href="%s" class="%s">%s</a>', $page_id, $link, $class, $label );
+			}
+			$text = str_replace( $matched_string, $html, $text );
+		} else {
+			// If both label and link are empty then replace it with empty string.
+			$text = str_replace( $matched_string, '', $text );
+		}
+	}
+
+	return $text;
+}
+
+/**
+ * Process italic syntaxes in a text.
+ * The syntax used for italic text is: `text`
+ * Just wrap the text with back tick characters. To escape a backtick insert a backslash(\) before the character like "\`".
+ *
+ * @since 1.7.0
+ *
+ * @param string $text Text to process.
+ *
+ * @return string Processed text.
+ */
+function evf_process_italic_syntax( $text ) {
+	$matches = array();
+	$regex   = '/`[^`]+`/';
+	$text    = str_replace( '\`', '<&&&&&>', $text ); // To preserve an escaped special character '`'.
+
+	while ( preg_match( $regex, $text, $matches ) ) {
+		$matched_string = $matches[0];
+		$label          = substr( trim( $matched_string ), 1, -1 );
+		$html           = sprintf( '<i>%s</i>', $label );
+		$text           = str_replace( $matched_string, $html, $text );
+	}
+
+	return str_replace( '<&&&&&>', '`', $text );
+}
+
+/**
+ * Process bold syntaxes in a text.
+ * The syntax used for bold text is: *text*
+ * Just wrap the text with asterisk characters. To escape an asterisk insert a backslash(\) before the character like "\*".
+ *
+ * @since 1.7.0
+ *
+ * @param string $text Text to process.
+ *
+ * @return string Processed text.
+ */
+function evf_process_bold_syntax( $text ) {
+	$matches = array();
+	$regex   = '/\*[^*]+\*/';
+	$text    = str_replace( '\*', '<&&&&&>', $text ); // To preserve an escaped special character '*'.
+
+	while ( preg_match( $regex, $text, $matches ) ) {
+		$matched_string = $matches[0];
+		$label          = substr( trim( $matched_string ), 1, -1 );
+		$html           = sprintf( '<b>%s</b>', $label );
+		$text           = str_replace( $matched_string, $html, $text );
+	}
+
+	return str_replace( '<&&&&&>', '*', $text );
+}
+
+/**
+ * Process underline syntaxes in a text.
+ * The syntax used for bold text is: __text__
+ * Wrap the text with double underscore characters. To escape an underscore insert a backslash(\) before the character like "\_".
+ *
+ * @since 1.7.0
+ *
+ * @param string $text Text to process.
+ *
+ * @return string Processed text.
+ */
+function evf_process_underline_syntax( $text ) {
+	$matches = array();
+	$regex   = '/__[^_]+__/';
+	$text    = str_replace( '\_', '<&&&&&>', $text ); // To preserve an escaped special character '_'.
+
+	while ( preg_match( $regex, $text, $matches ) ) {
+		$matched_string = $matches[0];
+		$label          = substr( trim( $matched_string ), 2, -2 );
+		$html           = sprintf( '<u>%s</u>', $label );
+		$text           = str_replace( $matched_string, $html, $text );
+	}
+
+	$text = str_replace( '<&&&&&>', '_', $text );
+	return $text;
+}
+
+/**
+ * It replaces `\n` characters with `<br/>` tag because new line `\n` character is not supported in html.
+ *
+ * @since 1.7.0
+ *
+ * @param string $text Text to process.
+ *
+ * @return string Processed text.
+ */
+function evf_process_line_breaks( $text ) {
+	return str_replace( "\n", '<br/>', $text );
+}

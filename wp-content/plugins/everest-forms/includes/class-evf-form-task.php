@@ -169,46 +169,47 @@ class EVF_Form_Task {
 			}
 
 			// reCAPTCHA check.
-			$recaptcha_type      = get_option( 'everest_forms_recaptcha_type', 'v2' );
-			$invisible_recaptcha = get_option( 'everest_forms_recaptcha_v2_invisible', 'no' );
+			if ( ! apply_filters( 'everest_forms_recaptcha_disabled', false ) ) {
+				$recaptcha_type      = get_option( 'everest_forms_recaptcha_type', 'v2' );
+				$invisible_recaptcha = get_option( 'everest_forms_recaptcha_v2_invisible', 'no' );
 
-			if ( 'v2' === $recaptcha_type && 'no' === $invisible_recaptcha ) {
-				$site_key   = get_option( 'everest_forms_recaptcha_v2_site_key' );
-				$secret_key = get_option( 'everest_forms_recaptcha_v2_secret_key' );
-			} elseif ( 'v2' === $recaptcha_type && 'yes' === $invisible_recaptcha ) {
-				$site_key   = get_option( 'everest_forms_recaptcha_v2_invisible_site_key' );
-				$secret_key = get_option( 'everest_forms_recaptcha_v2_invisible_secret_key' );
-			} elseif ( 'v3' === $recaptcha_type ) {
-				$site_key   = get_option( 'everest_forms_recaptcha_v3_site_key' );
-				$secret_key = get_option( 'everest_forms_recaptcha_v3_secret_key' );
-			}
-
-			if ( ! empty( $site_key ) && ! empty( $secret_key ) && isset( $this->form_data['settings']['recaptcha_support'] ) && '1' === $this->form_data['settings']['recaptcha_support'] ) {
-				$error = esc_html__( 'Google reCAPTCHA verification failed, please try again later.', 'everest-forms' );
-				$token = ! empty( $_POST['g-recaptcha-response'] ) ? evf_clean( wp_unslash( $_POST['g-recaptcha-response'] ) ) : false;
-
-				if ( 'v3' === $recaptcha_type ) {
-					$token = ! empty( $_POST['everest_forms']['recaptcha'] ) ? evf_clean( wp_unslash( $_POST['everest_forms']['recaptcha'] ) ) : false;
+				if ( 'v2' === $recaptcha_type && 'no' === $invisible_recaptcha ) {
+					$site_key   = get_option( 'everest_forms_recaptcha_v2_site_key' );
+					$secret_key = get_option( 'everest_forms_recaptcha_v2_secret_key' );
+				} elseif ( 'v2' === $recaptcha_type && 'yes' === $invisible_recaptcha ) {
+					$site_key   = get_option( 'everest_forms_recaptcha_v2_invisible_site_key' );
+					$secret_key = get_option( 'everest_forms_recaptcha_v2_invisible_secret_key' );
+				} elseif ( 'v3' === $recaptcha_type ) {
+					$site_key   = get_option( 'everest_forms_recaptcha_v3_site_key' );
+					$secret_key = get_option( 'everest_forms_recaptcha_v3_secret_key' );
 				}
 
-				$raw_response = wp_safe_remote_get( 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $token );
+				if ( ! empty( $site_key ) && ! empty( $secret_key ) && isset( $this->form_data['settings']['recaptcha_support'] ) && '1' === $this->form_data['settings']['recaptcha_support'] ) {
+					$error = esc_html__( 'Google reCAPTCHA verification failed, please try again later.', 'everest-forms' );
+					$token = ! empty( $_POST['g-recaptcha-response'] ) ? evf_clean( wp_unslash( $_POST['g-recaptcha-response'] ) ) : false;
 
-				if ( ! is_wp_error( $raw_response ) ) {
-					$response = json_decode( wp_remote_retrieve_body( $raw_response ) );
+					if ( 'v3' === $recaptcha_type ) {
+						$token = ! empty( $_POST['everest_forms']['recaptcha'] ) ? evf_clean( wp_unslash( $_POST['everest_forms']['recaptcha'] ) ) : false;
+					}
 
-					// Check reCAPTCHA response.
-					if ( empty( $response->success ) || ( 'v3' === $recaptcha_type && $response->score <= apply_filters( 'everest_forms_recaptcha_v3_threshold', '0.5' ) ) ) {
-						if ( 'v3' === $recaptcha_type ) {
-							if ( isset( $response->score ) ) {
-								$error .= ' (' . esc_html( $response->score ) . ')';
+					$raw_response = wp_safe_remote_get( 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $token );
+
+					if ( ! is_wp_error( $raw_response ) ) {
+						$response = json_decode( wp_remote_retrieve_body( $raw_response ) );
+
+						// Check reCAPTCHA response.
+						if ( empty( $response->success ) || ( 'v3' === $recaptcha_type && $response->score <= apply_filters( 'everest_forms_recaptcha_v3_threshold', '0.5' ) ) ) {
+							if ( 'v3' === $recaptcha_type ) {
+								if ( isset( $response->score ) ) {
+									$error .= ' (' . esc_html( $response->score ) . ')';
+								}
 							}
+							$this->errors[ $form_id ]['header'] = $error;
+							return $this->errors;
 						}
-						$this->errors[ $form_id ]['header'] = $error;
-						return $this->errors;
 					}
 				}
 			}
-
 			// Initial error check.
 			$errors = apply_filters( 'everest_forms_process_initial_errors', $this->errors, $this->form_data );
 
@@ -646,12 +647,13 @@ class EVF_Form_Task {
 
 		do_action( 'everest_forms_process_entry_save', $fields, $entry, $form_id, $form_data );
 
-		$fields     = apply_filters( 'everest_forms_entry_save_data', $fields, $entry, $form_data );
-		$browser    = evf_get_browser();
-		$user_ip    = evf_get_ip_address();
-		$user_agent = $browser['name'] . '/' . $browser['platform'];
-		$referer    = ! empty( $_SERVER['HTTP_REFERER'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
-		$entry_id   = false;
+		$fields      = apply_filters( 'everest_forms_entry_save_data', $fields, $entry, $form_data );
+		$browser     = evf_get_browser();
+		$user_ip     = evf_get_ip_address();
+		$user_device = evf_get_user_device();
+		$user_agent  = $browser['name'] . '/' . $browser['platform'] . '/' . $user_device;
+		$referer     = ! empty( $_SERVER['HTTP_REFERER'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
+		$entry_id    = false;
 
 		// GDPR enhancements - If user details are disabled globally discard the IP and UA.
 		if ( 'yes' === get_option( 'everest_forms_disable_user_details' ) ) {

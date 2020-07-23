@@ -216,6 +216,7 @@
 			EVFPanelBuilder.bindLabelEditInputActions();
 			EVFPanelBuilder.bindSyncedInputActions();
 			EVFPanelBuilder.init_datepickers();
+			EVFPanelBuilder.bindBulkOptionActions();
 
 			// Fields Panel.
 			EVFPanelBuilder.bindUIActionsFields();
@@ -223,6 +224,61 @@
 			if ( evf_data.tab === 'field-options' ) {
 				$( '.evf-panel-field-options-button' ).trigger( 'click' );
 			}
+		},
+
+		/**
+		 * Bind user action handlers for the Add Bulk Options feature.
+		 */
+		bindBulkOptionActions: function() {
+			// Toggle `Bulk Add` option.
+			$( document.body ).on( 'click', '.evf-toggle-bulk-options', function( e ) {
+				$( this ).closest( '.everest-forms-field-option' ).find( '.everest-forms-field-option-row-add_bulk_options' ).slideToggle();
+			});
+			// Toggle presets list.
+			$( document.body ).on( 'click', '.evf-toggle-presets-list', function( e ) {
+				$( this ).closest( '.everest-forms-field-option' ).find( '.everest-forms-field-option-row .evf-options-presets' ).slideToggle();
+			});
+			// Add custom list of options.
+			$( document.body ).on( 'click', '.evf-add-bulk-options', function( e ) {
+				var $option_row = $( this ).closest( '.everest-forms-field-option-row' );
+				var field_id = $option_row.data( 'field-id' );
+
+				if ( $option_row.length ) {
+					var $choices = $option_row.closest( '.everest-forms-field-option' ).find( '.everest-forms-field-option-row-choices .evf-choices-list' );
+					var $bulk_options_container = $option_row.find( 'textarea#everest-forms-field-option-' + field_id + '-add_bulk_options' );
+					var options_texts = $bulk_options_container.val().split( '\n' );
+
+					EVFPanelBuilder.addBulkOptions( options_texts, $choices );
+					$bulk_options_container.val('');
+				}
+			});
+			// Add presets of options.
+			$( document.body ).on( 'click', '.evf-options-preset-label', function( e ) {
+				var $option_row = $( this ).closest( '.everest-forms-field-option-row' );
+				var field_id = $option_row.data( 'field-id' );
+
+				if ( $option_row.length ) {
+					var options_texts = $( this ).closest( '.evf-options-preset' ).find( '.evf-options-preset-value' ).val();
+
+					$option_row.find( 'textarea#everest-forms-field-option-' + field_id + '-add_bulk_options' ).val( options_texts );
+					$( this ).closest( '.evf-options-presets' ).slideUp();
+				}
+			});
+		},
+
+		/**
+		 * Add a list of options at once.
+		 *
+		 * @param {Array<string>} options_texts List of options to add.
+		 * @param {object} $choices_container Options container where the options should be added.
+		 */
+		addBulkOptions: function( options_texts, $choices_container ) {
+			options_texts.forEach( function( option_text ) {
+				if ( '' !== option_text ) {
+					var $add_button = $choices_container.find( 'li' ).last().find( 'a.add' );
+					EVFPanelBuilder.choiceAdd( null, $add_button, option_text.trim() );
+				}
+			});
 		},
 
 		/**
@@ -730,8 +786,10 @@
 		 *
 		 * @since 1.6.0
 		 */
-		choiceAdd: function( event, el ) {
-			event.preventDefault();
+		choiceAdd: function( event, el, value ) {
+			if ( event && event.preventDefault ) {
+				event.preventDefault();
+			}
 
 			var $this   = $( el ),
 				$parent = $this.parent(),
@@ -742,8 +800,8 @@
 				$choice = $parent.clone().insertAfter( $parent );
 
 			$choice.attr( 'data-key', nextID );
-			$choice.find( 'input.label' ).val( '' ).attr( 'name', 'form_fields[' + fieldID + '][choices][' + nextID + '][label]' );
-			$choice.find( 'input.value' ).val( '' ).attr( 'name', 'form_fields[' + fieldID + '][choices][' + nextID + '][value]' );
+			$choice.find( 'input.label' ).val( value ).attr( 'name', 'form_fields[' + fieldID + '][choices][' + nextID + '][label]' );
+			$choice.find( 'input.value' ).val( value ).attr( 'name', 'form_fields[' + fieldID + '][choices][' + nextID + '][value]' );
 			$choice.find( 'input.source' ).val( '' ).attr( 'name', 'form_fields[' + fieldID + '][choices][' + nextID + '][image]' );
 			$choice.find( 'input.default').attr( 'name', 'form_fields[' + fieldID + '][choices][' + nextID + '][default]' ).prop( 'checked', false );
 			$choice.find( '.attachment-thumb' ).remove();
@@ -1984,17 +2042,6 @@ jQuery( function ( $ ) {
 		get_all_available_field( allowed_field, type , $( this ) );
 	});
 
-	// Toggle form status.
-	$( document.body ).on( 'change', '.everest-forms-toggle-form input', function(e) {
-		e.stopPropagation();
-		$.post( evf_data.ajax_url, {
-			action: 'everest_forms_enabled_form',
-			security: evf_data.evf_enabled_form,
-			form_id: $( this ).data( 'form_id' ),
-			enabled: $( this ).attr( 'checked' ) ? 1 : 0
-		});
-	});
-
 	$( document.body ).on('click', '.smart-tag-field', function(e) {
 
 		var field_id    = $( this ).data('field_id'),
@@ -2026,6 +2073,18 @@ jQuery( function ( $ ) {
 		}
 	});
 
+	// Toggle form status.
+	$( document ).on( 'change', '.everest-forms_page_evf-builder .everest-forms-toggle-form input', function(e) {
+		e.stopPropagation();
+		$.post( evf_data.ajax_url, {
+			action: 'everest_forms_enabled_form',
+			security: evf_data.evf_enabled_form,
+			form_id: $( this ).data( 'form_id' ),
+			enabled: $( this ).attr( 'checked' ) ? 1 : 0
+		});
+	});
+
+	// Toggle email notification.
 	$( document ).on( 'change', '.evf-content-email-settings .evf-toggle-switch input', function(e) {
 		var $this = $( this ),
 			value = $this.prop( 'checked' );

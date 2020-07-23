@@ -4,7 +4,7 @@ Tags: contact form, forms, form builder, contact, custom form
 Requires at least: 5.0
 Tested up to: 5.4
 Requires PHP: 5.4
-Stable tag: 1.6.7
+Stable tag: 1.7.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -55,11 +55,15 @@ Check [documentation](http://docs.wpeverest.com/docs/everest-forms/)
 
 ### Premium Features and Addons
 
-* 11 Advanced fields: **Image upload, File upload, Hidden Field, Phone, Password, Custom HTML, Section Title, Signature, Address, Country, Rating**
+* 13 Advanced fields: **Image upload, File upload, Hidden Field, Phone, Password, Custom HTML, Section Title, Signature, Address, Country, Rating, Range Slider, Privacy policy**
 
 * [Style Customizer](https://wpeverest.com/wordpress-plugins/everest-forms/style-customizer/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows you to make form design changes like color, fonts, spacing, background, borders, alignments and much more without touching any code.
 
-* [MailChimp](https://wpeverest.com/wordpress-plugins/everest-forms/mailchimp/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows your users to subscribe to MailChimp through form submission via Everest Forms.
+* [MailChimp](https://wpeverest.com/wordpress-plugins/everest-forms/mailchimp/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows your users to subscribe to MailerLite through form submission via Everest Forms.
+
+* [MailerLite](https://wpeverest.com/wordpress-plugins/everest-forms/mailerlite/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows your users to subscribe to MailChimp through form submission via Everest Forms.
+
+* [ActiveCampaign](https://wpeverest.com/wordpress-plugins/everest-forms/activecampaign/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows your users to subscribe to ActiveCampaign through form submission via Everest Forms.
 
 * [ConvertKit](https://wpeverest.com/wordpress-plugins/everest-forms/convertkit/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows you to connect your form with ConvertKit to efficiently grow your business by generating more leads.
 
@@ -74,6 +78,8 @@ Check [documentation](http://docs.wpeverest.com/docs/everest-forms/)
 * [Multi-Part Forms](https://wpeverest.com/wordpress-plugins/everest-forms/multi-part-forms/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows you to make a stepwise form by breaking long or complex forms up into multiple parts/pages. Check [Detail guide](https://wpeverest.com/blog/wordpress-multi-step-form/)
 
 * [Custom Captcha](https://wpeverest.com/wordpress-plugins/everest-forms/captcha/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows you to add custom questions or math captcha to your form and fight back against spam form submissions.
+
+* [Form Restriction](https://wpeverest.com/wordpress-plugins/everest-forms/form-restriction/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows you to easily control and restrict by limiting entries, scheduling submission dates, password protection for the form submissions.
 
 * [Conditional Logic](https://wpeverest.com/wordpress-plugins/everest-forms/conditional-logic/?utm_source=wporg&utm_medium=link&utm_campaign=evf-upgrade-to-pro) - Allows you to conditionally hide or show form fields based on user's interaction with other form fields.
 
@@ -148,6 +154,31 @@ Yes, we do. Check out this [Getting Started Videos](https://docs.wpeverest.com/d
 Yes you can! Join in on our [GitHub repository](https://github.com/wpeverest/everest-forms/) :)
 
 == Changelog ==
+
+= 1.7.0.1 - 20-07-2020 =
+* Fix - Form status {de}active toggle button.
+* Fix - reCAPTCHA working only for logged in user.
+* Fix - Email subject while using select field smart tag.
+* Fix - Select field placeholder not displayed in enhanced select and not selected in default select.
+* Tweak - Modified `everest_forms_logged_in_user_recaptcha_disabled` with `everest_forms_recaptcha_disabled` hook.
+
+= 1.7.0 - 15-07-2020 =
+* Enhancement - Add support for form restriction addon.
+* Added - Support for bulk options to Checkbox, Multiple Choice and Dropdown fields.
+* Added - Introduce `get_multiple` method in `EVF_Form_Handler` to fetch multiple forms.
+* Fix - Number Field validation issue with conditional logic.
+* Fix - Modify logic for fetching unread and starred entries.
+* Fix - Date/Time field to use local date instead of default UTC.
+* Fix - Export of field data with HTML encoded special characters.
+* Fix - The field placeholder & default value 0 (zero) does not display on the frontend.
+* Tweak - Updated jQuery Validation JS library to v1.19.2.
+* Tweak - Parameters for reCAPTCHA URL filter to change language code in v2 type.
+* Tweak - Preserve entry status so they are restored correctly after moving to trash.
+* Tweak - Add trigger `everest_forms_loaded` to notify plugins that the core was loaded.
+* Tweak - Introduced `everest_forms_logged_in_user_recaptcha_disabled` filter to disable reCAPTCHA check for logged-in user.
+* Tweak - Modify duplicated action hook `everest_forms_general_settings` to `everest_forms_inline_general_settings` for builder general settings.
+* Dev - Introduced `everest_forms_total_entries_count` filter to update total entries count in list table views.
+* Dev - Introduced `everest_forms_{$export_type}_export_delimiter` filter to change separator string while exporting CSV files.
 
 = 1.6.7 - 17-05-2020 =
 * Feature - Added a new Pro field Range Slider.
