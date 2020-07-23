@@ -16,13 +16,13 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Here you can set the filter width in pixels or percent.', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-8">
-				<div class="settings-value">
+			<div class="settings-block-values settings-w100 col-xs-6 col-sm-8">
+				<div class="settings-value settings-w50">
 					<div class="settings-value-label woobewoo-width60">
 						<?php esc_html_e('desktop', 'woo-product-filter'); ?>
 					</div>
 				</div>
-				<div class="settings-value">
+				<div class="settings-value settings-w50">
 					<?php
 						HtmlWpf::text('settings[filter_width]', array(
 							'value' => isset($this->settings['settings']['filter_width']) ? $this->settings['settings']['filter_width'] : '100',
@@ -34,12 +34,12 @@
 						));
 						?>
 				</div>
-				<div class="settings-value">
+				<div class="settings-value settings-w50">
 					<div class="settings-value-label woobewoo-width60">
 						<?php esc_html_e('mobile', 'woo-product-filter'); ?>
 					</div>
 				</div>
-				<div class="settings-value">
+				<div class="settings-value settings-w50">
 					<?php
 						HtmlWpf::text('settings[filter_width_mobile]', array(
 							'value' => isset($this->settings['settings']['filter_width_mobile']) ? $this->settings['settings']['filter_width_mobile'] : '100',
@@ -60,13 +60,13 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Here you can set the filter block width in pixels or percent.', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-8">
-				<div class="settings-value">
+			<div class="settings-block-values settings-w100 col-xs-6 col-sm-8">
+				<div class="settings-value settings-w50">
 					<div class="settings-value-label woobewoo-width60">
 						<?php esc_html_e('desktop', 'woo-product-filter'); ?>
 					</div>
 				</div>
-				<div class="settings-value">
+				<div class="settings-value settings-w50">
 					<?php
 						HtmlWpf::text('settings[filter_block_width]', array(
 							'value' => isset($this->settings['settings']['filter_block_width']) ? $this->settings['settings']['filter_block_width'] : '100',
@@ -78,12 +78,12 @@
 						));
 						?>
 				</div>
-				<div class="settings-value">
+				<div class="settings-value settings-w50">
 					<div class="settings-value-label woobewoo-width60">
 						<?php esc_html_e('mobile', 'woo-product-filter'); ?>
 					</div>
 				</div>
-				<div class="settings-value">
+				<div class="settings-value settings-w50">
 					<?php
 						HtmlWpf::text('settings[filter_block_width_mobile]', array(
 							'value' => isset($this->settings['settings']['filter_block_width_mobile']) ? $this->settings['settings']['filter_block_width_mobile'] : '100',
@@ -123,7 +123,7 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Custom CSS', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-12 col-sm-8">
+			<div class="settings-block-values settings-w100 col-xs-12 col-sm-8">
 				<?php
 					HtmlWpf::textarea('settings[css_editor]', array(
 						'value' => ( isset($this->settings['settings']['css_editor']) ? stripslashes(base64_decode($this->settings['settings']['css_editor'])) : '' ),
@@ -139,7 +139,7 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Custom JS', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-12 col-sm-8">
+			<div class="settings-block-values settings-w100 col-xs-12 col-sm-8">
 				<?php 
 					HtmlWpf::textarea('settings[js_editor]', array(
 						'value' => ( isset($this->settings['settings']['js_editor']) ? stripslashes(base64_decode($this->settings['settings']['js_editor'])) : '' ),
@@ -156,7 +156,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Disable the use of custom plugin styles for filter elements. This option does not work in admin preview.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-8">
-				<div class="settings-value" data-no-preview="1">
+				<div class="settings-value settings-w100" data-no-preview="1">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[disable_plugin_styles]', array(
 							'checked' => ( isset($this->settings['settings']['disable_plugin_styles']) ? (int) $this->settings['settings']['disable_plugin_styles'] : '' )

@@ -5,7 +5,7 @@ class ReqWpf {
 	public static $_requestWithNonce = false;
 
 	public static function init() {
-		// Empty for now
+		add_filter('sanitize_text_field', array('ReqWpf', 'sanitizeData'), 999, 2);
 	}
 	public static function startSession() {
 		if (!UtilsWpf::isSessionStarted()) {
@@ -78,6 +78,16 @@ class ReqWpf {
 				break;
 		}
 		return $default;
+	}
+	public static function sanitizeData( $filtered, $value ) {
+		return is_array($value) ? self::sanitizeArray($value) : $filtered;
+	}
+	public static function sanitizeArray( $arr ) {
+		$newArr = array();
+		foreach ($arr as $k => $v) {
+			$newArr[$k] = is_array($v) ? self::sanitizeArray($v) : _sanitize_text_fields($v, false);
+		}
+		return $newArr;
 	}
 	public static function isEmpty( $name, $from = 'all' ) {
 		$val = self::getVar($name, $from);

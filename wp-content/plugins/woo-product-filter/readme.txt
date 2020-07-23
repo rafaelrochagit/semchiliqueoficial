@@ -1,10 +1,10 @@
- === WooCommerce Product Filter by WooBeWoo ===
+﻿ === WooCommerce Product Filter by WooBeWoo ===
 Contributors: woobewoo
 Donate link: https://woobewoo.com/product/woocommerce-filter/
 Tags: product filter, woocommerce product filter, shop filter, ecommerce filter, woocommerce filter, product, filter 
 Requires at least: 3.4.0
 Tested up to: 5.4
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 
 Filter products by products categories, attributes, prices and much more. Help your shoppers easily find products/items with WooCommerce Product Filter
 
@@ -24,32 +24,34 @@ This is a perfect way to increase sales and make the shopping process more enjoy
 Make filtering even more comfortable by enabling AJAX search or let the process start as soon as the user selects all the options and presses the filtering button.
 
 **[Live preview](https://woobewoo.com/documentation/woocommerce-filter-main-settings/ "Main Settings")**
-With Live Preview, as you make changes to settings, the results appear instantly in the panel.
+With Live Preview, the results will appear in the panel right at the moment you make changes to settings.
 
 **Variety of options for sorting products**
 Product search plugin for WooCommerce allows sorting your products by popularity, rating, price, newness, alphabetical ascender or descender.
 
 **[Create new product filters in a few clicks](https://woobewoo.com/feature/customize-and-set-up?utm_source=wordpress&utm_medium=easytosetup&utm_campaign=filter "Easy to customize and set up")**
-Easy to customize and set up. Attach filter easily to every page using widget or shortcodes.
+Easy to customize and set up. Just add a filter to every page using a widget or shortcodes.
 
 **[Price filter design](https://woobewoo.com/documentation/woocommerce-filter-main-settings/#a "Price filter")** **
 Variation of skins: default, flat, big, modern, sharp, round, square. Custom setting for its design: colour, symbol position, currency code or symbol, input fields.
 
 **Automatic price range settings with fixed step values**
-Set them manually and specify the exact value of every step as well.
+Adjust them manually and specify the exact value of every step as well.
 
 **[Show Count](https://woobewoo.com/documentation/show-count-option/ "Show Count") and Recount products by selected filter**
 Recount the products by selected filters and display the exact number of products matching the filter results.
 
-**[Fully responsive](https://woobewoo.com/feature/looks-and-works-great-on-all-devices?utm_source=wordpress&utm_medium=responsive&utm_campaign=filter "Looks and works great on all devices")**
-The filter looks and works properly on a range of different devices — particularly mobile phones and tablets as well as desktops and laptops.
+**[Fully responsive](https://woobewoo.com/feature/looks-and-works-great-on-all-devices?utm_source=wordpress&utm_medium=responsive&utm_campaign=filter "Looks and works great on all devices")**The filter looks and works properly on different devices — particularly mobile phones and tablets as well as desktops and laptops.
+
+**[Elementor Compatibility](https://woobewoo.com/documentation/elementor-compatibility/  "Elementor Compatibility")**
+WooCommerce Product Filter compatible with Ellementor . With this option, you can created product filter directly in the Elementor. All the functions of the Product Filter by WooBeWoo will be available directly in the Elementor tab.
 
 ** - Pro features
 
-Video tutorial how to set up WooCommerce product filter by WooBeWoo
+Video tutorial on how to set up WooCommerce product filter by WooBeWoo
 [youtube https://youtu.be/BdCOCGeUo7A] 
 
-Product filters, without a doubt, are the main key to allow your customers to view the products and easily find the necessary items.
+Product filters are definitely the key things that allow your customers to view the products in a particular way and easily find the necessary items.
 
 = Support and suggestions for WooCommerce Product Filter Plugin =
 
@@ -141,6 +143,37 @@ If none of this advice helps you, contact us via [support form on our website](h
 You may help us translate the plugin into your language and get the PRO version of the plugin for free as soon as it is released. If this method seems to be too complicated, please send us a request and we will let you know as soon as WooBeWoo Filter plugin will be available in your localization.
 
 == Changelog ==
+
+= 1.3.4 =
+ * Fix remove filter issue in admin area
+ * Elementor widget integration
+ * Fix bulk plugin activate issue
+ * Rename product name and socials links to plugin
+ * Fixes for taxonomy slider
+ * Fixes for attribute slider
+ * Added slider by non-numeric values
+ * Add break-point feature to desktop/mobile show title label option
+ * Added option f_show_count_parent_with_children
+ * Added multi category logic option
+ * Added action for front-end filtering
+ * Added french language
+ * Fix activate custom price issue with empty values
+ * Fix with multi category filter nesting with multi shortcodes
+ * Fixes for multi-site license
+ * Added Remove actions before ajax filtering option
+ * Fixes for brand filtering
+ * Fixes for move sidebar to top option
+ * Add compatibility with 'WooCommerce Show Single Variations' plugin
+ * Added support for load more button by WooCommerce Load More Products
+ * Fixes for pagination with two+ filters on page
+ * Added stock default option
+ * Fixes for pro updater
+ * Added support for YITH Quick View plugin
+ * Support for Cute Boutique theme
+ * Fix category filter button type filtering issue
+ * Edit filter tag tooltip
+ * Price filter admin interface improvements
+ * Added WC Vendors support added
 
 = 1.3.3 =
  * Fix for old Pro 

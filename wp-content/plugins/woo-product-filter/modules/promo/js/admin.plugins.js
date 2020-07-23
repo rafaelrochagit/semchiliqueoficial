@@ -1,7 +1,6 @@
 "use strict";
 jQuery(document).ready(function(){
 	var $deactivateLnk = jQuery('#the-list tr[data-plugin="'+ wpfPluginsData.plugName+ '"] .row-actions .deactivate a');
-	//console.log($deactivateLnk);
 	if($deactivateLnk && $deactivateLnk.size()) {
 		var $deactivateForm = jQuery('#wpfDeactivateForm');
 		var $deactivateWnd = jQuery('#wpfDeactivateWnd').dialog({

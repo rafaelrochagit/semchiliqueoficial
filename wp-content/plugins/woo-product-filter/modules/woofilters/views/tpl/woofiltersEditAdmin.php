@@ -6,61 +6,25 @@ if (!$isPro) {
 	$labelPro = ' Pro';
 }
 
-$catArgs = array(
-	'orderby' => 'name',
-	'order' => 'asc',
-	'hide_empty' => false,
-);
+list($categoryDisplay, $parentCategories) = $this->getModule()->getCategoriesDisplay();
 
-$productCategories = get_terms( 'product_cat', $catArgs );
-$categoryDisplay = array();
-$parentCategories = array();
-foreach ($productCategories as $c) {
-	if (0 == $c->parent) {
-		array_push($parentCategories, $c->term_id);
-	}
-	$categoryDisplay[$c->term_id] = $c->name;
-}
+list($tagsDisplay) = $this->getModule()->getTagsDisplay();
 
-$tagArgs = array(
-	'orderby' => 'name',
-	'order' => 'asc',
-	'hide_empty' => false,
-	'parent' => 0
-);
-
-$productTags = get_terms('product_tag', $tagArgs);
-$tagsDisplay = array();
-foreach ($productTags as $t) {
-	$tagsDisplay[$t->term_id] = $t->name;
-}
 $settings = $this->getFilterSetting($this->settings, 'settings', array());
 
-$productAttr = DispatcherWpf::applyFilters('addCustomAttributes', wc_get_attribute_taxonomies());
+list($attrDisplay, $attrTypes, $attrNames) = $this->getModule()->getAttributesDisplay();
 
-$attrDisplay = array(0 => esc_html__('Select...', 'woo-product-filter'));
-$attrDisplayTerms = array();
-$attrTypes = array();
-$attrNames = array();
-foreach ($productAttr as $attr) {
-	$attrId = (int) $attr->attribute_id;
-	$slug = empty($attrId) ? $attr->attribute_slug : $attrId;
-	$attrDisplay[$slug] = $attr->attribute_label;
-	$attrTypes[$slug] = isset($attr->custom_type) ? $attr->custom_type : '';
-	$attrNames[$slug] = isset($attr->filter_name) ? $attr->filter_name : 'filter_' . $attr->attribute_name;
-}
-
-$rolesMain = get_editable_roles();
-$roles = array();
-
-foreach ($rolesMain as $key => $r) {
-	$roles[$key] = $r['name'];
-}
+list($roles) = $this->getModule()->getRolesDisplay();
 
 $wpfBrand = array(
 	'exist' => taxonomy_exists('product_brand')
 );
 
+$catArgs = array(
+	'orderby' => 'name',
+	'order' => 'asc',
+	'hide_empty' => false,
+);
 $brandDisplay = array();
 $parentBrands = array();
 if (taxonomy_exists('pwb-brand')) {

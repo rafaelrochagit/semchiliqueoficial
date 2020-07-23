@@ -17,7 +17,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('This option enables Ajax search. Product filtering and displaying results in a browser will be run in the background without full page reload.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php
 						HtmlWpf::checkboxToggle('settings[enable_ajax]', array(
 							'checked' => ( isset($this->settings['settings']['enable_ajax']) ? (int) $this->settings['settings']['enable_ajax'] : 1 )
@@ -37,8 +37,8 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Chose page for filter', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+			<div class="settings-block-values settings-w100 col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::selectbox('settings[display_on_page]', array(
 							'options' => array('shop' => 'Shop', 'category' => 'Product Category', 'tag' => 'Product Tag', 'both' => 'Shop + Category + Tag', 'specific' => 'Specific' . $labelPro),
@@ -47,7 +47,7 @@
 						));
 						?>
 				</div>
-				<div class="settings-value <?php echo esc_attr($classHidden); ?>" data-select="settings[display_on_page]" data-select-value="specific">
+				<div class="settings-value settings-w100 <?php echo esc_attr($classHidden); ?>" data-select="settings[display_on_page]" data-select-value="specific">
 					<?php 
 					if ($isPro) {
 						$pageList = $this->getFilterSetting($this->settings['settings'], 'display_page_list', '');
@@ -72,9 +72,9 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Chose where display filter', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
-					<?php 
+			<div class="settings-block-values settings-w100 col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w100">
+					<?php
 						HtmlWpf::selectbox('settings[display_for]', array(
 							'options' => array('mobile' => 'Only for mobile', 'desktop' => 'Only for desktop', 'both' => 'For all device'),
 							'value' => ( isset($this->settings['settings']['display_for']) ? $this->settings['settings']['display_for'] : 'both' ),
@@ -84,7 +84,39 @@
 				</div>
 			</div>
 		</div>
-
+		<?php
+			$settingValue = ( isset($this->settings['settings']['desctop_mobile_breakpoint_switcher']) ? (int) $this->settings['settings']['desctop_mobile_breakpoint_switcher'] : '' );
+			$hiddenStyle = $settingValue ? '' : 'wpfHidden';
+		?>
+		<div class="row row-settings-block">
+			<div class="settings-block-label col-xs-4 col-xl-3">
+				<?php esc_html_e('Set mobile/desktop breakpoint', 'woo-product-filter'); ?>
+			</div>
+			<div class="col-xs-2 col-sm-1">
+				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Set breakpoint for all options that depend on a mobile/desctop view. "Show title label", "Display filter on" etc.', 'woo-product-filter'); ?>"></i>
+			</div>
+			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w100">
+					<?php 
+						HtmlWpf::checkboxToggle('settings[desctop_mobile_breakpoint_switcher]', array(
+							'checked' => ( isset($this->settings['settings']['desctop_mobile_breakpoint_switcher']) ? (int) $this->settings['settings']['desctop_mobile_breakpoint_switcher'] : '' )
+						));
+						?>
+				</div>
+				<div class="settings-value settings-w100 <?php echo esc_attr($hiddenStyle); ?>" data-parent="settings[desctop_mobile_breakpoint_switcher]">
+					<?php
+						HtmlWpf::text(
+							'settings[desctop_mobile_breakpoint_width]',
+							array(
+								'value'=> ( isset($this->settings['settings']['desctop_mobile_breakpoint_width']) ? intval($this->settings['settings']['desctop_mobile_breakpoint_width']) : '' ),
+								'attrs' => 'class="woobewoo-flat-input woobewoo-width60"'
+							)
+						);
+						?>
+					px
+				</div>
+			</div>
+		</div>
 		<div class="row row-settings-block">
 			<div class="settings-block-label col-xs-4 col-xl-3">
 				<?php esc_html_e('Hide filter on shop pages without products', 'woo-product-filter'); ?>
@@ -93,12 +125,29 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Hide filter on shop and categories pages that displays only categories or subcategories without products.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[hide_without_products]', array(
 							'checked' => ( isset($this->settings['settings']['hide_without_products']) ? (int) $this->settings['settings']['hide_without_products'] : '' )
 						));
 						?>
+				</div>
+			</div>
+		</div>
+		<div class="row row-settings-block">
+			<div class="settings-block-label col-xs-4 col-xl-3">
+				<?php esc_html_e('Remove actions before ajax filtering', 'woo-product-filter'); ?>
+			</div>
+			<div class="col-xs-2 col-sm-1">
+				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Enable this option when ajax filtering does not work as expected. For example, sorting does not work. Removes filters such as posts_orderby and pre_get_posts', 'woo-product-filter'); ?>"></i>
+			</div>
+			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w100">
+					<?php
+					HtmlWpf::checkboxToggle('settings[remove_actions]', array(
+						'checked' => ( isset($this->settings['settings']['remove_actions']) ? (int) $this->settings['settings']['remove_actions'] : '' )
+					));
+					?>
 				</div>
 			</div>
 		</div>
@@ -110,7 +159,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Set number of displayed products. This number will only be shown after filter is applied! You must set the same number as in the basic store settings or in the basic filter <a href="' . $this->linkSetting . '" target="_blank">settings</a>.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php
 						HtmlWpf::text('settings[count_product_shop]', array(
 							'value' => ( isset($this->settings['settings']['count_product_shop']) ? intval($this->settings['settings']['count_product_shop']) : '' ),
@@ -125,10 +174,10 @@
 				<?php esc_html_e('Set number of products per row', 'woo-product-filter'); ?>
 			</div>
 			<div class="col-xs-2 col-sm-1">
-				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Set number of products per row. This number will only be shown after filter is applied!.', 'woo-product-filter'); ?>"></i>
+				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Set number of products per row. This number will only be shown after filter is applied!', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+			<div class="settings-block-values settings-w100 col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w100">
 					<?php
 						HtmlWpf::text('settings[columns_product_shop]', array(
 							'value' => ( isset($this->settings['settings']['columns_product_shop']) ? intval($this->settings['settings']['columns_product_shop']) : '' ),
@@ -154,8 +203,8 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('If "Filtering button" option was selected, the "Filter" button appears at the page. It allows users to set all necessary filter parameters before starting the filtering. If "Auto filtering" option was selected, filtering starts as soon as filter elements change and the data reloads automatically.', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+			<div class="settings-block-values settings-w100 settings-w100 col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w50">
 					<?php
 						HtmlWpf::selectbox('settings[show_filtering_button]', array(
 							'options' => array(
@@ -167,7 +216,7 @@
 						));
 						?>
 				</div>
-				<div class="settings-value <?php echo esc_attr($hiddenStyle); ?>" data-select="settings[show_filtering_button]" data-select-value="1">
+				<div class="settings-value settings-w50 <?php echo esc_attr($hiddenStyle); ?>" data-select="settings[show_filtering_button]" data-select-value="1">
 					<?php
 						HtmlWpf::text('settings[filtering_button_word]', array(
 							'value' => ( isset($this->settings['settings']['filtering_button_word']) ? $this->settings['settings']['filtering_button_word'] : esc_attr__('Filter', 'woo-product-filter') ),
@@ -189,14 +238,14 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('If this option is enabled, the "Clear" button appears at the page. All filter presets will be removed after pressing the button.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[show_clean_button]', array(
 							'checked' => $settingValue
 						));
 						?>
 				</div>
-				<div class="settings-value <?php echo esc_attr($hiddenStyle); ?>" data-parent="settings[show_clean_button]">
+				<div class="settings-value settings-w100 <?php echo esc_attr($hiddenStyle); ?>" data-parent="settings[show_clean_button]">
 					<?php 
 						HtmlWpf::text('settings[show_clean_button_word]', array(
 							'value' => ( isset($this->settings['settings']['show_clean_button_word']) ? $this->settings['settings']['show_clean_button_word'] : esc_attr__('Clear', 'woo-product-filter') ),
@@ -213,8 +262,8 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Here you may select the position of filter buttons on the page.', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+			<div class="settings-block-values settings-w100 col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::selectbox('settings[main_buttons_position]', array(
 							'options' => array('top' => 'Top', 'bottom' => 'Bottom', 'both' => 'Both'),
@@ -232,8 +281,8 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Here you may change the order of filter buttons on the page.', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+			<div class="settings-block-values settings-w100 col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w100">
 					<?php
 					HtmlWpf::selectbox('settings[main_buttons_order]', array(
 						'options' => array('left' => 'Filter-Clear', 'right' => 'Clear-Filter'),
@@ -278,14 +327,14 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('If this option is enabled, the "< clear" links appears at the page next to the filter block titles. The presets of this filter block will be deleted after clicking on the link.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[show_clean_block]', array(
 							'checked' => $settingValue
 						));
 						?>
 				</div>
-				<div class="settings-value <?php echo esc_attr($hiddenStyle); ?>" data-parent="settings[show_clean_block]">
+				<div class="settings-value settings-w100 <?php echo esc_attr($hiddenStyle); ?>" data-parent="settings[show_clean_block]">
 					<?php 
 						HtmlWpf::text('settings[show_clean_block_word]', array(
 							'value' => ( isset($this->settings['settings']['show_clean_block_word']) ? $this->settings['settings']['show_clean_block_word'] : esc_attr__('clear', 'woo-product-filter') ),
@@ -303,7 +352,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Automatically recount product by selected filters (If product category loading slowly - Disable this function).', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value" data-no-preview="1">
+				<div class="settings-value settings-w100" data-no-preview="1">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[filter_recount]', array(
 							'checked' => ( isset($this->settings['settings']['filter_recount']) ? (int) $this->settings['settings']['filter_recount'] : '' )
@@ -320,7 +369,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Automatically change min/max price by selected filters (If product category loading slowly - Disable this function).', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value" data-no-preview="1">
+				<div class="settings-value settings-w100" data-no-preview="1">
 					<?php
 					HtmlWpf::checkboxToggle('settings[filter_recount_price]', array(
 						'checked' => ( isset($this->settings['settings']['filter_recount_price']) ? (int) $this->settings['settings']['filter_recount_price'] : '' )
@@ -337,7 +386,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Automatically disabled parameters without products. Works only when options Show count and Always display all... are enabled.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[filter_null_disabled]', array(
 							'checked' => ( isset($this->settings['settings']['filter_null_disabled']) ? (int) $this->settings['settings']['filter_null_disabled'] : '' )
@@ -354,7 +403,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Sort product list by title.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value" data-no-preview="1">
+				<div class="settings-value settings-w100" data-no-preview="1">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[sort_by_title]', array(
 							'checked' => ( isset($this->settings['settings']['sort_by_title']) ? (int) $this->settings['settings']['sort_by_title'] : '' )
@@ -371,7 +420,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Lets checked terms will be on the top', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[checked_items_top]', array(
 							'checked' => ( isset($this->settings['settings']['checked_items_top']) ? (int) $this->settings['settings']['checked_items_top'] : '' )
@@ -387,8 +436,8 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Here you may input "no products found" text for category', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value" data-no-preview="1">
+			<div class="settings-block-values settings-w100 col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w100" data-no-preview="1">
 					<?php 
 						HtmlWpf::text('settings[text_no_products]', array(
 							'value' => ( isset($this->settings['settings']['text_no_products']) ? $this->settings['settings']['text_no_products'] : 'No products found' ),
@@ -434,7 +483,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Hide filter by title click.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[hide_filter_icon]', array(
 							'checked' => ( isset($this->settings['settings']['hide_filter_icon']) ? (int) $this->settings['settings']['hide_filter_icon'] : 1 )
@@ -450,10 +499,29 @@
 			<div class="col-xs-2 col-sm-1">
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[use_title_as_slug]', array(
 							'checked' => ( isset($this->settings['settings']['use_title_as_slug']) ? (int) $this->settings['settings']['use_title_as_slug'] : 0 )
+						));
+						?>
+				</div>
+			</div>
+		</div>
+		<div class="row row-settings-block">
+			<div class="settings-block-label col-xs-4 col-xl-3">
+				<?php esc_html_e('Multiple categories logic', 'woo-product-filter'); ?>
+			</div>
+			<div class="col-xs-2 col-sm-1">
+				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Filter products by different filter categories by logic and/or', 'woo-product-filter'); ?>"></i>
+			</div>
+			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w100">
+					<?php
+						HtmlWpf::selectbox('settings[f_multi_logic]', array(
+							'options' => array('or' => esc_attr__('Or', 'woo-product-filter'), 'and' => esc_attr__('And', 'woo-product-filter')),
+							'value' => ( isset($this->settings['settings']['f_multi_logic']) ? $this->settings['settings']['f_multi_logic'] : 'and' ),
+							'attrs' => 'class="woobewoo-flat-input"'
 						));
 						?>
 				</div>
@@ -472,13 +540,13 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Enable filter icon while filtering results are loading.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[filter_loader_icon_onload_enable]', array(
 							'checked' => ( isset($this->settings['settings']['filter_loader_icon_onload_enable']) ? (int) $this->settings['settings']['filter_loader_icon_onload_enable'] : 1 ),
 							'attrs' => ' data-loader-settings="1"'
 						));
-						if ($this->is_pro) {
+						if ($isPro) {
 							echo '</div><div class="settings-value"><div class="button button-mini woobewoo-tooltip applyLoaderIcon" title="' . esc_attr__('Apply loader settings to all filters.', 'woo-product-filter') . '"><i class="fa fa-share"></i></div>';
 						}
 						?>
@@ -488,7 +556,7 @@
 		<?php
 		$iconName = ( isset($this->settings['settings']['filter_loader_icon_name']) ? $this->settings['settings']['filter_loader_icon_name'] : 'default' );
 		$iconNumber = ( isset($this->settings['settings']['filter_loader_icon_number']) ? $this->settings['settings']['filter_loader_icon_number'] : '0' );
-		if (!$this->is_pro) {
+		if (!$isPro) {
 			$iconName = 'default';
 		}
 		if ('custom' === $iconName) {
@@ -511,11 +579,11 @@
 			<div class="col-xs-2 col-sm-1">
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Here you may select the animated loader, which appears when filtering results are loading.', 'woo-product-filter'); ?>"></i>
 			</div>
-			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+			<div class="settings-block-values settings-w100 col-xs-6 col-sm-7 col-xl-8">
+				<div class="settings-value settings-w50">
 					<div class="button button-mini chooseLoaderIcon"><?php esc_html_e('Choose Icon', 'woo-product-filter'); ?></div>
 				</div>
-				<div class="settings-value">
+				<div class="settings-value settings-w50">
 					<?php 
 						HtmlWpf::colorpicker('settings[filter_loader_icon_color]', array(
 							'value' => ( isset($this->settings['settings']['filter_loader_icon_color']) ? $this->settings['settings']['filter_loader_icon_color'] : '#000000' ),
@@ -524,13 +592,13 @@
 						?>
 				</div>
 				<div class="clear"></div>
-				<div class="settings-value wpfSelectFile">
+				<div class="settings-value wpfSelectFile settings-w100">
 					<?php
 						HtmlWpf::hidden('settings[filter_loader_custom_icon]', array(
 							'value' => ( isset($this->settings['settings']['filter_loader_custom_icon']) ? $this->settings['settings']['filter_loader_custom_icon'] : '' ),
 							'attrs' => ' data-loader-settings="1"'
 						));
-						if ($this->is_pro) {
+						if ($isPro) {
 							HtmlWpf::buttonA(array(
 								'value' => esc_attr__('Select icon', 'woo-product-filter'),
 								'attrs' => 'id="wpfSelectLoaderButton" data-type="image"'));
@@ -566,7 +634,7 @@
 				<i class="fa fa-question woobewoo-tooltip" title="<?php echo esc_attr__('Enable overlay.', 'woo-product-filter'); ?>"></i>
 			</div>
 			<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
-				<div class="settings-value">
+				<div class="settings-value settings-w100">
 					<?php 
 						HtmlWpf::checkboxToggle('settings[enable_overlay]', array(
 							'checked' => $settingValue,

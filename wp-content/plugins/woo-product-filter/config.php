@@ -42,7 +42,7 @@ define('WPF_DATE_FORMAT_JS', 'mm/dd/yy');
 define('WPF_DATE_FORMAT_CONVERT', '%m/%d/%Y');
 define('WPF_WPDB_PREF', $wpdb->prefix);
 define('WPF_DB_PREF', 'wpf_');
-define('WPF_MAIN_FILE', 'wpf.php');
+define('WPF_MAIN_FILE', 'woo-product-filter.php');
 
 define('WPF_DEFAULT', 'default');
 define('WPF_CURRENT', 'current');
@@ -50,7 +50,7 @@ define('WPF_CURRENT', 'current');
 define('WPF_EOL', "\n");
 
 define('WPF_PLUGIN_INSTALLED', true);
-define('WPF_VERSION', '1.3.3');
+define('WPF_VERSION', '1.3.4');
 define('WPF_USER', 'user');
 
 define('WPF_CLASS_PREFIX', 'wpfc');

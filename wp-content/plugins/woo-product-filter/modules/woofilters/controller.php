@@ -45,6 +45,10 @@ class WoofiltersControllerWpf extends ControllerWpf {
 		if ( false != $id ) {
 			$res->addMessage(esc_html__('Done', 'woo-product-filter'));
 			$res->addData('edit_link', $this->getModule()->getEditLink( $id ));
+			$filter = $this->getModel('woofilters')->getById($id);
+			$settings = unserialize($filter['setting_data']);
+			$res->addData('filter', $filter);
+			$res->addData('filterSettings', $settings);
 		} else {
 			$res->pushError ($this->getModel('woofilters')->getErrors());
 		}
@@ -68,6 +72,10 @@ class WoofiltersControllerWpf extends ControllerWpf {
 		if ( false != $id ) {
 			$res->addMessage(esc_html__('Done', 'woo-product-filter'));
 			$res->addData('edit_link', $this->getModule()->getEditLink( $id ));
+			$filter = $this->getModel('woofilters')->getById($id);
+			$settings = unserialize($filter['setting_data']);
+			$res->addData('filter', $filter);
+			$res->addData('filterSettings', $settings);
 		} else {
 			$res->pushError ($this->getModel('woofilters')->getErrors());
 		}
@@ -75,7 +83,6 @@ class WoofiltersControllerWpf extends ControllerWpf {
 	}
 
 	public function filtersFrontend() {
-
 		$res = new ResponseWpf();
 		$params = ReqWpf::get('post');
 		$filterSettings = UtilsWpf::jsonDecode(stripslashes($params['settings']));
@@ -83,14 +90,13 @@ class WoofiltersControllerWpf extends ControllerWpf {
 		$settingsIds = array_column($settings, 'id');
 		$generalSettings = UtilsWpf::jsonDecode(stripslashes($params['general']));
 		$queryvars = UtilsWpf::jsonDecode(stripslashes($params['queryvars']));
-		$filterQueryVars = UtilsWpf::jsonDecode(stripslashes($params['queryvars']));
 		$curUrl = $params['currenturl'];
 		$queryvars['posts_per_page'] = isset($filterSettings['count_product_shop']) && !empty($filterSettings['count_product_shop']) ? $filterSettings['count_product_shop'] : $queryvars['posts_per_page'];
 		$args = $this->createArgsForFilteringBySettings($settings, $queryvars, $filterSettings, $generalSettings);
 		$cacheArgs = $args;
 
 		DispatcherWpf::doAction('beforeFiltersFrontend', $settings);
-
+		
 		$paged = empty($queryvars['paged']) ? 1 : $queryvars['paged'];
 		if (empty($params['runbyload']) && empty($queryvars['pagination'])) {
 			$paged = 1;
@@ -101,10 +107,17 @@ class WoofiltersControllerWpf extends ControllerWpf {
 				return $customNums;
 			}, 999);
 		}
-
 		$args['paged'] = $paged;
+
+		// other plugin compatibility
 		class_exists('WC_pif') && add_filter('post_class', array($this->getModule(), 'WC_pif_product_has_gallery'));
 		class_exists('YITH_Request_Quote') && add_filter('woocommerce_loop_add_to_cart_link', array($this->getModule(), 'YITH_hide_add_to_cart_loop'), 10, 2);
+		if (class_exists('Iconic_WSSV_Query')) {
+			$args = $this->getModule()->Iconic_Wssv_Query_Args($args);
+		}
+		if (function_exists( 'kute_boutique_woocommerce_setup_loop' )) {
+			kute_boutique_woocommerce_setup_loop();
+		}
 
 		$categoryHtml = '';
 		$productsHtml = '';
@@ -138,6 +151,7 @@ class WoofiltersControllerWpf extends ControllerWpf {
 			}
 		}
 		$recount = isset($filterSettings['filter_recount']) && $filterSettings['filter_recount'];
+		$removeActions = isset($filterSettings['remove_actions']) && $filterSettings['remove_actions'];
 
 		$module = $this->getModule();
 		$taxonomies = $module->getFilterTaxonomies($generalSettings, !is_null($calcParentCategory));
@@ -159,8 +173,13 @@ class WoofiltersControllerWpf extends ControllerWpf {
 
 		$loopFoundPost = 0;
 		if ( $showProducts || empty($categoryHtml) ) {
+			if ($removeActions) {
+				remove_all_filters('posts_orderby');
+				remove_all_filters('pre_get_posts');
+			}
+
 			//get products
-			$loop = new WP_Query($args);
+			$loop = new WP_Query(DispatcherWpf::applyFilters('beforeFiltersFrontendArgs', $args));
 			$loopFoundPost = $loop->found_posts;
 			if ($loop->have_posts()) {
 				ob_start();
@@ -327,6 +346,7 @@ class WoofiltersControllerWpf extends ControllerWpf {
 		$asDefaultCats = array();
 		$settingIds = array_column($settings, 'id');
 		$settingCats = array_keys($settingIds, 'wpfCategory');
+		$settingsMultiLogic = isset( $filterSettings['f_multi_logic'] ) ? $filterSettings['f_multi_logic'] : 'and';
 		if (!count($settingCats)) {
 			foreach ($generalSettings as $generalSingle) {
 				if ( ( 'wpfCategory' == $generalSingle['id'] ) && $generalSingle['settings']['f_filtered_by_selected'] && !empty($generalSingle['settings']['f_mlist[]']) ) {
@@ -448,7 +468,7 @@ class WoofiltersControllerWpf extends ControllerWpf {
 						break;
 					case 'wpfCategory':
 						$categoryIds = $setting['settings'];
-						$args['tax_query'][] = array(
+						$temp['wpfCategory'][] = array(
 							'taxonomy' => 'product_cat',
 							'field'    => 'term_id',
 							'terms'    => $categoryIds,
@@ -564,11 +584,21 @@ class WoofiltersControllerWpf extends ControllerWpf {
 							);
 						}
 						break;
+					case 'wpfVendors':
+						$vendorIds = $setting['settings'];
+						if (!empty($vendorIds)) {
+							$args['author__in'] = $vendorIds;
+						}
+						break;
 				}
 			}
 		}
 		DispatcherWpf::doAction('addArgsForFilteringBySettings', $settings);
-
+		
+		if (isset($temp['wpfCategory'])) {
+			$temp['wpfCategory']['relation'] = strtoupper($settingsMultiLogic);
+			$args['tax_query'][] = $temp['wpfCategory'];
+		}
 		if ( isset($args['tax_query']) && !empty($args['tax_query']) ) {
 			$args['tax_query']['relation'] = 'AND';
 		}

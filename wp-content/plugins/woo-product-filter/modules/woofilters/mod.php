@@ -16,7 +16,7 @@ class WoofiltersWpf extends ModuleWpf {
 
 		add_action('woocommerce_product_query', array($this, 'loadProductsFilter'));
 		add_action('woocommerce_shortcode_products_query', array($this, 'loadShortcodeProductsFilter'), 999);
-		add_filter('woocommerce_product_query_tax_query', array($this, 'customProductQueryTaxQuery'), 10, 2);
+		add_filter('woocommerce_product_query_tax_query', array($this, 'customProductQueryTaxQuery'), 10, 1);
 
 		$options = FrameWpf::_()->getModule('options')->getModel('options')->getAll();
 		add_filter('loop_shop_per_page', array($this, 'newLoopShopPerPage'), 20 );
@@ -147,6 +147,12 @@ class WoofiltersWpf extends ModuleWpf {
 				$q->set( 'author', $author_obj->ID );
 			}
 		}
+		if (ReqWpf::getVar('vendors')) {
+			$author_obj = get_user_by('slug', ReqWpf::getVar('vendors'));
+			if (isset($author_obj->ID)) {
+				$q->set( 'author', $author_obj->ID );
+			}
+		}
 		if (ReqWpf::getVar('pr_rating')) {
 			$ratingRange = ReqWpf::getVar('pr_rating');
 			$range = explode('-', $ratingRange);
@@ -202,6 +208,12 @@ class WoofiltersWpf extends ModuleWpf {
 		
 		if (ReqWpf::getVar('pr_author')) {
 			$author_obj = get_user_by('slug', ReqWpf::getVar('pr_author'));
+			if (isset($author_obj->ID)) {
+				$args['author'] = $author_obj->ID;
+			}
+		}
+		if (ReqWpf::getVar('vendors')) {
+			$author_obj = get_user_by('slug', ReqWpf::getVar('vendors'));
 			if (isset($author_obj->ID)) {
 				$args['author'] = $author_obj->ID;
 			}
@@ -274,6 +286,10 @@ class WoofiltersWpf extends ModuleWpf {
 
 				$displayFor = empty($settings['settings']['display_for']) ? '' : $settings['settings']['display_for'];
 
+				$mobileBreakpointWidth = $this->getView()->getMobileBreakpointValue($settings['settings']);
+				if ($mobileBreakpointWidth) {
+					$displayFor = 'both';
+				}
 				if ('mobile' === $displayFor) {
 					$displayMobile = UtilsWpf::isMobile();
 				} else if ('both' === $displayFor) {
@@ -469,8 +485,8 @@ class WoofiltersWpf extends ModuleWpf {
 					$field = 'id';
 				}
 				if (!is_null($param)) {
-					$idsAnd = explode(',', $param);
-					$idsOr = explode('|', $param);
+					$idsOr = explode(',', $param);
+					$idsAnd = explode('|', $param);
 					$isAnd = count($idsAnd) > count($idsOr);
 
 					$tax_query[] = array(
@@ -738,6 +754,21 @@ class WoofiltersWpf extends ModuleWpf {
 		return $link;
 	}
 
+	/**
+	 * Add plugin compatibility wp_query filtering results args
+	 *
+	 * @link https://iconicwp.com/products/woocommerce-show-single-variations
+	 *
+	 * @param array $args query args
+	 *
+	 * @return array
+	 */
+	public function Iconic_Wssv_Query_Args( $args ) {
+		$args = Iconic_WSSV_Query::add_variations_to_shortcode_query($args, array());
+
+		return $args;
+	}
+
 	public function getAttributeTerms( $slug ) {
 		$terms = array();
 		if (empty($slug)) {
@@ -765,6 +796,7 @@ class WoofiltersWpf extends ModuleWpf {
 	public function getFilterTaxonomies( $settings, $calcCategories = false ) {
 		$taxonomies = array();
 		$forCount = array();
+		$forCountWithChildren = array();
 		if ($calcCategories) {
 			$taxonomies[] = 'product_cat';
 		}
@@ -801,9 +833,12 @@ class WoofiltersWpf extends ModuleWpf {
 				if (!empty($filter['settings']['f_show_count'])) {
 					$forCount[] = $taxonomy;
 				}
+				if (!empty($filter['settings']['f_show_count_parent_with_children'])) {
+					$forCountWithChildren[] = $taxonomy;
+				}
 			}
 		}
-		return array('names' => array_unique($taxonomies), 'count' => array_unique($forCount));
+		return array('names' => array_unique($taxonomies), 'count' => array_unique($forCount), 'count_with_children' => array_unique($forCountWithChildren));
 	}
 
 	public function getFilterExistsTerms( $args, $taxonomies, $calcCategory = null, $prodCatId = false, $querySettings = array() ) {
@@ -881,6 +916,7 @@ class WoofiltersWpf extends ModuleWpf {
 		$termsObjs = array();
 
 		$forCount = $taxonomies['count'];
+		$forCountWithChildren = $taxonomies['count_with_children'];
 		$isCalcCategory = !is_null($calcCategory);
 		$withCount = !empty($forCount) || $isCalcCategory;
 		$calcCategories = array();
@@ -949,16 +985,35 @@ class WoofiltersWpf extends ModuleWpf {
 			if ($withCount) {
 				foreach ($existTerms as $taxonomy => $terms) {
 					$allCalc = in_array($taxonomy, $forCount);
-					if ( !( $allCalc || ( $isCalcCategory && 'product_cat' == $taxonomy ) ) ) {
+					$calcWithChildren = in_array($taxonomy, $forCountWithChildren);
+					if ( !( $allCalc || ( $isCalcCategory && 'product_cat' == $taxonomy ) || $calcWithChildren ) ) {
 						continue;
 					}
 					foreach ($terms as $termId => $cnt) {
-						if (empty($cnt)) {
+						if ($calcWithChildren) {
+							$query = new WP_Query(array(
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'product_cat',
+										'field' => 'id',
+										'terms' => $termId,
+										'include_children' => true,
+									),
+								),
+								'nopaging' => true,
+								'fields' => 'ids',
+							));
+							$cnt = intval($query->post_count);
+							$existTerms[$taxonomy][$termId] = $cnt;
+							if (isset($calcCategories[$termId])) {
+								$calcCategories[$termId] = $cnt;
+							}
+						} elseif (empty($cnt)) {
 							if ( isset($childs[$termId]) && ( $allCalc || isset($calcCategories[$termId]) ) ) {
 								$sql = "SELECT count(DISTINCT tr.object_id)
 									FROM $wpdb->term_relationships tr
 									INNER JOIN $wpdb->term_taxonomy tt ON (tt.term_taxonomy_id=tr.term_taxonomy_id)
-									WHERE tr.object_id in (" . $productList . ") 
+									WHERE tr.object_id in (" . $productList . ")
 									AND tt.taxonomy='" . $names[$taxonomy] . "'
 									AND tt.term_id in (" . $termId . ',' . implode(',', $childs[$termId]) . ')';
 								$wpdb->wpf_prepared_query = $sql;
@@ -1017,5 +1072,73 @@ class WoofiltersWpf extends ModuleWpf {
 	
 	public function getFilterTagsList() {
 		return array( 0 => 'Default', 1 => 'h1', 2 => 'h2', 3 => 'h3', 4 => 'h4', 5 => 'h5' );
+	}
+	
+	public function getCategoriesDisplay() {
+		$catArgs = array(
+			'orderby' => 'name',
+			'order' => 'asc',
+			'hide_empty' => false,
+		);
+		
+		$productCategories = get_terms( 'product_cat', $catArgs );
+		$categoryDisplay = array();
+		$parentCategories = array();
+		foreach ($productCategories as $c) {
+			if (0 == $c->parent) {
+				array_push($parentCategories, $c->term_id);
+			}
+			$categoryDisplay[$c->term_id] = $c->name;
+		}
+		
+		return array( $categoryDisplay, $parentCategories );
+	}
+	
+	public function getTagsDisplay() {
+		$tagArgs = array(
+			'orderby' => 'name',
+			'order' => 'asc',
+			'hide_empty' => false,
+			'parent' => 0
+		);
+		
+		$productTags = get_terms('product_tag', $tagArgs);
+		$tagsDisplay = array();
+		foreach ($productTags as $t) {
+			$tagsDisplay[$t->term_id] = $t->name;
+		}
+		
+		return array( $tagsDisplay );
+	}
+	
+	public function getAttributesDisplay() {
+		$productAttr = DispatcherWpf::applyFilters('addCustomAttributes', wc_get_attribute_taxonomies());
+		
+		$attrDisplay = array(0 => esc_html__('Select...', 'woo-product-filter'));
+		$attrTypes = array();
+		$attrNames = array();
+		foreach ($productAttr as $attr) {
+			$attrId = (int) $attr->attribute_id;
+			$slug = empty($attrId) ? $attr->attribute_slug : $attrId;
+			$attrDisplay[$slug] = $attr->attribute_label;
+			$attrTypes[$slug] = isset($attr->custom_type) ? $attr->custom_type : '';
+			$attrNames[$slug] = isset($attr->filter_name) ? $attr->filter_name : 'filter_' . $attr->attribute_name;
+		}
+		
+		return array( $attrDisplay, $attrTypes, $attrNames );
+	}
+	
+	public function getRolesDisplay() {
+		if (!function_exists('get_editable_roles')) {
+			require_once(ABSPATH . '/wp-admin/includes/user.php');
+		}
+		$rolesMain = get_editable_roles();
+		$roles = array();
+		
+		foreach ($rolesMain as $key => $r) {
+			$roles[$key] = $r['name'];
+		}
+		
+		return array( $roles );
 	}
 }

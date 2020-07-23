@@ -156,7 +156,7 @@ class ModInstallerWpf {
 			ErrorsWpf::push(esc_html__('Error Activate module', 'woo-product-filter'), ErrorsWpf::MOD_INSTALL);
 		}
 		if (ErrorsWpf::haveErrors(ErrorsWpf::MOD_INSTALL)) {
-			self::displayErrors();
+			self::displayErrors(false);
 			return false;
 		}
 		update_option(WPF_CODE . '_full_installed', 1);
@@ -230,6 +230,7 @@ class ModInstallerWpf {
 		}
 	}
 	public static function uninstall() {
+		$isPro = false;
 		$locations = self::_getPluginLocations();
 		$modules = self::_getModulesFromXml($locations['xmlPath']);
 		if ($modules) {
@@ -238,8 +239,19 @@ class ModInstallerWpf {
 				self::_uninstallTables($modDataArr);
 				FrameWpf::_()->getModule('options')->getModel('modules')->delete(array('code' => $modDataArr['code']));
 				UtilsWpf::deleteDir(WPF_MODULES_DIR . $modDataArr['code']);
+
+				if ('license' == $modDataArr['code']) {
+					$isPro = true;
+				}
 			}
 		}
+
+		if ($isPro) {
+			self::uninstallLicense();
+		}
+	}
+	public static function uninstallLicense() {
+		FrameWpf::_()->getModule('options')->getModel()->save('license_save_name', '');
 	}
 	protected static function _uninstallTables( $module ) {
 		if (is_dir(WPF_MODULES_DIR . $module['code'] . DS . 'tables')) {

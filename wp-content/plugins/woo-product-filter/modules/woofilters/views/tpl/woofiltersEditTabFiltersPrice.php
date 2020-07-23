@@ -16,12 +16,12 @@ $skins = array(
 );
 ?>
 <div class="row-settings-block">
-	<div class="settings-block-label col-xs-4 col-sm-3">
+	<div class="settings-block-label settings-w100 col-xs-4 col-sm-3">
 		<?php esc_html_e('Filter skin', 'woo-product-filter'); ?>
 		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Here you may select the price filter skin', 'woo-product-filter'); ?>"></i>
 	</div>
-	<div class="settings-block-values col-xs-8 col-sm-9">
-		<div class="settings-value">
+	<div class="settings-block-values settings-w100 col-xs-8 col-sm-9">
+		<div class="settings-value settings-w100">
 			<?php 
 				HtmlWpf::selectbox('f_skin_type', array(
 					'options' => $skins,
@@ -57,17 +57,17 @@ if ($isPro) {
 		<?php esc_html_e('Show price input fields', 'woo-product-filter'); ?>
 	</div>
 	<div class="settings-block-values col-xs-8 col-sm-9">
-		<div class="settings-value">
+		<div class="settings-value settings-w100">
 			<?php HtmlWpf::checkboxToggle('f_show_inputs', array('checked' => 1)); ?>
 		</div>
 	</div>
 </div>
-<div class="row-settings-block">
-	<div class="settings-block-label col-xs-4 col-sm-3">
+<div class="row-settings-block f_show_inputs_enabled_currency">
+	<div class="settings-block-label settings-w100 col-xs-4 col-sm-3">
 		<?php esc_html_e('Symbol position', 'woo-product-filter'); ?>
 	</div>
-	<div class="settings-block-values col-xs-8 col-sm-9">
-		<div class="settings-value">
+	<div class="settings-block-values settings-w100 col-xs-8 col-sm-9">
+		<div class="settings-value settings-w100">
 			<?php 
 				HtmlWpf::selectbox('f_currency_position', array(
 					'options' => array('before' => 'Before', 'after' => 'After'),
@@ -78,11 +78,11 @@ if ($isPro) {
 	</div>
 </div>
 <div class="row-settings-block f_show_inputs_enabled_currency">
-	<div class="settings-block-label col-xs-4 col-sm-3">
+	<div class="settings-block-label settings-w100 col-xs-4 col-sm-3">
 		<?php esc_html_e('Show currency as', 'woo-product-filter'); ?>
 	</div>
-	<div class="settings-block-values col-xs-8 col-sm-9">
-		<div class="settings-value">
+	<div class="settings-block-values settings-w100 col-xs-8 col-sm-9">
+		<div class="settings-value settings-w100">
 			<?php 
 				HtmlWpf::selectbox('f_currency_show_as', array(
 					'options' => array('symbol' => 'Symbol', 'code' => 'Code'),
@@ -97,7 +97,7 @@ if ($isPro) {
 		<?php esc_html_e('Use text tooltip instead of input fields', 'woo-product-filter'); ?>
 	</div>
 	<div class="settings-block-values col-xs-8 col-sm-9">
-		<div class="settings-value">
+		<div class="settings-value settings-w100">
 			<?php HtmlWpf::checkboxToggle('f_price_tooltip_show_as', array('checked' => 1)); ?>
 		</div>
 	</div>

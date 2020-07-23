@@ -567,3 +567,6 @@ input.wpfSmallInput{
     content: " ";
     display: table;
 }
+#buttonDelete {
+	background-color: #f43b03;
+}

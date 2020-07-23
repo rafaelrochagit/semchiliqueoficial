@@ -1,10 +1,10 @@
 <div class="row-settings-block">
-	<div class="settings-block-label col-xs-4 col-sm-3">
+	<div class="settings-block-label settings-w100 col-xs-4 col-sm-3">
 		<?php esc_html_e('Show title label', 'woo-product-filter'); ?>
 		<i class="fa fa-question woobewoo-tooltip no-tooltip" title="<?php echo esc_attr__('Show title label with open/close filter functionality', 'woo-product-filter'); ?>"></i>
 	</div>
-
-	<div class="settings-block-values col-xs-6 col-sm-7 col-xl-8">
+	
+	<div class="settings-block-values settings-w100 col-xs-8 col-sm-9">
 		<div class="settings-value">
 			<div class="settings-value-label woobewoo-width60">
 				<?php esc_html_e('desktop', 'woo-product-filter'); ?>
@@ -16,7 +16,7 @@
 				));
 				?>
 		</div>
-		<div class="settings-value">
+		<div class="settings-value settings-w100">
 			<div class="settings-value-label woobewoo-width60">
 				<?php esc_html_e('mobile', 'woo-product-filter'); ?>
 			</div>

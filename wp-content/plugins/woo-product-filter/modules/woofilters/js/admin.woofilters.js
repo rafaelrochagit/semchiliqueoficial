@@ -20,6 +20,7 @@
 		_thisObj.wpfWaitLoad = true;
 		_thisObj.wpfWaitResponse = false;
 		_thisObj.wpfNeedPreview = false;
+		_thisObj.isElementorEditMode = typeof isElementorEditMode !== 'undefined' ? isElementorEditMode : 0;
 		_thisObj.eventsAdminPage();
 		_thisObj.eventsFilters();
 		_thisObj.setupPriceByHands();
@@ -237,7 +238,7 @@
 				color = $this.val(),
 				$picker = $this.closest('.woobewoo-color-picker');
 			if(color == '')	$picker.find('.wp-picker-clear').trigger('click');
-			else $picker.find('.woobewoo-color-result').wpColorPicker('color', $this.val());		
+			else $picker.find('.woobewoo-color-result').wpColorPicker('color', $this.val());
 		});
 
 		$form.find('input[name="settings[filter_loader_icon_color]"]').on('color-change', function(e){
@@ -263,7 +264,7 @@
 					data: _this.serializeAnythingWpf()
 					, onSuccess: function (res) {
 						var currentUrl = window.location.href;
-						if (!res.error && res.data.edit_link && currentUrl !== res.data.edit_link) {
+						if (!res.error && res.data.edit_link && currentUrl !== res.data.edit_link && !_thisObj.isElementorEditMode) {
 							toeRedirect(res.data.edit_link);
 						}
 					}
@@ -384,11 +385,14 @@
 				if(!hidden) subOptions.filter('[data-select-value*="'+value+'"]').removeClass('wpfHidden');
 			}
 		});
+		
+		if (_thisObj.isElementorEditMode) settingsValues.find('input[type="checkbox"],select').trigger('change');
 	});
 
 	AdminPage.prototype.getPreviewAjax = (function (wait) {
 		var _this = this.$obj;
 		if(_this.wpfWaitLoad) return;
+		if(_this.isElementorEditMode) return;
 
 		if(_this.wpfWaitResponse) {
 			if(!_this.wpfNeedPreview || wait) {
@@ -508,152 +512,6 @@
 			mList.trigger("chosen:updated");
 		});
 
-		function wpfAddFilter(id, settings) {
-			var template = jQuery('.wpfOptionsTemplate .wpfFilterOptions[data-filter="'+id+'"]');
-			if(template.length == 0) return true;
-
-			_this.wpfWaitLoad = true;
-			var optionsTemplate = template.clone(),
-				text = optionsTemplate.find('input[name=f_name]').val();
-
-			template.find('[id]').each(function() {
-				var $this = jQuery(this);
-				$this.attr('data-id', $this.attr('id'));
-				$this.removeAttr('id');
-			});
-			optionsTemplate.find('[data-id]').each(function() {
-				var $this = jQuery(this),
-					tempId = $this.attr('data-id'),
-					newId = 'f' + _this.filterIterator + '_' + tempId;
-				$this.attr('id', newId);
-				optionsTemplate.find('label[for="' + tempId + '"]').attr('for', newId);
-				$this.removeAttr('data-id');
-			});
-
-			if(typeof settings !== 'undefined') {
-				optionsTemplate.find('input, select').map(function (index, elm) {
-					var name = elm.name,
-						$elm = jQuery(elm);
-					if (elm.type === 'checkbox') {
-						if (elm.name === 'f_options[]') {
-							$elm.prop("checked", false);
-							if (settings[name]) {
-								var checkedArr = settings[name].split(',');
-								if (checkedArr.includes(elm.value)) {
-									$elm.prop("checked", true);
-								}
-							}
-						} else {
-							$elm.prop("checked", settings[name]);
-						}
-
-					} else if (elm.type === 'select-multiple') {
-						if (_this.$multiSelectFields.includes(elm.name)) {
-							if (settings[name]) {
-								var selectedArr = settings[name].split(',');
-								jQuery.each(selectedArr, function (i, e) {
-									var option = $elm.find("option[value='" + e + "']");
-									option.remove();
-									$elm.append(option);
-									$elm.find("option[value='" + e + "']").prop("selected", true);
-								});
-							}
-						}
-					} else {
-						if(typeof settings[name] !== 'undefined') {
-							elm.value = settings[name];
-						}
-						if ($elm.hasClass('woobewoo-color-result-text')) {
-							$elm.closest('.woobewoo-color-picker').find('.woobewoo-color-result').val(elm.value);
-						}
-					}
-				});
-			}
-			var filterId = 'wpfFilter' + _this.filterIterator,
-				blockTemplate = jQuery('.wpfTemplates .wpfFiltersBlockTemplate')
-					.clone()
-					.removeClass('wpfFiltersBlockTemplate')
-					.attr('data-filter', id)
-					.attr('data-title', text)
-					.attr('id', filterId),
-					title = text;
-			blockTemplate.find('.wpfOptions').html(optionsTemplate);
-			if( id === 'wpfAttribute' ){
-				title = blockTemplate.find('select[name="f_list"] option:selected').text();
-				text = text + ' - ' + title;
-				if (blockTemplate.find('select[name="f_list"]').val() != '0') {
-					blockTemplate.find('select[name="f_mlist[]"]').closest('tr').removeClass('wpfHidden');
-					fListChanged( blockTemplate.find('select[name="f_list"]') );
-				}
-			}
-			if(_noOptionsFilters.includes(id)){
-				blockTemplate.find('.wpfToggle').css({'visibility':'hidden'});
-			}
-			blockTemplate.find('.wpfFilterTitle').text(text);
-			if(typeof settings !== 'undefined'){
-				blockTemplate.find('.wpfFilterFrontDescOpt input').val(settings['f_description']);
-				blockTemplate.find('input[name="f_enable"]').prop('checked', true);
-				if(typeof settings['f_title'] !== 'undefined' && settings['f_title'].length > 0) {
-					title = settings['f_title'];
-				}
-			}
-			blockTemplate.find('.wpfFilterFrontTitleOpt input').val(title);
-			jQuery('.wpfFiltersBlock').append(blockTemplate);
-			
-			_this.filterIterator++;
-
-			blockTemplate.trigger('changeTooltips');
-			blockTemplate.find('select[name="f_mlist[]"]').chosen({ width:"95%" });
-			
-			blockTemplate.find('input, select').trigger('wpf-change');
-
-			if(id == 'wpfPrice') {
-				var defaultSlider = blockTemplate.find('#wpfSliderRange'),
-					minValue = 200,
-					maxValue = 600,
-					minSelector = blockTemplate.find('#wpfMinPrice').val(minValue),
-					maxSelector = blockTemplate.find('#wpfMaxPrice').val(maxValue);
-				defaultSlider.slider({
-					range: true,
-					orientation: 'horizontal',
-					min: 0,
-					max: 1000,
-					values: [minValue, maxValue],
-					step: 1,
-					slide: function (event, ui) {
-						minSelector.val(ui.values[0]);
-						maxSelector.val(ui.values[1]);
-					}
-				});
-				blockTemplate.find('input[name="f_show_inputs"]').on('change', function(e){
-					e.preventDefault();
-					if($(this).prop('checked')) {
-						blockTemplate.find('.wpfPriceInputs').show();
-					} else {
-						blockTemplate.find('.wpfPriceInputs').hide();
-					}
-				}).trigger('change');
-
-				minSelector.on('change', function(e){
-					e.preventDefault();
-					defaultSlider.slider('values', 0, $(this).val());
-				});
-				maxSelector.on('change', function(e){
-					e.preventDefault();
-					defaultSlider.slider('values', 1, $(this).val());
-				});
-				blockTemplate.find('select[name="f_skin_type"].wpfWithProAd').on('change', function(e){
-					e.preventDefault();
-					blockTemplate.find('.wpfPriceSkinPro').addClass('wpfHidden');
-					blockTemplate.find('.wpfPriceSkinPro[data-type="'+$(this).val()+'"]').removeClass('wpfHidden');
-				}).trigger('change');
-			}
-			if(typeof(_this.eventsFiltersPro) == 'function') {
-				_this.eventsFiltersPro(blockTemplate, settings);
-			}
-			_this.wpfWaitLoad = false;
-		}
-
 		jQuery('#wpfChooseFilters').on('change', function(){
 			var option = jQuery('#wpfChooseFilters option:selected'),
 				variants = jQuery('#wpfChooseFiltersBlock [data-option]').addClass('wpfHidden');
@@ -684,18 +542,18 @@
 			else filtersBlock.addClass('wpfHidden');
 		}
 
-		jQuery('#wpfAddFilterButton').on('click', function(e){
+		jQuery('#wpfAddFilterButton').off('click').on('click', function(e){
 			e.preventDefault();
 			var option = jQuery('#wpfChooseFilters option:selected');
 			if(option.length == 0 || option.attr('data-enabled') != '1' || option.attr('data-available') != 'add') return;
-
-			wpfAddFilter(option.attr('value'));
+			
+			_this.wpfAddFilter(option.attr('value'));
 			resetEnabledFilters();
 			_this.getPreviewAjax();
 		});
 
 		//remove existing filter
-		jQuery('.wpfFiltersBlock').on('click', '.wpfFilter a.wpfDelete', function(e){
+		jQuery('.wpfFiltersBlock').off('click', '.wpfFilter a.wpfDelete').on('click', '.wpfFilter a.wpfDelete', function(e){
 			e.preventDefault();
 			jQuery(this).closest('.wpfFilter').remove();
 			resetEnabledFilters();
@@ -703,7 +561,7 @@
 		});
 
 		//show / hide filter options
-		jQuery('.wpfFiltersBlock').on('click', '.wpfFilter a.wpfToggle', function(e){
+		jQuery('.wpfFiltersBlock').off('click', '.wpfFilter a.wpfToggle').on('click', '.wpfFilter a.wpfToggle', function(e){
 			e.preventDefault();
 			var el = jQuery(this),
 				i = el.find('i'),
@@ -712,7 +570,7 @@
 			if (i.hasClass('fa-chevron-down')){
 				i.removeClass('fa-chevron-down').addClass('fa-chevron-up');
 				options.removeClass('wpfHidden');
-				options.find('select[name="f_mlist[]"]').trigger('chosen:updated');   
+				options.find('select[name="f_mlist[]"]').trigger('chosen:updated');
 			}else{
 				i.removeClass('fa-chevron-up').addClass('fa-chevron-down');
 				options.addClass('wpfHidden');
@@ -757,24 +615,21 @@
 			filter.find('.wpfTypeSwitchable[data-type~="'+value+'"]').removeClass('wpfHidden');
 			filter.find('.wpfTypeSwitchable[data-not-type]:not([data-not-type~="'+value+'"])').removeClass('wpfHidden');
 
-			 var isParentActive = filter.find('input[name="f_show_hierarchical"]').is(':checked');
+			var isParentActive = filter.find('input[name="f_show_hierarchical"]').is(':checked');
 			if (!isParentActive) {
 				filter.find('[data-parent-switch="f_show_hierarchical"]').hide();
 			}
-
 
 			if(el.hasClass('wpfWithProAd')) {
 				filter.find('.wpfFilterTypePro').addClass('wpfHidden');
 				filter.find('.wpfFilterTypePro[data-type="'+value+'"]').removeClass('wpfHidden');
 			}
-			if(value == 'buttons') {
-				filter.find('select[name="f_layout"]').val('hor').trigger('wpf-change');
-			}
 		});
 
 
 		//after load page display filters tab
-		displayFiltersTab();
+		if (!_this.isElementorEditMode) displayFiltersTab();
+		else resetEnabledFilters();
 
 		function displayFiltersTab(){
 			jQuery('.wpfFiltersBlock').html('');
@@ -790,100 +645,16 @@
 			filters.forEach(function (value) {
 				var settings = value.settings;
 				if (typeof settings == 'undefined' || !settings['f_enable']) return true;
-
-				wpfAddFilter(value.id, settings);
+				
+				_this.wpfAddFilter(value.id, settings);
 			});
 			resetEnabledFilters();
 		}
 
 		jQuery("body").on('change', 'select[name="f_list"]', function (e) {
 			e.preventDefault();
-			fListChanged(jQuery(this));
+			_this.fListChanged(jQuery(this));
 		});
-
-		function setAttrTerms(mlist, slug){
-			var options = jQuery('.wpfAttributesTerms input[name="attr-'+slug+'"]');
-			if(typeof(options) == 'undefined' || options.length == 0) return;
-
-			try {
-				var terms = JSON.parse(options.val()),
-					keys = JSON.parse(options.attr('data-order'));
-			}catch(e){
-				var terms = [],
-					keys = [];
-			}
-			var filterId = mlist.closest('.wpfFilter').attr('id'),
-				settings = [],
-				name = mlist.attr('name');
-			if(filterId) {
-				var filterNum = filterId.replace('wpfFilter', '');
-				settings = (_this.filtersSettings && filterNum in _this.filtersSettings ? _this.filtersSettings[filterNum]['settings'] : []);
-			}
-
-			keys.forEach(function (value) {
-				if(value in terms) {
-					mlist.append('<option value="'+value+'">'+terms[value]+'</option>');
-				}
-			});
-			var selectedArr = settings[name] && settings[name] ? settings[name].split(',') : [];
-			jQuery.each(selectedArr, function (i, e) {
-				var option = mlist.find("option[value='" + e + "']");
-				if(option.length) {
-					mlist.append(option.prop('selected', true));
-				}
-			});
-
-			if(mlist.find('option').length > 1) {
-				mlist.closest('.row-settings-block').removeClass('wpfHidden');
-			}
-			mlist.trigger('chosen:updated');
-			mlist.trigger('change');
-			if(typeof(_this.changeAttributeTermsPro) == 'function') {
-				_this.changeAttributeTermsPro(mlist.closest('.wpfFilter'), settings);
-			}
-			_this.getPreviewAjax();
-		}
-
-		function fListChanged(_this){
-			var attrSlug = _this.val(),
-				changedName = attrSlug == 0 ? '' : ' - ' + _this.find('option:selected').text(),
-				startName = _this.closest('.wpfFilter').attr('data-title'),
-				fullTitle = startName + changedName;
-			_this.closest('.wpfFilter').find('.wpfFilterTitle').text(fullTitle);
-
-			var attr_terms = _this.closest('.wpfOptions').find('[name="f_mlist[]"]');
-			attr_terms.closest('tr').addClass('wpfHidden');
-			attr_terms.find('option').remove();
-
-			if(attrSlug != 0) {
-				var terms = jQuery('.wpfAttributesTerms input[name="attr-'+attrSlug+'"]');
-				if(typeof(terms) == 'undefined' || terms.length == 0) {
-					var data = {
-						mod: 'woofilters',
-						action: 'getTaxonomyTerms',
-						slug: attrSlug,
-						pl: 'wpf',
-						reqType: 'ajax'
-					};
-					jQuery.sendFormWpf({
-						data: {
-							mod: 'woofilters',
-							action: 'getTaxonomyTerms',
-							slug: attrSlug		
-						},
-						onSuccess: function(res) {
-							if(!res.error && res.data.terms && res.data.keys) {
-								jQuery('.wpfAttributesTerms').append('<input type="hidden" name="attr-'+attrSlug+'" data-order="'+res.data.keys+'" value="'+res.data.terms+'">');
-								setAttrTerms(attr_terms, attrSlug);
-							}
-						}
-					});
-				} else setAttrTerms(attr_terms, attrSlug);
-			} else {
-				attr_terms.val('').trigger('chosen:updated');
-				attr_terms.trigger('change');
-			}
-		}
 
 		jQuery('.wpfFiltersBlock').on('change', '.wpfAutomaticOrByHand input[type="checkbox"]', function(){
 			var _this = jQuery(this),
@@ -892,6 +663,241 @@
 			jQuery('.wpfAutomaticOrByHand').not('[data-value="'+_this.closest('.wpfAutomaticOrByHand').attr('data-value')+'"]').find('input').prop('checked', !checked);
 			jQuery('.wpfAutomaticOrByHand input[type="checkbox"]').trigger('wpf-change');
 		});
+	});
+	
+	AdminPage.prototype.setAttrTerms = (function(mlist, slug){
+		var _this = this,
+			options = jQuery('.wpfAttributesTerms input[name="attr-'+slug+'"]');
+		if(typeof(options) == 'undefined' || options.length == 0) return;
+		
+		try {
+			var terms = JSON.parse(options.val()),
+				keys = JSON.parse(options.attr('data-order'));
+		}catch(e){
+			var terms = [],
+				keys = [];
+		}
+		var filterId = mlist.closest('.wpfFilter').attr('id'),
+			settings = [],
+			name = mlist.attr('name');
+		if(filterId) {
+			var filterNum = filterId.replace('wpfFilter', '');
+			settings = (_this.filtersSettings && filterNum in _this.filtersSettings ? _this.filtersSettings[filterNum]['settings'] : []);
+		}
+		
+		keys.forEach(function (value) {
+			if(value in terms) {
+				mlist.append('<option value="'+value+'">'+terms[value]+'</option>');
+			}
+		});
+		var selectedArr = settings[name] && settings[name] ? settings[name].split(',') : [];
+		jQuery.each(selectedArr, function (i, e) {
+			var option = mlist.find("option[value='" + e + "']");
+			if(option.length) {
+				mlist.append(option.prop('selected', true));
+			}
+		});
+		
+		if(mlist.find('option').length > 1) {
+			mlist.closest('.row-settings-block').removeClass('wpfHidden');
+		}
+		mlist.trigger('chosen:updated');
+		mlist.trigger('change');
+		if(typeof(_this.changeAttributeTermsPro) == 'function') {
+			_this.changeAttributeTermsPro(mlist.closest('.wpfFilter'), settings);
+		}
+		_this.getPreviewAjax();
+	});
+	
+	AdminPage.prototype.fListChanged = (function(_this){
+		var _thisObj = this,
+			attrSlug = _this.val(),
+			changedName = attrSlug == 0 ? '' : ' - ' + _this.find('option:selected').text(),
+			startName = _this.closest('.wpfFilter').attr('data-title'),
+			fullTitle = startName + changedName;
+		_this.closest('.wpfFilter').find('.wpfFilterTitle').text(fullTitle);
+		
+		var attr_terms = _this.closest('.wpfOptions').find('[name="f_mlist[]"]');
+		attr_terms.closest('tr').addClass('wpfHidden');
+		attr_terms.find('option').remove();
+		
+		if(attrSlug != 0) {
+			var terms = jQuery('.wpfAttributesTerms input[name="attr-'+attrSlug+'"]');
+			if(typeof(terms) == 'undefined' || terms.length == 0) {
+				var data = {
+					mod: 'woofilters',
+					action: 'getTaxonomyTerms',
+					slug: attrSlug,
+					pl: 'wpf',
+					reqType: 'ajax'
+				};
+				jQuery.sendFormWpf({
+					data: {
+						mod: 'woofilters',
+						action: 'getTaxonomyTerms',
+						slug: attrSlug
+					},
+					onSuccess: function(res) {
+						if(!res.error && res.data.terms && res.data.keys) {
+							jQuery('.wpfAttributesTerms').append('<input type="hidden" name="attr-'+attrSlug+'" data-order="'+res.data.keys+'" value="'+res.data.terms+'">');
+							_thisObj.setAttrTerms(attr_terms, attrSlug);
+						}
+					}
+				});
+			} else _thisObj.setAttrTerms(attr_terms, attrSlug);
+		} else {
+			attr_terms.val('').trigger('chosen:updated');
+			attr_terms.trigger('change');
+		}
+	});
+	
+	AdminPage.prototype.wpfAddFilter = (function(id, settings) {
+		var _this = this,
+			_noOptionsFilters = this.$noOptionsFilters,
+			wpfGetPreviewInit = false,
+			template = jQuery('.wpfOptionsTemplate .wpfFilterOptions[data-filter="'+id+'"]');
+		if(template.length == 0) return true;
+		
+		_this.wpfWaitLoad = true;
+		var optionsTemplate = template.clone(),
+			text = optionsTemplate.find('input[name=f_name]').val();
+		
+		template.find('[id]').each(function() {
+			var $this = jQuery(this);
+			$this.attr('data-id', $this.attr('id'));
+			$this.removeAttr('id');
+		});
+		optionsTemplate.find('[data-id]').each(function() {
+			var $this = jQuery(this),
+				tempId = $this.attr('data-id'),
+				newId = 'f' + _this.filterIterator + '_' + tempId;
+			$this.attr('id', newId);
+			optionsTemplate.find('label[for="' + tempId + '"]').attr('for', newId);
+			$this.removeAttr('data-id');
+		});
+		
+		if(typeof settings !== 'undefined') {
+			optionsTemplate.find('input, select').map(function (index, elm) {
+				var name = elm.name,
+					$elm = jQuery(elm);
+				if (elm.type === 'checkbox') {
+					if (elm.name === 'f_options[]') {
+						$elm.prop("checked", false);
+						if (settings[name]) {
+							var checkedArr = settings[name].split(',');
+							if (checkedArr.includes(elm.value)) {
+								$elm.prop("checked", true);
+							}
+						}
+					} else {
+						$elm.prop("checked", settings[name]);
+					}
+					
+				} else if (elm.type === 'select-multiple') {
+					if (_this.$multiSelectFields.includes(elm.name)) {
+						if (settings[name]) {
+							var selectedArr = settings[name].split(',');
+							jQuery.each(selectedArr, function (i, e) {
+								var option = $elm.find("option[value='" + e + "']");
+								option.remove();
+								$elm.append(option);
+								$elm.find("option[value='" + e + "']").prop("selected", true);
+							});
+						}
+					}
+				} else {
+					if(typeof settings[name] !== 'undefined') {
+						elm.value = settings[name];
+					}
+					if ($elm.hasClass('woobewoo-color-result-text')) {
+						$elm.closest('.woobewoo-color-picker').find('.woobewoo-color-result').val(elm.value);
+					}
+				}
+			});
+		}
+		var filterId = 'wpfFilter' + _this.filterIterator,
+			blockTemplate = jQuery('.wpfTemplates .wpfFiltersBlockTemplate')
+				.clone()
+				.removeClass('wpfFiltersBlockTemplate')
+				.attr('data-filter', id)
+				.attr('data-title', text)
+				.attr('id', filterId),
+			title = text;
+		blockTemplate.find('.wpfOptions').html(optionsTemplate);
+		if( id === 'wpfAttribute' ){
+			title = blockTemplate.find('select[name="f_list"] option:selected').text();
+			text = text + ' - ' + title;
+			if (blockTemplate.find('select[name="f_list"]').val() != '0') {
+				blockTemplate.find('select[name="f_mlist[]"]').closest('tr').removeClass('wpfHidden');
+				_this.fListChanged( blockTemplate.find('select[name="f_list"]') );
+			}
+		}
+		if(_noOptionsFilters.includes(id)){
+			blockTemplate.find('.wpfToggle').css({'visibility':'hidden'});
+		}
+		blockTemplate.find('.wpfFilterTitle').text(text);
+		if(typeof settings !== 'undefined'){
+			blockTemplate.find('.wpfFilterFrontDescOpt input').val(settings['f_description']);
+			blockTemplate.find('input[name="f_enable"]').prop('checked', true);
+			if(typeof settings['f_title'] !== 'undefined' && settings['f_title'].length > 0) {
+				title = settings['f_title'];
+			}
+		}
+		blockTemplate.find('.wpfFilterFrontTitleOpt input').val(title);
+		jQuery('.wpfFiltersBlock').append(blockTemplate);
+		
+		_this.filterIterator++;
+		
+		blockTemplate.trigger('changeTooltips');
+		blockTemplate.find('select[name="f_mlist[]"]').chosen({ width:"95%" });
+		
+		blockTemplate.find('input, select').trigger('wpf-change');
+		
+		if(id == 'wpfPrice') {
+			var defaultSlider = blockTemplate.find('#wpfSliderRange'),
+				minValue = 200,
+				maxValue = 600,
+				minSelector = blockTemplate.find('#wpfMinPrice').val(minValue),
+				maxSelector = blockTemplate.find('#wpfMaxPrice').val(maxValue);
+			defaultSlider.slider({
+				range: true,
+				orientation: 'horizontal',
+				min: 0,
+				max: 1000,
+				values: [minValue, maxValue],
+				step: 1,
+				slide: function (event, ui) {
+					minSelector.val(ui.values[0]);
+					maxSelector.val(ui.values[1]);
+				}
+			});
+			blockTemplate.find('input[name="f_show_inputs"]').on('change', function(e){
+				e.preventDefault();
+				if($(this).prop('checked')) {
+					blockTemplate.find('.wpfPriceInputs').show();
+				} else {
+					blockTemplate.find('.wpfPriceInputs').hide();
+				}
+			}).trigger('change');
+			
+			minSelector.on('change', function(e){
+				e.preventDefault();
+				defaultSlider.slider('values', 0, $(this).val());
+			});
+			maxSelector.on('change', function(e){
+				e.preventDefault();
+				defaultSlider.slider('values', 1, $(this).val());
+			});
+			blockTemplate.find('select[name="f_skin_type"].wpfWithProAd').on('change', function(e){
+				e.preventDefault();
+				blockTemplate.find('.wpfPriceSkinPro').addClass('wpfHidden');
+				blockTemplate.find('.wpfPriceSkinPro[data-type="'+$(this).val()+'"]').removeClass('wpfHidden');
+			}).trigger('change');
+		}
+		if(typeof(_this.eventsFiltersPro) == 'function') {
+			_this.eventsFiltersPro(blockTemplate, settings);
+		}
+		_this.wpfWaitLoad = false;
 	});
 
 	AdminPage.prototype.saveFilters = (function () {

@@ -25,6 +25,8 @@ class WoofiltersModelWpf extends ModelWpf {
 		if (taxonomy_exists('product_brand')) {
 			$filterTypes['wpfBrand'] = array('name' => esc_html__('Product brands', 'woo-product-filter'), 'enabled' => false, 'unique' => true);
 		}
+		$filterTypes['wpfVendors'] = array('name' => esc_html__('Vendors', 'woo-product-filter'), 'enabled' => false, 'unique' => true);
+		
 		return DispatcherWpf::applyFilters('addFilterTypes', $filterTypes);
 	}
 
