@@ -1,6 +1,10 @@
 <?php
-add_shortcode( 'bestselling_products_slider', 'wcpscwc_bestselling_products_slider' );
-function wcpscwc_bestselling_products_slider($atts){
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+function wcpscwc_bestselling_products_slider($atts) {
  
 	global $woocommerce_loop;
  
@@ -104,3 +108,5 @@ function wcpscwc_bestselling_products_slider($atts){
 	wp_reset_postdata();	
 	return ob_get_clean();
 }
+
+add_shortcode( 'bestselling_products_slider', 'wcpscwc_bestselling_products_slider' );

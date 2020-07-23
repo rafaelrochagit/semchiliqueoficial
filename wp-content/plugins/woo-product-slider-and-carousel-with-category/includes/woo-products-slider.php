@@ -1,7 +1,11 @@
 <?php
-add_shortcode( 'products_slider', 'wcpscwc_products_slider' );
-function wcpscwc_products_slider($atts){
- 
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+function wcpscwc_products_slider($atts) {
+
 	global $woocommerce_loop;
  
 	extract(shortcode_atts(array(
@@ -89,7 +93,9 @@ function wcpscwc_products_slider($atts){
 			<div class="wcpscwc-slider-conf" data-conf="<?php echo htmlspecialchars(json_encode($slider_conf)); ?>"></div>
 		</div>
 	<?php 
-	endif; 
-	wp_reset_postdata();	
-	return ob_get_clean(); 
+	endif;
+	wp_reset_postdata();
+	return ob_get_clean();
 }
+
+add_shortcode( 'products_slider', 'wcpscwc_products_slider' );

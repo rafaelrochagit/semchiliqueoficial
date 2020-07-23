@@ -6,19 +6,20 @@
  * Author: WP OnlineSupport 
  * Text Domain: woo-product-slider-and-carousel-with-category
  * Domain Path: /languages/
- * WC tested up to: 4.0.1  
- * Version: 2.2
+ * WC tested up to: 4.3.0
+ * Version: 2.2.1
  * Author URI: https://www.wponlinesupport.com/
  *
  * @package Product Slider and Carousel with Category for WooCommerce
  * @author WP OnlineSupport
  */
 
-// Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 if( !defined( 'WCPSCWC_VERSION' ) ) {
-	define( 'WCPSCWC_VERSION', '2.2' ); // Version of plugin
+	define( 'WCPSCWC_VERSION', '2.2.1' ); // Version of plugin
 }
 if( !defined( 'WCPSCWC_VERSION_DIR' ) ) {
     define( 'WCPSCWC_VERSION_DIR', dirname( __FILE__ ) ); // Plugin dir
@@ -37,7 +38,7 @@ if( !defined( 'WCPSCW_POST_TYPE' ) ) {
  */
 function wcpscwc_check_activation() {
 
-	if ( !class_exists('WooCommerce') ) {
+	if ( ! class_exists('WooCommerce') ) {
 		// is this plugin active?
 		if ( is_plugin_active( plugin_basename( __FILE__ ) ) ) {
 			// deactivate the plugin
@@ -60,7 +61,7 @@ add_action( 'admin_init', 'wcpscwc_check_activation' );
  */
 function wcpscwc_admin_notices() {
 	
-	if ( !class_exists('WooCommerce') ) {
+	if ( ! class_exists('WooCommerce') ) {
 		echo '<div class="error notice is-dismissible">';
 		echo sprintf( __('<p><strong>%s</strong> recommends the following plugin to use.</p>', 'woo-product-slider-and-carousel-with-category'), 'Product Slider and Carousel with Category for WooCommerce' );
 		echo sprintf( __('<p><strong><a href="%s" target="_blank">%s</a> </strong></p>', 'woo-product-slider-and-carousel-with-category'), 'https://wordpress.org/plugins/woocommerce/', 'WooCommerce' );
@@ -121,6 +122,11 @@ function wcpscwc_load_plugin() {
 		require_once( 'includes/woo-products-slider.php' );
 		require_once( 'includes/woo-best-selling-products-slider.php' );
 		require_once( 'includes/woo-featured-products-slider.php' );
+
+		// How it work file, Load admin files
+		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+		    require_once( WCPSCWC_VERSION_DIR . '/includes/admin/wcpscwc-how-it-work.php' );
+		}
 	}
 }
 
@@ -146,13 +152,9 @@ function wcpscwc_get_unique() {
  */
 function wcpscwc_wc_version($version = '3.0'){
     global $woocommerce;
+
     if( version_compare( $woocommerce->version, $version, ">=" ) ) {
       return true;
     }
     return false;
-}
-
-// How it work file, Load admin files
-if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-    require_once( WCPSCWC_VERSION_DIR . '/includes/admin/wcpscwc-how-it-work.php' );
 }

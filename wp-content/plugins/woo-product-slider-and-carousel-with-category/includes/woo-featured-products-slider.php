@@ -1,5 +1,8 @@
 <?php
-add_shortcode( 'featured_products_slider', 'wcpscwc_featured_products_slider' );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 function wcpscwc_featured_products_slider($atts){
  
 	global $woocommerce_loop;
@@ -133,3 +136,5 @@ function wcpscwc_featured_products_slider($atts){
 	wp_reset_postdata();
 	return ob_get_clean(); 
 }
+
+add_shortcode( 'featured_products_slider', 'wcpscwc_featured_products_slider' );

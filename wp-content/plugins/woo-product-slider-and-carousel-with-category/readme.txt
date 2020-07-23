@@ -2,7 +2,7 @@
 Contributors: wponlinesupport, anoopranawat
 Tags: best selling products, best selling products slider, slick slider, best selling products by category, shortcode, template code, featured product, featured product slider, Featured product by category, autoplay slider, best product slider, best product slider for woo shop, carousel, clean woo product slider, multiple product slider, product carousel,  product content slider, product contents carousel, product slider, product slider carousel for woo, products slider,  responsive product slider, responsive product carousel, slider, smooth product slider woo product slider,  advance slider, woo best selling products, woo category slider, latest products, most selling products, product carousel slider, recent product carousel, recent product slider
 Requires at least: 3.1
-Tested up to: 5.4
+Tested up to: 5.4.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -116,8 +116,11 @@ orderby="date" (Order by product ie date, ID, author, title, modified, rand and 
 > View [PRO DEMO and Features](https://www.wponlinesupport.com/wp-plugin/woo-product-slider-carousel-category/) for additional information.
 >
 
+= Features : =
+[youtube https://www.youtube.com/watch?v=yA_ieJqTTJw]
+
 = How to install : =
-[youtube https://www.youtube.com/watch?v=6R5JvYBk0jU] 
+[youtube https://www.youtube.com/watch?v=6R5JvYBk0jU]
 
 == Installation ==
 1. Upload the 'woocommerce-product-slider-and-carousel-with-category' folder to the '/wp-content/plugins/' directory.
@@ -158,6 +161,11 @@ slider_cls="products" (This parameter target the wooCommerce default class for p
 4. Shortcodes
 
 == Changelog ==  
+
+= 2.2.1 (14, July 2020) =
+* [+] Added language template file.
+* [+] Checked compatibility with WooCommerce 4.3.0
+* [+] Fixed some typo mistake.
 
 = 2.2 (28-03-2020) =
 * [+] Added order and orderby parameter.

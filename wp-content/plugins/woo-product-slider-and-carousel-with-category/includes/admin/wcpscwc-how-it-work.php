@@ -6,8 +6,9 @@
  * @since 1.0.0
  */
 
-// Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 // Action to add menu
 add_action('admin_menu', 'wcpscwc_register_design_page');
@@ -248,14 +249,13 @@ function wcpscwc_howitwork_page() { ?>
 										<li>100% Multi language</li>
 									</ul>
 									<div class="upgrade-to-pro">Gain access to <strong>Product Slider and Carousel with Category for WooCommerce</strong> included in <br /><strong>Essential Plugin Bundle</div>
-									<a class="button button-primary wpos-button-full" href="https://www.wponlinesupport.com/pricing/?ref=WposPratik&utm_source=WP&utm_medium=WP-Plugins&utm_campaign=Upgrade-PRO" target="_blank"><?php _e('Go Premium ', 'woo-product-slider-and-carousel-with-category'); ?></a>	
-									<p><a class="button button-primary wpos-button-full" href="https://demo.wponlinesupport.com/prodemo/woo-product-slider-and-carousel-with-category-pro/" target="_blank"><?php _e('View PRO Demo ', 'woo-product-slider-and-carousel-with-category'); ?></a>			</p>								
+									<a class="button button-primary wpos-button-full" href="https://www.wponlinesupport.com/pricing/?ref=WposPratik&utm_source=WP&utm_medium=Woo-Product-Slider&utm_campaign=Upgrade-PRO" target="_blank"><?php _e('Go Premium ', 'woo-product-slider-and-carousel-with-category'); ?></a>
+									<p><a class="button button-primary wpos-button-full" href="https://demo.wponlinesupport.com/prodemo/woo-product-slider-and-carousel-with-category-pro/?utm_source=WP&utm_medium=Woo-Product-Slider&utm_campaign=PRO-Demo" target="_blank"><?php _e('View PRO Demo ', 'woo-product-slider-and-carousel-with-category'); ?></a></p>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					
 					<div class="metabox-holder">
 						<div class="meta-box-sortables ui-sortable">
 							<div class="postbox">
