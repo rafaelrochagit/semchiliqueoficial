@@ -6,8 +6,8 @@ defined('ABSPATH') or die("No script kiddies please!");
  * Code adapted from the "WordPress Importer" plugin.
  *
  * @extends WP_Importer
- * @package WordPress
- * @subpackage Importer
+ * @package Mystery Themes Demo Importer
+ * @subpackage /includes/wp-importers
  */
 
 if ( ! defined( 'WP_LOAD_IMPORTERS' ) ) {

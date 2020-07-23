@@ -2,7 +2,8 @@
 defined('ABSPATH') or die("No script kiddies please!");
 /**
  * Customizer importer - import customizer settings.
- *
+ * MTDI_Customizer_Importer Class
+ * 
  * Code adapted from the "Customizer Export/Import" plugin.
  *
  * @link https://myserythemes.com/
@@ -15,9 +16,6 @@ defined('ABSPATH') or die("No script kiddies please!");
 
 defined( 'ABSPATH' ) || exit;
 
-/**
- * MTDI_Customizer_Importer Class.
- */
 class MTDI_Customizer_Importer {
 
 	/**

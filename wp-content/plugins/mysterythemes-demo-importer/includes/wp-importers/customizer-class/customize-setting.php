@@ -1,7 +1,8 @@
 <?php
 defined('ABSPATH') or die("No script kiddies please!");
 /**
- *
+ * Customizer Demo Importer Setting class
+ * 
  * @link https://mysterythemes.com
  * @since 1.0.0
  *
@@ -10,11 +11,6 @@ defined('ABSPATH') or die("No script kiddies please!");
  * 
  */
 
-/**
- * Customizer Demo Importer Setting class.
- *
- * @see WP_Customize_Setting
- */
 final class MTDI_Customizer_Setting extends WP_Customize_Setting {
 
 	/**

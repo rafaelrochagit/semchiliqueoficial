@@ -5,8 +5,8 @@ defined('ABSPATH') or die("No script kiddies please!");
  *
  * Code adapted from the "WordPress Importer" plugin.
  *
- * @package WordPress
- * @subpackage Importer
+ * @package Mystery Themes Demo Importer
+ * @subpackage /includes/wp-importers
  */
 class MTDI_Parser {
 	function parse( $file ) {

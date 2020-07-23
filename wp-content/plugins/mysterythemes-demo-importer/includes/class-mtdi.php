@@ -196,7 +196,7 @@ if( ! class_exists( 'MTDI' ) ) :
 		 */
 		public function get_supported_themes() {
 
-			$mt_free_themes = array( 'color-blog', 'easy-store', 'edigital', 'editorial', 'faceblog', 'flexible-lite', 'flexible', 'fotogenic', 'mismo', 'news-portal', 'owner', 'saaya', 'scholarship', 'swipewp', 'swipe', 'uniform', 'wp-diary', 'shopay' );
+			$mt_free_themes = array( 'color-blog', 'easy-store', 'edigital', 'editorial', 'faceblog', 'flexible-lite', 'flexible', 'fotogenic', 'mismo', 'news-portal', 'owner', 'saaya', 'scholarship', 'swipewp', 'swipe', 'uniform', 'wp-diary', 'shopay', 'foodie-diary', 'matina' );
 
 			$name_change 	= array();
 			$mt_themes 		= array_replace( $mt_free_themes, $name_change );

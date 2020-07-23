@@ -3,7 +3,7 @@ jQuery(function($) {
         AjaxUrl                 = MTDI_JSObject.ajaxurl,
         _wpnonce                = MTDI_JSObject._wpnonce,
         plugin_installing       = MTDI_JSObject.plugin_installing, //Installing
-        importing_demo          = MTDI_JSObject.importing_demo, //Installing
+        importing_demo          = MTDI_JSObject.importing_demo, //Importing
         plugin_activated        = MTDI_JSObject.plugin_activated, //Activated
         activating_installing   = MTDI_JSObject.activating_installing, //Installing & Activating
         plugin_activating       = MTDI_JSObject.plugin_activating; //Activating
@@ -71,10 +71,11 @@ jQuery(function($) {
         var _this           = $(this);
         var $target         = $(e.target);
         var selected_slug   = $(this).data('slug');
-        processDemoImport(selected_slug);
+        var execution_time = $(this).data( 'execution' );
+        processDemoImport(selected_slug, execution_time);
     });
     var json = new Array();
-    processDemoImport = function(selected_slug) {
+    processDemoImport = function(selected_slug, execution_time) {
         $.ajax({
             method: "POST",
             url: AjaxUrl,
@@ -82,6 +83,7 @@ jQuery(function($) {
             data: ({
                 'action': 'mtdi_import_demo',
                 'plugin_slug': selected_slug,
+                'execution_time': execution_time,
                 '_wpnonce': _wpnonce,
             }),
             beforeSend: function() {
@@ -96,8 +98,8 @@ jQuery(function($) {
                     $('.imported-success').attr('href', response.data.previewUrl);
                     $('.imported-success').attr('target', '_blank');
                     $('.imported-success').html('Visit Site');
-                    $('.imported-success').removeClass('mtdi-demo-import-step');
                     $( '.mtdi-customize-button' ).show();
+                    $('.imported-success').removeClass('mtdi-demo-import-step');
                 } else {
                     $('.mtdi-demo-import-step').removeClass('updating-message');
                     $('.demo-import-actions').append('<p class="notice notice-error is-dismissible">' + response.errorMessage + '</p>');

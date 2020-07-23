@@ -22,6 +22,7 @@ if( is_child_theme() ) {
 	$widgets_file 		= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['widgets_file'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['widgets_file']: '';
 	$demo_url   		= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['preview_url'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['preview_url']: '';
 	$required_plugins 	= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['plugins_list'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['plugins_list']: '';
+	$execution_time 	= isset ( $demodata[$parent_theme]['child_themes'][$selected_demo]['execution_time'] ) ? $demodata[$parent_theme]['child_themes'][$selected_demo]['execution_time']: 'default';
 } else {
 	$plugin_name		= isset ( $demodata[$selected_demo]['name'] ) ? $demodata[$selected_demo]['name']: '';
 	$theme_slug 		= isset ( $demodata[$selected_demo]['theme_slug'] ) ? $demodata[$selected_demo]['theme_slug']: '';
@@ -30,6 +31,7 @@ if( is_child_theme() ) {
 	$widgets_file 		= isset ( $demodata[$selected_demo]['widgets_file'] ) ? $demodata[$selected_demo]['widgets_file']: '';
 	$demo_url   		= isset ( $demodata[$selected_demo]['preview_url'] ) ? $demodata[$selected_demo]['preview_url']: '';
 	$required_plugins 	= isset ( $demodata[$selected_demo]['plugins_list'] ) ? $demodata[$selected_demo]['plugins_list']: '';
+	$execution_time 	= isset ( $demodata[$selected_demo]['execution_time'] ) ? $demodata[$selected_demo]['execution_time']: 'default';
 }
 
 $json_plugin_lists 	= json_encode ( $required_plugins );
@@ -150,10 +152,10 @@ $theme_version 	= $current_theme->get( 'Version' );
 						if ( $totalcount != $latestcount ) {
 					?>
 						<a class="button button-hero button-primary hide-if-no-js mtdi-install-setup" href="#" data-name="<?php echo esc_attr ( $plugin_name ); ?>" data-slug="<?php echo esc_attr ( $theme_slug ); ?>" data-plugins="<?php echo esc_attr ( $json_plugin_lists ); ?>"><?php esc_html_e( 'Install & Activate', 'mysterythemes-demo-importer' ); ?></a>
-						<a class="button button-hero button-primary hide-if-no-js mtdi-demo-import-step" href="#" data-name="<?php echo esc_attr ( $plugin_name ); ?>" data-slug="<?php echo esc_attr ( $theme_slug ); ?>" data-plugins="<?php echo esc_attr ( $json_plugin_lists ); ?>" style="display: none;"><?php esc_html_e( 'Import Demo Now', 'mysterythemes-demo-importer' ); ?></a>
+						<a class="button button-hero button-primary hide-if-no-js mtdi-demo-import-step" href="#" data-name="<?php echo esc_attr ( $plugin_name ); ?>" data-slug="<?php echo esc_attr ( $theme_slug ); ?>" data-plugins="<?php echo esc_attr ( $json_plugin_lists ); ?>" data-execution="<?php echo esc_attr( $execution_time ); ?>" style="display: none;"><?php esc_html_e( 'Import Demo Now', 'mysterythemes-demo-importer' ); ?></a>
 					<?php } else { ?>
 						<a class="button button-hero button-primary hide-if-no-js mtdi-install-setup" href="#" data-name="<?php echo esc_attr ( $plugin_name ); ?>" data-slug="<?php echo esc_attr ( $theme_slug ); ?>" data-plugins="<?php echo esc_attr ( $json_plugin_lists ); ?>" style="display: none;"><?php esc_html_e( 'Install & Activate', 'mysterythemes-demo-importer' ); ?></a>
-						<a class="button button-hero button-primary hide-if-no-js mtdi-demo-import-step" href="#" data-name="<?php echo esc_attr ( $plugin_name ); ?>" data-slug="<?php echo esc_attr ( $theme_slug ); ?>" data-plugins="<?php echo esc_attr ( $json_plugin_lists ); ?>" ><?php esc_html_e( 'Import Demo Now', 'mysterythemes-demo-importer' ); ?></a>
+						<a class="button button-hero button-primary hide-if-no-js mtdi-demo-import-step" href="#" data-name="<?php echo esc_attr ( $plugin_name ); ?>" data-slug="<?php echo esc_attr ( $theme_slug ); ?>" data-plugins="<?php echo esc_attr ( $json_plugin_lists ); ?>" data-execution="<?php echo esc_attr( $execution_time ); ?>"><?php esc_html_e( 'Import Demo Now', 'mysterythemes-demo-importer' ); ?></a>
 						<a class="button button-hero button-primary mtdi-customize-button hide-if-no-js" href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>" target="_blank" style="display: none"><?php esc_html_e( 'Customize Site', 'mysterythemes-demo-importer' ); ?></a>
 					<?php } ?>
 					<textarea style="display: none;" id="hidden_plugin_lists-<?php echo esc_attr ( $theme_slug ); ?>"><?php echo esc_attr ( $json_plugin_lists ); ?></textarea>

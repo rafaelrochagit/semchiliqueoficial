@@ -73,19 +73,10 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 		 * @since    1.0.0
 		 */
 		public function enqueue_scripts( $hook_suffix ) {
-
 			/**
-			 * This function is provided for demonstration purposes only.
-			 *
-			 * An instance of this class should be passed to the run() function
-			 * defined in MTDI_Loader as all of the hooks are defined
-			 * in that particular class.
-			 *
-			 * The MTDI_Loader will then create the relationship
-			 * between the defined hooks and the functions defined in this
-			 * class.
+			 * Applies condition for theme settings page only.
 			 */
-			$activated_theme = get_option( 'template' );
+			$activated_theme = get_stylesheet();
 
 			if ( $hook_suffix == 'appearance_page_'. esc_html( $activated_theme ) .'-settings' || $hook_suffix == 'appearance_page_mysterythemes-demo-importer' ) {
 				wp_enqueue_script( 'mtdi-admin', plugin_dir_url( __FILE__ ) . 'js/mtdi-admin.js', array( 'jquery','wp-util', 'updates' ), $this->version, false );
@@ -117,7 +108,7 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 
 			$packages 			= array();
 			$xmldemopackages 	= get_transient( 'mtdi_theme_packages' );
-			$activated_theme 	= get_option( 'template' ); //template activate slug
+			$activated_theme 	= get_stylesheet(); //template activate slug
 
 			if ( false === $xmldemopackages || ( isset ( $packages->slug ) && $activated_theme !== $xmldemopackages->theme_slug ) ) {
 				$packages = $this->retrieve_demo_by_activatetheme( $activated_theme );
@@ -382,7 +373,13 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 		public function import_all_demo() {
 
 			if (  wp_verify_nonce( $_POST['_wpnonce'], 'mtdi_admin_import_nonce' ) ) {
+				$execution_time = sanitize_text_field( $_POST['execution_time'] );
 				ini_set( 'memory_limit', '350M' );
+				if( $execution_time != 'default' ) {
+					ini_set( 'max_execution_time', apply_filters( 'mtdi_demo_import_execution_time', $execution_time ) );
+				} else {
+					ini_set( 'max_execution_time', apply_filters( 'mtdi_demo_import_execution_time', 300 ) );
+				}
 				
 				if ( empty( $_POST['plugin_slug'] ) ) {
 					wp_send_json_error(
@@ -411,7 +408,6 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 
 				$template = get_option( 'template' );
 				do_action( 'mtdi_ajax_before_demo_import' );
-				delete_transient( 'mtdi_theme_packages' );
 				$xmldemopackages = get_transient( 'mtdi_theme_packages' );
 				if( empty ( $xmldemopackages ) ) {
 					$xmldemopackages = $this->retrieve_demo_by_activatetheme( $template );
@@ -1304,8 +1300,8 @@ if( !class_exists( 'MTDI_Admin' ) ) :
 		function plugin_row_meta( $plugin_meta, $plugin_file ) {
 			if ( MTDI_PLUGIN_BASENAME === $plugin_file ) {
 				$new_plugin_meta = array(
-					'docs'    => '<a href="' . esc_url( apply_filters( 'mtdi_demo_importer_docs_url', 'https://mysterythemes.com/docs/mysterythemes-demo-importer/' ) ) . '" title="' . esc_attr( __( 'View Demo Importer Documentation', 'mysterythemes-demo-importer' ) ) . '" target="_blank">' . __( 'Documentation', 'mysterythemes-demo-importer' ) . '</a>',
-					'support' => '<a href="' . esc_url( apply_filters( 'mtdi_demo_importer_support_url', 'https://wordpress.org/support/plugin/mysterythemes-demo-importer' ) ) . '" title="' . esc_attr( __( 'Visit Free Support Forum', 'mysterythemes-demo-importer' ) ) . '" target="_blank">' . __( 'Free Support', 'mysterythemes-demo-importer' ) . '</a>',
+					'docs'    => '<a href="' . esc_url( apply_filters( 'mtdi_demo_importer_docs_url', '//mysterythemes.com/docs/mysterythemes-demo-importer/' ) ) . '" title="' . esc_attr( __( 'View Demo Importer Documentation', 'mysterythemes-demo-importer' ) ) . '" target="_blank">' . __( 'Documentation', 'mysterythemes-demo-importer' ) . '</a>',
+					'support' => '<a href="' . esc_url( apply_filters( 'mtdi_demo_importer_support_url', '//wordpress.org/support/plugin/mysterythemes-demo-importer' ) ) . '" title="' . esc_attr( __( 'Visit Free Support Forum', 'mysterythemes-demo-importer' ) ) . '" target="_blank">' . __( 'Free Support', 'mysterythemes-demo-importer' ) . '</a>',
 				);
 
 				return array_merge( $plugin_meta, $new_plugin_meta );
