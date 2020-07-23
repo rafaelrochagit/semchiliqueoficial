@@ -19,10 +19,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$arr_format = explode(" ", $formatted_destination);
+
 $formatted_destination    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
 $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
+
+$formatted_destination = end($arr_format);
+
 ?>
 <tr class="woocommerce-shipping-totals shipping">
 	<th><?php echo wp_kses_post( $package_name ); ?></th>

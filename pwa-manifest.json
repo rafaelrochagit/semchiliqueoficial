@@ -4,13 +4,13 @@
     "description": "",
     "icons": [
         {
-            "src": "https:\/\/semchilique.opasaquei.com.br\/wp-content\/uploads\/2020\/06\/02.2.png",
+            "src": "https:\/\/semchilique.com\/wp-content\/uploads\/2020\/06\/02.2.png",
             "sizes": "192x192",
             "type": "image\/png",
             "purpose": "any maskable"
         },
         {
-            "src": "https:\/\/semchilique.opasaquei.com.br\/wp-content\/uploads\/2020\/06\/02.2.png",
+            "src": "https:\/\/semchilique.com\/wp-content\/uploads\/2020\/06\/02.2.png",
             "sizes": "512x512",
             "type": "image\/png",
             "purpose": "any maskable"
@@ -20,7 +20,7 @@
     "theme_color": "#D5E0EB",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "https:\/\/semchilique.opasaquei.com.br\/?utm_source=pwa-app\u0026utm_medium=pwa-app\u0026utm_campaign=pwa-campaign\u0026utm_term=pwa-term\u0026utm_content=pwa-content",
-    "scope": "https:\/\/semchilique.opasaquei.com.br\/",
+    "start_url": "https:\/\/semchilique.com\/?utm_source=pwa-app\u0026utm_medium=pwa-app\u0026utm_campaign=pwa-campaign\u0026utm_term=pwa-term\u0026utm_content=pwa-content",
+    "scope": "https:\/\/semchilique.com\/",
     "gcm_sender_id": "103953800507"
 }

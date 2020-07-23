@@ -1,21 +1,21 @@
-const CACHE_VERSION = '1.7.16.2';
+const CACHE_VERSION = '1.7.18';
 
 const BASE_CACHE_FILES = [
-    'https://semchilique.opasaquei.com.br/wp-content/uploads/2020/06/02.2.png',
-'https://semchilique.opasaquei.com.br/wp-content/uploads/2020/06/02.2.png',
+    'https://semchilique.com/wp-content/uploads/2020/06/02.2.png',
+'https://semchilique.com/wp-content/uploads/2020/06/02.2.png',
 
 ];
 
 const OFFLINE_CACHE_FILES = [
-     'https://semchilique.opasaquei.com.br/',
+     'https://semchilique.com/',
 ];
 
 const NOT_FOUND_CACHE_FILES = [
-    'https://semchilique.opasaquei.com.br/',
+    'https://semchilique.com/',
 ];
 
-const OFFLINE_PAGE = 'https://semchilique.opasaquei.com.br/';
-const NOT_FOUND_PAGE = 'https://semchilique.opasaquei.com.br/';
+const OFFLINE_PAGE = 'https://semchilique.com/';
+const NOT_FOUND_PAGE = 'https://semchilique.com/';
 
 const CACHE_VERSIONS = {
     content: 'content-v' + CACHE_VERSION,
@@ -35,7 +35,7 @@ const MAX_TTL = {
 };
 
 const CACHE_STRATEGY = {
-    default: 'cacheFirst',
+    default: 'networkFirst',
     css_js: 'cacheFirst',
     images: 'cacheFirst',
     fonts: 'cacheFirst',
@@ -43,7 +43,7 @@ const CACHE_STRATEGY = {
 
 const CACHE_BLACKLIST =  [
 //    (str) => {
-//        return !str.includes('/wp-admin/') || !str.startsWith('https://semchilique.opasaquei.com.br//wp-admin/');
+//        return !str.includes('/wp-admin/') || !str.startsWith('https://semchilique.com//wp-admin/');
 //    },
 ];
 const neverCacheUrls = [/\/wp-admin/,/\/wp-login/,/preview=true/,/\/cart/,/ajax/,/login/,];
@@ -623,7 +623,9 @@ self.addEventListener(
                 event.respondWith(
                     fetch(event.request)
                         .catch(error => {
-                            return caches.match(offlinePage);
+                            return caches.open(CACHE_VERSIONS.offline).then(function(cache) {
+                                        return cache.match(OFFLINE_URL);
+                                      });
                         })
                 );
                 return false;
@@ -681,6 +683,7 @@ self.addEventListener('message', (event) => {
             case 'cache' :               
                 pwaForWpprecacheUrl(event.data.url);
                 break;
+            
             default :
                 console.log('Unknown action: ' + event.data.action);
                 break;
@@ -692,45 +695,3 @@ self.addEventListener('message', (event) => {
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js");
                                     workbox.googleAnalytics.initialize();
 
-importScripts("https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js");
-importScripts("https://www.gstatic.com/firebasejs/7.8.2/firebase-messaging.js");
-var pnScriptSetting = {"nonce":"2692ff8acb","pn_config":{"apiKey":"AIzaSyDhRbFy9m-NXZVkozYJwKdDYJuwsL6W_bw","authDomain":"pushnotificationsio.firebaseapp.com","databaseURL":"https:\/\/pushnotificationsio.firebaseio.com","projectId":"pushnotificationsio","storageBucket":"pushnotificationsio.appspot.com","messagingSenderId":"788493704860","appId":"1:788493704860:web:ba71fd692e7cc9651f5759","measurementId":"G-NXS0Z75BCH"},"swsource":"https:\/\/semchilique.opasaquei.com.br\/?push_notification_sw=1","scope":"https:\/\/semchilique.opasaquei.com.br\/","ajax_url":"https:\/\/semchilique.opasaquei.com.br\/wp-admin\/admin-ajax.php"}
-var config=pnScriptSetting.pn_config;   
-if (!firebase.apps.length) {firebase.initializeApp(config);}		  		  		  
-const messaging = firebase.messaging();
-
-messaging.setBackgroundMessageHandler(function(payload) {  
-const notificationTitle = payload.data.title;
-const notificationOptions = {
-				body: payload.data.body,
-				icon: payload.data.icon,
-				image: payload.data.image,
-				vibrate: [100, 50, 100],
-				data: {
-					dateOfArrival: Date.now(),
-					primarykey: payload.data.currentCampaign,
-					url : payload.data.url
-				  },
-				}
-	return self.registration.showNotification(notificationTitle, notificationOptions); 
-
-});
-
-self.addEventListener("notificationclose", function(e) {
-var notification = e.notification;
-var primarykey = notification.data.primarykey;
-console.log("Closed notification: " + primarykey);
-});
-
-self.addEventListener("notificationclick", function(e) {
-var notification = e.notification;
-var primarykey = notification.data.primarykey;
-var action = e.action;
-if (action === "close") {
-  notification.close();
-} else {
-  clients.openWindow(notification.data.url);
-  notification.close();
-}
-});  
