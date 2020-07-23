@@ -16,7 +16,7 @@ namespace SW_WAPF\Includes\Classes {
 
         public static function cpt_to_string($cpt){
 
-            return __('Product','sw-wapf');
+            return __('Product','advanced-product-fields-for-woocommerce');
 
         }
 

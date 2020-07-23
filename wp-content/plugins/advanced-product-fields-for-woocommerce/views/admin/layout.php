@@ -19,13 +19,13 @@ use SW_WAPF\Includes\Classes\Field_Groups;
                 Html::setting(array(
                     'type'              => 'select',
                     'id'                => 'labels_position',
-                    'label'             => __('Label position','sw-wapf'),
-                    'description'       => __('Where should the label be positioned in relation to the field?','sw-wapf'),
+                    'label'             => __('Label position','advanced-product-fields-for-woocommerce'),
+                    'description'       => __('Where should the label be positioned in relation to the field?','advanced-product-fields-for-woocommerce'),
                     'options'           => array(
-                        'above'         => __('Above the field', 'sw-wapf'),
-                        'below'         => __('Below the field', 'sw-wapf'),
-                        /*'left'          => __('Left from the field', 'sw-wapf'),
-                        'right'         => __('Right from the field', 'sw-wapf'),*/
+                        'above'         => __('Above the field', 'advanced-product-fields-for-woocommerce'),
+                        'below'         => __('Below the field', 'advanced-product-fields-for-woocommerce'),
+                        /*'left'          => __('Left from the field', 'advanced-product-fields-for-woocommerce'),
+                        'right'         => __('Right from the field', 'advanced-product-fields-for-woocommerce'),*/
                     ),
                     'is_field_setting'  => false
                 ));
@@ -33,11 +33,11 @@ use SW_WAPF\Includes\Classes\Field_Groups;
                 Html::setting(array(
                     'type'              => 'select',
                     'id'                => 'instructions_position',
-                    'label'             => __('Instruction position','sw-wapf'),
-                    'description'       => __('Where should the instructions be positioned?','sw-wapf'),
+                    'label'             => __('Instruction position','advanced-product-fields-for-woocommerce'),
+                    'description'       => __('Where should the instructions be positioned?','advanced-product-fields-for-woocommerce'),
                     'options'           => array(
-                        'label'         => __('Below the label', 'sw-wapf'),
-                        'field'         => __('Below the field', 'sw-wapf'),
+                        'label'         => __('Below the label', 'advanced-product-fields-for-woocommerce'),
+                        'field'         => __('Below the field', 'advanced-product-fields-for-woocommerce'),
                     ),
                     'is_field_setting'  => false
                 ));
@@ -45,16 +45,16 @@ use SW_WAPF\Includes\Classes\Field_Groups;
                 Html::setting(array(
                     'type'              => 'true-false',
                     'id'                => 'mark_required',
-                    'label'             => __('Mark required fields','sw-wapf'),
-                    'description'       => __('Add a *-symbol next to required fields.','sw-wapf'),
+                    'label'             => __('Mark required fields','advanced-product-fields-for-woocommerce'),
+                    'description'       => __('Add a *-symbol next to required fields.','advanced-product-fields-for-woocommerce'),
                     'is_field_setting'  => false
                 ));
 
                 Html::setting(array(
 	            'type'              => 'true-false',
 	            'id'                => 'product_image',
-	            'label'             => __('Change product image','sw-wapf'),
-	            'description'       => __('Should the product image change when options are selected?','sw-wapf'),
+	            'label'             => __('Change product image','advanced-product-fields-for-woocommerce'),
+	            'description'       => __('Should the product image change when options are selected?','advanced-product-fields-for-woocommerce'),
 	            'is_field_setting'  => true,
 	            'pro'               => true
             ));

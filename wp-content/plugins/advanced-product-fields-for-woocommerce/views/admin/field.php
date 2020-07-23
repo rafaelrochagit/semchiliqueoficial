@@ -1,4 +1,5 @@
 <?php
+use SW_WAPF\Includes\Classes\Html;
 /* @var $field array */
 /* @var $type string */
 ?>
@@ -54,36 +55,36 @@
     <div class="wapf-field__body" style="display: none;">
 
         <?php
-        \SW_WAPF\Includes\Classes\Html::setting(array(
+        Html::setting(array(
             'type'              => 'types',
             'id'                => 'type',
-            'label'             => __('Type','sw-wapf'),
-            'description'       => __('What type of field should this be?','sw-wapf'),
+            'label'             => __('Type','advanced-product-fields-for-woocommerce'),
+            'description'       => __('What type of field should this be?','advanced-product-fields-for-woocommerce'),
             'options'           => \SW_WAPF\Includes\Classes\Fields::get_field_types(),
             'is_field_setting'  => true
         ));
 
-        \SW_WAPF\Includes\Classes\Html::setting(array(
+        Html::setting(array(
             'type'              => 'text',
             'id'                => 'label',
-            'label'             => __('Label','sw-wapf'),
-            'description'       => __('This is the label that is shown next to the field.','sw-wapf'),
+            'label'             => __('Label','advanced-product-fields-for-woocommerce'),
+            'description'       => __('This is the label that is shown next to the field.','advanced-product-fields-for-woocommerce'),
             'is_field_setting'  => true
         ));
 
-        \SW_WAPF\Includes\Classes\Html::setting(array(
+        Html::setting(array(
             'type'              => 'textarea',
             'id'                => 'description',
-            'label'             => __('Instructions','sw-wapf'),
-            'description'       => __('Instructions can be used to display extra information near the field. Keep it short.','sw-wapf'),
+            'label'             => __('Instructions','advanced-product-fields-for-woocommerce'),
+            'description'       => __('Instructions can be used to display extra information near the field. Keep it short.','advanced-product-fields-for-woocommerce'),
             'is_field_setting'  => true
         ));
 
-        \SW_WAPF\Includes\Classes\Html::setting(array(
+        Html::setting(array(
             'type'              => 'true-false',
             'id'                => 'required',
-            'label'             => __('Required','sw-wapf'),
-            'description'       => __('Select "yes" if the field should require input from the user.','sw-wapf'),
+            'label'             => __('Required','advanced-product-fields-for-woocommerce'),
+            'description'       => __('Select "yes" if the field should require input from the user.','advanced-product-fields-for-woocommerce'),
             'is_field_setting'  => true
         ));
 
@@ -92,35 +93,35 @@
                 <?php
                     foreach($options as $option) {
                         if(!empty($option) && isset($option['id']) && isset($option['type']))
-                            \SW_WAPF\Includes\Classes\Html::setting($option);
+                            Html::setting($option);
                     }
                 ?>
             </div>
         <?php
         }
 
-        \SW_WAPF\Includes\Classes\Html::setting(array(
+        Html::setting(array(
             'type'              => 'true-false',
             'id'                => 'qty_based',
-            'label'             => __('Quantity based','sw-wapf'),
-            'description'       => __('Should this field appear multiple times depending on the chosen quantity?','sw-wapf'),
+            'label'             => __('Quantity based','advanced-product-fields-for-woocommerce'),
+            'description'       => __('Should this field appear multiple times depending on the chosen quantity?','advanced-product-fields-for-woocommerce'),
             'is_field_setting'  => true,
             'pro'               => true
         ));
 
 
-        \SW_WAPF\Includes\Classes\Html::setting(array(
+        Html::setting(array(
             'type'              => 'conditionals',
             'id'                => 'conditionals',
-            'label'             => __('Conditionals','sw-wapf'),
-            'description'       => __('Only show this field when conditional rules are true.','sw-wapf'),
+            'label'             => __('Conditionals','advanced-product-fields-for-woocommerce'),
+            'description'       => __('Only show this field when conditional rules are true.','advanced-product-fields-for-woocommerce'),
             'is_field_setting'  => true
         ));
 
-        \SW_WAPF\Includes\Classes\Html::setting(array(
+        Html::setting(array(
             'type'              => 'attributes',
             'id'                => 'attributes',
-            'label'             => __('Wrapper attributes','sw-wapf'),
+            'label'             => __('Wrapper attributes','advanced-product-fields-for-woocommerce'),
             'is_field_setting'  => true
         ));
         ?>

@@ -66,7 +66,7 @@ namespace SW_WAPF\Includes\Controllers {
                 return $text;
 
             if( Field_Groups::product_has_field_group($product) )
-                return esc_html(get_option('wapf_add_to_cart_text', __('Select options','sw-wapf')));
+                return esc_html(get_option('wapf_add_to_cart_text', __('Select options','advanced-product-fields-for-woocommerce')));
 
             return $text;
 
@@ -88,7 +88,7 @@ namespace SW_WAPF\Includes\Controllers {
 				    $value = Fields::get_raw_field_value_from_request($field, 0, true);
 
 				    if(empty($value)) {
-					    wc_add_notice(__('The field "' . esc_html($field->label) . '" is required.', 'sw-wapf'), 'error');
+					    wc_add_notice(__('The field "' . esc_html($field->label) . '" is required.', 'advanced-product-fields-for-woocommerce'), 'error');
 					    return false;
 				    }
 

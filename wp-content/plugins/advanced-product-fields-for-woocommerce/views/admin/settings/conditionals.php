@@ -2,9 +2,9 @@
 
 <div class="wapf-field__setting" data-setting="<?php echo $model['id']; ?>">
     <div class="wapf-setting__label">
-        <label><?php _e($model['label'],'sw-wapf');?></label>
+        <label><?php _e($model['label'],'advanced-product-fields-for-woocommerce');?></label>
         <p class="wapf-description">
-            <?php _e($model['description'],'sw-wapf');?>
+            <?php _e($model['description'],'advanced-product-fields-for-woocommerce');?>
         </p>
     </div>
     <div class="wapf-setting__input">
@@ -13,7 +13,7 @@
 
             <div class="wapf-field__conditionals__container">
                 <div rv-if="fields | hasLessThan 2" class="wapf-lighter">
-                    <?php _e('You need atleast 2 fields to create conditional rules. Add another field first.','sw-wapf');?>
+                    <?php _e('You need atleast 2 fields to create conditional rules. Add another field first.','advanced-product-fields-for-woocommerce');?>
                 </div>
                 <div rv-if="fields | hasMoreThan 1">
                     <div rv-each-conditional="field.conditionals">
@@ -37,15 +37,15 @@
                                     </select>
                                 </td>
                                 <td style="width: 125px;">
-                                    <a href="#" rv-on-click="deleteRule" class="button button-small">- <?php _e('Delete','sw-wapf'); ?></a>
-                                    <a href="#" rv-show="conditional.rules | isLastIteration $index " rv-on-click="addRule" class="button button-small">+ <?php _e('And','sw-wapf'); ?></a>
+                                    <a href="#" rv-on-click="deleteRule" class="button button-small">- <?php _e('Delete','advanced-product-fields-for-woocommerce'); ?></a>
+                                    <a href="#" rv-show="conditional.rules | isLastIteration $index " rv-on-click="addRule" class="button button-small">+ <?php _e('And','advanced-product-fields-for-woocommerce'); ?></a>
                                 </td>
                             </tr>
                         </table>
-                        <div rv-if="$index | lt field.conditionals"><b><?php _e('Or','sw-wapf');?></b></div>
+                        <div rv-if="$index | lt field.conditionals"><b><?php _e('Or','advanced-product-fields-for-woocommerce');?></b></div>
                     </div>
                     <div style="padding-top: 5px;">
-                        <a href="#" rv-on-click="addConditional" class="button button-small"><?php _e('Add new rule group','sw-wapf'); ?></a>
+                        <a href="#" rv-on-click="addConditional" class="button button-small"><?php _e('Add new rule group','advanced-product-fields-for-woocommerce'); ?></a>
                     </div>
                 </div>
             </div>

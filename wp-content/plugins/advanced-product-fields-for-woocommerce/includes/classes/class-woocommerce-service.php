@@ -129,7 +129,7 @@ namespace SW_WAPF\Includes\Classes {
 
                 foreach ($attributes as $key => $attribute) {
                     if ($attribute === '')
-                        $attributes[$key] = __('any', 'sw-wapf') . ' ' .  strtolower(wc_attribute_label(str_replace('attribute_', '', $key)));
+                        $attributes[$key] = __('any', 'advanced-product-fields-for-woocommerce') . ' ' .  strtolower(wc_attribute_label(str_replace('attribute_', '', $key)));
                 }
 
                 $products[] = array(

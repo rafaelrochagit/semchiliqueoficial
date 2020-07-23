@@ -5,7 +5,7 @@ $class = 'wapf--' . uniqid();
 <a style="padding-top:15px;display: inline-block;" href="javascript:jQuery('.<?php echo $class;?>').show();">
 	<?php
 	if(empty($model['button']))
-		_e('View help','sw-wapf');
+		_e('View help','advanced-product-fields-for-woocommerce');
 	else echo $model['button'];
 	?>
 </a>

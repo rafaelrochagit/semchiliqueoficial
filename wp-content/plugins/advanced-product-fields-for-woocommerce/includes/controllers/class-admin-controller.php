@@ -68,10 +68,10 @@ namespace SW_WAPF\Includes\Controllers {
                 wp_enqueue_style( 'wp-color-picker' );
 
                 wp_localize_script( 'wapf-admin-js', 'wapf_language',array(
-                    'title_required'        => __("Please add a field group title first.", 'sw-wapf'),
-                    'fields_required'       => __("Please add some fields first.", 'sw-wapf'),
-                    'field_limit'           => __('You can only add 5 fields in the free version. Please consider upgrading to premium to support our product. Thank you!'),
-                    'fieldgroup_limit'      => __("You've reached the amount of field groups you can create in the free version. Please consider upgrading to premium to add unlimited field groups. Thank you!")
+                    'title_required'        => __("Please add a field group title first.", 'advanced-product-fields-for-woocommerce'),
+                    'fields_required'       => __("Please add some fields first.", 'advanced-product-fields-for-woocommerce'),
+                    'field_limit'           => __('You can only add 5 fields in the free version. Please consider upgrading to premium to support our product. Thank you!','advanced-product-fields-for-woocommerce'),
+                    'fieldgroup_limit'      => __("You've reached the amount of field groups you can create in the free version. Please consider upgrading to premium to add unlimited field groups. Thank you!",'advanced-product-fields-for-woocommerce')
                 ));
 
                 $localize_array = array(
@@ -99,8 +99,8 @@ namespace SW_WAPF\Includes\Controllers {
 
             add_submenu_page(
                 'woocommerce',
-                __('Product Fields','sw-wapf'),
-                __('Product Fields','sw-wapf'),
+                __('Product Fields','advanced-product-fields-for-woocommerce'),
+                __('Product Fields','advanced-product-fields-for-woocommerce'),
                 $cap,
                 'wapf-field-groups',
                 array($this,'render_field_group_list')
@@ -109,8 +109,8 @@ namespace SW_WAPF\Includes\Controllers {
 
         public function add_plugin_action_links($links) {
             $links = array_merge( array(
-                '<a href="' . esc_url( admin_url( '/admin.php?page=wc-settings&tab=wapf_settings' ) ) . '">' . __( 'Settings', 'sw-wapf' ) . '</a>',
-                '<a href="' . esc_url( admin_url( '/admin.php?page=wapf-field-groups' ) ) . '">' . __( 'Global fields', 'sw-wapf' ) . '</a>'
+                '<a href="' . esc_url( admin_url( '/admin.php?page=wc-settings&tab=wapf_settings' ) ) . '">' . __( 'Settings', 'advanced-product-fields-for-woocommerce' ) . '</a>',
+                '<a href="' . esc_url( admin_url( '/admin.php?page=wapf-field-groups' ) ) . '">' . __( 'Global fields', 'advanced-product-fields-for-woocommerce' ) . '</a>'
             ), $links );
 
             return $links;
@@ -148,7 +148,7 @@ namespace SW_WAPF\Includes\Controllers {
                 remove_action('save_post_' . $cpt, array($this, 'save_post'), 10);
             }
 
-            Field_Groups::save($fg,$post->post_type,null,$post->post_title . ' - '. __('Copy','sw-wapf'), 'publish' );
+            Field_Groups::save($fg,$post->post_type,null,$post->post_title . ' - '. __('Copy','advanced-product-fields-for-woocommerce'), 'publish' );
 
             foreach(wapf_get_setting('cpts') as $cpt) {
                 remove_action( 'save_post_' . $cpt, array($this, 'save_post'),10 );
@@ -160,7 +160,7 @@ namespace SW_WAPF\Includes\Controllers {
         public function show_duplicate_clamped_notice() {
 	        ?>
 	        <div class="notice error my-acf-notice is-dismissible">
-		        <p><?php _e( "Sorry :( We can't duplicate this field group. You've reached the amount of field groups allowed in the free version. Consider removing an old field group or upgrading to premium for unlimited field groups.", 'sw-wapf' ); ?></p>
+		        <p><?php _e( "Sorry :( We can't duplicate this field group. You've reached the amount of field groups allowed in the free version. Consider removing an old field group or upgrading to premium for unlimited field groups.", 'advanced-product-fields-for-woocommerce' ); ?></p>
 	        </div>
 	        <?php
         }
@@ -171,7 +171,7 @@ namespace SW_WAPF\Includes\Controllers {
 
         public function add_product_tab($tabs) {
             $tabs['customfields'] = array(
-                'label'		=> __( 'Custom fields', 'sw-wapf' ),
+                'label'		=> __( 'Custom fields', 'advanced-product-fields-for-woocommerce' ),
                 'target'	=> 'customfields_options',
                 'class'		=> array( 'show_if_simple', 'show_if_variable'  ),
             );
@@ -182,7 +182,7 @@ namespace SW_WAPF\Includes\Controllers {
 
             echo '<div id="customfields_options" class="panel woocommerce_options_panel">';
 
-            echo '<h4 class="wapf-product-admin-title">' .  __('Fields','sw-wapf') .' &mdash; <span style="opacity:.5;">'.__('Add some custom fields to this group.','sw-wapf').'</span>' . '</h4>';
+            echo '<h4 class="wapf-product-admin-title">' .  __('Fields','advanced-product-fields-for-woocommerce') .' &mdash; <span style="opacity:.5;">'.__('Add some custom fields to this group.','advanced-product-fields-for-woocommerce').'</span>' . '</h4>';
 
             $this->display_field_group_fields(true);
 
@@ -190,7 +190,7 @@ namespace SW_WAPF\Includes\Controllers {
             $this->display_field_group_conditions(true);
             echo '</div>';
 
-            echo '<h4 class="wapf-product-admin-title">' .  __('Layout','sw-wapf') .' &mdash; <span style="opacity:.5;">'.__('Field group layout settings','sw-wapf').'</span>' . '</h4>';
+            echo '<h4 class="wapf-product-admin-title">' .  __('Layout','advanced-product-fields-for-woocommerce') .' &mdash; <span style="opacity:.5;">'.__('Field group layout settings','advanced-product-fields-for-woocommerce').'</span>' . '</h4>';
             $this->display_field_group_layout(true);
 
             echo '</div>';
@@ -223,34 +223,34 @@ namespace SW_WAPF\Includes\Controllers {
             $settings = array();
 
             $settings[] = array(
-                'name'      => __( 'Product field settings', 'sw-wapf' ),
+                'name'      => __( 'Product field settings', 'advanced-product-fields-for-woocommerce' ),
                 'type'      => 'title',
             );
 
             $settings[] = array(
-                'name'      => __( 'Show in cart', 'sw-wapf' ),
+                'name'      => __( 'Show in cart', 'advanced-product-fields-for-woocommerce' ),
                 'id'        => 'wapf_settings_show_in_cart',
                 'type'      => 'checkbox',
                 'default'   => 'yes',
-                'desc'      => __( "Show on customer's cart page.", 'sw-wapf' ),
-                'desc_tip'  => __('When a user has filled out your fields, should they be summarized on their cart page after adding the product to their cart?', 'sw-wapf')
+                'desc'      => __( "Show on customer's cart page.", 'advanced-product-fields-for-woocommerce' ),
+                'desc_tip'  => __('When a user has filled out your fields, should they be summarized on their cart page after adding the product to their cart?', 'advanced-product-fields-for-woocommerce')
             );
 
             $settings[] = array(
-                'name'      => __( 'Show on checkout', 'sw-wapf' ),
+                'name'      => __( 'Show on checkout', 'advanced-product-fields-for-woocommerce' ),
                 'id'        => 'wapf_settings_show_in_checkout',
                 'type'      => 'checkbox',
                 'default'   => 'yes',
-                'desc'      => __( "Show on the checkout page.", 'sw-wapf' ),
-                'desc_tip'  => __('When a user has filled out your fields, should they be summarized on their checkout page?', 'sw-wapf')
+                'desc'      => __( "Show on the checkout page.", 'advanced-product-fields-for-woocommerce' ),
+                'desc_tip'  => __('When a user has filled out your fields, should they be summarized on their checkout page?', 'advanced-product-fields-for-woocommerce')
             );
 
             $settings[] = array(
-                'name'      => __( '"Add to cart" button text', 'sw-wapf' ),
+                'name'      => __( '"Add to cart" button text', 'advanced-product-fields-for-woocommerce' ),
                 'type'      => 'text',
                 'id'        => 'wapf_add_to_cart_text',
-                'desc_tip'  => __( 'When a product has custom fields, what should the "add to cart" button say?.', 'sw-wapf' ),
-                'default'   => __('Select options','sw-wapf')
+                'desc_tip'  => __( 'When a product has custom fields, what should the "add to cart" button say?.', 'advanced-product-fields-for-woocommerce' ),
+                'default'   => __('Select options','advanced-product-fields-for-woocommerce')
             );
 
             $settings[] = array(
@@ -261,7 +261,7 @@ namespace SW_WAPF\Includes\Controllers {
         }
 
         public function woocommerce_settings_tab($tabs) {
-            $tabs['wapf_settings'] = __( 'Product fields', 'sw-wapf' );
+            $tabs['wapf_settings'] = __( 'Product fields', 'advanced-product-fields-for-woocommerce' );
             return $tabs;
         }
         #endregion
@@ -419,7 +419,7 @@ namespace SW_WAPF\Includes\Controllers {
 
                 add_meta_box(
                     'wapf-field-list',
-                    __('Fields','sw-wapf') .' &mdash; <span style="opacity:.5;">'.__('Add some custom fields to this group.','sw-wapf').'</span>',
+                    __('Fields','advanced-product-fields-for-woocommerce') .' &mdash; <span style="opacity:.5;">'.__('Add some custom fields to this group.','advanced-product-fields-for-woocommerce').'</span>',
                     array($this, 'display_field_group_fields'),
                     $cpts,
                     'normal',
@@ -428,7 +428,7 @@ namespace SW_WAPF\Includes\Controllers {
 
                 add_meta_box(
                     'wapf-field-group-conditions',
-                    __('Conditions','sw-wapf') .' &mdash; <span style="opacity:.5;">'.__('When should this field group be displayed?','sw-wapf').'</span>',
+                    __('Conditions','advanced-product-fields-for-woocommerce') .' &mdash; <span style="opacity:.5;">'.__('When should this field group be displayed?','advanced-product-fields-for-woocommerce').'</span>',
                     array($this, 'display_field_group_conditions'),
                     $cpts,
                     'normal',
@@ -437,7 +437,7 @@ namespace SW_WAPF\Includes\Controllers {
 
                 add_meta_box(
                     'wapf-field-group-layout',
-                    __('Layout','sw-wapf') .' &mdash; <span style="opacity:.5;">'.__('Field group layout settings','sw-wapf').'</span>',
+                    __('Layout','advanced-product-fields-for-woocommerce') .' &mdash; <span style="opacity:.5;">'.__('Field group layout settings','advanced-product-fields-for-woocommerce').'</span>',
                     array($this, 'display_field_group_layout'),
                     $cpts,
                     'normal',
@@ -553,7 +553,7 @@ namespace SW_WAPF\Includes\Controllers {
             $list->prepare_items();
 
             $model = array(
-                'title'         => __('Product Field Groups', 'sw-wapf'),
+                'title'         => __('Product Field Groups', 'advanced-product-fields-for-woocommerce'),
                 'can_create'    => current_user_can($cap),
                 'count'         =>  Helper::get_fieldgroup_counts()['publish']
             );

@@ -1,8 +1,8 @@
-# Copyright (C) 2020 sw-wapf
-# This file is distributed under the same license as the sw-wapf package.
+# Copyright (C) 2020 advanced-product-fields-for-woocommerce
+# This file is distributed under the same license as the advanced-product-fields-for-woocommerce package.
 msgid ""
 msgstr ""
-"Project-Id-Version: sw-wapf\n"
+"Project-Id-Version: advanced-product-fields-for-woocommerce\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -297,7 +297,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: dist/includes/classes/class-wapf-list-table.php:16, dist/views/admin/field.php:60
+#: dist/includes/classes/class-wapf-list-table.php:16, dist/views/admin/field.php:61
 msgid "Type"
 msgstr ""
 
@@ -311,10 +311,6 @@ msgstr ""
 
 #: dist/includes/classes/class-wapf-list-table.php:108
 msgid "Duplicate &#8220;%s&#8221;"
-msgstr ""
-
-#: dist/includes/classes/class-wapf-list-table.php:109
-msgid "Duplicate"
 msgstr ""
 
 #: dist/includes/classes/class-wapf-list-table.php:175
@@ -331,6 +327,14 @@ msgstr ""
 
 #: dist/includes/controllers/class-admin-controller.php:79
 msgid "Please add some fields first."
+msgstr ""
+
+#: dist/includes/controllers/class-admin-controller.php:80
+msgid "You can only add 5 fields in the free version. Please consider upgrading to premium to support our product. Thank you!"
+msgstr ""
+
+#: dist/includes/controllers/class-admin-controller.php:81
+msgid "You've reached the amount of field groups you can create in the free version. Please consider upgrading to premium to add unlimited field groups. Thank you!"
 msgstr ""
 
 #: dist/includes/controllers/class-admin-controller.php:110, dist/includes/controllers/class-admin-controller.php:111
@@ -445,51 +449,51 @@ msgstr ""
 msgid "Sorry :( We can't add a new field group. You've reached the amount of field groups allowed in the free version. Consider removing an old field group or upgrading to premium for unlimited field groups."
 msgstr ""
 
-#: dist/views/admin/field.php:61
+#: dist/views/admin/field.php:62
 msgid "What type of field should this be?"
 msgstr ""
 
-#: dist/views/admin/field.php:69
+#: dist/views/admin/field.php:70
 msgid "Label"
 msgstr ""
 
-#: dist/views/admin/field.php:70
+#: dist/views/admin/field.php:71
 msgid "This is the label that is shown next to the field."
 msgstr ""
 
-#: dist/views/admin/field.php:77
+#: dist/views/admin/field.php:78
 msgid "Instructions"
 msgstr ""
 
-#: dist/views/admin/field.php:78
+#: dist/views/admin/field.php:79
 msgid "Instructions can be used to display extra information near the field. Keep it short."
 msgstr ""
 
-#: dist/views/admin/field.php:85
+#: dist/views/admin/field.php:86
 msgid "Required"
 msgstr ""
 
-#: dist/views/admin/field.php:86
+#: dist/views/admin/field.php:87
 msgid "Select \"yes\" if the field should require input from the user."
 msgstr ""
 
-#: dist/views/admin/field.php:105
+#: dist/views/admin/field.php:106
 msgid "Quantity based"
 msgstr ""
 
-#: dist/views/admin/field.php:106
+#: dist/views/admin/field.php:107
 msgid "Should this field appear multiple times depending on the chosen quantity?"
 msgstr ""
 
-#: dist/views/admin/field.php:115
+#: dist/views/admin/field.php:116
 msgid "Conditionals"
 msgstr ""
 
-#: dist/views/admin/field.php:116
+#: dist/views/admin/field.php:117
 msgid "Only show this field when conditional rules are true."
 msgstr ""
 
-#: dist/views/admin/field.php:123
+#: dist/views/admin/field.php:124
 msgid "Wrapper attributes"
 msgstr ""
 
@@ -603,10 +607,6 @@ msgstr ""
 
 #: dist/views/admin/settings/true-false.php:8
 msgid "(Pro only)"
-msgstr ""
-
-#: dist/views/admin/settings/types.php:16
-msgid " (Pro only)"
 msgstr ""
 
 #: dist/views/frontend/fields/select.php:15

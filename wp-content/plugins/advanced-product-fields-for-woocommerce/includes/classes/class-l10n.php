@@ -19,7 +19,7 @@ namespace SW_WAPF\Includes\Classes {
         public function load_text_domain()
         {
             load_plugin_textdomain(
-                'sw-wapf',
+                'advanced-product-fields-for-woocommerce',
                 false,
                 trailingslashit(wapf_get_setting('slug')) . trailingslashit($this->language_folder)
             );

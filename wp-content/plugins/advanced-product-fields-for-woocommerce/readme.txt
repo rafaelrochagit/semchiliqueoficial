@@ -6,7 +6,7 @@ Tested up to: 5.4.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 
 Customize WooCommerce product pages with powerful and intuitive options ( = product add-ons).
 
@@ -34,6 +34,10 @@ The backend looks & works similar to ACF, so you are familiar with setting up th
   * **Checkboxes** - To choose one or more options
   * **Radio buttons** - To select one option from multiple options
   * **True/false** - A "yes/no" checkbox
+* Content fields like:
+  * **Section** - to group everything together
+  * **Image** - to add images
+  * **Paragraph** - to add text/shortcodes.
 * Conditional logic (show/hide fields based on other fields)
 * Dynamic product price: Change the price depending on field value(s)
 * Works with your WooCommerce tax settings
@@ -96,6 +100,9 @@ Find out more about the [pro version here](https://studiowombat.com/plugin/advan
  You'll need WooCommerce 3.2.0 or higher, WordPress 4.7 or higher, and PHP 5.6 or higher to make this plugin work.
 
 == Changelog ==
+
+= 1.3.0 =
+ * **Warning:** changed translations text-domain to match the plugin slug so transating via translate.wordpress.org is possible. **If you've generated your own .po/.mo files, you'll need to rename those to match the new slug "advanced-product-fields-for-woocommerce"**.
 
 = 1.2.1 =
  * Fix: fixed a PHP warning with stripslashes().
@@ -184,4 +191,7 @@ Find out more about the [pro version here](https://studiowombat.com/plugin/advan
 
 Initial release
 
- == Upgrade Notice ==
+== Upgrade Notice ==
+
+= 1.3.0 =
+Warning for translators: if you've generated your own .po/.mo files, you'll need to rename those to match the new slug "advanced-product-fields-for-woocommerce".

@@ -12,7 +12,7 @@ use SW_WAPF\Includes\Classes\Enumerable;
 	        if(!$model['field']->required || ($model['field']->required && !Enumerable::from($model['field']->options['choices'])->any(function($x){
 				        return isset($x['selected']) && $x['selected'] === true;
 			        })))
-		        echo '<option value="">' . __( 'Choose an option','sw-wapf') . '</option>';
+		        echo '<option value="">' . __( 'Choose an option','advanced-product-fields-for-woocommerce') . '</option>';
 
             foreach($model['field']->options['choices'] as $option) {
                 $attributes = array(

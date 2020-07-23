@@ -18,19 +18,19 @@ use SW_WAPF\Includes\Classes\Helper;
 
             <div class="wapf-field__setting">
                 <div class="wapf-setting__label">
-                    <label><?php _e('Rules','sw-wapf');?></label>
+                    <label><?php _e('Rules','advanced-product-fields-for-woocommerce');?></label>
                     <p class="wapf-description">
-                        <?php _e("Add a set of rules to determine when this field group should appear.",'sw-wapf');?>
+                        <?php _e("Add a set of rules to determine when this field group should appear.",'advanced-product-fields-for-woocommerce');?>
                     </p>
                 </div>
                 <div class="wapf-setting__input">
                     <div rv-show="rulegroups | isEmpty" class="wapf-list--empty" style="display: <?php echo empty($model['conditions']) ? 'block' : 'none';?>;">
-                        <a href="#" class="button button-primary button-large" rv-on-click="addRuleGroup"><?php _e('Add your first rule','sw-wapf'); ?></a>
+                        <a href="#" class="button button-primary button-large" rv-on-click="addRuleGroup"><?php _e('Add your first rule','advanced-product-fields-for-woocommerce'); ?></a>
                     </div>
 
                     <div style="width: 100%;" rv-each-group="rulegroups" rv-cloak rv-class="$index | prefix 'wapf-rulegroup-'">
 
-                        <div style="padding:5px;" rv-if="$index | gt 0"><b><?php _e('Or','sw-wapf');?></b></div>
+                        <div style="padding:5px;" rv-if="$index | gt 0"><b><?php _e('Or','advanced-product-fields-for-woocommerce');?></b></div>
 
                         <table style="width: 100%">
                             <tr rv-each-rule="group.rules" rv-class="$index | prefix 'wapf-rulegroup-rule-'">
@@ -75,7 +75,7 @@ use SW_WAPF\Includes\Classes\Helper;
 
                                 </td>
                                 <td style="width:15%; text-align: right;">
-                                    <a href="#" rv-show="group.rules | isLastIteration $index " rv-on-click="addRule" class="button button-small"><?php _e('And','sw-wapf'); ?></a>
+                                    <a href="#" rv-show="group.rules | isLastIteration $index " rv-on-click="addRule" class="button button-small"><?php _e('And','advanced-product-fields-for-woocommerce'); ?></a>
                                     <a href="#" rv-on-click="deleteRule" class="button button-small">x</a>
                                 </td>
                             </tr>
@@ -83,7 +83,7 @@ use SW_WAPF\Includes\Classes\Helper;
                     </div>
                     <div rv-cloak style="width:100%;">
                         <div class="wapf-conditions-list__footer" rv-show="rulegroups | isNotEmpty">
-                            <a href="#" class="button button-primary button-large" rv-on-click="addRuleGroup"><?php _e('Or','sw-wapf'); ?></a>
+                            <a href="#" class="button button-primary button-large" rv-on-click="addRuleGroup"><?php _e('Or','advanced-product-fields-for-woocommerce'); ?></a>
                         </div>
                     </div>
                 </div>

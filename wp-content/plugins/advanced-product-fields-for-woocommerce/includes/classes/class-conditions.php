@@ -14,83 +14,83 @@ namespace SW_WAPF\Includes\Classes {
                 array(
                     'type'          => 'text',
                     'conditions'    => array(
-                        array('value' => 'empty', 'label' => __('Value is empty','sw-wapf'), 'type' => false),
-                        array('value' => '!empty', 'label' => __('Value is any value','sw-wapf'), 'type' => false),
-                        array('value' => '==', 'label' => __('Value is equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => '!=', 'label' => __('Value is not equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','sw-wapf'), 'type' => 'text', 'pro' => true),
+                        array('value' => 'empty', 'label' => __('Value is empty','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '!empty', 'label' => __('Value is any value','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '==', 'label' => __('Value is equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => '!=', 'label' => __('Value is not equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','advanced-product-fields-for-woocommerce'), 'type' => 'text', 'pro' => true),
                     )
                 ),
                 array(
                     'type'          => 'email',
                     'conditions'    => array(
-                        array('value' => 'empty', 'label' => __('Value is empty','sw-wapf'), 'type' => false),
-                        array('value' => '!empty', 'label' => __('Value is any value','sw-wapf'), 'type' => false),
-                        array('value' => '==', 'label' => __('Value is equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => '!=', 'label' => __('Value is not equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','sw-wapf'), 'type' => 'text', 'pro' => true),
+                        array('value' => 'empty', 'label' => __('Value is empty','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '!empty', 'label' => __('Value is any value','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '==', 'label' => __('Value is equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => '!=', 'label' => __('Value is not equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','advanced-product-fields-for-woocommerce'), 'type' => 'text', 'pro' => true),
                     )
                 ),
                 array(
                     'type'          => 'url',
                     'conditions'    => array(
-                        array('value' => 'empty', 'label' => __('Value is empty','sw-wapf'), 'type' => false),
-                        array('value' => '!empty', 'label' => __('Value is any value','sw-wapf'), 'type' => false),
-                        array('value' => '==', 'label' => __('Value is equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => '!=', 'label' => __('Value is not equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','sw-wapf'), 'type' => 'text', 'pro' => true),
+                        array('value' => 'empty', 'label' => __('Value is empty','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '!empty', 'label' => __('Value is any value','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '==', 'label' => __('Value is equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => '!=', 'label' => __('Value is not equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','advanced-product-fields-for-woocommerce'), 'type' => 'text', 'pro' => true),
                     )
                 ),
                 array(
                     'type'          => 'number',
                     'conditions'    => array(
-                        array('value' => 'empty', 'label' => __('Value is empty','sw-wapf'), 'type' => false),
-                        array('value' => '!empty', 'label' => __('Value is any value','sw-wapf'), 'type' => false),
-                        array('value' => '==', 'label' => __('Value is equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => '!=', 'label' => __('Value is not equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => 'gt', 'label' => __('Value is greater than','sw-wapf'), 'type' => 'number'),
-                        array('value' => 'lt', 'label' => __('Value is lesser than','sw-wapf'), 'type' => 'number'),
-                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','sw-wapf'), 'type' => 'text', 'pro' => true),
+                        array('value' => 'empty', 'label' => __('Value is empty','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '!empty', 'label' => __('Value is any value','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '==', 'label' => __('Value is equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => '!=', 'label' => __('Value is not equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => 'gt', 'label' => __('Value is greater than','advanced-product-fields-for-woocommerce'), 'type' => 'number'),
+                        array('value' => 'lt', 'label' => __('Value is lesser than','advanced-product-fields-for-woocommerce'), 'type' => 'number'),
+                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','advanced-product-fields-for-woocommerce'), 'type' => 'text', 'pro' => true),
                     )
                 ),
                 array(
                     'type'          => 'textarea',
                     'conditions'    => array(
-                        array('value' => 'empty', 'label' => __('Value is empty','sw-wapf'), 'type' => false),
-                        array('value' => '!empty', 'label' => __('Value is any value','sw-wapf'), 'type' => false),
-                        array('value' => '==', 'label' => __('Value is equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => '!=', 'label' => __('Value is not equal to','sw-wapf'), 'type' => 'text'),
-                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','sw-wapf'), 'type' => 'text', 'pro' => true),
+                        array('value' => 'empty', 'label' => __('Value is empty','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '!empty', 'label' => __('Value is any value','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '==', 'label' => __('Value is equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => '!=', 'label' => __('Value is not equal to','advanced-product-fields-for-woocommerce'), 'type' => 'text'),
+                        array('value' => '==contains', 'label' => __('Value contains (Pro only)','advanced-product-fields-for-woocommerce'), 'type' => 'text', 'pro' => true),
                     )
                 ), array(
                     'type'          => 'true-false',
                     'conditions'    => array(
-                        array('value' => 'check', 'label' => __('Is checked', 'sw-wapf'), 'type' => false),
-                        array('value' => '!check', 'label' => __('Is not checked', 'sw-wapf'), 'type' => false)
+                        array('value' => 'check', 'label' => __('Is checked', 'advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '!check', 'label' => __('Is not checked', 'advanced-product-fields-for-woocommerce'), 'type' => false)
                     )
                 ), array(
                     'type'          => 'select',
                     'conditions'    => array(
-                        array('value' => 'empty', 'label' => __('Value is empty','sw-wapf'), 'type' => false),
-                        array('value' => '!empty', 'label' => __('Value is any value','sw-wapf'), 'type' => false),
-                        array('value' => '==', 'label' => __('Value is equal to','sw-wapf'), 'type' => 'options'),
-                        array('value' => '!=', 'label' => __('Value is not equal to','sw-wapf'), 'type' => 'options'),
+                        array('value' => 'empty', 'label' => __('Value is empty','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '!empty', 'label' => __('Value is any value','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '==', 'label' => __('Value is equal to','advanced-product-fields-for-woocommerce'), 'type' => 'options'),
+                        array('value' => '!=', 'label' => __('Value is not equal to','advanced-product-fields-for-woocommerce'), 'type' => 'options'),
                     )
                 ), array(
                     'type'          => 'checkboxes',
                     'conditions'    => array(
-                        array('value' => 'empty', 'label' => __('Value is empty','sw-wapf'), 'type' => false),
-                        array('value' => '!empty', 'label' => __('Value is any value','sw-wapf'), 'type' => false),
-                        array('value' => '==', 'label' => __('Value is equal to','sw-wapf'), 'type' => 'options'),
-                        array('value' => '!=', 'label' => __('Value is not equal to','sw-wapf'), 'type' => 'options'),
+                        array('value' => 'empty', 'label' => __('Value is empty','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '!empty', 'label' => __('Value is any value','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '==', 'label' => __('Value is equal to','advanced-product-fields-for-woocommerce'), 'type' => 'options'),
+                        array('value' => '!=', 'label' => __('Value is not equal to','advanced-product-fields-for-woocommerce'), 'type' => 'options'),
                     )
                 ), array(
                     'type'          => 'radio',
                     'conditions'    => array(
-                        array('value' => 'empty', 'label' => __('Value is empty','sw-wapf'), 'type' => false),
-                        array('value' => '!empty', 'label' => __('Value is any value','sw-wapf'), 'type' => false),
-                        array('value' => '==', 'label' => __('Value is equal to','sw-wapf'), 'type' => 'options'),
-                        array('value' => '!=', 'label' => __('Value is not equal to','sw-wapf'), 'type' => 'options'),
+                        array('value' => 'empty', 'label' => __('Value is empty','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '!empty', 'label' => __('Value is any value','advanced-product-fields-for-woocommerce'), 'type' => false),
+                        array('value' => '==', 'label' => __('Value is equal to','advanced-product-fields-for-woocommerce'), 'type' => 'options'),
+                        array('value' => '!=', 'label' => __('Value is not equal to','advanced-product-fields-for-woocommerce'), 'type' => 'options'),
                     )
                 ),
             );
@@ -104,25 +104,25 @@ namespace SW_WAPF\Includes\Classes {
             $product_options = array(
 
                 array(
-                    'group'                 => __('User','sw-wapf'),
+                    'group'                 => __('User','advanced-product-fields-for-woocommerce'),
                     'children'              => array(
                         array(
                             'id'            => 'auth',
-                            'label'         => __('Authentication','sw-wapf'),
+                            'label'         => __('Authentication','advanced-product-fields-for-woocommerce'),
                             'conditions'    => array(
                                 array(
                                     'id'    => 'auth',
-                                    'label' => __('Logged in', 'sw-wapf'),
+                                    'label' => __('Logged in', 'advanced-product-fields-for-woocommerce'),
                                     'value' => array()
                                 ), array(
                                     'id'    => '!auth',
-                                    'label' => __('Not logged in', 'sw-wapf'),
+                                    'label' => __('Not logged in', 'advanced-product-fields-for-woocommerce'),
                                     'value' => array()
                                 )
                             )
                         ),array(
                             'id'            => 'role',
-                            'label'         => __('User role','sw-wapf'),
+                            'label'         => __('User role','advanced-product-fields-for-woocommerce'),
                             'pro'           => true,
                             'conditions'    => array(
                             )
@@ -130,47 +130,47 @@ namespace SW_WAPF\Includes\Classes {
                     )
                 ),
                 array(
-                    'group'                 => __('Product', 'sw-wapf'),
+                    'group'                 => __('Product', 'advanced-product-fields-for-woocommerce'),
                     'children'              => array(
                         array(
                             'id'            => 'product',
-                            'label'         => __('Product', 'sw-wapf'),
+                            'label'         => __('Product', 'advanced-product-fields-for-woocommerce'),
                             'conditions'    => array(
                                 array(
                                     'id'    => 'product',
-                                    'label' => __('Is equal to','sw-wapf'),
+                                    'label' => __('Is equal to','advanced-product-fields-for-woocommerce'),
                                     'value' => array(
                                         'type'          => 'select2',
-                                        'placeholder'   => __("Search a product...",'sw-wapf'),
+                                        'placeholder'   => __("Search a product...",'advanced-product-fields-for-woocommerce'),
                                         'action'        => 'wapf_search_products',
                                         'single'        => true
                                     )
                                 ),
                                 array(
                                     'id'    => '!product',
-                                    'label' => __('Is not equal to','sw-wapf'),
+                                    'label' => __('Is not equal to','advanced-product-fields-for-woocommerce'),
                                     'value' => array(
                                         'type'          => 'select2',
-                                        'placeholder'   => __("Search a product...",'sw-wapf'),
+                                        'placeholder'   => __("Search a product...",'advanced-product-fields-for-woocommerce'),
                                         'action'        => 'wapf_search_products',
                                         'single'        => true
                                     )
                                 ),
                                 array(
                                     'id'    => 'products',
-                                    'label' => __('In list','sw-wapf'),
+                                    'label' => __('In list','advanced-product-fields-for-woocommerce'),
                                     'value' => array(
                                         'type'          => 'select2',
-                                        'placeholder'   => __("Search a product...",'sw-wapf'),
+                                        'placeholder'   => __("Search a product...",'advanced-product-fields-for-woocommerce'),
                                         'action'        => 'wapf_search_products',
                                     )
                                 ),
                                 array(
                                     'id'    => '!products',
-                                    'label' => __('Not in list','sw-wapf'),
+                                    'label' => __('Not in list','advanced-product-fields-for-woocommerce'),
                                     'value' => array(
                                         'type'          => 'select2',
-                                        'placeholder'   => __("Search a product...",'sw-wapf'),
+                                        'placeholder'   => __("Search a product...",'advanced-product-fields-for-woocommerce'),
                                         'action'        => 'wapf_search_products',
                                     )
                                 ),
@@ -178,18 +178,18 @@ namespace SW_WAPF\Includes\Classes {
                             )
                         ), array(
                             'id'            => 'product_variation',
-                            'label'         => __('Product variation', 'sw-wapf'),
+                            'label'         => __('Product variation', 'advanced-product-fields-for-woocommerce'),
                             'pro'           => true,
                             'conditions'    => array()
                         ), array(
                             'id'            => 'product_cat',
-                            'label'         => __('Product category', 'sw-wapf'),
+                            'label'         => __('Product category', 'advanced-product-fields-for-woocommerce'),
                             'pro'           => true,
                             'conditions'    => array()
                         ),
                         array(
                             'id'            => 'product_type',
-                            'label'         => __('Product type', 'sw-wapf'),
+                            'label'         => __('Product type', 'advanced-product-fields-for-woocommerce'),
                             'pro'           => true,
                             'conditions'    => array()
                         )
