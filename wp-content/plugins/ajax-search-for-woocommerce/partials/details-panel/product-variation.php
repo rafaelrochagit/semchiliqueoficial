@@ -37,9 +37,11 @@ if ( ! defined( 'DGWT_WCAS_FILE' ) ) {
 
 			<div class="dgwt-wcas-details-hr"></div>
 
-			<?php if ( ! empty( $vars->desc ) ): ?>
-				<div class="dgwt-wcas-details-desc">
-					<?php echo wp_kses_post( $vars->desc ); ?>
+			<?php if ( ! empty( $vars->attributes ) ): ?>
+				<div class="dgwt-wcas-details-attributes">
+					<?php foreach ( $vars->attributes as $attribute ): ?>
+						<div class="dgwt-wcas-details-attribute"><b><?php echo esc_html( $attribute['label'] ); ?></b>: <span><?php echo esc_html( $attribute['value'] ); ?></span></div>
+					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
 
@@ -72,4 +74,3 @@ if ( ! defined( 'DGWT_WCAS_FILE' ) ) {
 
 	</div>
 </div>
-

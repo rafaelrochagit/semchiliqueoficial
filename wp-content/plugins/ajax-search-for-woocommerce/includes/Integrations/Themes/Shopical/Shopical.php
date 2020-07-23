@@ -1,6 +1,6 @@
 <?php
 
-namespace DgoraWcas\Integrations\Themes\Storefront;
+namespace DgoraWcas\Integrations\Themes\Shopical;
 
 use DgoraWcas\Helpers;
 
@@ -9,18 +9,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Storefront {
+class Shopical {
 
-	private $themeSlug = 'storefront';
+	private $themeSlug = 'shopical';
 
-	private $themeName = 'Storefront';
+	private $themeName = 'Shopical';
 
 	public function __construct() {
-		$this->overwriteFunctions();
+		$this->maybeOverwriteSearch();
 
 		add_filter( 'dgwt/wcas/settings', array( $this, 'registerSettings' ) );
 	}
-
 
 	/**
 	 * Add settings
@@ -34,14 +33,14 @@ class Storefront {
 
 		$settings[ $key ][10] = array(
 			'name'  => $this->themeSlug . '_main_head',
-			'label' => __( 'Replace Storefront search bar', 'ajax-search-for-woocommerce' ),
+			'label' => sprintf( __( 'Replace %s search bar', 'ajax-search-for-woocommerce' ), $this->themeName ),
 			'type'  => 'head',
 			'class' => 'dgwt-wcas-sgs-header'
 		);
 
 		$settings[ $key ][52] = array(
 			'name'  => $this->themeSlug . '_settings_head',
-			'label' => __( 'Storefront Theme', 'ajax-search-for-woocommerce' ),
+			'label' => sprintf( __( '%s Theme', 'ajax-search-for-woocommerce' ), $this->themeName ),
 			'type'  => 'desc',
 			'desc'  => Helpers::embeddingInThemeHtml(),
 			'class' => 'dgwt-wcas-sgs-themes-label',
@@ -53,9 +52,9 @@ class Storefront {
 		}
 
 		$settings[ $key ][55] = array(
-			'name'    => 'storefront_replace_search',
+			'name'    => $this->themeSlug . '_replace_search',
 			'label'   => __( 'Replace', 'ajax-search-for-woocommerce' ),
-			'desc'    => __( 'Replace the Storefront default product search to the Ajax Search for WooCommerce form.', 'ajax-search-for-woocommerce' ),
+			'desc'    => sprintf( __( 'Replace all %s search bars with the Ajax Search for WooCommerce.', 'ajax-search-for-woocommerce' ), $this->themeName ),
 			'type'    => 'checkbox',
 			'default' => 'off',
 		);
@@ -71,7 +70,7 @@ class Storefront {
 	}
 
 	/**
-	 * Check if can replace the native Storefront search form
+	 * Check if can replace the native search form
 	 * by the Ajax Search for WooCommerce form.
 	 *
 	 * @return bool
@@ -79,7 +78,7 @@ class Storefront {
 	private function canReplaceSearch() {
 		$canIntegrate = false;
 
-		if ( DGWT_WCAS()->settings->getOption( 'storefront_replace_search', 'off' ) === 'on' ) {
+		if ( DGWT_WCAS()->settings->getOption( $this->themeSlug . '_replace_search', 'off' ) === 'on' ) {
 			$canIntegrate = true;
 		}
 
@@ -87,21 +86,32 @@ class Storefront {
 	}
 
 	/**
-	 * Overwrite funtions
+	 * Overwrite search
 	 *
 	 * @return void
 	 */
-	private function overwriteFunctions() {
+	private function maybeOverwriteSearch() {
 		if ( $this->canReplaceSearch() ) {
+			$this->applyCSS();
 
-			// Force enable overlay for mobile search
-			add_filter( 'dgwt/wcas/settings/load_value/key=enable_mobile_overlay', function () {
-				return 'on';
-			} );
-
-			require_once DGWT_WCAS_DIR . 'partials/themes/storefront.php';
+			require_once DGWT_WCAS_DIR . 'partials/themes/shopical.php';
 		}
 	}
 
-
+	/**
+	 * Apply custom CSS
+	 *
+	 * @return void
+	 */
+	private function applyCSS() {
+		add_action( 'wp_head', function () {
+			?>
+			<style>
+				.dgwt-wcas-overlay-mobile .dgwt-wcas-search-form {
+					padding: 0;
+				}
+			</style>
+			<?php
+		} );
+	}
 }
