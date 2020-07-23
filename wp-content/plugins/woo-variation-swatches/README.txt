@@ -381,6 +381,10 @@ And your are ready to go.
 
 == Changelog ==
 
+= 1.0.85 =
+
+* Update: Support WooCommerce 4.3 version
+
 = 1.0.84 =
 
 * Add: `wvs-no-css` will add on when stylesheet disabled. `wvs-css` will add on when stylesheet enabled, `wvs-no-tooltip` will add on when tooltip disabled, `wvs-tooltip` will add on when tooltip enabled.
