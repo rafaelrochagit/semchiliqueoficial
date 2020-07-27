@@ -40,21 +40,5 @@
 
 <?php wp_footer(); ?>
 
-<script>
-	(function () {
-    var menu = document.getElementById('search-bar-section'); // colocar em cache
-	var nav = document.getElementById('site-navigation'); // colocar em cache
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 0) {
-			menu.classList.add('menuFixo'); // > 0 ou outro valor desejado	
-			nav.classList.add('menuFixo'); // > 0 ou outro valor desejado	
-		} 
-        else {
-			menu.classList.remove('menuFixo');
-			nav.classList.remove('menuFixo'); // > 0 ou outro valor desejado	
-		}
-    });
-})();
-</script>
 </body>
 </html>

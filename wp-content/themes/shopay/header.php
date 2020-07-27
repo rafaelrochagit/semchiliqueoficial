@@ -16,13 +16,8 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	
+
 	<?php wp_head(); ?>
-	<link rel="stylesheet" href="/wp-content/themes/shopay/style2.css?v=<?=date('YmdHis')?>">
-	<link rel="stylesheet" href="/wp-content/themes/shopay/style3.css?v=<?=date('YmdHis')?>">
-	<link rel="stylesheet" href="/wp-content/themes/shopay/stylerkr1.css?v=<?=date('YmdHis')?>">
-	<link rel="stylesheet" href="/wp-content/themes/shopay/stylerkr2.css?v=<?=date('YmdHis')?>">
-	<link rel="stylesheet" href="/wp-content/themes/shopay/stylerkr3.css?v=<?=date('YmdHis')?>">
 </head>
 
 <body <?php body_class(); ?>>

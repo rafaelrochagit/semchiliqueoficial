@@ -27,7 +27,7 @@ if ( ! function_exists( 'shopay_get_advanced_product_search' ) ) :
             }
         }
         $checked = '';
-        $categories_show .= '<optgroup class="sm-advance-search" label="'.esc_html__( 'Categorias', 'shopay' ).'">';
+        $categories_show .= '<optgroup class="sm-advance-search" label="'.esc_html__( 'All Categories', 'shopay' ).'">';
         foreach( $product_categories as $category ) {
             if ( isset ( $category->slug ) ) {
                 if ( trim( $category->slug ) == trim( $check ) ) {
@@ -45,7 +45,7 @@ if ( ! function_exists( 'shopay_get_advanced_product_search' ) ) :
                             </select>
                          </div>
                          <div class="sm_search_form">
-                             <input type="text" value="' . get_search_query() . '" name="s" id="s"  class="search-field" placeholder="'.esc_html__( 'Faça sua busca aqui...', 'shopay' ).'" autocomplete="off"/>
+                             <input type="text" value="' . get_search_query() . '" name="s" id="s"  class="search-field" placeholder="'.esc_html__( 'Search products', 'shopay' ).'" autocomplete="off"/>
                              <button type="submit" id="searchsubmit">
                              <i class="fa fa-search"></i></button>
                              <input type="hidden" name="post_type" value="product" />

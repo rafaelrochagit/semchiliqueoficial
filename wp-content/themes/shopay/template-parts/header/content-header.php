@@ -11,39 +11,9 @@
     <div class="mt-container">
         <div class="main-header-wrapper clearfix">
             <div class="site-branding-toggle-wrapper">
-				<?php
-                $shopay_site_info_option = get_theme_mod( 'shopay_site_info_option', true );
-                if ( true == $shopay_site_info_option ) {
-                    $shopay_header_site_contact_info = get_theme_mod( 'shopay_header_site_contact_info', __( 'Support ( +123-465465464)', 'shopay' ) );
-                    $shopay_header_site_email_info = get_theme_mod( 'shopay_header_site_email_info', __( 'Email: noreply@example.com', 'shopay' ) );
-            ?>
-                    <div class="header-site-info-wrap clearfix">
-                        <div class="site-info-content-wrap">
-                            <?php
-                                if ( !empty( $shopay_header_site_contact_info ) ) {
-                            ?>
-								<i class="fas fa-headset"></i>
-                                <div class="site-info-contact">
-                                    <?php echo wp_kses_post( $shopay_header_site_contact_info ); ?>
-                                </div>
-                            <?php
-                                }
-                                if ( !empty( $shopay_header_site_email_info ) ) {
-                            ?>
-                                <div class="site-info-email">
-                                    <?php echo wp_kses_post( $shopay_header_site_email_info ); ?>
-                                </div>
-                            <?php
-                                }
-                            ?>
-                        </div><!-- .site-info-content -->
-                    </div><!-- .header-site-info-wrap -->
-            <?php
-                }
-            ?>
                 <div class="site-branding">
                     <?php
-					 //the_custom_logo();
+                    the_custom_logo();
                     if ( is_front_page() && is_home() ) :
                     ?>
                         <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -77,101 +47,106 @@
                     }
                 ?>
             </div><!-- site-branding-toggle-wrapper -->
-<div id="menu-search">
-	<div id="search-bar-section">
+            <nav id="site-navigation" class="main-navigation clearfix">
+                <div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><a href="javascript:void(0);"><i class="fas fa-ellipsis-v"></i><?php esc_html_e( 'MENU', 'shopay' ); ?></a></div>
+                <div class="primary-menu-wrap">
+                    <?php
+                        wp_nav_menu( array(
+                            'theme_location' => 'menu-primary',
+                            'menu_id'        => 'primary-menu'
+                        ) );
+                    ?>
+                    <div class="main-menu-close hide"><a href="javascript:void(0);"><i class="far fa-window-close"></i></a></div>
+                </div><!-- .primary-menu-wrap -->
+            </nav><!-- #site-navigation -->
 
-		<div class="mt-container">
-			
-			<div class="search-bar-section-wrapper clearfix">
-				<?php the_custom_logo(); ?>
-				<?php 
-					$shopay_search_bar_option = get_theme_mod( 'shopay_search_bar_option', true );
-					if ( true == $shopay_search_bar_option ) {
-						if ( shopay_is_active_woocommerce() ) {
-							$shopay_search_bar_type = get_theme_mod( 'shopay_search_bar_type', 'default-search' );
-						} else {
-							$shopay_search_bar_type = apply_filters( 'shopay_search_bar_type', 'default-search' );
-						}
-				?>
-						<div class="header-search-form-wrap">
-							<?php 
-								if ( 'default-search' === $shopay_search_bar_type ) {
-									get_search_form();
-								} elseif ( 'product-search' == $shopay_search_bar_type ) { 
-									shopay_get_advanced_product_search();
-								}
-							?>
-						</div>
-				<?php
-					}
-				?>
-
-				<div class="header-woo-links-wrap">
-					<?php
-						if ( shopay_is_active_woocommerce() ) {
-							shopay_header_wishlist_link();
-							shopay_woocommerce_header_cart();
-						}
-					?>
-				</div><!-- .header-woo-links-wrap -->
-			</div><!-- .search-bar-section-wrapper -->
-		</div><!-- mt-container -->
-	</div><!-- #search-bar-section --> 
-	<nav id="site-navigation" class="main-navigation clearfix">
-					<div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-                    	<a href="javascript:void(0);">
-                        	<i class="fas fa-ellipsis-v"></i>
-                    			<?php esc_html_e( 'MENU', 'shopay' ); ?>
-                         </a>
-                    </div>
-					<div class="primary-menu-wrap">
-					<?php 
-					$shopay_cat_menu_option = get_theme_mod( 'shopay_cat_menu_option', true );
-					if ( true == $shopay_cat_menu_option && shopay_is_active_woocommerce() ) {
-						echo '<div class="shopay-cat-menu-wrapper">';
-							$shopay_cat_menu_title = get_theme_mod( 'shopay_cat_menu_title', __( 'Main Categories', 'shopay' ) );
-							if ( ! empty( $shopay_cat_menu_title ) ) {
-					?>
-								<h2 class="main-category-list-title cover-font">
-									<?php echo esc_html( $shopay_cat_menu_title ); ?>
-									<a href="javascript:void(0);"><i class="fas fa-bars"></i></a>
-								</h2>
-					<?php
-							}
-							echo '<div class="shopay-cat-menu deactivate-menu">';
-								shopay_category_menu_sec();
-							echo '</div><!-- .shopay-cat-menu -->';
-						echo '</div><!-- .shopay-cat-menu-wrapper -->';
-					}
-					?>
-						<div id="menu-principal-semchilique">
-							<?php
-							wp_nav_menu( array(
-								'theme_location' => 'menu-primary',
-								'menu_id'        => 'primary-menu'
-							) );
-							?>
-							<div class="main-menu-close hide"><a href="javascript:void(0);"><i class="far fa-window-close"></i></a>	
-                			</div>
-                        </div>
-                        </div><!-- .primary-menu-wrap -->
-                        
-                        <div class="primary-menu-phone-wrap">
-                         <?php
-                             wp_nav_menu( array(
-                             'theme_location' => 'menu-primary-phone',
-                             'menu_id'        => 'primary-menu-phone'
-                             ) );
-                         ?>
-                        </div>
-	</nav><!-- #site-navigation -->
-
-            <!-- AQUI ESTAVA header-site-info-wrap -->
+            <?php
+                $shopay_site_info_option = get_theme_mod( 'shopay_site_info_option', true );
+                if ( true == $shopay_site_info_option ) {
+                    $shopay_header_site_contact_info = get_theme_mod( 'shopay_header_site_contact_info', __( 'Support ( +123-465465464)', 'shopay' ) );
+                    $shopay_header_site_email_info = get_theme_mod( 'shopay_header_site_email_info', __( 'Email: noreply@example.com', 'shopay' ) );
+            ?>
+                    <div class="header-site-info-wrap clearfix">
+                        <i class="fas fa-headset"></i>
+                        <div class="site-info-content-wrap">
+                            <?php
+                                if ( !empty( $shopay_header_site_contact_info ) ) {
+                            ?>
+                                <div class="site-info-contact">
+                                    <?php echo wp_kses_post( $shopay_header_site_contact_info ); ?>
+                                </div>
+                            <?php
+                                }
+                                if ( !empty( $shopay_header_site_email_info ) ) {
+                            ?>
+                                <div class="site-info-email">
+                                    <?php echo wp_kses_post( $shopay_header_site_email_info ); ?>
+                                </div>
+                            <?php
+                                }
+                            ?>
+                        </div><!-- .site-info-content -->
+                    </div><!-- .header-site-info-wrap -->
+            <?php
+                }
+            ?>
         </div><!-- .main-header-wrapper -->
     </div><!-- mt-container -->
 </header><!-- #masthead -->
 
-<!-- AQUI ESTAVA O BAR-SECTION -->
+<div id="search-bar-section">
+    <div class="mt-container">
+        <div class="search-bar-section-wrapper clearfix">
+            <?php 
+                $shopay_cat_menu_option = get_theme_mod( 'shopay_cat_menu_option', true );
+                if ( true == $shopay_cat_menu_option && shopay_is_active_woocommerce() ) {
+                    echo '<div class="shopay-cat-menu-wrapper">';
+                        $shopay_cat_menu_title = get_theme_mod( 'shopay_cat_menu_title', __( 'Main Categories', 'shopay' ) );
+                        if ( ! empty( $shopay_cat_menu_title ) ) {
+            ?>
+                            <h2 class="main-category-list-title cover-font">
+                                <?php echo esc_html( $shopay_cat_menu_title ); ?>
+                                <a href="javascript:void(0);"><i class="fas fa-bars"></i></a>
+                            </h2>
+            <?php
+                        }
+                        echo '<div class="shopay-cat-menu deactivate-menu">';
+                            shopay_category_menu_sec();
+                        echo '</div><!-- .shopay-cat-menu -->';
+                    echo '</div><!-- .shopay-cat-menu-wrapper -->';
+                }
+                $shopay_search_bar_option = get_theme_mod( 'shopay_search_bar_option', true );
+                if ( true == $shopay_search_bar_option ) {
+                    if ( shopay_is_active_woocommerce() ) {
+                        $shopay_search_bar_type = get_theme_mod( 'shopay_search_bar_type', 'default-search' );
+                    } else {
+                        $shopay_search_bar_type = apply_filters( 'shopay_search_bar_type', 'default-search' );
+                    }
+            ?>
+                    <div class="header-search-form-wrap">
+                        <?php 
+                            if ( 'default-search' === $shopay_search_bar_type ) {
+                                get_search_form();
+                            } elseif ( 'product-search' == $shopay_search_bar_type ) { 
+                                shopay_get_advanced_product_search();
+                            }
+                        ?>
+                    </div>
+            <?php
+                }
+            ?>
+
+            <div class="header-woo-links-wrap">
+                <?php
+                    if ( shopay_is_active_woocommerce() ) {
+                        shopay_header_wishlist_link();
+                        shopay_woocommerce_header_cart();
+                    }
+                ?>
+            </div><!-- .header-woo-links-wrap -->
+        </div><!-- .search-bar-section-wrapper -->
+    </div><!-- mt-container -->
+</div><!-- #search-bar-section --> 
 <?php
 $shopay_highlight_products_option = get_theme_mod( 'shopay_highlight_products_option', false );
 if ( true == $shopay_highlight_products_option && shopay_is_active_woocommerce() ) {

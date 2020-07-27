@@ -46,7 +46,6 @@ if ( ! function_exists( 'shopay_setup' ) ) :
 		register_nav_menus( array(
 			'menu-top' 		=> esc_html__( 'Top Menu', 'shopay' ),
 			'menu-primary' 	=> esc_html__( 'Primary Menu', 'shopay' ),
-            'menu-primary-phone' => esc_html__( 'Primary Menu Phone', 'shopay' ),
 			'menu-footer' 	=> esc_html__( 'Footer Menu', 'shopay' ),
 		) );
 

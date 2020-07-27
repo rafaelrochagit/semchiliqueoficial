@@ -67,30 +67,3 @@
         <?php } ?>
     </div><!-- mt-container -->
 </div><!-- .site-bottom-footer -->
-
-  					<script>
-                        jQuery('#filtroPhone').click(
-                            function() {
-                                jQuery('#secondary').show();
-                                jQuery('#closeFiltro').show();
-                            }
-                        );
-
-                        jQuery('#closeFiltro a').click(
-                            function() {
-                                jQuery('#closeFiltro').hide();
-                                jQuery('#secondary').hide();
-                            }
-                        );
-                        
-                        jQuery('#wpfwoofilterswidget-2 li').click(
-                        	function(){ 
-                            	jQuery('.wpfFilterButton').click();  
-                                if(screen.width <= 768) {
-                                	jQuery('#closeFiltro').hide();
-                                	jQuery('#secondary').hide();
-                                }
-                            }
-                        );
-                        
-                    </script>

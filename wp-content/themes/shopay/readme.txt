@@ -14,7 +14,7 @@ Shopay is highly customizable and beautifully designed WordPress theme built-in 
 
 Shopay is highly customizable and beautifully designed WordPress theme built-in with full WooCommerce support. The theme is perfectly integrated with any kinds of e-commerce stores loaded with all the extensive functionality and features. It is fully compatible with WooCommerce and YITH WooCommerce plugins to provide ultimate eCommerce value. Additionally, theme features color options, 7+homepage widgets , sidebar layouts, header and footer customization and many more.The theme comes with a comprehensive documentation guide that helps you to build a unique website from the root. It is built-in with a customizer that enables you to configure with live preview. Besides these, it is fully responsive and mobile-friendly that fits well on any types of devices. With the support of  one-click demo import plugin, turn your website into a mind-blowing online store. 
 
-Get the demo at https://demo.mysterythemes.com/shopay-landing/
+Get the demo at https://demo.mysterythemes.com/shopay-demos/
 
 == Installation ==
 
@@ -89,6 +89,9 @@ Shopay is distributed under the terms of the GNU GPL
     
 
 == Changelog ==
+
+= 1.1.2 - July 20, 2020 =
+    * Fixed - Some design bug fixed and tweaks done.
 
 = 1.1.1 - May 28, 2020 =
     * Fixed - Footer main area layout default value.

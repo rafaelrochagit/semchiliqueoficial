@@ -3,9 +3,10 @@ Theme Name:         Shopay
 Theme URI:          https://mysterythemes.com/wp-themes/shopay
 Author:             Mystery Themes
 Author URI:         https://mysterythemes.com
-Description:        Shopay is highly customizable and beautifully designed WordPress theme built-in with full WooCommerce support. The theme is perfectly integrated with any kinds of e-commerce stores loaded with all the extensive functionality and features. It is fully compatible with WooCommerce and YITH WooCommerce plugins to provide ultimate eCommerce value. Additionally, theme features color options, 7+homepage widgets , sidebar layouts, header and footer customization and many more.The theme comes with a comprehensive documentation guide that helps you to build a unique website from the root. It is built-in with a customizer that enables you to configure with live preview. Besides these, it is fully responsive and mobile-friendly that fits well on any types of devices. With the support of  one-click demo import plugin, turn your website into a mind-blowing online store. Get the demo at https://demo.mysterythemes.com/shopay-landing/
-Version:            1.1.1
+Description:        Shopay is highly customizable and beautifully designed WordPress theme built-in with full WooCommerce support. The theme is perfectly integrated with any kinds of e-commerce stores loaded with all the extensive functionality and features. It is fully compatible with WooCommerce and YITH WooCommerce plugins to provide ultimate eCommerce value. Additionally, theme features color options, 7+homepage widgets , sidebar layouts, header and footer customization and many more.The theme comes with a comprehensive documentation guide that helps you to build a unique website from the root. It is built-in with a customizer that enables you to configure with live preview. Besides these, it is fully responsive and mobile-friendly that fits well on any types of devices. With the support of  one-click demo import plugin, turn your website into a mind-blowing online store. Get the demo at https://demo.mysterythemes.com/shopay-demos/
+Version:            1.1.2
 Requires at least:  4.0
+Tested up to:       5.3
 Requires PHP:       5.2.4
 License:            GNU General Public License v3 or later
 License URI:        http://www.gnu.org/licenses/gpl-3.0.html
@@ -871,7 +872,7 @@ textarea#comment {
 .comment-list .comment-body {
   padding: 15px;
   margin-bottom: 20px;
-  background: #f2f2f2;
+  background: #f9f9f9;
   border-top: 2px solid #ccc;
 }
 
@@ -1269,13 +1270,14 @@ li.product .star-rating span::before {
   font-weight: 400;
 }
 
-.woocommerce .woocommerce-info,
+.woocommerce .woocommerce-info, 
 .woocommerce .woocommerce-message {
-  background: #ececec;
+  background: #f9f9f9;
   color: #555;
-  margin-bottom: 20px;
+  margin: 20px 0 20px;
   padding: 16px 20px 16px 50px;
   width: 100%;
+  border-top: 3px solid #F25529;
 }
 
 .woocommerce .woocommerce-form-coupon-toggle {
@@ -1891,6 +1893,10 @@ table.shop_table_responsive tr td.product-remove a {
   padding: 10px;
   line-height: 1.5;
   border-bottom: 1px dashed #ddd;
+}
+
+.woocommerce-MyAccount-navigation li.is-active a {
+  color: #F25529;
 }
 
 .woocommerce-MyAccount-navigation li:last-child {
@@ -2706,7 +2712,12 @@ masthead css
   font-weight: 600;
   color: #515151;
   text-decoration: none;
-  line-height: 1.4;
+  line-height: 1.2;
+  font-family: 'Rubik', sans-serif;
+}
+
+.site-title a:hover{
+  color: #ED6D23;
 }
 
 .site-title {
@@ -2760,7 +2771,7 @@ masthead css
   display: block;
 }
 
-#site-navigation #menu-principal-semchilique ul li a .menu-item-description {
+#site-navigation ul li a .menu-item-description {
   display: inline-block;
   position: absolute;
   top: -20px;
@@ -2773,7 +2784,7 @@ masthead css
   font-weight: 600;
 }
 
-#site-navigation #menu-principal-semchilique .menu-item-description::after {
+#site-navigation .menu-item-description::after {
   position: absolute;
   bottom: -3px;
   left: 0;
@@ -2788,7 +2799,7 @@ masthead css
   transition: all 0.3s ease;
 }
 
-#site-navigation #menu-principal-semchilique ul ul li a .menu-item-description {
+#site-navigation ul ul li a .menu-item-description {
   display: none;
 }
 
@@ -2818,7 +2829,7 @@ site-navigation css
   z-index: 999;
 }
 
-#site-navigation #menu-principal-semchilique ul li {
+#site-navigation ul li {
   display: inline-block;
   position: relative;
   list-style: none;
@@ -2826,16 +2837,16 @@ site-navigation css
   line-height: 2;
 }
 
-#site-navigation #menu-principal-semchilique ul li:hover>a,
-#site-navigation #menu-principal-semchilique ul li.current-menu-item>a,
-#site-navigation #menu-principal-semchilique ul li.current_page_ancestor>a,
-#site-navigation #menu-principal-semchilique ul li.current_page_item>a,
-#site-navigation #menu-principal-semchilique ul li.current-menu-ancestor>a {
+#site-navigation ul li:hover>a,
+#site-navigation ul li.current-menu-item>a,
+#site-navigation ul li.current_page_ancestor>a,
+#site-navigation ul li.current_page_item>a,
+#site-navigation ul li.current-menu-ancestor>a {
   color: #ec521e;
 }
 
-#site-navigation #menu-principal-semchilique li.menu-item-has-children>a::after,
-#site-navigation #menu-principal-semchilique li.page_item_has_children>a::after {
+#site-navigation li.menu-item-has-children>a::after,
+#site-navigation li.page_item_has_children>a::after {
   content: "\f107";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -2845,16 +2856,16 @@ site-navigation css
   font-size: 15px;
 }
 
-#site-navigation #menu-principal-semchilique ul ul li.menu-item-has-children>a::after,
-#site-navigation #menu-principal-semchilique ul ul li.page_item_has_children>a::after {
+#site-navigation ul ul li.menu-item-has-children>a::after,
+#site-navigation ul ul li.page_item_has_children>a::after {
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
 
-#site-navigation #menu-principal-semchilique .sub-menu li.menu-item-has-children>a::after,
-#site-navigation #menu-principal-semchilique .children li.page_item_has_children>a::after {
+#site-navigation .sub-menu li.menu-item-has-children>a::after,
+#site-navigation .children li.page_item_has_children>a::after {
   content: "\f107";
   top: 12px;
 }
@@ -2870,13 +2881,13 @@ site-navigation css
   line-height: 1.8;
 }
 
-#site-navigation #menu-principal-semchilique ul#primary-menu>li.menu-item-has-children>a,
-#site-navigation #menu-principal-semchilique #primary-menu ul>li.page_item_has_children>a {
+#site-navigation ul#primary-menu>li.menu-item-has-children>a,
+#site-navigation #primary-menu ul>li.page_item_has_children>a {
   padding-right: 35px;
 }
 
-#site-navigation #menu-principal-semchilique ul li .sub-menu,
-#site-navigation #menu-principal-semchilique ul li .children {
+#site-navigation ul li .sub-menu,
+#site-navigation ul li .children {
   display: block;
   background: #fff;
   min-width: 250px;
@@ -2890,42 +2901,42 @@ site-navigation css
   box-shadow: 0 1px 12px rgba(2, 2, 2, 0.1);
 }
 
-#site-navigation #menu-principal-semchilique ul li .sub-menu li:last-child,
-#site-navigation #menu-principal-semchilique ul li .children li:last-child {
+#site-navigation ul li .sub-menu li:last-child,
+#site-navigation ul li .children li:last-child {
   border-bottom: 0;
 }
 
-#site-navigation #menu-principal-semchilique ul li .sub-menu ul,
-#site-navigation #menu-principal-semchilique ul li .children ul {
+#site-navigation ul li .sub-menu ul,
+#site-navigation ul li .children ul {
   left: 100%;
   top: 0;
 }
 
-#site-navigation #menu-principal-semchilique ul li.focus>.sub-menu,
-#site-navigation #menu-principal-semchilique ul li.focus>.children,
-#site-navigation #menu-principal-semchilique ul li:hover>.sub-menu,
-#site-navigation #menu-principal-semchilique ul li:hover>.children {
+#site-navigation ul li.focus>.sub-menu,
+#site-navigation ul li.focus>.children,
+#site-navigation ul li:hover>.sub-menu,
+#site-navigation ul li:hover>.children {
   opacity: 1;
   visibility: visible;
 }
 
-#site-navigation #menu-principal-semchilique ul li .sub-menu li,
-#site-navigation #menu-principal-semchilique ul li .children li {
+#site-navigation ul li .sub-menu li,
+#site-navigation ul li .children li {
   display: block;
   border-bottom: 1px solid #ddd;
   margin: 0;
 }
 
-#site-navigation #menu-principal-semchilique ul li .sub-menu li a,
-#site-navigation #menu-principal-semchilique ul li .children li a {
+#site-navigation ul li .sub-menu li a,
+#site-navigation ul li .children li a {
   border-right: none;
   font-size: 16px;
   display: block;
   padding: 10px 15px;
 }
 
-#site-navigation #menu-principal-semchilique ul li .sub-menu li a.sub-toggle,
-#site-navigation #menu-principal-semchilique ul li .children li a.sub-toggle {
+#site-navigation ul li .sub-menu li a.sub-toggle,
+#site-navigation ul li .children li a.sub-toggle {
   display: none;
 }
 
@@ -3004,8 +3015,8 @@ site-navigation css
   display: none;
 }
 
-.is-sticky #masthead #site-navigation #menu-principal-semchilique li.menu-item-has-children>a::after,
-3 .is-sticky #masthead #site-navigation #menu-principal-semchilique li.page_item_has_children>a::after {
+.is-sticky #masthead #site-navigation li.menu-item-has-children>a::after,
+3 .is-sticky #masthead #site-navigation li.page_item_has_children>a::after {
   top: 3px;
   right: 15px;
 }
@@ -4661,6 +4672,10 @@ Search Page
   position: relative;
 }
 
+.search-article-wrapper {
+  margin-left: -3%;
+}
+
 .search-article-wrapper article {
   width: 47%;
   margin-left: 3%;
@@ -4668,6 +4683,10 @@ Search Page
   margin-right: -4px;
   text-align: center;
   vertical-align: top;
+}
+
+.search-article-wrapper .navigation.posts-navigation {
+  margin-left: 3%;
 }
 
 .search-article-wrapper article.post,
@@ -5084,88 +5103,4 @@ highlight post css
 
 .mt-logo {
   width: 30%;
-}
-
-/* PERSONALIZADO SEM CHILIQUE */
-
-.custom-logo-link img {
-	width: 100px;	
-}
-
-.header-woo-links-wrap {
-    float: right;
-    padding: 22px 0px 0px 40px;
-    font-size: 11pt;
-	width: 20%;
-}
-
-
-#search-bar-section .mt-container {
-	width: 100%;
-	display: flex;
-}
-
-.header-search-form-wrap {
-    width: 60%;
-    /* float: left; */
-    text-align: center;
-    margin: 0 auto;
-}
-
-.header-search-form-wrap .search-submit, .sm_search_form #searchsubmit {
-    width: 10%;
-    display: inline-block;
-    background: #fff;
-    height: 30px;
-    width: 10px;
-    border: 0px;
-    color: black;
-    float: right;
-    left: -35px;
-    top: 3px;
-}
-
-.header-search-form-wrap label .search-field, .sm_search_form .search-field {
-    width: 90%;
-    border: 0px;
-    border-radius: 6px;
-}
-
-.search-form button {
-    color: #333 !important;
-}
-
-.search-form button {
-    padding: 9px 15px;
-}
-
-.home.page .cover-font, .blog .cover-font a {
-    vertical-align: bottom;
-}
-
-.main-category-list-title {
-    padding: 17px 0;
-}
-
-.shopay-cat-menu.deactivate-menu {
-	border: 0px;
-	overflow: overlay;
-    height: 600%;
-}
-
-.product-categories .children .children {
-    margin-left: 0;
-    left: 248px;
-}
-
-.header-search-form-wrap .search-form, .search-wrap {
-    display: flex;
-}
-
-.header-search-form-wrap .search-form label {
-	width: 100%;
-}
-
-.search-bar-section-wrapper {
-    margin-top: 15px;
 }
